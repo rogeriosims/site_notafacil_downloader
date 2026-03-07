@@ -397,115 +397,153 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <h2 class="text-4xl lg:text-5xl font-black text-slate-900 mt-4 leading-tight">Perguntas Frequentes</h2>
             </div>
 
-            <div class="space-y-4">
-                <!-- FAQ Item 1 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+                <!-- FAQ Item 1: Limite de CNPJs -->
                 <div class="faq-item group" data-aos="fade-up">
-                    <button onclick="toggleFaq(this)"
-                        class="faq-card w-full text-left p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none">
-                        <div class="flex items-center justify-between gap-4">
-                            <h4 class="text-xl font-black text-slate-800">O plano gratuito é só por alguns dias?</h4>
-                            <div
-                                class="faq-icon w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
+                    <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
+                        <div class="flex items-start justify-between gap-4 w-full">
+                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Existe limite de empresas (CNPJs) que posso cadastrar?</h4>
+                            <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                             </div>
                         </div>
                         <div class="faq-answer">
-                            <p class="text-slate-600 leading-relaxed font-medium">Não! O plano Free é gratuito para
-                                sempre. Ele renova automaticamente a cota de 100 notas (XML + PDF) todo dia 01. Se o seu
-                                escritório processa poucas notas, você nunca pagará nada.</p>
+                            <p class="text-slate-600 leading-relaxed font-medium">De forma alguma. <strong class="text-slate-800">Não há limitações de CNPJs em nenhum de nossos planos.</strong> A única métrica controlada pelo seu plano é o volume mensal absoluto de notas (XMLs) processadas globalmente no escritório.</p>
                         </div>
                     </button>
                 </div>
 
-                <!-- FAQ Item 2 -->
+                <!-- FAQ Item 2: Segurança do A1 -->
+                <div class="faq-item group" data-aos="fade-up" data-aos-delay="50">
+                    <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
+                        <div class="flex items-start justify-between gap-4 w-full">
+                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Meus certificados digitais A1 vão para alguma nuvem?</h4>
+                            <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-slate-600 leading-relaxed font-medium">Não. A segurança fiscal é inegociável. Ao contrário de plataformas web puras, o Nota Fácil é um software desktop. A conexão é feita do <strong class="text-slate-800">seu computador direto para o portal do governo</strong>. Seus certificados não saem da raiz da sua máquina.</p>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- FAQ Item 3: ERPs e Personalizacao de Caminhos -->
                 <div class="faq-item group" data-aos="fade-up" data-aos-delay="100">
-                    <button onclick="toggleFaq(this)"
-                        class="faq-card w-full text-left p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none">
-                        <div class="flex items-center justify-between gap-4">
-                            <h4 class="text-xl font-black text-slate-800">Meus certificados digitais estão seguros?</h4>
-                            <div
-                                class="faq-icon w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
+                    <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
+                        <div class="flex items-start justify-between gap-4 w-full">
+                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">O robô integra perfeitamente com meu ERP (Domínio, Alterdata, etc)?</h4>
+                            <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                             </div>
                         </div>
                         <div class="faq-answer">
-                            <p class="text-slate-600 leading-relaxed font-medium">Segurança absoluta. Ao contrário de
-                                plataformas em nuvem que exigem que você envie seus certificados, o Nota Fácil é uma
-                                aplicação desktop. Ele lê os certificados diretamente da raiz segura do seu Windows.</p>
+                            <p class="text-slate-600 leading-relaxed font-medium">Sim! Sabemos que sistemas contábeis têm regras rígidas de importação. Por isso, você <strong class="text-slate-800">personaliza totalmente os caminhos e a estrutura</strong> de pastas. Seja "Ano > Mês > CNPJ" ou uma pasta de rede compartilhada na sua infraestrutura, o robô flexibiliza tudo e salva nativamente onde o ERP precisa ler.</p>
                         </div>
                     </button>
                 </div>
 
-                <!-- FAQ Item 3 -->
+                <!-- FAQ Item 4: Relatorios Excel -->
+                <div class="faq-item group" data-aos="fade-up" data-aos-delay="150">
+                    <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
+                        <div class="flex items-start justify-between gap-4 w-full">
+                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">O sistema gera relatórios em Excel para meu fechamento?</h4>
+                            <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-slate-600 leading-relaxed font-medium">Exatamente. O robô atua com inteligência fiscal extraindo as principais tags dos XMLs (Valores, Retenções de ISS, Prestadores e Tomadores) e consolida planilhas espelho detalhadas no formato base `.xlsx`. Auditoria imediata e conciliação perfeita na mesma ferramenta.</p>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- FAQ Item 5: MEIs / Sem A1 -->
                 <div class="faq-item group" data-aos="fade-up" data-aos-delay="200">
-                    <button onclick="toggleFaq(this)"
-                        class="faq-card w-full text-left p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none">
-                        <div class="flex items-center justify-between gap-4">
-                            <h4 class="text-xl font-black text-slate-800">O robô baixa notas recebidas (tomadas) também?
-                            </h4>
-                            <div
-                                class="faq-icon w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
+                    <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
+                        <div class="flex items-start justify-between gap-4 w-full">
+                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">E os clientes pequenos ou MEI sem Certificado Digital (A1)?</h4>
+                            <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                             </div>
                         </div>
                         <div class="faq-answer">
-                            <p class="text-slate-600 leading-relaxed font-medium">Sim. O sistema permite baixar tanto as
-                                notas emitidas pelas suas empresas quanto as recebidas de terceiros, separando-as
-                                automaticamente em pastas diferentes.</p>
+                            <p class="text-slate-600 leading-relaxed font-medium">A automação funciona para eles também, garantindo cobertura de carteira. Para microempresas sem A1 ou procuração, o software permite a injeção do Login e da Senha Gov.br vinculados ao Ambiente Nacional para a captura transparente dos documentos corporativos.</p>
                         </div>
                     </button>
                 </div>
 
-                <!-- FAQ Item 4 -->
+                <!-- FAQ Item 6: TI e Infraestrutura -->
+                <div class="faq-item group" data-aos="fade-up" data-aos-delay="250">
+                    <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
+                        <div class="flex items-start justify-between gap-4 w-full">
+                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Preciso de um TI para configurar proxy ou servidores complexos?</h4>
+                            <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-slate-600 leading-relaxed font-medium">Não! O Nota Fácil Downloader segue o design "plug-and-play". Baixou, instalou (Next, Next, Finish), está pronto para rodar. Só é necessário um sistema operacional Windows atualizado (10, 11 ou Server) com conexão padrão à internet.</p>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- FAQ Item 7: Estabilidade e Quedas -->
                 <div class="faq-item group" data-aos="fade-up" data-aos-delay="300">
-                    <button onclick="toggleFaq(this)"
-                        class="faq-card w-full text-left p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none">
-                        <div class="flex items-center justify-between gap-4">
-                            <h4 class="text-xl font-black text-slate-800">Funciona sem Certificado A1?</h4>
-                            <div
-                                class="faq-icon w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
+                    <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
+                        <div class="flex items-start justify-between gap-4 w-full">
+                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Ele resolve Captcha e barreiras Anti-Bot do Portal Nacional?</h4>
+                            <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                             </div>
                         </div>
                         <div class="faq-answer">
-                            <p class="text-slate-600 leading-relaxed font-medium">Sim. Você também pode autenticar
-                                empresas menores ou MEIs utilizando o Login e Senha de acesso ao Portal Nacional.</p>
+                            <p class="text-slate-600 leading-relaxed font-medium">Sim! Nosso robô possui inteligência integrada e motores de resolução anti-captcha dedicados que decifram e ultrapassam as barreiras de segurança do governo (HCaptcha, ReCaptcha, Serpro) de forma silenciosa. Você <strong class="text-slate-800">não precisa clicar em nada</strong> enquanto o lote de empresas está rodando em background.</p>
                         </div>
                     </button>
                 </div>
 
-                <!-- FAQ Item 5 -->
-                <div class="faq-item group" data-aos="fade-up" data-aos-delay="400">
-                    <button onclick="toggleFaq(this)"
-                        class="faq-card w-full text-left p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none">
-                        <div class="flex items-center justify-between gap-4">
-                            <h4 class="text-xl font-black text-slate-800">O que acontece se eu ultrapassar as 100 notas
-                                no mês?</h4>
-                            <div
-                                class="faq-icon w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
+                <!-- FAQ Item 8: Mac ou Linux -->
+                <div class="faq-item group" data-aos="fade-up" data-aos-delay="350">
+                    <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
+                        <div class="flex items-start justify-between gap-4 w-full">
+                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">E se o Certificado Digital A1 de um cliente cadastrado estiver vencido?</h4>
+                            <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                             </div>
                         </div>
                         <div class="faq-answer">
-                            <p class="text-slate-600 leading-relaxed font-medium">O sistema fará uma pausa de segurança
-                                e avisará você. Seus arquivos já baixados continuarão intactos, e você poderá fazer o
-                                upgrade para um de nossos planos corporativos sem limites diretamente pelo aplicativo.
-                            </p>
+                            <p class="text-slate-600 leading-relaxed font-medium">O algoritmo é autogerenciável. Antes de conectar no Governo, ele analisa a cadeia criptográfica do `.pfx` ou do repositório Windows. Caso a assinatura já esteja expirada, ele ignora silenciosamente aquele CNPJ, <strong class="text-slate-800">continua o download do resto da carteira ininterruptamente</strong>, e apenas gera um alerta fiscal de "A1 Vencido" detalhado para você no fechamento da operação.</p>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- FAQ Item 9: Notas e Retroatividade -->
+                <div class="faq-item group" data-aos="fade-up" data-aos-delay="400">
+                    <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
+                        <div class="flex items-start justify-between gap-4 w-full">
+                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Ele baixa notas e PDFs de meses retidos (retroativos)?</h4>
+                            <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-slate-600 leading-relaxed font-medium">A automação obedece seu comando de filtro temporal antes de inciar a rotina. Contanto que as notas já estejam abrigadas no histórico do Ambiente Nacional, o software será capaz de voltar o relógio da extração no portal e resgatar documentos XML antigos necessários para uma redigitação.</p>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- FAQ Item 10: Implantação e Onboarding -->
+                <div class="faq-item group" data-aos="fade-up" data-aos-delay="450">
+                    <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
+                        <div class="flex items-start justify-between gap-4 w-full">
+                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Existem taxas pesadas ou surpresas na implantação ou de treinamento?</h4>
+                            <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-slate-600 leading-relaxed font-medium">Zero taxa de implantação e zero tarifa oculta. Você faz um auto-serviço da instalação, gerencia a interface visual intuitiva (em português). Clientes Premium/Enterprise contam ainda com nosso suporte humanizado VIP via WhatsApp em caso de demandas customizadas.</p>
                         </div>
                     </button>
                 </div>
