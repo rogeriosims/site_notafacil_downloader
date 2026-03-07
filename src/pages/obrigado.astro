@@ -81,9 +81,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                         <div
                             class="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center text-white font-black text-xl mb-4 border border-slate-600">
                             2</div>
-                        <h3 class="text-lg font-bold text-white mb-2">Windows Defender</h3>
+                        <h3 class="text-lg font-bold text-white mb-2">Windows Smart Screen</h3>
                         <p class="text-slate-400 text-sm leading-relaxed">
-                            O Windows pode bloquear softwares novos. É seguro. Clique em <span
+                            O <strong>Smart Screen</strong> ou o Windows Defender pode bloquear softwares na primeira vez. Fique tranquilo, é seguro. Clique em <span
                                 class="text-white font-semibold">"Mais informações"</span> e depois em <span
                                 class="text-white font-semibold flex items-center gap-1 mt-1"><i
                                     data-lucide="shield-check" class="w-4 h-4 text-emerald-500 inline"></i> "Executar
@@ -117,7 +117,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                                 ajudar na instalação.</p>
                         </div>
                     </div>
-                    <a href="https://wa.me/5531999999999" target="_blank"
+                    <a href="https://wa.me/5531998913498" target="_blank"
                         class="shrink-0 bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-xl font-bold transition-colors text-sm flex items-center gap-2 w-full sm:w-auto justify-center">
                         <i data-lucide="headphones" class="w-4 h-4"></i> Falar com Suporte
                     </a>
@@ -147,9 +147,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     // O JSON era: { data: { nome, cnpj, ... }, url_download: "..." }
                     const responseJson = JSON.parse(rawData);
 
-                    // Extrair variaveis
+                    // Extrair variaveis (Com Fallback para exe oficial contabilcert)
                     const userData = responseJson.data || responseJson; // fallback preventivo
-                    const urlDownload = responseJson.url_download || userData.url_download;
+                    const urlDownload = responseJson.url_download || userData.url_download || 'https://contabilcert.com.br/Nota_Facil_Downloader_Setup.exe';
 
                     const pPrimeiroNome = userData.nome ? userData.nome.split(' ')[0] : 'Contador(a)';
                     const razaoSocial = userData.razao_social || 'seu escritório';
@@ -202,7 +202,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 }
             } else {
                 // Modo fallback se o usuario entrar direto na página
-                console.log("Nenhum dado de registro encontrado na sessão.");
+                console.log("Nenhum dado de registro encontrado na sessão. Preparando download padrão.");
+                
+                // Fallback Timer
+                let timeLeft = 3;
+                const elCount = document.getElementById('countdown');
+                const manualBox = document.getElementById('manual-download-box');
+                const btnManual = document.getElementById('btn-manual-download');
+                
+                const fallbackUrl = 'https://contabilcert.com.br/Nota_Facil_Downloader_Setup.exe';
+                btnManual.href = fallbackUrl;
+
+                const timer = setInterval(() => {
+                    timeLeft--;
+                    if (elCount) elCount.innerText = timeLeft;
+
+                    if (timeLeft <= 0) {
+                        clearInterval(timer);
+                        if (elCount) elCount.innerText = "0";
+                        window.location.href = fallbackUrl;
+                        manualBox.classList.remove('hidden');
+                    }
+                }, 1000);
             }
         });
     </script>
