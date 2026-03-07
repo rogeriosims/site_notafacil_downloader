@@ -4,17 +4,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="Download Iniciado | Nota Fácil Downloader" description="O robô está sendo preparado para você." bodyClass="bg-slate-950 text-white overflow-x-hidden selection:bg-blue-600 selection:text-white">
 
-    <!-- Fundo Profundo Estático (Sem gradientes que clareiam o centro) -->
-    <div class="fixed inset-0 bg-slate-950 z-0"></div>
-    
-    <!-- Glows Sutis apenas nas bordas -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none z-1">
-        <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px]"></div>
-        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-600/20 rounded-full blur-[120px]"></div>
+    <!-- Glows Sutis nas bordas (removido fundo fixo que cobria o rodapé) -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px]"></div>
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px]"></div>
     </div>
 
     <!-- Conteúdo Principal -->
-    <section class="relative z-10 pt-32 pb-24 min-h-[80vh] flex flex-col justify-center">
+    <section class="relative z-10 pt-32 pb-24 min-h-[70vh] flex flex-col justify-center">
         <div class="container mx-auto px-6 max-w-4xl">
             
             <!-- Status de Download -->
@@ -51,46 +48,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <div class="grid md:grid-cols-3 gap-10">
                     <!-- PASSO 1 -->
                     <div class="relative group">
-                        <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center font-black text-xl mb-6 shadow-xl shadow-blue-500/30">1</div>
-                        <h3 class="text-xl font-bold text-white mb-3">Abra o Instalador</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">Localize o arquivo <span class="text-blue-300 font-bold">Nota_Facil_Setup.exe</span> em seus downloads e execute-o.</p>
+                        <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-black text-xl mb-4 shadow-lg shadow-blue-500/30">1</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Abra o Instalador</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Assim que o arquivo <span class="bg-slate-900 text-blue-300 px-1 py-0.5 rounded text-xs font-mono">Nota_Facil_Downloader_Setup.exe</span> terminar de baixar, clique nele para abrir.
+                        </p>
                     </div>
 
                     <!-- PASSO 2 -->
                     <div class="relative group">
-                        <div class="w-12 h-12 bg-slate-800 text-white border border-white/10 rounded-xl flex items-center justify-center font-black text-xl mb-6">2</div>
-                        <h3 class="text-xl font-bold text-white mb-3">Smart Screen</h3>
+                        <div class="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center text-white font-black text-xl mb-4 border border-slate-600">2</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Windows Defender</h3>
                         <p class="text-slate-400 text-sm leading-relaxed">
-                            O Windows pode avisar sobre "Apps desconhecidos". Clique em <span class="text-white underline underline-offset-4 font-bold">Mais informações</span> e <span class="text-blue-400 font-bold italic">Executar assim mesmo</span>.
+                            O Windows pode bloquear softwares novos. É seguro. Clique em <span class="text-white font-semibold">"Mais informações"</span> e depois em <span class="text-white font-semibold flex items-center gap-1 mt-1"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-500 inline"></i> "Executar assim mesmo"</span>.
                         </p>
                     </div>
 
                     <!-- PASSO 3 -->
                     <div class="relative group">
-                        <div class="w-12 h-12 bg-slate-800 text-white border border-white/10 rounded-xl flex items-center justify-center font-black text-xl mb-6">3</div>
-                        <h3 class="text-xl font-bold text-white mb-3">Licença Grátis</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">Use seu e-mail para validar suas 100 notas mensais gratuitas:</p>
-                        <span id="email-licenca" class="block font-mono bg-black/50 text-emerald-400 p-3 rounded-xl mt-3 border border-white/5 text-xs font-black truncate">seu@email.com</span>
+                        <div class="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center text-white font-black text-xl mb-4 border border-slate-600">3</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Ative a Licença</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Na primeira tela do sistema, insira o seu e-mail cadastrado <span id="email-licenca" class="block font-mono bg-slate-900 text-emerald-400 p-1.5 rounded mt-2 border border-slate-800 overflow-x-auto whitespace-nowrap text-xs">seu@email.com</span>
+                        </p>
                     </div>
                 </div>
 
-                <!-- Suporte In-Page -->
-                <div class="mt-14 pt-10 border-t border-white/5 flex flex-col sm:flex-row items-center gap-6 justify-between">
-                    <div class="flex items-center gap-4">
-                        <div class="w-14 h-14 bg-green-500/10 rounded-full flex items-center justify-center border border-green-500/20 shadow-inner">
-                            <i data-lucide="message-circle" class="text-green-500 w-7 h-7"></i>
-                        </div>
-                        <div class="text-center sm:text-left">
-                            <p class="text-white font-black text-lg">Trancou em algum passo?</p>
-                            <p class="text-slate-400 text-sm">Chame nosso suporte técnico agora no WhatsApp.</p>
-                        </div>
-                    </div>
-                    <a href="https://wa.me/5531998913498" target="_blank" class="bg-[#25D366] hover:bg-[#20ba59] text-white px-8 py-4 rounded-2xl font-black transition-all shadow-lg shadow-green-600/20 flex items-center gap-2 group whitespace-nowrap">
-                        <i data-lucide="help-circle" class="w-5 h-5 group-hover:rotate-12 transition-transform"></i>
-                        Falar com Suporte
-                    </a>
-                </div>
+
             </div>
+        </div>
+    </section>
+
+    <!-- DOBRA FINAL: CTA IGUAL À HOME PARA CONTINUIDADE VISUAL -->
+    <section class="py-24 bg-blue-600 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZmlsdGVyIGlkPSJub2lzZUZpbHRlciI+CiAgICA8ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC42NSIgbnVtT2N0YXZlcz0iMyIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPgogIDwvZmlsdGVyPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZUZpbHRlcikiIG9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+')] opacity-20">
+        </div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-3xl lg:text-4xl font-black text-white mb-6">Pronto para transformar sua rotina contábil?</h2>
+            <p class="text-xl text-blue-100 font-medium mb-10 max-w-2xl mx-auto">Seu robô já está baixando. Se precisar de ajuda, nosso suporte está a um clique no rodapé.</p>
+            <a href="https://wa.me/5531998913498" target="_blank"
+                class="inline-block bg-white text-blue-600 px-10 py-5 rounded-2xl font-black shadow-2xl transition transform hover:-translate-y-2 hover:shadow-blue-900/50 active:scale-95 text-xl tracking-tight">FALAR COM ESPECIALISTA</a>
         </div>
     </section>
 
@@ -101,7 +98,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             const countdownEl = document.getElementById('countdown');
             const manualBox = document.getElementById('manual-download-box');
             const btnManual = document.getElementById('btn-manual-download');
-            const fallbackUrl = 'https://contabilcert.com.br/Nota_Facil_Downloader_Setup.exe';
+            const fallbackUrl = 'https://pub-326d6d17ab0342ed9e2227ab523d3179.r2.dev/Nota_Facil_Downloader_Setup.exe';
 
             let downloadUrl = fallbackUrl;
             let emailParam = 'seu@email.com';
