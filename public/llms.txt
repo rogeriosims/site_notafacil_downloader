@@ -1,0 +1,14 @@
+# Nota Fácil Downloader
+
+> Automação de download em lote de NFS-e do Portal Nacional para escritórios contábeis.
+
+## O que é
+Um software desktop que automatiza o download de XMLs e PDFs de NFS-e do Portal Nacional. Sem mensalidade no plano base, 100% focado no dia a dia contábil, permitindo acesso via certificado A1 local sem envio de dados para a nuvem. Funcionalidades incluem: download em lote, organização inteligente de pastas por ERP, geração de planilhas.
+
+## Soluções / Preços
+- Plano Free: 100 notas/mês, grátis sempre.
+- Planos Enterprise/Scale a partir de R$ 39,90/mês para até 5.000 notas.
+
+## Rotas
+- Landing page oficial: https://notafacil.contabilcert.com.br/
+- Blog de novidades: https://notafacil.contabilcert.com.br/blog

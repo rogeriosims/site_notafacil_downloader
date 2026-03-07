@@ -1,0 +1,128 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  bodyClass?: string;
+}
+
+const { 
+  title = "Nota Fácil Downloader | Automação de NFS-e Nacional", 
+  description = "O software desktop que baixa XML e PDF em lote, organiza nas suas pastas e gera planilhas de conferência.",
+  canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href,
+  bodyClass = "bg-slate-50 text-slate-900 overflow-x-hidden"
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <meta name="description" content={description}>
+    <meta name="keywords" content="Download NFS-e Nacional, robô baixar xml nfse portal nacional, automação contábil, baixar pdf nfse em lote, sistema para contador nfse, captura xml nfse">
+    <meta name="author" content="Nota Fácil (nota-facil.github.io)">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href={canonical} />
+    
+    <!-- Open Graph / Meta -->
+    <meta property="og:title" content={title}>
+    <meta property="og:description" content={description}>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content={canonical}>
+    <meta property="og:image" content={new URL('/assets/print.png', Astro.site || 'https://nota-facil.github.io').href}>
+    <meta property="og:image:alt" content="Screenshot da automação do Nota Fácil Downloader">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Nota Fácil Downloader">
+
+    <!-- Twitter / X Meta -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content={title}>
+    <meta name="twitter:description" content={description}>
+    <meta name="twitter:image" content={new URL('/assets/print.png', Astro.site || 'https://nota-facil.github.io').href}>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <!-- Scripts / Libraries (deferred) -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <script src="https://unpkg.com/imask" defer></script>
+
+    <!-- Schema.org / JSON-LD Otimizado para SEO e AEO -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "SoftwareApplication",
+                "name": "Nota Fácil Downloader",
+                "operatingSystem": "Windows 10+",
+                "applicationCategory": "BusinessApplication",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "BRL"
+                },
+                "description": "Robô desktop de automação para escritórios contábeis: efetua download em lote de XML e PDF da NFS-e do Portal Nacional, organiza diretórios para ERPs e gera relatórios Excel com suporte a Certificado A1.",
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "ratingCount": "128"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Nota Fácil"
+                }
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "O plano gratuito é só por alguns dias?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Não! O plano Free é gratuito para sempre. Ele renova automaticamente a cota de 100 notas na contagem mensal."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Meus certificados digitais estão seguros?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Segurança absoluta. O Nota Fácil é uma aplicação desktop que roda localmente na sua máquina de borda e nunca transporta ou sobe seus arquivos para nuvem de terceiros."
+                        }
+                    }
+                ]
+            }
+        ]
+    })}>
+    </script>
+</head>
+<body class={bodyClass}>
+    <Header />
+    
+    <main>
+        <slot />
+    </main>
+
+    <Footer />
+    
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        if (typeof AOS !== 'undefined') AOS.init({ duration: 800, once: true, offset: 50 });
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+      });
+    </script>
+</body>
+</html>

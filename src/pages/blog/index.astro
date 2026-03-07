@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+<BaseLayout title="Blog | Nota Fácil Downloader" description="Artigos e novidades sobre automação contábil.">
+  <div class="container mx-auto px-6 py-24 lg:py-32">
+    <div class="text-center mb-16 relative">
+        <span class="text-blue-600 font-black uppercase tracking-[0.3em] text-xs">Novidades</span>
+        <h1 class="text-4xl lg:text-5xl font-black text-slate-900 mt-4 leading-tight">Blog Fiscal</h1>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {posts.map((post) => (
+          <article class="bg-white rounded-[2rem] border border-slate-200 hover:border-blue-200 shadow-sm hover:shadow-xl transition-all group overflow-hidden flex flex-col h-full">
+            {post.data.image && (
+              <div class="h-48 w-full overflow-hidden bg-slate-100 shrink-0">
+                <img src={post.data.image} alt={post.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+            )}
+            <div class="p-8 flex flex-col grow">
+              <time datetime={post.data.pubDate.toISOString()} class="text-xs font-bold text-slate-400 mb-2 block tracking-wider">
+                {post.data.pubDate.toLocaleDateString('pt-BR')}
+              </time>
+              <h2 class="text-xl font-black text-slate-800 mb-3 group-hover:text-blue-600 transition-colors">
+                {post.data.title}
+              </h2>
+          <p class="text-slate-500 font-medium leading-relaxed mb-6 line-clamp-3">
+            {post.data.description}
+          </p>
+          <a href={`/blog/${post.id}`} class="mt-auto inline-block text-blue-600 font-black text-sm group-hover:underline">Ler artigo completo &rarr;</a>
+            </div>
+          </article>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

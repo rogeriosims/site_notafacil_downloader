@@ -1,0 +1,41 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<BaseLayout title={`${post.data.title} | Nota Fácil Downloader`} description={post.data.description}>
+  <div class="container mx-auto px-6 py-24 max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 mb-6 leading-tight">
+      {post.data.title}
+    </h1>
+    <div class="flex items-center gap-4 text-slate-500 font-medium text-sm mb-12 border-b border-slate-200 pb-8">
+      <span>Por <strong>{post.data.author}</strong></span>
+      <span>&bull;</span>
+      <time datetime={post.data.pubDate.toISOString()}>
+        {post.data.pubDate.toLocaleDateString('pt-BR')}
+      </time>
+    </div>
+    
+    {post.data.image && (
+      <img 
+        src={post.data.image} 
+        alt={post.data.title} 
+        class="w-full h-auto object-cover rounded-3xl shadow-lg mb-12 shadow-slate-200/50"
+      />
+    )}
+    
+    <article class="prose prose-slate prose-lg max-w-none prose-headings:font-black prose-a:text-blue-600 hover:prose-a:text-blue-500 prose-img:rounded-3xl">
+      <Content />
+    </article>
+  </div>
+</BaseLayout>

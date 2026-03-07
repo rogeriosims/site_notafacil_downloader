@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Download Iniciado | Nota Fácil Downloader" description="Faça o download e inicie a automação imediatamente." bodyClass="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
+
+
+    <!-- Subtle bg -->
+    <div
+        class="fixed inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-20 z-[-1]">
+    </div>
+
+    <!-- Header Simples -->
+    <header class="py-8 relative z-10 border-b border-slate-800 bg-slate-900/50 backdrop-blur-md">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex items-center justify-center gap-2">
+                <div
+                    class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                </div>
+                <span class="text-2xl font-black text-white tracking-tight">Nota Fácil<span
+                        class="text-blue-500">.</span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="flex-grow flex items-center py-12">
+        <div class="container mx-auto px-6 max-w-4xl relative z-10">
+
+            <div class="text-center mb-12">
+                <div
+                    class="inline-flex items-center justify-center w-20 h-20 bg-emerald-500/10 text-emerald-400 rounded-full mb-6 border border-emerald-500/20 shadow-[0_0_30px_rgba(16,185,129,0.2)]">
+                    <i data-lucide="check-circle" class="w-10 h-10"></i>
+                </div>
+                <h1 id="boas-vindas-titulo" class="text-4xl sm:text-5xl font-black text-white tracking-tight mb-4">
+                    Preparando o seu Robô...
+                </h1>
+                <p id="boas-vindas-sub" class="text-xl text-slate-400 font-medium max-w-2xl mx-auto leading-relaxed">
+                    Estamos gerando a licença do seu escritório. O download iniciará em <span id="countdown"
+                        class="text-blue-400 font-bold">3</span> segundos.
+                </p>
+                <div class="mt-8 hidden" id="manual-download-box">
+                    <p class="text-sm text-slate-500 mb-2">O download não começou automaticamente?</p>
+                    <a href="#" id="btn-manual-download"
+                        class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-6 py-3 rounded-xl border border-slate-700 font-bold transition-all text-sm">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        Clique aqui para baixar
+                    </a>
+                </div>
+            </div>
+
+            <!-- INSTRUÇÕES (3 PASSOS) -->
+            <div
+                class="bg-slate-800/50 backdrop-blur-xl border border-slate-700 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+                <h2 class="text-2xl font-black text-white mb-8 text-center flex items-center justify-center gap-3">
+                    <i data-lucide="alert-circle" class="text-blue-500"></i> Como ativar o Nota Fácil
+                </h2>
+
+                <div class="grid sm:grid-cols-3 gap-8">
+                    <!-- PASSO 1 -->
+                    <div class="relative">
+                        <div
+                            class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-black text-xl mb-4 shadow-lg shadow-blue-500/30">
+                            1</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Abra o Instalador</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Assim que o arquivo <span
+                                class="bg-slate-900 text-blue-300 px-1 py-0.5 rounded text-xs font-mono">nfse.exe</span>
+                            terminar de baixar, clique nele para abrir.
+                        </p>
+                    </div>
+
+                    <!-- PASSO 2 -->
+                    <div class="relative">
+                        <div
+                            class="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center text-white font-black text-xl mb-4 border border-slate-600">
+                            2</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Windows Defender</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            O Windows pode bloquear softwares novos. É seguro. Clique em <span
+                                class="text-white font-semibold">"Mais informações"</span> e depois em <span
+                                class="text-white font-semibold flex items-center gap-1 mt-1"><i
+                                    data-lucide="shield-check" class="w-4 h-4 text-emerald-500 inline"></i> "Executar
+                                assim mesmo"</span>.
+                        </p>
+                    </div>
+
+                    <!-- PASSO 3 -->
+                    <div class="relative">
+                        <div
+                            class="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center text-white font-black text-xl mb-4 border border-slate-600">
+                            3</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Ative a Licença</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Na primeria tela do sistema, insira o seu e-mail cadastrado <span id="email-licenca"
+                                class="block font-mono bg-slate-900 text-emerald-400 p-1.5 rounded mt-2 border border-slate-800 overflow-x-auto whitespace-nowrap text-xs">seu@email.com</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    class="mt-10 pt-8 border-t border-slate-700/50 flex flex-col sm:flex-row items-center gap-4 justify-between bg-slate-800/30 p-6 rounded-2xl">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center border border-green-500/20">
+                            <i data-lucide="message-circle" class="text-green-500 w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <p class="text-white font-bold">Precisa de Ajuda?</p>
+                            <p class="text-slate-400 text-xs sm:text-sm">Nosso time está online no WhatsApp para te
+                                ajudar na instalação.</p>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/5531999999999" target="_blank"
+                        class="shrink-0 bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-xl font-bold transition-colors text-sm flex items-center gap-2 w-full sm:w-auto justify-center">
+                        <i data-lucide="headphones" class="w-4 h-4"></i> Falar com Suporte
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer Simples -->
+    <footer class="py-8 border-t border-slate-800 bg-slate-900 z-10 relative text-center">
+        <p class="text-slate-500 text-sm font-medium">© 2026 Nota Fácil Downloader. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Scripts de Interação -->
+    <script is:inline>
+        lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Resgatar dados do Session Storage
+            const rawData = sessionStorage.getItem('notafacil_user_data');
+
+            if (rawData) {
+                try {
+                    // O n8n retorna isso dentro de "data" se você reparar no JSON enviado.
+                    // O JSON era: { data: { nome, cnpj, ... }, url_download: "..." }
+                    const responseJson = JSON.parse(rawData);
+
+                    // Extrair variaveis
+                    const userData = responseJson.data || responseJson; // fallback preventivo
+                    const urlDownload = responseJson.url_download || userData.url_download;
+
+                    const pPrimeiroNome = userData.nome ? userData.nome.split(' ')[0] : 'Contador(a)';
+                    const razaoSocial = userData.razao_social || 'seu escritório';
+                    const emailParam = userData.email || 'seu email cadastrado';
+                    const planName = userData.plano || 'Free';
+                    const limit = userData.limite_mensal || '100';
+
+                    // 2. Personalizar a Copy
+                    document.getElementById('boas-vindas-titulo').innerHTML = `Tudo pronto, ${pPrimeiroNome}!`;
+                    document.getElementById('boas-vindas-sub').innerHTML = `A licença <strong>${planName} (${limit} notas)</strong> para a empresa <span class="text-white font-bold">${razaoSocial}</span> foi gerada. O download iniciará em <span id="countdown" class="text-blue-400 font-bold">3</span> segundos.`;
+
+                    // Passo 3 do painel
+                    document.getElementById('email-licenca').innerText = emailParam;
+
+                    // Ajustar botão manual
+                    const btnManual = document.getElementById('btn-manual-download');
+                    if (urlDownload) {
+                        // Garantir http
+                        const finalUrl = urlDownload.startsWith('http') ? urlDownload : 'https://' + urlDownload;
+                        btnManual.href = finalUrl;
+                    }
+
+                    // 3. Contagem Regressiva e Download Automático
+                    let timeLeft = 3;
+                    const elCount = document.getElementById('countdown');
+                    const manualBox = document.getElementById('manual-download-box');
+
+                    const timer = setInterval(() => {
+                        timeLeft--;
+                        if (elCount) elCount.innerText = timeLeft;
+
+                        if (timeLeft <= 0) {
+                            clearInterval(timer);
+                            if (elCount) elCount.innerText = "0";
+
+                            // Disparar Download
+                            if (urlDownload) {
+                                const finalUrl = urlDownload.startsWith('http') ? urlDownload : 'https://' + urlDownload;
+                                window.location.href = finalUrl;
+                            }
+
+                            // Mostrar botão manual para caso o navegador trave o redirecionamento
+                            manualBox.classList.remove('hidden');
+                            document.getElementById('boas-vindas-sub').innerHTML = `Seu download foi iniciado com sucesso!`;
+                        }
+                    }, 1000);
+
+                } catch (e) {
+                    console.error("Erro ao tratar dados do sessionStorage", e);
+                }
+            } else {
+                // Modo fallback se o usuario entrar direto na página
+                console.log("Nenhum dado de registro encontrado na sessão.");
+            }
+        });
+    </script>
+
+</BaseLayout>
