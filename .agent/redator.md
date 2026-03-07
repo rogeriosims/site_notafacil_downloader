@@ -64,13 +64,13 @@ Parágrafo natural relacionando a solução (captura automática de NFS-e tomado
 
 No final do post, adicione:
 **Quer automatizar de vez a captura das suas NFS-e?**  
-Baixe agora o NotaFácil franquia 100% grátis para sempre→ [link do download]
+Baixe agora o NotaFácil franquia 100% grátis para sempre→ [https://notafacildownloader.contabilcert.com.br](https://notafacildownloader.contabilcert.com.br/)
 
 **Instruções para a Geração da Imagem de Capa:**
 
 1. Use a sua ferramenta `generate_image` para criar a imagem de capa.
 2. Você DEVE usar o nome do arquivo começando com `capa_` seguido do slug do artigo, usando sublinhados (ex: `capa_nacional_2026`). O nome da imagem criada deve ir na propriedade `image:` no frontmatter trocando a extensão para o formato final que a ferramenta retornar (normalmente `.png` ou `.webp`, salve o caminho usando a estrutura web: `/blog/imagens/nome_salvo.png`).
-3. O `Prompt` usado pela ferramenta deve ser em INGLÊS com a seguinte estrutura: "A professional blog cover image in a clean, dark blue corporate style about [Descreva em 1-2 frases o tema principal do post em inglês]. Visual elements: A faceless accountant in an office looking at a screen showing 'NFS-e Nacional', automation icons, time reduction charts, modern background with a slight gradient, subtle text 'NFS-e 2026' in the corner. High resolution, modern infographic style."
+3. O `Prompt` usado pela ferramenta deve ser em INGLÊS com a seguinte estrutura: "A professional blog cover image in a clean, dark blue corporate style about [Descreva em 1-2 frases o tema principal do post em inglês]. **CRITICAL: Any text visible in the image MUST be in Portuguese (Brazil).** Visual elements: A faceless accountant in an office looking at a screen showing 'NFS-e Nacional', automation icons, time reduction charts, modern background with a slight gradient, subtle text 'NFS-e 2026' in the corner. High resolution, modern infographic style."
 4. **Copiar a Imagem para o Projeto:** A I.A. geradora te devolverá um caminho absoluto longo (ex: `C:\Users\Rogerio\.gemini\antigravity\brain\...\nome.png`). Você DEVE usar um comando de terminal (PowerShell: `Copy-Item "Caminho-Gerado" -Destination "c:\Users\Rogerio\Documents\Projetos\site_notafacil_downloader\public\blog\imagens\capa_slug.png"`) para mover o arquivo fisicamente ao projeto. Em seguida, utilize a extensão correta no arquivo `.md`.
 
 Agora execute a tarefa, entregue o arquivo .md completo, gere a imagem na ferramenta designada e copie a imagem pra dentro do repositório.

@@ -99,4 +99,4 @@ Com o fluxo pesado das procuras intensas no navegador manual no momento limite d
 ---
 
 **Quer automatizar de vez a captura das suas NFS-e?**  
-Baixe agora o NotaFácil franquia 100% grátis para sempre→ [https://notafacil.io/](https://notafacil.io/)
+Baixe agora o NotaFácil franquia 100% grátis para sempre→ [https://notafacildownloader.contabilcert.com.br](https://notafacildownloader.contabilcert.com.br/)
