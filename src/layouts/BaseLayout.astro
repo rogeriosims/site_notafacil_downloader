@@ -8,14 +8,72 @@ interface Props {
   description?: string;
   canonical?: string;
   bodyClass?: string;
+  image?: string;
+  ogType?: string;
+  articleDate?: string;
+  customSchema?: string;
 }
 
 const { 
   title = "Nota Fácil Downloader | Automação de NFS-e Nacional", 
   description = "O software desktop que baixa XML e PDF em lote, organiza nas suas pastas e gera planilhas de conferência.",
   canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href,
-  bodyClass = "bg-slate-50 text-slate-900 overflow-x-hidden"
+  bodyClass = "bg-slate-50 text-slate-900 overflow-x-hidden",
+  image = new URL('/assets/print.png', Astro.site || 'https://nota-facil.github.io').href,
+  ogType = "website",
+  articleDate,
+  customSchema
 } = Astro.props;
+
+const defaultSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "SoftwareApplication",
+            "name": "Nota Fácil Downloader",
+            "operatingSystem": "Windows 10+",
+            "applicationCategory": "BusinessApplication",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "BRL"
+            },
+            "description": "Robô desktop de automação para escritórios contábeis: efetua download em lote de XML e PDF da NFS-e do Portal Nacional, organiza diretórios para ERPs e gera relatórios Excel com suporte a Certificado A1.",
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "ratingCount": "128"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "Nota Fácil"
+            }
+        },
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "O plano gratuito é só por alguns dias?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Não! O plano Free é gratuito para sempre. Ele renova automaticamente a cota de 100 notas na contagem mensal."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Meus certificados digitais estão seguros?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Segurança absoluta. O Nota Fácil é uma aplicação desktop que roda localmente na sua máquina de borda e nunca transporta ou sobe seus arquivos para nuvem de terceiros."
+                    }
+                }
+            ]
+        }
+    ]
+});
+
+const finalSchema = customSchema || defaultSchema;
 ---
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
@@ -32,18 +90,19 @@ const {
     <!-- Open Graph / Meta -->
     <meta property="og:title" content={title}>
     <meta property="og:description" content={description}>
-    <meta property="og:type" content="website">
+    <meta property="og:type" content={ogType}>
     <meta property="og:url" content={canonical}>
-    <meta property="og:image" content={new URL('/assets/print.png', Astro.site || 'https://nota-facil.github.io').href}>
-    <meta property="og:image:alt" content="Screenshot da automação do Nota Fácil Downloader">
+    <meta property="og:image" content={image}>
+    <meta property="og:image:alt" content={title}>
     <meta property="og:locale" content="pt_BR">
     <meta property="og:site_name" content="Nota Fácil Downloader">
+    {articleDate && <meta property="article:published_time" content={articleDate} />}
 
     <!-- Twitter / X Meta -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content={title}>
     <meta name="twitter:description" content={description}>
-    <meta name="twitter:image" content={new URL('/assets/print.png', Astro.site || 'https://nota-facil.github.io').href}>
+    <meta name="twitter:image" content={image}>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,53 +119,7 @@ const {
     <script src="https://unpkg.com/imask" defer></script>
 
     <!-- Schema.org / JSON-LD Otimizado para SEO e AEO -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "SoftwareApplication",
-                "name": "Nota Fácil Downloader",
-                "operatingSystem": "Windows 10+",
-                "applicationCategory": "BusinessApplication",
-                "offers": {
-                    "@type": "Offer",
-                    "price": "0",
-                    "priceCurrency": "BRL"
-                },
-                "description": "Robô desktop de automação para escritórios contábeis: efetua download em lote de XML e PDF da NFS-e do Portal Nacional, organiza diretórios para ERPs e gera relatórios Excel com suporte a Certificado A1.",
-                "aggregateRating": {
-                    "@type": "AggregateRating",
-                    "ratingValue": "4.9",
-                    "ratingCount": "128"
-                },
-                "publisher": {
-                    "@type": "Organization",
-                    "name": "Nota Fácil"
-                }
-            },
-            {
-                "@type": "FAQPage",
-                "mainEntity": [
-                    {
-                        "@type": "Question",
-                        "name": "O plano gratuito é só por alguns dias?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Não! O plano Free é gratuito para sempre. Ele renova automaticamente a cota de 100 notas na contagem mensal."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Meus certificados digitais estão seguros?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Segurança absoluta. O Nota Fácil é uma aplicação desktop que roda localmente na sua máquina de borda e nunca transporta ou sobe seus arquivos para nuvem de terceiros."
-                        }
-                    }
-                ]
-            }
-        ]
-    })}>
+    <script type="application/ld+json" set:html={finalSchema}>
     </script>
 </head>
 <body class={bodyClass}>

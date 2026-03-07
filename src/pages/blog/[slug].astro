@@ -12,8 +12,43 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const postUrl = new URL(`/blog/${post.id}`, Astro.site || 'https://nota-facil.github.io').href;
+const imageUrl = post.data.image ? new URL(post.data.image, Astro.site || 'https://nota-facil.github.io').href : new URL('/assets/print.png', Astro.site || 'https://nota-facil.github.io').href;
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": postUrl
+  },
+  "headline": post.data.title,
+  "description": post.data.description,
+  "image": imageUrl,
+  "author": {
+    "@type": "Person",
+    "name": post.data.author
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Nota Fácil",
+    "logo": {
+      "@type": "ImageObject",
+      "url": new URL('/assets/nfd_logo_vetorial.svg', Astro.site || 'https://nota-facil.github.io').href
+    }
+  },
+  "datePublished": post.data.pubDate.toISOString()
+});
 ---
-<BaseLayout title={`${post.data.title} | Nota Fácil Downloader`} description={post.data.description}>
+<BaseLayout 
+  title={`${post.data.title} | Nota Fácil Downloader`} 
+  description={post.data.description}
+  ogType="article"
+  image={imageUrl}
+  articleDate={post.data.pubDate.toISOString()}
+  customSchema={schema}
+>
   <div class="container mx-auto px-6 py-24 max-w-3xl">
     <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 mb-6 leading-tight">
       {post.data.title}
