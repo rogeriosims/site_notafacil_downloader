@@ -2,16 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Download Iniciado | Nota Fácil Downloader" description="Faça o download e inicie a automação imediatamente." bodyClass="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
+<BaseLayout title="Download Iniciado | Nota Fácil Downloader" description="Faça o download e inicie a automação imediatamente." bodyClass="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
 
-
-    <!-- Subtle bg -->
-    <div
-        class="fixed inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-20 z-[-1]">
+    <!-- Fundo High-Contrast com Glows -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-600/20 rounded-full blur-[150px]"></div>
+        <div class="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-indigo-600/20 rounded-full blur-[150px]"></div>
     </div>
 
     <!-- Header Simples -->
-    <header class="py-8 relative z-10 border-b border-slate-800 bg-slate-900/50 backdrop-blur-md">
+    <header class="py-10 relative z-10 border-b border-white/5 bg-slate-950/80 backdrop-blur-xl">
         <div class="container mx-auto px-6 text-center">
             <div class="flex items-center justify-center gap-2">
                 <div
@@ -31,75 +31,74 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <main class="flex-grow flex items-center py-12">
         <div class="container mx-auto px-6 max-w-4xl relative z-10">
 
-            <div class="text-center mb-12">
+            <div class="text-center mb-16">
                 <div
-                    class="inline-flex items-center justify-center w-20 h-20 bg-emerald-500/10 text-emerald-400 rounded-full mb-6 border border-emerald-500/20 shadow-[0_0_30px_rgba(16,185,129,0.2)]">
-                    <i data-lucide="check-circle" class="w-10 h-10"></i>
+                    class="inline-flex items-center justify-center w-24 h-24 bg-emerald-500/10 text-emerald-400 rounded-full mb-8 border border-emerald-500/30 shadow-[0_0_50px_rgba(16,185,129,0.3)]">
+                    <i data-lucide="check-circle" class="w-12 h-12"></i>
                 </div>
-                <h1 id="boas-vindas-titulo" class="text-4xl sm:text-5xl font-black text-white tracking-tight mb-4">
+                <h1 id="boas-vindas-titulo" class="text-4xl sm:text-6xl font-black text-white tracking-tight mb-6 drop-shadow-sm">
                     Preparando o seu Robô...
                 </h1>
-                <p id="boas-vindas-sub" class="text-xl text-slate-400 font-medium max-w-2xl mx-auto leading-relaxed">
+                <p id="boas-vindas-sub" class="text-xl text-slate-300 font-medium max-w-2xl mx-auto leading-relaxed">
                     Estamos gerando a licença do seu escritório. O download iniciará em <span id="countdown"
-                        class="text-blue-400 font-bold">3</span> segundos.
+                        class="text-blue-400 font-black">3</span> segundos.
                 </p>
-                <div class="mt-8 hidden" id="manual-download-box">
-                    <p class="text-sm text-slate-500 mb-2">O download não começou automaticamente?</p>
+                <div class="mt-10 hidden" id="manual-download-box">
+                    <p class="text-sm text-slate-400 mb-4">O download não começou automaticamente?</p>
                     <a href="#" id="btn-manual-download"
-                        class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-6 py-3 rounded-xl border border-slate-700 font-bold transition-all text-sm">
-                        <i data-lucide="download" class="w-4 h-4"></i>
-                        Clique aqui para baixar
+                        class="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-2xl font-black transition-all shadow-lg shadow-blue-500/20 active:scale-95">
+                        <i data-lucide="download" class="w-5 h-5"></i>
+                        BAIXAR AGORA MANUALMENTE
                     </a>
                 </div>
             </div>
 
             <!-- INSTRUÇÕES (3 PASSOS) -->
             <div
-                class="bg-slate-800/50 backdrop-blur-xl border border-slate-700 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
+                class="bg-slate-900/80 backdrop-blur-3xl border border-white/10 rounded-[3rem] p-8 sm:p-14 shadow-[0_40px_120px_rgba(0,0,0,0.6)] relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px]"></div>
 
-                <h2 class="text-2xl font-black text-white mb-8 text-center flex items-center justify-center gap-3">
-                    <i data-lucide="alert-circle" class="text-blue-500"></i> Como ativar o Nota Fácil
+                <h2 class="text-3xl font-black text-white mb-12 text-center flex items-center justify-center gap-4">
+                    <i data-lucide="rocket" class="text-blue-500 w-8 h-8"></i> Como ativar o Nota Fácil
                 </h2>
 
                 <div class="grid sm:grid-cols-3 gap-8">
                     <!-- PASSO 1 -->
-                    <div class="relative">
+                    <div class="relative group">
                         <div
-                            class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-black text-xl mb-4 shadow-lg shadow-blue-500/30">
+                            class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center font-black text-xl mb-6 shadow-xl shadow-blue-500/30 group-hover:scale-110 transition-transform">
                             1</div>
-                        <h3 class="text-lg font-bold text-white mb-2">Abra o Instalador</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">
+                        <h3 class="text-xl font-bold text-white mb-4">Abra o Instalador</h3>
+                        <p class="text-slate-400 text-base leading-relaxed">
                             Assim que o arquivo <span
-                                class="bg-slate-900 text-blue-300 px-1 py-0.5 rounded text-xs font-mono">nfse.exe</span>
-                            terminar de baixar, clique nele para abrir.
+                                class="bg-blue-500/20 text-blue-300 px-2 py-1 rounded text-xs font-black font-mono">nfse_setup.exe</span>
+                            terminar de baixar, clique nele para iniciar.
                         </p>
                     </div>
 
                     <!-- PASSO 2 -->
-                    <div class="relative">
+                    <div class="relative group">
                         <div
-                            class="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center text-white font-black text-xl mb-4 border border-slate-600">
+                            class="w-12 h-12 bg-slate-800 text-white border border-white/10 rounded-xl flex items-center justify-center font-black text-xl mb-6 group-hover:bg-blue-600 group-hover:border-blue-500 transition-all">
                             2</div>
-                        <h3 class="text-lg font-bold text-white mb-2">Windows Smart Screen</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            O <strong>Smart Screen</strong> ou o Windows Defender pode bloquear softwares na primeira vez. Fique tranquilo, é seguro. Clique em <span
-                                class="text-white font-semibold">"Mais informações"</span> e depois em <span
-                                class="text-white font-semibold flex items-center gap-1 mt-1"><i
-                                    data-lucide="shield-check" class="w-4 h-4 text-emerald-500 inline"></i> "Executar
-                                assim mesmo"</span>.
+                        <h3 class="text-xl font-bold text-white mb-4">Smart Screen</h3>
+                        <p class="text-slate-400 text-base leading-relaxed">
+                            O Windows pode exibir um aviso. Fique tranquilo. Clique em <span
+                                class="text-white font-black underline decoration-blue-500 underline-offset-4">"Mais informações"</span> e depois em <span
+                                class="text-emerald-400 font-black">"Executar assim mesmo"</span>.
                         </p>
                     </div>
 
                     <!-- PASSO 3 -->
-                    <div class="relative">
+                    <div class="relative group">
                         <div
-                            class="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center text-white font-black text-xl mb-4 border border-slate-600">
+                            class="w-12 h-12 bg-slate-800 text-white border border-white/10 rounded-xl flex items-center justify-center font-black text-xl mb-6 group-hover:bg-blue-600 group-hover:border-blue-500 transition-all">
                             3</div>
-                        <h3 class="text-lg font-bold text-white mb-2">Ative a Licença</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Na primeria tela do sistema, insira o seu e-mail cadastrado <span id="email-licenca"
-                                class="block font-mono bg-slate-900 text-emerald-400 p-1.5 rounded mt-2 border border-slate-800 overflow-x-auto whitespace-nowrap text-xs">seu@email.com</span>
+                        <h3 class="text-xl font-bold text-white mb-4">Libere o Robô</h3>
+                        <p class="text-slate-400 text-base leading-relaxed">
+                            No primeiro acesso, use seu e-mail para validar a licença gratuita de 100 notas:
+                            <span id="email-licenca"
+                                class="block font-mono bg-slate-950 text-emerald-400 p-3 rounded-xl mt-4 border border-white/5 overflow-x-auto whitespace-nowrap text-sm font-black tracking-tight">seu@email.com</span>
                         </p>
                     </div>
                 </div>
