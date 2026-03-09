@@ -9,9 +9,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <!-- DOBRA 1: HERO SECTION -->
     <section id="hero" class="hero-gradient pt-24 pb-16 lg:pt-48 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
-            <div class="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-600 rounded-full blur-[150px]"></div>
-            <div class="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-600 rounded-full blur-[150px]">
+        <div class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none overflow-hidden">
+            <div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-600 rounded-full blur-[150px] will-change-transform"></div>
+            <div class="absolute bottom-[-20%] left-[-10%] w-[400px] h-[400px] bg-purple-600 rounded-full blur-[150px] will-change-transform">
             </div>
         </div>
 
@@ -88,19 +88,45 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 ▶ Veja o robô em ação (1 minuto)
             </p>
 
-            <!-- Imagem Destacada / Vídeo de Demonstração -->
-            <div class="w-full max-w-5xl mx-auto relative rounded-xl sm:rounded-3xl overflow-hidden shadow-[0_30px_100px_rgba(37,99,235,0.2)] border border-white/10 bg-slate-800/80 group"
-                style="aspect-ratio: 16/9;" data-aos="fade-up" data-aos-delay="300">
-                <iframe 
-                    width="100%" 
-                    height="100%" 
-                    src="https://www.youtube.com/embed/Gh8B4aInzCs?controls=1&rel=0&modestbranding=1&showinfo=0&vq=hd720&hl=pt-br" 
-                    title="Nota Fácil Downloader Demonstração" 
-                    frameborder="0" 
-                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen
-                    class="w-full h-full object-cover relative z-10">
-                </iframe>
+            <!-- Imagem Destacada / Vídeo de Demonstração (LITE LOAD) -->
+            <div class="w-full max-w-5xl mx-auto relative rounded-xl sm:rounded-3xl overflow-hidden shadow-[0_30px_100px_rgba(37,99,235,0.2)] border border-white/10 bg-slate-900 group"
+                style="aspect-ratio: 16/9;" data-aos="fade-up" data-aos-delay="300" id="video-container">
+                
+                <!-- Thumbnail de Pré-carregamento -->
+                <div id="video-placeholder" class="absolute inset-0 cursor-pointer flex items-center justify-center transition-transform duration-700 hover:scale-105">
+                    <img 
+                        src="https://img.youtube.com/vi/Gh8B4aInzCs/maxresdefault.jpg" 
+                        alt="Thumbnail Vídeo Nota Fácil" 
+                        class="absolute inset-0 w-full h-full object-cover opacity-60 transition-opacity duration-500 group-hover:opacity-80"
+                        loading="eager"
+                        fetchpriority="high"
+                    />
+                    <!-- Overlay de Play -->
+                    <div class="relative z-20 w-20 h-20 sm:w-28 sm:h-28 bg-blue-600/90 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 group-hover:bg-blue-500 group-hover:scale-110">
+                        <svg class="w-8 h-8 sm:w-12 sm:h-12 text-white ml-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <script is:inline>
+                    document.getElementById('video-placeholder').addEventListener('click', function() {
+                        const container = document.getElementById('video-container');
+                        container.innerHTML = `
+                            <iframe 
+                                width="100%" 
+                                height="100%" 
+                                src="https://www.youtube-nocookie.com/embed/Gh8B4aInzCs?autoplay=1&controls=1&rel=0&modestbranding=1&showinfo=0&vq=hd720&hl=pt-br" 
+                                title="Nota Fácil Downloader Demonstração" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                class="w-full h-full object-cover relative z-10">
+                            </iframe>
+                        `;
+                    });
+                </script>
+                
                 <div class="absolute inset-0 pointer-events-none ring-1 ring-inset ring-white/10 rounded-xl sm:rounded-3xl"></div>
             </div>
         </div>
@@ -402,7 +428,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <div class="faq-item group" data-aos="fade-up">
                     <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
                         <div class="flex items-start justify-between gap-4 w-full">
-                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Existe limite de empresas (CNPJs) que posso cadastrar?</h4>
+                            <h3 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Existe limite de empresas (CNPJs) que posso cadastrar?</h3>
                             <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                             </div>
@@ -417,7 +443,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <div class="faq-item group" data-aos="fade-up" data-aos-delay="50">
                     <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
                         <div class="flex items-start justify-between gap-4 w-full">
-                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Meus certificados digitais A1 vão para alguma nuvem?</h4>
+                            <h3 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Meus certificados digitais A1 vão para alguma nuvem?</h3>
                             <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                             </div>
@@ -432,7 +458,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <div class="faq-item group" data-aos="fade-up" data-aos-delay="100">
                     <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
                         <div class="flex items-start justify-between gap-4 w-full">
-                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">O robô integra perfeitamente com meu ERP (Domínio, Alterdata, etc)?</h4>
+                            <h3 class="text-lg lg:text-xl font-black text-slate-800 flex-1">O robô integra perfeitamente com meu ERP (Domínio, Alterdata, etc)?</h3>
                             <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                             </div>
@@ -447,7 +473,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <div class="faq-item group" data-aos="fade-up" data-aos-delay="150">
                     <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
                         <div class="flex items-start justify-between gap-4 w-full">
-                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">O sistema gera relatórios em Excel para meu fechamento?</h4>
+                            <h3 class="text-lg lg:text-xl font-black text-slate-800 flex-1">O sistema gera relatórios em Excel para meu fechamento?</h3>
                             <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                             </div>
@@ -462,7 +488,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <div class="faq-item group" data-aos="fade-up" data-aos-delay="200">
                     <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
                         <div class="flex items-start justify-between gap-4 w-full">
-                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">E os clientes pequenos ou MEI sem Certificado Digital (A1)?</h4>
+                            <h3 class="text-lg lg:text-xl font-black text-slate-800 flex-1">E os clientes pequenos ou MEI sem Certificado Digital (A1)?</h3>
                             <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                             </div>
@@ -477,7 +503,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <div class="faq-item group" data-aos="fade-up" data-aos-delay="250">
                     <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
                         <div class="flex items-start justify-between gap-4 w-full">
-                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Preciso de um TI para configurar proxy ou servidores complexos?</h4>
+                            <h3 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Preciso de um TI para configurar proxy ou servidores complexos?</h3>
                             <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                             </div>
@@ -492,7 +518,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <div class="faq-item group" data-aos="fade-up" data-aos-delay="300">
                     <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
                         <div class="flex items-start justify-between gap-4 w-full">
-                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Ele resolve Captcha e barreiras Anti-Bot do Portal Nacional?</h4>
+                            <h3 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Ele resolve Captcha e barreiras Anti-Bot do Portal Nacional?</h3>
                             <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                             </div>
@@ -507,7 +533,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <div class="faq-item group" data-aos="fade-up" data-aos-delay="350">
                     <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
                         <div class="flex items-start justify-between gap-4 w-full">
-                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">E se o Certificado Digital A1 de um cliente cadastrado estiver vencido?</h4>
+                            <h3 class="text-lg lg:text-xl font-black text-slate-800 flex-1">E se o Certificado Digital A1 de um cliente cadastrado estiver vencido?</h3>
                             <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                             </div>
@@ -522,7 +548,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <div class="faq-item group" data-aos="fade-up" data-aos-delay="400">
                     <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
                         <div class="flex items-start justify-between gap-4 w-full">
-                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Ele baixa notas e PDFs de meses retidos (retroativos)?</h4>
+                            <h3 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Ele baixa notas e PDFs de meses retidos (retroativos)?</h3>
                             <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                             </div>
@@ -537,7 +563,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <div class="faq-item group" data-aos="fade-up" data-aos-delay="450">
                     <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
                         <div class="flex items-start justify-between gap-4 w-full">
-                            <h4 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Existem taxas pesadas ou surpresas na implantação ou de treinamento?</h4>
+                            <h3 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Existem taxas pesadas ou surpresas na implantação ou de treinamento?</h3>
                             <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                             </div>

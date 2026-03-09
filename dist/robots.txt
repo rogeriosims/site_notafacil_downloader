@@ -1,16 +1,4 @@
 User-agent: *
 Allow: /
 
-# Permitir explicitly LLM bots para varredura amigável
-User-agent: GPTBot
-Allow: /
-User-agent: Google-Extended
-Allow: /
-User-agent: ClaudeBot
-Allow: /
-User-agent: PerplexityBot
-Allow: /
-User-agent: OAI-SearchBot
-Allow: /
-
-Sitemap: https://notafacil.contabilcert.com.br/sitemap-index.xml
+Sitemap: https://notafacildownloader.contabilcert.com.br/sitemap-index.xml

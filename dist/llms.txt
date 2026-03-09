@@ -10,5 +10,5 @@ Um software desktop que automatiza o download de XMLs e PDFs de NFS-e do Portal 
 - Planos Enterprise/Scale a partir de R$ 39,90/mês para até 5.000 notas.
 
 ## Rotas
-- Landing page oficial: https://notafacil.contabilcert.com.br/
-- Blog de novidades: https://notafacil.contabilcert.com.br/blog
+- Landing page oficial: https://notafacildownloader.contabilcert.com.br/
+- Blog de novidades: https://notafacildownloader.contabilcert.com.br/blog
