@@ -18,6 +18,7 @@ export default defineConfig({
   },
   compressHTML: true,
   build: {
-    format: 'directory'
+    format: 'directory',
+    inlineStylesheets: 'always'
   }
 });

@@ -10,8 +10,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <!-- DOBRA 1: HERO SECTION -->
     <section id="hero" class="hero-gradient pt-24 pb-16 lg:pt-48 relative overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none overflow-hidden">
-            <div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-600 rounded-full blur-[150px] will-change-transform"></div>
-            <div class="absolute bottom-[-20%] left-[-10%] w-[400px] h-[400px] bg-purple-600 rounded-full blur-[150px] will-change-transform">
+            <div class="absolute -top-32 -right-32 w-[500px] h-[500px] bg-blue-600 rounded-full blur-[150px] will-change-transform"></div>
+            <div class="absolute -bottom-32 -left-32 w-[400px] h-[400px] bg-purple-600 rounded-full blur-[150px] will-change-transform">
             </div>
         </div>
 
@@ -595,10 +595,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 
 
-    <!-- Scripts -->
-    
-    <script is:inline></script>
-    <script src="https://unpkg.com/imask"></script>
+    <!-- Scripts e lógicas da Landing Page -->
     <script is:inline>
         document.addEventListener('DOMContentLoaded', function () {
             IMask(document.getElementById('whatsapp'), { mask: '(00) 00000-0000' });
