@@ -101,6 +101,12 @@ Muitas aplicações de terceiros (O painel do YouTube) embutem cookies que sangr
 **Solução:** Sempre injete vídeos do YouTube substituindo o domínio raiz pelo canal higienizado livre-de-cookies:
 *De: `youtube.com/embed/...`* -> **Para:** `www.youtube-nocookie.com/embed/...`
 
+### 3.3 Whitelist de Ferramentas de Analítica (Cloudflare Insights)
+Ao aplicar um CSP ultra-estrito, ferramentas injetadas pelo próprio servidor proxy (como a aba analítica ou Insights de Performance embutidos da Cloudflare) podem ser tratadas como "scripts invasores" pelo navegador e gerar relatórios de Erro no DevTools ou no Lighthouse.
+**Solução:** Sempre adicione os domínios de `src` das ferramentas oficiais na sua WhiteList do Header de segurança:
+* Garanta a adição de `https://static.cloudflareinsights.com` na seção `script-src`.
+* Garanta a adição de `https://cloudflareinsights.com` na seção `connect-src`.
+
 ---
 
 ## 4. Nuvem & Infra: O Pipeline Cloudflare
