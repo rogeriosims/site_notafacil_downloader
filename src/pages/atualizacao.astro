@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Download Iniciado | Nota Fácil Downloader" description="O robô está sendo preparado para você." bodyClass="bg-slate-50 text-slate-900 overflow-x-hidden selection:bg-blue-600 selection:text-white">
+<BaseLayout title="Atualização Iniciada | Nota Fácil Downloader" description="Seu sistema está sendo atualizado para a versão mais recente." bodyClass="bg-slate-50 text-slate-900 overflow-x-hidden selection:bg-blue-600 selection:text-white">
 
     <!-- Fundo Suave -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -14,20 +14,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section class="relative z-10 pt-24 pb-20 min-h-[80vh] flex flex-col justify-center">
         <div class="container mx-auto px-6 max-w-5xl">
             
-            <!-- Hero de Download (Original Copy) -->
+            <!-- Hero de Nova Versão -->
             <div class="text-center mb-20" data-aos="fade-down">
-                <div class="inline-flex items-center justify-center w-20 h-20 bg-emerald-50 text-emerald-600 rounded-3xl mb-8 border border-emerald-100 shadow-sm relative">
-                    <i data-lucide="check" class="w-10 h-10"></i>
-                    <div class="absolute inset-0 bg-emerald-400/20 rounded-3xl blur-xl animate-pulse -z-10"></div>
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl mb-8 border border-blue-100 shadow-sm relative">
+                    <i data-lucide="refresh-cw" class="w-10 h-10 animate-spin-slow"></i>
+                    <div class="absolute inset-0 bg-blue-400/20 rounded-3xl blur-xl animate-pulse -z-10"></div>
                 </div>
                 <h1 id="boas-vindas-titulo" class="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight mb-6">
-                    Seu Robô está a caminho!
+                    Sua atualização está a caminho!
                 </h1>
                 
                 <div class="max-w-2xl mx-auto">
                     <div id="download-progress-container" class="bg-white border border-slate-200 p-6 rounded-3xl shadow-sm mb-6 relative overflow-hidden">
                         <div class="flex items-center justify-between mb-3">
-                            <span class="text-sm font-bold text-slate-500 uppercase tracking-widest">Iniciando Download</span>
+                            <span class="text-sm font-bold text-slate-500 uppercase tracking-widest">Iniciando Download da Nova Versão</span>
                             <span id="countdown" class="text-blue-600 font-black text-xl">3s</span>
                         </div>
                         <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
@@ -35,7 +35,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                         </div>
                     </div>
                     <p id="boas-vindas-sub" class="text-lg text-slate-600 font-medium leading-relaxed mb-8">
-                        Estamos gerando a licença do seu escritório. O download iniciará em instantes.
+                        Estamos baixando os novos mapeamentos e melhorias para o seu sistema.
                     </p>
                     
                     <!-- Fallback manual (Hidden by default) -->
@@ -48,14 +48,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </div>
             </div>
 
-            <!-- Guia de Instalação e Segurança (Vertical - 1 Card por Linha) -->
+            <!-- Guia de Atualização (Vertical - 1 Card por Linha) -->
             <div class="max-w-4xl mx-auto space-y-8 mb-20" data-aos="fade-up">
                 
                 <h2 class="text-2xl font-black text-slate-900 mb-10 flex items-center justify-center gap-4">
                     <span class="w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center text-lg shadow-lg italic">
-                        <i data-lucide="play" class="w-5 h-5"></i>
+                        <i data-lucide="zap" class="w-5 h-5"></i>
                     </span>
-                    Instruções de Instalação
+                    Como aplicar a atualização
                 </h2>
 
                 <!-- Passo 1: Aguarde o Download -->
@@ -64,16 +64,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <div class="flex flex-col sm:flex-row gap-8 items-start relative z-10">
                         <div class="flex-shrink-0 w-16 h-16 bg-slate-50 border border-slate-100 rounded-3xl flex items-center justify-center text-slate-400 font-black text-2xl transition-all group-hover:bg-blue-600 group-hover:text-white group-hover:scale-110 shadow-lg">1</div>
                         <div class="flex-grow">
-                            <h3 class="text-2xl font-black text-slate-900 mb-4">Aguarde o Download</h3>
+                            <h3 class="text-2xl font-black text-slate-900 mb-4">Feche o programa aberto</h3>
                             <p class="text-slate-600 text-base leading-relaxed mb-6">
-                                O instalador <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-lg border border-blue-100 text-xs font-mono font-bold tracking-tight">Nota_Facil_Downloader_Setup.exe</span> será salvo automaticamente na sua pasta de Downloads.
+                                Antes de instalar a nova versão, certifique-se de que o Nota Fácil Downloader atual esteja <strong>totalmente fechado</strong> no seu computador.
                             </p>
                             <div class="bg-orange-50/50 border border-orange-100 p-4 rounded-2xl max-w-2xl flex gap-4 items-start">
                                 <i data-lucide="alert-triangle" class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5"></i>
                                 <div>
-                                    <h4 class="text-sm font-bold text-orange-900 mb-1">Aviso de segurança</h4>
+                                    <h4 class="text-sm font-bold text-orange-900 mb-1">Aviso do navegador</h4>
                                     <p class="text-sm text-orange-800 leading-relaxed">
-                                        Caso o seu navegador pause o download (comum em executáveis), clique na barra de downloads e escolha <strong>"Manter"</strong> ou <strong>"Fazer o download assim mesmo"</strong>.
+                                        Como em qualquer download de executável, se o navegador pausar o arquivo por segurança, clique na barra de downloads e escolha <strong>"Manter"</strong>.
                                     </p>
                                 </div>
                             </div>
@@ -81,22 +81,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     </div>
                 </div>
 
-                <!-- Passo 2: Instale o Sistema -->
+                <!-- Passo 2: Instale a Atualização -->
                 <div class="bg-white border border-slate-200 rounded-[2.5rem] p-8 sm:p-10 shadow-sm hover:shadow-md transition-shadow group relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50/50 rounded-full blur-3xl -mr-16 -mt-16"></div>
                     <div class="flex flex-col sm:flex-row gap-8 items-start relative z-10">
                         <div class="flex-shrink-0 w-16 h-16 bg-slate-50 border border-slate-100 rounded-3xl flex items-center justify-center text-slate-400 font-black text-2xl transition-all group-hover:bg-blue-600 group-hover:text-white group-hover:scale-110 shadow-lg">2</div>
                         <div class="flex-grow">
-                            <h3 class="text-2xl font-black text-slate-900 mb-4">Instale o Sistema</h3>
+                            <h3 class="text-2xl font-black text-slate-900 mb-4">Instale a Nova Versão</h3>
                             <p class="text-slate-600 text-base leading-relaxed mb-6">
-                                Localize o executável baixado e dê um clique duplo para iniciar. Siga os passos na tela até concluir a instalação.
+                                Localize o novo instalador <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-lg border border-blue-100 text-xs font-mono font-bold tracking-tight">Nota_Facil_Downloader_Setup.exe</span> e dê um clique duplo. Siga os passos na tela e ele substituirá a versão antiga automaticamente mantendo seus dados salvos.
                             </p>
                             <div class="bg-blue-50/50 border border-blue-100 p-4 rounded-2xl max-w-2xl flex gap-4 items-start">
                                 <i data-lucide="info" class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5"></i>
                                 <div>
                                     <h4 class="text-sm font-bold text-blue-900 mb-1">Observação do Windows (SmartScreen)</h4>
                                     <p class="text-sm text-blue-800 leading-relaxed">
-                                        Caso o Windows exiba a tela azul de proteção, clique em <strong>"Mais informações"</strong> e depois no botão <strong>"Executar assim mesmo"</strong>.
+                                        Caso o Windows exiba a tela azul de proteção para esta nova versão, clique em <strong>"Mais informações"</strong> e depois no botão <strong>"Executar assim mesmo"</strong>.
                                     </p>
                                 </div>
                             </div>
@@ -104,16 +104,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     </div>
                 </div>
 
-                <!-- Passo 3: Ative sua Licença e Comece -->
+                <!-- Passo 3: Volte a trabalhar -->
                 <div class="bg-white border border-slate-200 rounded-[2.5rem] p-8 sm:p-10 shadow-sm hover:shadow-md transition-shadow group relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50/50 rounded-full blur-3xl -mr-16 -mt-16"></div>
                     <div class="flex flex-col sm:flex-row gap-8 items-start relative z-10">
                         <div class="flex-shrink-0 w-16 h-16 bg-slate-50 border border-slate-100 rounded-3xl flex items-center justify-center text-slate-400 font-black text-2xl transition-all group-hover:bg-emerald-500 group-hover:text-white group-hover:scale-110 shadow-lg">3</div>
                         <div class="flex-grow">
-                            <h3 class="text-2xl font-black text-slate-900 mb-4">Ative sua Licença e Comece</h3>
+                            <h3 class="text-2xl font-black text-slate-900 mb-4">Abra e continue trabalhando</h3>
                             <p class="text-slate-600 text-base leading-relaxed">
-                                Abra o Nota Fácil recém-instalado. Na tela inicial, informe o seu e-mail de acesso (mostrado abaixo) para ativar sua conta e iniciar os downloads de notas.
-                                <span id="email-licenca" class="block font-mono bg-emerald-50 text-emerald-700 p-4 rounded-2xl mt-4 border border-emerald-100 text-center text-base font-black shadow-inner">seu@email.com</span>
+                                Pronto! Basta abrir o Nota Fácil Downloader novamente. Seus certificados e pastas já configurados continuarão exatamente de onde você parou, agora com os novos mapeamentos aplicados.
                             </p>
                         </div>
                     </div>
@@ -127,7 +126,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                             <i data-lucide="message-circle" class="w-10 h-10"></i>
                         </div>
                         <div class="relative z-10 text-center sm:text-left">
-                            <h4 class="text-2xl font-black text-slate-900 group-hover:text-emerald-700 tracking-tight mb-2">Dificuldades na instalação?</h4>
+                            <h4 class="text-2xl font-black text-slate-900 group-hover:text-emerald-700 tracking-tight mb-2">Dificuldades para atualizar?</h4>
                             <p class="text-lg text-slate-600 font-medium">Aperte aqui e fale agora mesmo com nosso time de sucesso do cliente no WhatsApp.</p>
                         </div>
                     </div>
@@ -149,7 +148,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                                 O Nota Fácil é um software <strong>Desktop Local</strong>. Todo o processamento e armazenamento das suas notas e certificados digitais acontece estritamente no seu computador.
                             </p>
                             <p class="text-slate-500 text-sm leading-relaxed mb-10 italic">
-                                Devido a esse modo de funcionamento, o Windows pode exibir um aviso de segurança. Mas pode ficar tranquilo: nós já submetemos o sistema para análise e liberação oficial da Microsoft.
+                                Devido a esse modo de funcionamento, o Windows pode exibir um aviso de segurança em atualizações recém-lançadas. Mas pode ficar tranquilo: nós sempre submetemos as novas versões para análise e liberação oficial da Microsoft.
                             </p>
                             <div class="pt-8 border-t border-white/5 flex items-center gap-6 opacity-40">
                                 <i data-lucide="lock" class="w-10 h-10 text-slate-500"></i>
@@ -181,45 +180,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <!-- DOBRA FINAL -->
     <section class="py-20 border-t border-slate-100 bg-white">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-black text-slate-900 mb-6">Tudo pronto para transformar sua rotina?</h2>
-            <p class="text-lg text-slate-600 font-medium mb-10 max-w-2xl mx-auto">Se precisar de qualquer ajuda durante a configuração inicial, nosso time técnico está à disposição.</p>
+            <h2 class="text-3xl font-black text-slate-900 mb-6">Tudo pronto para as novas funcionalidades?</h2>
+            <p class="text-lg text-slate-600 font-medium mb-10 max-w-2xl mx-auto">Se precisar de qualquer ajuda durante a reinstalação, nosso time técnico está à disposição.</p>
             <a href="https://wa.me/5531998913498" target="_blank" class="inline-block bg-blue-600 text-white px-10 py-5 rounded-2xl font-black shadow-xl shadow-blue-200 transition transform hover:-translate-y-1 active:scale-95 text-xl tracking-tight">FALAR COM SUPORTE TÉCNICO</a>
         </div>
     </section>
 
     <script is:inline>
         document.addEventListener('DOMContentLoaded', function () {
-            const rawData = sessionStorage.getItem('notafacil_user_data');
-            const countdownEl = document.getElementById('countdown');
-            const manualBox = document.getElementById('manual-download-box');
-            const btnManual = document.getElementById('btn-manual-download');
+            // Em atualização, não passamos sessao dinamicamente da mesma forma,
+            // podemos assumir um fallback ou ler de uma querystring ?url= se for injetado via email
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const passedUrl = urlParams.get('url_download');
+            
             const fallbackUrl = 'https://downloads.contabilcert.com.br/Nota_Facil_Downloader_Setup.exe';
-
-            let downloadUrl = fallbackUrl;
-            let emailParam = 'seu@email.com';
-
-            if (rawData) {
-                try {
-                    const responseJson = JSON.parse(rawData);
-                    const userData = responseJson.data || responseJson;
-                    downloadUrl = responseJson.url_download || userData.url_download || fallbackUrl;
-                    
-                    const pPrimeiroNome = userData.nome ? userData.nome.split(' ')[0] : 'Contador(a)';
-                    const razaoSocial = userData.razao_social || 'seu escritório';
-                    emailParam = userData.email || 'seu e-mail cadastrado';
-                    const planName = userData.plano || 'Free';
-
-                    document.getElementById('boas-vindas-titulo').innerText = `Seu Robô está a caminho, ${pPrimeiroNome}!`;
-                    document.getElementById('boas-vindas-sub').innerHTML = `Estamos gerando a licença <strong>${planName}</strong> para <span class="text-slate-950 font-bold">${razaoSocial}</span>. O download iniciará em <span id="countdown" class="text-blue-600 font-black">3</span> segundos.`;
-                    document.getElementById('email-licenca').innerText = emailParam;
-                } catch (e) {
-                    console.error("Erro dados sessao", e);
-                }
-            }
-
-            // Garantir protocolo no link manual
+            let downloadUrl = passedUrl || fallbackUrl;
+            
             const finalLink = downloadUrl.startsWith('http') ? downloadUrl : 'https://' + downloadUrl;
-            btnManual.href = finalLink;
+            
+            const btnManual = document.getElementById('btn-manual-download');
+            const manualBox = document.getElementById('manual-download-box');
+            if(btnManual) btnManual.href = finalLink;
 
             let timeLeft = 3;
             const timer = setInterval(() => {
