@@ -62,5 +62,6 @@ O cenário já demanda que o time fiscal gaste menos tempo operando teclados rep
 ---
 
 **Quer automatizar de vez a captura das suas NFS-e?**  
-Ative agora o NotaFácil franquia 100% grátis para sempre→ [https://notafacil.contabilcert.com.br](https://notafacil.contabilcert.com.br)
+Ative agora o NotaFácil franquia 100% grátis para sempre→ [https://notafacildownloader.contabilcert.com.br](https://notafacildownloader.contabilcert.com.br)
+
 

@@ -45,5 +45,6 @@ A digitação de notas fiscais é um fantasma do passado que ainda assombra o pr
 
 **Sua equipe merece trabalhar com inteligência, não com digitação.**  
 Automatize seu escritório agora com o Nota Fácil.  
-Grátis para os primeiros 100 documentos todos os meses → [https://notafacil.contabilcert.com.br](https://notafacil.contabilcert.com.br)
+Grátis para os primeiros 100 documentos todos os meses → [https://notafacildownloader.contabilcert.com.br](https://notafacildownloader.contabilcert.com.br)
+
 

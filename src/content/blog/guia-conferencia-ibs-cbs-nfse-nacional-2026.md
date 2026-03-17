@@ -44,5 +44,6 @@ Ao baixar o XML original diretamente do Portal Nacional, você elimina o erro hu
 
 **Evite a Malha Fina da Reforma Tributária.**  
 Pare de coletar PDFs e comece a gerir dados fiscais de verdade.  
-Acesse o Nota Fácil (Grátis até 100 notas/mês) → [https://notafacil.contabilcert.com.br](https://notafacil.contabilcert.com.br)
+Acesse o Nota Fácil (Grátis até 100 notas/mês) → [https://notafacildownloader.contabilcert.com.br](https://notafacildownloader.contabilcert.com.br)
+
 
