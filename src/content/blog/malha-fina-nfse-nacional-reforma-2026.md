@@ -74,4 +74,5 @@ Os controles de redundâncias robustos (como as famosas deduplicações do softw
 ---
 
 **Quer automatizar de vez a captura das suas NFS-e?**  
-Baixe agora o NotaFácil franquia 100% grátis para sempre→ [https://notafacildownloader.contabilcert.com.br](https://notafacildownloader.contabilcert.com.br/)
+Ative agora o NotaFácil franquia 100% grátis para sempre→ [https://notafacil.contabilcert.com.br](https://notafacil.contabilcert.com.br)
+

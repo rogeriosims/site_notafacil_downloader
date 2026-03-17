@@ -2,6 +2,7 @@
 title: "NFS-e Nacional 2026: Impactos e Captura de Notas Tomadas"
 description: "Entenda a obrigatoriedade da NFS-e Nacional em 2026, os novos campos de IBS/CBS e como automatizar a captura de notas tomadas no seu escritório contábil."
 pubDate: "2026-03-03"
+lastUpdated: "2026-03-17"
 draft: false
 tags: ["NFS-e Nacional", "contabilidade", "Reforma Tributária", "Portal Nacional"]
 author: "Equipe NotaFácil"
@@ -9,7 +10,7 @@ image: "/blog/imagens/capa_impactos_nfse_nacional_reforma_tributaria_2026.png"
 readingTime: "10 min"
 ---
 
-
+> **Última Atualização:** Este guia foi revisado em 17 de março de 2026 para incluir as novas diretrizes de acesso ao Portal Nacional e otimização de processamento local.
 
 **TL;DR:** A obrigatoriedade da NFS-e Nacional em 2026 e a transição para a Reforma Tributária (IBS/CBS) exigem adequação imediata dos escritórios contábeis. A captura manual de notas fiscais de serviços tomados tornou-se insustentável. A solução é automatizar o acesso ao Portal Nacional com ferramentas confiáveis que dispensam processos manuais e garantem segurança jurídica.
 
@@ -99,4 +100,5 @@ Com o fluxo pesado das procuras intensas no navegador manual no momento limite d
 ---
 
 **Quer automatizar de vez a captura das suas NFS-e?**  
-Baixe agora o NotaFácil franquia 100% grátis para sempre→ [https://notafacildownloader.contabilcert.com.br](https://notafacildownloader.contabilcert.com.br/)
+Ative agora o NotaFácil franquia 100% grátis para sempre→ [https://notafacil.contabilcert.com.br](https://notafacil.contabilcert.com.br)
+

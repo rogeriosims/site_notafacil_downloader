@@ -30,9 +30,9 @@ const schema = JSON.stringify({
       {posts.map((post) => (
           <article class="bg-white rounded-[2rem] border border-slate-200 hover:border-blue-200 shadow-sm hover:shadow-xl transition-all group overflow-hidden flex flex-col h-full">
             {post.data.image && (
-              <div class="h-48 w-full overflow-hidden bg-slate-100 shrink-0">
+              <a href={`/blog/${post.id}`} class="h-48 w-full overflow-hidden bg-slate-100 shrink-0 block">
                 <img src={post.data.image} alt={post.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              </div>
+              </a>
             )}
             <div class="p-8 flex flex-col grow">
               <time datetime={post.data.pubDate.toISOString()} class="text-xs font-bold text-slate-400 mb-2 block tracking-wider">
