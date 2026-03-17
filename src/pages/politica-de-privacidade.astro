@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Política de Privacidade | Nota Fácil Downloader"
+  description="Política de Privacidade do Nota Fácil Downloader detalhando como o aplicativo processa localmente seus dados sem enviar para nossos servidores em prol da sua conformidade LGPD."
+>
+  <div class="container mx-auto px-4 py-16 max-w-4xl mt-20">
+    <h1 class="text-4xl font-bold text-slate-900 mb-8">Política de Privacidade</h1>
+    <p class="text-slate-500 mb-8">Última atualização: 17 de Março de 2026</p>
+
+    <div class="prose prose-slate max-w-none">
+      <p>A privacidade e a segurança das suas informações fiscais são nossa prioridade máxima. Esta política explica de forma transparente como o Nota Fácil Downloader atua em conformidade com as diretrizes do Google ("Software Amigável") e com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018).</p>
+
+      <h2>1. Coleta e Tratamento de Dados (Atuação Local)</h2>
+      <p>O <strong>Nota Fácil Downloader é uma aplicação Desktop na modalidade "Edge/Local"</strong>. Isso significa que a comunicação para baixar as Notas Fiscais de Serviços (NFS-e) ocorre estritamente de Ponto A (o seu computador) para Ponto B (os servidores da Receita Federal / Portal Nacional).</p>
+
+      <h2>2. Sigilo de Certificados e Senhas</h2>
+      <p><strong>Nós NÃO armazenamos suas senhas, chaves de acesso ou Certificados Digitais em nenhum servidor externo ou na nuvem.</strong> Qualquer dado de acesso utilizado para realizar os downloads das notas (login Gov.br ou certificado digital) fica criptografado e salvo exclusivamente no seu próprio disco rígido (na sua máquina local).</p>
+
+      <h2>3. Finalidade e Escopo (Telemetria)</h2>
+      <p>O software realiza exclusivamente: o download, a organização e a listagem (em planilha) das NFS-e Emitidas/Tomadas de uma empresa para a qual foi autorizado acesso, sem enviar qualquer metadado fiscal ou analítico dessa listagem para nossos servidores. Todas as planilhas e arquivos XML/PDF gerados pelas execuções em lote permanecem armazenados unicamente e no local que o usuário determinar na sua própria rede/computador.</p>
+      <p><strong>Controle de Uso:</strong> A fim de viabilizar a oferta do plano gratuito e gerenciar os limites de licenciamento das assinaturas pagas, o sistema emite para os nossos servidores de licença <strong>apenas a contagem numérica de notas baixadas com sucesso</strong> em cada execução por CNPJ/empresa. Nenhum detalhe das notas fiscais (como valores, tomadores ou serviços) é transmitido.</p>
+
+      <h2>4. Cookies e Tecnologias de Rastreamento do Website</h2>
+      <p>Quando você acessa este site (notafacildownloader.contabilcert.com.br), utilizamos cookies de desempenho e analíticos básicos com finalidade de entender falhas de navegação e desempenho da página (ex. Google Analytics, Cloudflare Insights), nunca vinculando suas consultas e comportamento à sua base de dados contábeis.</p>
+
+      <h2>5. Consentimento para Comunicações e Ofertas</h2>
+      <p>Ao realizar o seu cadastro e download da nossa ferramenta, armazenaremos os dados de contato do titular da conta (Nome, E-mail corporativo e/ou WhatsApp). O usuário autoriza e concorda expressamente em receber comunicações transacionais do sistema, bem como campanhas publicitárias, ofertas e informativos sobre outras soluções pertencentes ao ecossistema do desenvolvedor (Tecnologia Corporativa), através do E-mail e do WhatsApp.</p>
+      <p>Caso o usuário não deseje mais receber nossas ofertas, todo e-mail ou mensagem enviada contará com uma via expressa e simples de descadastramento (opt-out), revogando assim o consentimento para fins publicitários a qualquer momento.</p>
+
+      <h2>6. Conformidade com a LGPD e Direitos do Titular</h2>
+      <p>Nos termos da LGPD, o Titular ou Cliente detém o controle dos seus dados. No caso da conta principal da ferramenta (endereço de email, nome, contato), o requerimento de exclusão de cadastro, cancelamento ou alterações pode ser efetuado imediatamente entrando em contato conosco.</p>
+
+      <h2>7. Fale Conosco</h2>
+      <p>Dúvidas em relação às práticas de privacidade e segurança do aplicativo, e-mail: contato@notafacildownloader.contabilcert.com.br</p>
+    </div>
+  </div>
+</BaseLayout>
