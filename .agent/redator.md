@@ -41,7 +41,7 @@ image: "/blog/imagens/nome-da-imagem.jpg"   ← sugira um nome
 readingTime: "10 min"
 ---
 
-TL;DR (resumo em 3-4 linhas)
+Direto ao Ponto (resumo em 3-4 linhas)
 
 ## H2 como pergunta
 

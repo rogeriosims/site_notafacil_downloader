@@ -9,7 +9,7 @@ image: "/blog/imagens/capa_captura_automatica_nfse_2026.png"
 readingTime: "7 min"
 ---
 
-**TL;DR:** Com a migração das prefeituras para o Portal Nacional, os escritórios contábeis enfrentam o fim da era manual. Capturar NFS-e via automação local com o NotaFácil Downloader tornou-se indispensável para reduzir gargalos no fechamento mensal, garantir segurança com arquivos XML originais e lidar com as novas obrigações dos impostos IBS/CBS.
+**Direto ao Ponto:** Com a migração das prefeituras para o Portal Nacional, os escritórios contábeis enfrentam o fim da era manual. Capturar NFS-e via automação local com o NotaFácil Downloader tornou-se indispensável para reduzir gargalos no fechamento mensal, garantir segurança com arquivos XML originais e lidar com as novas obrigações dos impostos IBS/CBS.
 
 ## Por que a era manual do fechamento fiscal chegou ao fim?
 

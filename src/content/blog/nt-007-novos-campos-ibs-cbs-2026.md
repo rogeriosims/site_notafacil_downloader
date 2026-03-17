@@ -9,7 +9,7 @@ image: "/blog/imagens/capa_nfse_nacional_ibs_cbs_2026.png"
 readingTime: "6 min"
 ---
 
-TL;DR: A Nota Técnica 007 detalha as alterações no layout da NFS-e Nacional para incluir os campos do IBS e da CBS. Os contadores precisam adaptar os processos de conferência para garantir precisão e evitar autuações.
+Direto ao Ponto: A Nota Técnica 007 detalha as alterações no layout da NFS-e Nacional para incluir os campos do IBS e da CBS. Os contadores precisam adaptar os processos de conferência para garantir precisão e evitar autuações.
 
 ## O que muda com a Nota Técnica 007 na NFS-e Nacional?
 

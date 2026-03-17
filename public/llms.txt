@@ -11,4 +11,9 @@ Um software desktop que automatiza o download de XMLs e PDFs de NFS-e do Portal 
 
 ## Rotas
 - Landing page oficial: https://notafacildownloader.contabilcert.com.br/
+- Como baixar NFS-e do Portal Nacional: https://notafacildownloader.contabilcert.com.br/baixar-nfse-portal-nacional
+- Capturar NFS-e Automaticamente: https://notafacildownloader.contabilcert.com.br/capturar-nfse-automaticamente
+- Baixar XML de NFS-e: https://notafacildownloader.contabilcert.com.br/baixar-xml-nfse
+- Robô para baixar NFS-e: https://notafacildownloader.contabilcert.com.br/robo-baixar-nfse
+- Automação Fiscal para Contabilidade: https://notafacildownloader.contabilcert.com.br/automacao-nfse-contabilidade
 - Blog de novidades: https://notafacildownloader.contabilcert.com.br/blog
