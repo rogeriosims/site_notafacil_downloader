@@ -12,6 +12,7 @@ interface Props {
   ogType?: string;
   articleDate?: string;
   customSchema?: string;
+  robots?: string;
 }
 
 const { 
@@ -22,7 +23,8 @@ const {
   image = new URL('/assets/print.png', Astro.site || 'https://nota-facil.github.io').href,
   ogType = "website",
   articleDate,
-  customSchema
+  customSchema,
+  robots = "index, follow"
 } = Astro.props;
 
 const defaultSchema = JSON.stringify({
@@ -94,7 +96,7 @@ const finalSchema = customSchema || defaultSchema;
     <meta name="description" content={description}>
     <meta name="keywords" content="Download NFS-e Nacional, robô baixar xml nfse portal nacional, automação contábil, baixar pdf nfse em lote, sistema para contador nfse, captura xml nfse">
     <meta name="author" content="Nota Fácil (nota-facil.github.io)">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content={robots}>
     <link rel="canonical" href={canonical} />
     
     <!-- Open Graph / Meta -->

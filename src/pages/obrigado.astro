@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Download Iniciado | Nota Fácil Downloader" description="O robô está sendo preparado para você." bodyClass="bg-slate-50 text-slate-900 overflow-x-hidden selection:bg-blue-600 selection:text-white">
+<BaseLayout title="Download Iniciado | Nota Fácil Downloader" description="O robô está sendo preparado para você." bodyClass="bg-slate-50 text-slate-900 overflow-x-hidden selection:bg-blue-600 selection:text-white" robots="noindex, nofollow">
 
     <!-- Fundo Suave -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -193,7 +193,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             const countdownEl = document.getElementById('countdown');
             const manualBox = document.getElementById('manual-download-box');
             const btnManual = document.getElementById('btn-manual-download');
-            const fallbackUrl = 'https://downloads.contabilcert.com.br/Nota_Facil_Downloader_Setup.exe';
+            const fallbackUrl = 'https://notafacildownloader.contabilcert.com.br/instalar-nota-facil';
 
             let downloadUrl = fallbackUrl;
             let emailParam = 'seu@email.com';

@@ -61,44 +61,49 @@
             </div>
         </div>
 
-        <!-- Dados da Empresa e Conformidade -->
-        <div class="flex flex-col gap-6 border-t border-slate-800 pt-6">
-            <div class="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-8">
-                <!-- Coluna 1: Nome e CNPJ -->
-                <div class="text-center lg:text-left">
-                    <span class="block text-slate-200 font-bold text-sm uppercase tracking-tight">ROGERIO DE MOURA ASSIS - ME</span>
-                    <span class="text-xs text-slate-500 font-medium">CNPJ: 37.015.437/0001-09</span>
-                </div>
-
-                <!-- Coluna 2: Endereço -->
-                <div class="text-center max-w-xs">
-                    <p class="text-[10px] sm:text-xs text-slate-500 leading-relaxed font-medium">
-                        Rua Alberto Cintra, 161, Sala 1101, Belo Horizonte/MG<br/>
-                        Tel: (31) 99891-3498
-                    </p>
-                </div>
-
-                <!-- Coluna 3: Links -->
-                <div class="flex gap-4 text-xs font-bold text-slate-400">
-                    <a href="/termos-de-uso" class="hover:text-blue-400 transition-colors">Termos</a>
-                    <span class="text-slate-700">|</span>
-                    <a href="/politica-de-privacidade" class="hover:text-blue-400 transition-colors">Privacidade</a>
-                    <span class="text-slate-700">|</span>
-                    <a href="/desinstalar" class="hover:text-blue-400 transition-colors">Desinstalar</a>
-                </div>
+        <!-- Dados da Empresa e Conformidade Unificados -->
+        <div class="flex flex-col gap-8 border-t border-slate-800 pt-10">
+            
+            <!-- Disclaimer Destacado -->
+            <div class="bg-slate-800/40 rounded-2xl p-6 border border-slate-700/50">
+                <p class="text-xs text-slate-400 leading-relaxed font-medium text-center italic">
+                    <span class="text-blue-400 font-black uppercase tracking-widest text-[10px] block mb-2 not-italic">Aviso Importante</span>
+                    O Nota Fácil é uma ferramenta privada independente e não possui qualquer vínculo oficial com o Governo Federal, Receita Federal ou com o Portal Nacional da NFS-e.
+                </p>
             </div>
 
-            <!-- Badges e Copyright -->
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6 opacity-50 border-t border-slate-800/50 pt-6">
-                <div class="flex items-center gap-2">
-                    <span class="font-bold text-slate-300 text-[10px] uppercase tracking-widest">Nota Fácil &copy; 2026</span>
+            <!-- Bloco Legal e Copyright -->
+            <div class="flex flex-col lg:flex-row justify-between items-center gap-8">
+                <!-- CNPJ e Copyright -->
+                <div class="text-center lg:text-left">
+                    <span class="block text-slate-200 font-bold text-sm uppercase tracking-tight">ROGERIO DE MOURA ASSIS - ME <span class="text-slate-600 font-medium ml-2">CNPJ: 37.015.437/0001-09</span></span>
+                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mt-2 block">Nota Fácil &copy; 2026 • Todos os direitos reservados</span>
                 </div>
-                <div class="flex flex-wrap justify-center gap-4 text-[9px] font-black text-slate-400 uppercase tracking-widest text-center">
-                    <span>Compatível com Windows 7+</span>
-                    <span class="hidden md:inline">•</span>
-                    <span>Processamento 100% Local</span>
-                    <span class="hidden md:inline">•</span>
-                    <span>Adequado à LGPD</span>
+
+                <!-- Endereço -->
+                <div class="text-center text-[10px] sm:text-xs text-slate-500 leading-relaxed font-medium lg:border-l lg:border-slate-800 lg:pl-8">
+                    Rua Alberto Cintra, 161, Sala 1101, Belo Horizonte/MG • Tel: (31) 99891-3498
+                </div>
+
+                <!-- Links e Badges -->
+                <div class="flex flex-col items-center lg:items-end gap-4">
+                    <div class="flex gap-4 text-xs font-bold text-slate-400">
+                        <a href="/termos-de-uso" class="hover:text-blue-400 transition-colors">Termos</a>
+                        <span class="text-slate-700">|</span>
+                        <a href="/politica-de-privacidade" class="hover:text-blue-400 transition-colors">Privacidade</a>
+                        <span class="text-slate-700">|</span>
+                        <a href="/blog" class="hover:text-blue-400 transition-colors">Blog Fiscal</a>
+                        <span class="text-slate-700">|</span>
+                        <a href="/desinstalar" class="hover:text-blue-400 transition-colors">Como Desinstalar</a>
+                    </div>
+                    
+                    <div class="flex flex-wrap justify-center gap-4 text-[9px] font-black text-slate-500 uppercase tracking-widest opacity-60">
+                        <span>Compatível com Windows 7+</span>
+                        <span>•</span>
+                        <span>Processamento 100% Local</span>
+                        <span>•</span>
+                        <span>Adequado à LGPD</span>
+                    </div>
                 </div>
             </div>
         </div>

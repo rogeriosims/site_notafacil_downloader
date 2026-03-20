@@ -1,5 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const latestPosts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 ---
 
 <BaseLayout title="Nota Fácil | Automação de NFS-e Nacional" description="O software desktop que captura XML e PDF em lote, organiza nas suas pastas e gera planilhas de conferência." bodyClass="bg-slate-50 text-slate-900 overflow-x-hidden">
@@ -456,6 +461,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
     </section>
 
+
     <!-- DOBRA 6: SUPORTE -->
     <section id="suporte" class="py-16 lg:py-24 bg-stone-50 relative overflow-hidden">
         <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/5 rounded-full blur-[100px] pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
@@ -658,6 +664,44 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 máquina agora. Configuração em menos de 1 minuto.</p>
             <a href="#hero"
                 class="inline-block bg-white text-blue-600 px-12 py-6 rounded-2xl font-black shadow-2xl transition transform hover:-translate-y-2 hover:shadow-blue-900/50 active:scale-95 text-2xl tracking-tight">OBTER ACESSO AO ROBÔ</a>
+        </div>
+    </section>
+
+    <!-- ÚLTIMAS DO BLOG (ANTES DO RODAPÉ) -->
+    <section id="blog-home" class="py-16 lg:py-24 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div data-aos="fade-right">
+                    <span class="text-blue-600 font-black uppercase tracking-[0.3em] text-xs">Conteúdo Técnico</span>
+                    <h2 class="text-3xl lg:text-4xl font-black text-slate-900 mt-4">Últimas do Blog Fiscal</h2>
+                </div>
+                <a href="/blog" class="text-blue-600 font-black flex items-center gap-2 hover:underline group" data-aos="fade-left">
+                    Ver todos os artigos <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                {latestPosts.map((post, index) => (
+                    <article class="group" data-aos="fade-up" data-aos-delay={index * 100}>
+                        <a href={`/blog/${post.id}`} class="block h-full">
+                            <div class="bg-white rounded-[2.5rem] border border-slate-100 p-8 h-full hover:border-blue-200 hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-500 flex flex-col">
+                                <time class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">
+                                    {post.data.pubDate.toLocaleDateString('pt-BR')}
+                                </time>
+                                <h3 class="text-xl font-black text-slate-800 mb-4 group-hover:text-blue-600 transition-colors leading-tight">
+                                    {post.data.title}
+                                </h3>
+                                <p class="text-slate-500 text-sm font-medium leading-relaxed mb-6 line-clamp-3">
+                                    {post.data.description}
+                                </p>
+                                <span class="text-blue-600 font-bold text-xs mt-auto flex items-center gap-2">
+                                    Ler artigo <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                                </span>
+                            </div>
+                        </a>
+                    </article>
+                ))}
+            </div>
         </div>
     </section>
 

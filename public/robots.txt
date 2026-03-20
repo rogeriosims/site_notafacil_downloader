@@ -1,14 +1,27 @@
 User-agent: *
 Allow: /
+Disallow: /obrigado
+Disallow: /atualizacao
 
 # AI Crawler Taming
 User-agent: GPTBot
+Disallow: /obrigado
+Disallow: /atualizacao
 Allow: /
 
 User-agent: ClaudeBot
+Disallow: /obrigado
+Disallow: /atualizacao
 Allow: /
 
 User-agent: PerplexityBot
+Disallow: /obrigado
+Disallow: /atualizacao
+Allow: /
+
+User-agent: CCBot
+Disallow: /obrigado
+Disallow: /atualizacao
 Allow: /
 
 Sitemap: https://notafacildownloader.contabilcert.com.br/sitemap-index.xml

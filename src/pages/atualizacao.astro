@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Atualização Iniciada | Nota Fácil Downloader" description="Seu sistema está sendo atualizado para a versão mais recente." bodyClass="bg-slate-50 text-slate-900 overflow-x-hidden selection:bg-blue-600 selection:text-white">
+<BaseLayout title="Atualização Iniciada | Nota Fácil Downloader" description="Seu sistema está sendo atualizado para a versão mais recente." bodyClass="bg-slate-50 text-slate-900 overflow-x-hidden selection:bg-blue-600 selection:text-white" robots="noindex, nofollow">
 
     <!-- Fundo Suave -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -194,7 +194,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             const urlParams = new URLSearchParams(window.location.search);
             const passedUrl = urlParams.get('url_download');
             
-            const fallbackUrl = 'https://downloads.contabilcert.com.br/Nota_Facil_Downloader_Setup.exe';
+            const fallbackUrl = 'https://notafacildownloader.contabilcert.com.br/instalar-nota-facil';
             let downloadUrl = passedUrl || fallbackUrl;
             
             const finalLink = downloadUrl.startsWith('http') ? downloadUrl : 'https://' + downloadUrl;
