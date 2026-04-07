@@ -52,7 +52,7 @@ const latestPosts = (await getCollection('blog'))
 
                         <h2 class="text-2xl font-black text-slate-800 mb-2 leading-tight">Ative sua Licença Gratuita
                         </h2>
-                        <p class="text-slate-500 text-sm mb-8 font-medium">Libere o acesso instantâneo ao instalador.
+                        <p class="text-slate-500 text-sm mb-8 font-medium">Libere o acesso instantâneo ao instalador. <span class="text-red-500 font-bold block mt-1 text-[10px] uppercase tracking-wider">(Todos os campos obrigatórios)</span>
                         </p>
 
                         <form id="hero-form" class="space-y-4 relative z-10">
@@ -709,6 +709,51 @@ const latestPosts = (await getCollection('blog'))
 
     <!-- Scripts e lógicas da Landing Page -->
     <script is:inline>
+        function isValidCNPJ(cnpj) {
+            cnpj = cnpj.replace(/[^\d]+/g, '');
+            if (cnpj == '' || cnpj.length != 14) return false;
+            if (/^(\d)\1+$/.test(cnpj)) return false; // Elimina sequências repetidas (00..., 11..., etc)
+
+            let tamanho = cnpj.length - 2
+            let numeros = cnpj.substring(0, tamanho);
+            let digitos = cnpj.substring(tamanho);
+            let soma = 0;
+            let pos = tamanho - 7;
+            for (let i = tamanho; i >= 1; i--) {
+                soma += numeros.charAt(tamanho - i) * pos--;
+                if (pos < 2) pos = 9;
+            }
+            let resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+            if (resultado != digitos.charAt(0)) return false;
+
+            tamanho = tamanho + 1;
+            numeros = cnpj.substring(0, tamanho);
+            soma = 0;
+            pos = tamanho - 7;
+            for (let i = tamanho; i >= 1; i--) {
+                soma += numeros.charAt(tamanho - i) * pos--;
+                if (pos < 2) pos = 9;
+            }
+            resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+            if (resultado != digitos.charAt(1)) return false;
+
+            return true;
+        }
+
+        function isValidPhone(phone) {
+            phone = phone.replace(/[^\d]+/g, '');
+            if (phone.length < 10 || phone.length > 11) return false;
+            if (/^(\d)\1+$/.test(phone)) return false; // Elimina sequências repetidas
+            
+            // Verifica se o DDD é válido (não pode começar com 0)
+            if (phone.charAt(0) === '0') return false;
+            
+            // Dummy logic for "00 00000 0000" or similar cases mentioned by user
+            if (phone.substring(0, 2) === '00') return false;
+
+            return true;
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
             IMask(document.getElementById('whatsapp'), { mask: '(00) 00000-0000' });
             IMask(document.getElementById('cnpj'), { mask: '00.000.000/0000-00' });
@@ -738,12 +783,53 @@ const latestPosts = (await getCollection('blog'))
             const btnText = document.getElementById('btn-text');
             const originalText = btnText.innerHTML;
 
+            const nome = document.getElementById('nome_completo').value.trim();
+            const email = document.getElementById('email_profissional').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value;
+            const cnpj = document.getElementById('cnpj').value;
+
+            // Verificação básica de preenchimento
+            if (!nome || !email || !whatsapp || !cnpj) {
+                Swal.fire({
+                    title: 'Dados Incompletos',
+                    text: 'Por favor, preencha todos os campos do formulário.',
+                    icon: 'warning',
+                    confirmButtonText: 'Entendido',
+                    confirmButtonColor: '#3b82f6'
+                });
+                return;
+            }
+
+            // Validação de Telefone
+            if (!isValidPhone(whatsapp)) {
+                Swal.fire({
+                    title: 'Telefone Inválido',
+                    text: 'Por favor, insira um número de WhatsApp real.',
+                    icon: 'warning',
+                    confirmButtonText: 'Corrigir',
+                    confirmButtonColor: '#3b82f6'
+                });
+                return;
+            }
+
+            // Validação de CNPJ
+            if (!isValidCNPJ(cnpj)) {
+                Swal.fire({
+                    title: 'CNPJ Inválido',
+                    text: 'O CNPJ informado não é válido. Verifique os dados.',
+                    icon: 'warning',
+                    confirmButtonText: 'Corrigir',
+                    confirmButtonColor: '#3b82f6'
+                });
+                return;
+            }
+
             const payload = {
                 action: 'register',
-                nome: document.getElementById('nome_completo').value,
-                email: document.getElementById('email_profissional').value,
-                whatsapp: document.getElementById('whatsapp').value,
-                cnpj: document.getElementById('cnpj').value
+                nome: nome,
+                email: email,
+                whatsapp: whatsapp,
+                cnpj: cnpj
             };
 
             try {
