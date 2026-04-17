@@ -160,6 +160,13 @@ const finalSchema = customSchema || defaultSchema;
       document.addEventListener('DOMContentLoaded', () => {
         if (typeof AOS !== 'undefined') AOS.init({ duration: 800, once: true, offset: 50 });
         if (typeof lucide !== 'undefined') lucide.createIcons();
+
+        // Captura de GCLID (Google Click ID) para rastreamento de Ads
+        const urlParams = new URLSearchParams(window.location.search);
+        const gclid = urlParams.get('gclid');
+        if (gclid) {
+          sessionStorage.setItem('gclid', gclid);
+        }
       });
     </script>
 </body>

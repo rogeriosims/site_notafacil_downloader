@@ -824,12 +824,16 @@ const latestPosts = (await getCollection('blog'))
                 return;
             }
 
+            // Recuperar GCLID da URL ou do sessionStorage
+            const gclid = sessionStorage.getItem('gclid') || (new URLSearchParams(window.location.search)).get('gclid');
+
             const payload = {
                 action: 'register',
                 nome: nome,
                 email: email,
                 whatsapp: whatsapp,
-                cnpj: cnpj
+                cnpj: cnpj,
+                gclid: gclid
             };
 
             try {
