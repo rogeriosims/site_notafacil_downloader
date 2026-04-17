@@ -37,7 +37,7 @@ pubDate: "2026-03-XX"   ← use data real de hoje ou próxima segunda
 draft: false
 tags: ["NFS-e Nacional", "contabilidade", "Reforma Tributária", "Portal Nacional"]
 author: "Rogério - Equipe NotaFácil"
-image: "/blog/imagens/nome-da-imagem.jpg"   ← sugira um nome
+image: "/blog/imagens/capa-nome-post.png"   ← use o slug exato com prefixo capa_
 readingTime: "10 min"
 ---
 
@@ -69,8 +69,10 @@ Baixe agora o NotaFácil franquia 100% grátis para sempre→ [https://notafacil
 **Instruções para a Geração da Imagem de Capa:**
 
 1. Use a sua ferramenta `generate_image` para criar a imagem de capa.
-2. Você DEVE usar o nome do arquivo começando com `capa_` seguido do slug do artigo, usando sublinhados (ex: `capa_nacional_2026`). O nome da imagem criada deve ir na propriedade `image:` no frontmatter trocando a extensão para o formato final que a ferramenta retornar (normalmente `.png` ou `.webp`, salve o caminho usando a estrutura web: `/blog/imagens/nome_salvo.png`).
-3. O `Prompt` usado pela ferramenta deve ser em INGLÊS com a seguinte estrutura: "A professional blog cover image in a clean, dark blue corporate style about [Descreva em 1-2 frases o tema principal do post em inglês]. **CRITICAL: Any text visible in the image MUST be in Portuguese (Brazil).** Visual elements: A faceless accountant in an office looking at a screen showing 'NFS-e Nacional', automation icons, time reduction charts, modern background with a slight gradient, subtle text 'NFS-e 2026' in the corner. High resolution, modern infographic style."
-4. **Copiar a Imagem para o Projeto:** A I.A. geradora te devolverá um caminho absoluto longo (ex: `C:\Users\Rogerio\.gemini\antigravity\brain\...\nome.png`). Você DEVE usar um comando de terminal (PowerShell: `Copy-Item "Caminho-Gerado" -Destination "c:\Users\Rogerio\Documents\Projetos\site_notafacil_downloader\public\blog\imagens\capa_slug.png"`) para mover o arquivo fisicamente ao projeto. Em seguida, utilize a extensão correta no arquivo `.md`.
+2. **Nomeação**: Você DEVE usar o nome do arquivo começando com `capa_` seguido do slug do artigo (ex: `capa_nt_007_guia_2026`). No frontmatter do MD, a propriedade `image:` deve apontar exatamente para o caminho web final: `/blog/imagens/capa_slug.png`.
+3. **Qualidade do Prompt (Inglês)**: O `Prompt` deve ser rico e focar em estética Premium/Dark: "A high-end, professional blog cover image for a Brazilian accounting site. Topic: [Tema do post em inglês]. Style: Sleek corporate dark mode, vibrant emerald green and indigo highlights, 3D abstract financial elements, glassmorphism, 4k, high resolution. **CRITICAL: Any visible text must be in Portuguese (Brazil).** Subtle text 'NFS-e 2026' in the corner. 16:9 aspect ratio."
+4. **Persistência Física do Arquivo**: A ferramenta de geração salvará a imagem em uma pasta temporária. Você DEVE obrigatoriamente usar o comando `powershell` para copiar esse arquivo para a pasta definitiva do projeto:
+   `Copy-Item "CAMINHO_ABS_DA_FERRAMENTA" -Destination "c:\Users\Rogerio\Documents\Projetos\site_notafacil_downloader\public\blog\imagens\capa_slug.png"`
+5. **Verificação (CRÍTICA)**: Após a cópia, você DEVE rodar o comando `dir public/blog/imagens/capa_slug.png` para confirmar que o arquivo está lá antes de finalizar a tarefa. Se o arquivo não existir, repita o processo.
 
 Agora execute a tarefa, entregue o arquivo .md completo, gere a imagem na ferramenta designada e copie a imagem pra dentro do repositório.
