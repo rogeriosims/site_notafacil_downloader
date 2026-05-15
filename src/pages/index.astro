@@ -907,7 +907,7 @@ const latestPosts = (await getCollection('blog'))
                     sessionStorage.setItem('notafacil_user_data', JSON.stringify(responseData));
 
                     form.reset();
-                    window.location.href = 'obrigado.html';
+                    window.location.href = '/obrigado/';
 
                 } else {
                     throw new Error('Erro na requisição');

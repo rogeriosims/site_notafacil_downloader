@@ -1,0 +1,23 @@
+# ----------------------------------------
+# Eventos: Nome do evento
+# Conta: Tecnologia Corporativa
+# Propriedade: Nota Fácil Downloader
+# ----------------------------------------
+# 
+# Todos os usuários
+# Data de início: 20260417
+# Data de término: 20260514
+Nome do evento,Contagem de eventos,Total de usuários,Contagem de eventos por usuário ativo,Receita total
+page_view,555,371,1.5,0
+user_engagement,450,297,1.5358361774744027,0
+session_start,424,371,1.145945945945946,0
+first_visit,368,368,1,0
+form_start,56,51,1.0980392156862746,0
+generate_lead,50,43,1.1627906976744187,0
+lead_download,50,43,1.1627906976744187,0
+paywall_view,40,14,2.857142857142857,0
+software_activation,38,26,3.4545454545454546,0
+scroll,35,30,1.1666666666666667,0
+begin_checkout,3,2,1.5,0
+click,2,2,1,0
+purchase,1,1,1,37.91

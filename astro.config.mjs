@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://notafacildownloader.contabilcert.com.br',
+  trailingSlash: 'always',
   integrations: [
     sitemap(),
   ],
