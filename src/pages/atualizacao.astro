@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Atualização Iniciada | Nota Fácil Downloader" description="Seu sistema está sendo atualizado para a versão mais recente." bodyClass="bg-slate-50 text-slate-900 overflow-x-hidden selection:bg-blue-600 selection:text-white" robots="noindex, nofollow">
+<BaseLayout title="Atualização Oficial v3.3.0 | Nota Fácil Downloader" description="O robô está sendo preparado para você." bodyClass="bg-slate-50 text-slate-900 overflow-x-hidden selection:bg-blue-600 selection:text-white" robots="noindex, nofollow">
 
     <!-- Fundo Suave -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -11,166 +11,158 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
 
     <!-- Conteúdo Principal -->
-    <section class="relative z-10 pt-24 pb-20 min-h-[80vh] flex flex-col justify-center">
-        <div class="container mx-auto px-6 max-w-5xl">
+    <section class="relative z-10 pt-32 pb-32 min-h-screen flex flex-col justify-center">
+        <div class="container mx-auto px-6 max-w-6xl">
             
-            <!-- Hero de Nova Versão -->
-            <div class="text-center mb-20" data-aos="fade-down">
-                <div class="inline-flex items-center justify-center w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl mb-8 border border-blue-100 shadow-sm relative">
-                    <i data-lucide="refresh-cw" class="w-10 h-10 animate-spin-slow"></i>
-                    <div class="absolute inset-0 bg-blue-400/20 rounded-3xl blur-xl animate-pulse -z-10"></div>
-                </div>
-                <h1 id="boas-vindas-titulo" class="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight mb-6">
-                    Sua atualização está a caminho!
+            <!-- Hero de Atualização -->
+            <div class="text-center mb-24" data-aos="fade-down">
+                <h1 class="text-5xl sm:text-7xl font-black text-slate-900 tracking-normal mb-8 uppercase leading-tight">
+                    O Nota Fácil agora é um <br class="hidden sm:block"/><span class="text-blue-600">App Oficial Microsoft.</span>
                 </h1>
-                
-                <div class="max-w-2xl mx-auto">
-                    <div id="download-progress-container" class="bg-white border border-slate-200 p-6 rounded-3xl shadow-sm mb-6 relative overflow-hidden">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-sm font-bold text-slate-500 uppercase tracking-widest">Iniciando Download da Nova Versão</span>
-                            <span id="countdown" class="text-blue-600 font-black text-xl">3s</span>
-                        </div>
-                        <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
-                            <div id="progress-bar" class="h-full bg-blue-600 w-0 transition-all duration-1000 ease-linear"></div>
-                        </div>
-                    </div>
-                    <p id="boas-vindas-sub" class="text-lg text-slate-600 font-medium leading-relaxed mb-8">
-                        Estamos baixando os novos mapeamentos e melhorias para o seu sistema.
-                    </p>
+                <p class="text-xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
+                    Você acaba de ganhar acesso à versão mais rápida e segura da nossa história. Escolha como deseja atualizar o seu escritório.
+                </p>
+            </div>
+
+            <!-- Escolha de Caminho -->
+            <div class="grid lg:grid-cols-5 gap-8 items-stretch mb-32">
+                <!-- Card Microsoft Store (Destaque) -->
+                <div class="lg:col-span-3 bg-slate-900 border border-slate-800 p-10 sm:p-16 rounded-[3.5rem] shadow-2xl relative overflow-hidden group" data-aos="fade-right">
+                    <div class="absolute top-0 right-0 w-80 h-80 bg-blue-600/20 rounded-full blur-[100px] -mr-40 -mt-40 transition-transform group-hover:scale-110"></div>
                     
-                    <!-- Fallback manual (Hidden by default) -->
-                    <div class="hidden" id="manual-download-box">
-                        <a href="#" id="btn-manual-download" class="inline-flex items-center gap-3 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-xl active:scale-95 text-base group">
-                            <i data-lucide="download" class="w-5 h-5 group-hover:block hidden animate-bounce"></i>
-                            CLIQUE PARA BAIXAR MANUALMENTE
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center gap-3 px-5 py-2 bg-blue-500/20 text-blue-400 rounded-full text-xs font-black uppercase tracking-widest mb-10 border border-blue-500/30">
+                            <i data-lucide="award" class="w-4 h-4 text-blue-400"></i> Certificação Oficial Microsoft
+                        </div>
+                        <h2 class="text-4xl sm:text-5xl font-black text-white mb-8 uppercase tracking-normal">Performance <br/>50x Superior</h2>
+                        <p class="text-slate-400 text-lg mb-12 leading-relaxed max-w-md">
+                            A nova engine de <strong>Geração Local de PDF</strong> elimina a espera pelos servidores do governo. Atualize pela Store para ter segurança verificada e updates silenciosos.
+                        </p>
+                        
+                        <a href="ms-windows-store://pdp/?productid=9N4GBNDFL550" class="inline-flex items-center gap-4 bg-white text-slate-900 px-12 py-6 rounded-2xl font-black transition-all shadow-xl hover:scale-105 active:scale-95 text-xl group">
+                            <i data-lucide="shopping-bag" class="w-7 h-7 text-blue-600"></i>
+                            OBTER PELA LOJA WINDOWS
                         </a>
+                    </div>
+                </div>
+
+                <!-- Card Download EXE -->
+                <div class="lg:col-span-2 bg-white border border-slate-200 p-10 sm:p-12 rounded-[3.5rem] shadow-sm flex flex-col justify-between" data-aos="fade-left">
+                    <div>
+                        <div class="w-16 h-16 bg-slate-50 text-slate-400 rounded-2xl flex items-center justify-center mb-10 border border-slate-100">
+                            <i data-lucide="download-cloud" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-slate-900 mb-6 uppercase tracking-normal">Instalador EXE</h3>
+                        <p class="text-slate-500 text-base leading-relaxed mb-10">
+                            Se o seu ambiente de TI restringe a Microsoft Store, use o executável clássico para manter seu sistema em dia.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <a href="https://notafacildownloader.contabilcert.com.br/instalar-nota-facil" class="w-full bg-slate-900 text-white py-5 rounded-2xl font-black text-center block transition-all hover:bg-slate-800 shadow-lg">
+                            BAIXAR ARQUIVO .EXE
+                        </a>
+                        <!-- Ajuda EXE -->
+                        <div class="bg-blue-50/50 p-4 rounded-2xl border border-blue-100">
+                            <p class="text-[10px] text-blue-800 font-bold leading-tight flex gap-2">
+                                <i data-lucide="info" class="w-4 h-4 shrink-0"></i>
+                                Caso o navegador ou o Windows exibam avisos de segurança, clique em "Manter" e "Executar assim mesmo".
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Guia de Atualização (Vertical - 1 Card por Linha) -->
-            <div class="max-w-4xl mx-auto space-y-8 mb-20" data-aos="fade-up">
+            <!-- Novidades da Versão v3.3.0 -->
+            <div class="mb-32">
+                <h2 class="text-3xl font-black text-slate-900 text-center mb-16 uppercase tracking-normal" data-aos="fade-up">O que há de novo na v3.3.0</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="p-8 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition-all">
+                        <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4"><i data-lucide="zap" class="w-5 h-5"></i></div>
+                        <h4 class="font-black text-slate-900 mb-2 text-sm uppercase">Performance 50x</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">PDFs gerados localmente em milissegundos, sem depender do governo.</p>
+                    </div>
+                    <div class="p-8 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition-all">
+                        <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-4"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+                        <h4 class="font-black text-slate-900 mb-2 text-sm uppercase">Blindagem 2026</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Proteção total contra o desligamento da geração de PDFs do portal nacional.</p>
+                    </div>
+                    <div class="p-8 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition-all">
+                        <div class="w-10 h-10 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-4"><i data-lucide="layers" class="w-5 h-5"></i></div>
+                        <h4 class="font-black text-slate-900 mb-2 text-sm uppercase">Tripla Camada</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Novo motor de captura de XMLs mais resiliente e inteligente.</p>
+                    </div>
+                    <div class="p-8 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition-all">
+                        <div class="w-10 h-10 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center mb-4"><i data-lucide="sparkles" class="w-5 h-5"></i></div>
+                        <h4 class="font-black text-slate-900 mb-2 text-sm uppercase">Auto-Faxina</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Limpeza automática de arquivos temporários para otimizar o disco.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guia de Migração -->
+            <div class="space-y-10 mb-32">
+                <h2 class="text-3xl font-black text-slate-900 text-center mb-16 uppercase tracking-normal" data-aos="fade-up">Passo a passo para a nova versão</h2>
                 
-                <h2 class="text-2xl font-black text-slate-900 mb-10 flex items-center justify-center gap-4">
-                    <span class="w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center text-lg shadow-lg italic">
-                        <i data-lucide="zap" class="w-5 h-5"></i>
-                    </span>
-                    Como aplicar a atualização
-                </h2>
-
-                <!-- Passo 1: Aguarde o Download -->
-                <div class="bg-white border border-slate-200 rounded-[2.5rem] p-8 sm:p-10 shadow-sm hover:shadow-md transition-shadow group relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50/50 rounded-full blur-3xl -mr-16 -mt-16"></div>
-                    <div class="flex flex-col sm:flex-row gap-8 items-start relative z-10">
-                        <div class="flex-shrink-0 w-16 h-16 bg-slate-50 border border-slate-100 rounded-3xl flex items-center justify-center text-slate-400 font-black text-2xl transition-all group-hover:bg-blue-600 group-hover:text-white group-hover:scale-110 shadow-lg">1</div>
-                        <div class="flex-grow">
-                            <h3 class="text-2xl font-black text-slate-900 mb-4">Feche o programa aberto</h3>
-                            <p class="text-slate-600 text-base leading-relaxed mb-6">
-                                Antes de instalar a nova versão, certifique-se de que o Nota Fácil Downloader atual esteja <strong>totalmente fechado</strong> no seu computador.
-                            </p>
-                            <div class="bg-orange-50/50 border border-orange-100 p-4 rounded-2xl max-w-2xl flex gap-4 items-start">
-                                <i data-lucide="alert-triangle" class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5"></i>
-                                <div>
-                                    <h4 class="text-sm font-bold text-orange-900 mb-1">Aviso do navegador</h4>
-                                    <p class="text-sm text-orange-800 leading-relaxed">
-                                        Como em qualquer download de executável, se o navegador pausar o arquivo por segurança, clique na barra de downloads e escolha <strong>"Manter"</strong>.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Passo 1 -->
+                    <div class="bg-white p-10 rounded-[3rem] border border-slate-200 relative group transition-all hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+                        <span class="absolute -top-6 -left-6 w-16 h-16 bg-slate-900 text-white rounded-2xl flex items-center justify-center text-2xl font-black italic shadow-2xl">01</span>
+                        <h4 class="text-xl font-black text-slate-900 mb-4 mt-4 uppercase">Desinstale a Antiga</h4>
+                        <p class="text-slate-500 leading-relaxed">Remova a versão anterior pelo Painel de Controle para evitar conflitos. Seus dados e configurações estão seguros.</p>
+                    </div>
+                    <!-- Passo 2 -->
+                    <div class="bg-white p-10 rounded-[3rem] border border-slate-200 relative group transition-all hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+                        <span class="absolute -top-6 -left-6 w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl font-black italic shadow-2xl">02</span>
+                        <h4 class="text-xl font-black text-slate-900 mb-4 mt-4 uppercase">Instale a v3.3.0</h4>
+                        <p class="text-slate-500 leading-relaxed">Obtenha pela Loja Oficial (Recomendado) ou execute o instalador manual para registrar o novo motor.</p>
+                    </div>
+                    <!-- Passo 3 -->
+                    <div class="bg-white p-10 rounded-[3rem] border border-slate-200 relative group transition-all hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
+                        <span class="absolute -top-6 -left-6 w-16 h-16 bg-emerald-500 text-white rounded-2xl flex items-center justify-center text-2xl font-black italic shadow-2xl">03</span>
+                        <h4 class="text-xl font-black text-slate-900 mb-4 mt-4 uppercase">Voe com o Robô</h4>
+                        <p class="text-slate-500 leading-relaxed">Informe seu e-mail de licença e sinta a diferença instantânea de velocidade no seu escritório.</p>
                     </div>
                 </div>
+            </div>
 
-                <!-- Passo 2: Instale a Atualização -->
-                <div class="bg-white border border-slate-200 rounded-[2.5rem] p-8 sm:p-10 shadow-sm hover:shadow-md transition-shadow group relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50/50 rounded-full blur-3xl -mr-16 -mt-16"></div>
-                    <div class="flex flex-col sm:flex-row gap-8 items-start relative z-10">
-                        <div class="flex-shrink-0 w-16 h-16 bg-slate-50 border border-slate-100 rounded-3xl flex items-center justify-center text-slate-400 font-black text-2xl transition-all group-hover:bg-blue-600 group-hover:text-white group-hover:scale-110 shadow-lg">2</div>
-                        <div class="flex-grow">
-                            <h3 class="text-2xl font-black text-slate-900 mb-4">Instale a Nova Versão</h3>
-                            <p class="text-slate-600 text-base leading-relaxed mb-6">
-                                Localize o novo instalador <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-lg border border-blue-100 text-xs font-mono font-bold tracking-tight">Nota_Facil_Downloader_Setup.exe</span> e dê um clique duplo. Siga os passos na tela e ele substituirá a versão antiga automaticamente mantendo seus dados salvos.
-                            </p>
-                            <div class="bg-blue-50/50 border border-blue-100 p-4 rounded-2xl max-w-2xl flex gap-4 items-start">
-                                <i data-lucide="info" class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5"></i>
-                                <div>
-                                    <h4 class="text-sm font-bold text-blue-900 mb-1">Observação do Windows (SmartScreen)</h4>
-                                    <p class="text-sm text-blue-800 leading-relaxed">
-                                        Caso o Windows exiba a tela azul de proteção para esta nova versão, clique em <strong>"Mais informações"</strong> e depois no botão <strong>"Executar assim mesmo"</strong>.
-                                    </p>
-                                </div>
+            <!-- Painel de Segurança (Unificado) -->
+            <div class="bg-slate-900 rounded-[4rem] p-12 sm:p-20 text-white shadow-2xl relative overflow-hidden" data-aos="zoom-in">
+                <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] -mr-96 -mt-96"></div>
+                
+                <div class="flex flex-col lg:flex-row gap-20 items-center relative z-10">
+                    <div class="lg:w-3/5">
+                        <div class="flex items-center gap-6 mb-12">
+                            <div class="w-20 h-20 bg-emerald-500/20 rounded-3xl flex items-center justify-center border border-emerald-500/30 shadow-lg">
+                                <i data-lucide="shield-check" class="w-10 h-10 text-emerald-400"></i>
+                            </div>
+                            <h2 class="text-4xl sm:text-5xl font-black text-white tracking-normal uppercase leading-tight">Software Verificado <br/>pela Microsoft Store</h2>
+                        </div>
+                        <p class="text-slate-400 text-xl leading-relaxed mb-10">
+                            A aprovação oficial na loja do Windows confirma o Nota Fácil como um software seguro, auditado e livre de malwares, garantindo a conformidade total com a LGPD e o Sigilo Fiscal.
+                        </p>
+                        <div class="flex flex-wrap gap-8 opacity-60">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="lock" class="w-5 h-5 text-slate-500"></i>
+                                <span class="text-xs font-black uppercase tracking-[0.2em]">Sigilo Fiscal 100%</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="cpu" class="w-5 h-5 text-slate-500"></i>
+                                <span class="text-xs font-black uppercase tracking-[0.2em]">Processamento Local</span>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Passo 3: Volte a trabalhar -->
-                <div class="bg-white border border-slate-200 rounded-[2.5rem] p-8 sm:p-10 shadow-sm hover:shadow-md transition-shadow group relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50/50 rounded-full blur-3xl -mr-16 -mt-16"></div>
-                    <div class="flex flex-col sm:flex-row gap-8 items-start relative z-10">
-                        <div class="flex-shrink-0 w-16 h-16 bg-slate-50 border border-slate-100 rounded-3xl flex items-center justify-center text-slate-400 font-black text-2xl transition-all group-hover:bg-emerald-500 group-hover:text-white group-hover:scale-110 shadow-lg">3</div>
-                        <div class="flex-grow">
-                            <h3 class="text-2xl font-black text-slate-900 mb-4">Abra e continue trabalhando</h3>
-                            <p class="text-slate-600 text-base leading-relaxed">
-                                Pronto! Basta abrir o Nota Fácil Downloader novamente. Seus certificados e pastas já configurados continuarão exatamente de onde você parou, agora com os novos mapeamentos aplicados.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Precisa de Ajuda? (Suporte WhatsApp) -->
-                <a href="https://wa.me/5531998913498" target="_blank" class="block group mb-12">
-                    <div class="bg-white border-2 border-emerald-100 rounded-[3rem] p-10 shadow-lg flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 group-hover:border-emerald-500 group-hover:shadow-2xl group-hover:shadow-emerald-900/10 group-hover:-translate-y-2 transition-all relative overflow-hidden">
-                        <div class="absolute inset-0 bg-emerald-50/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <div class="w-20 h-20 bg-emerald-500 rounded-[2rem] flex items-center justify-center text-white transition-transform group-hover:scale-110 shadow-lg border border-emerald-400 flex-shrink-0 relative z-10">
-                            <i data-lucide="message-circle" class="w-10 h-10"></i>
-                        </div>
-                        <div class="relative z-10 text-center sm:text-left">
-                            <h4 class="text-2xl font-black text-slate-900 group-hover:text-emerald-700 tracking-tight mb-2">Dificuldades para atualizar?</h4>
-                            <p class="text-lg text-slate-600 font-medium">Aperte aqui e fale agora mesmo com nosso time de sucesso do cliente no WhatsApp.</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Painel de Segurança (Microsoft) -->
-                <div class="bg-slate-900 rounded-[3rem] p-10 sm:p-14 text-white shadow-2xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px] -mr-64 -mt-64"></div>
-                    
-                    <div class="flex flex-col md:flex-row gap-12 items-center relative z-10">
-                        <div class="md:w-1/2">
-                            <div class="flex items-center gap-4 mb-8">
-                                <div class="w-14 h-14 bg-blue-600/20 rounded-2xl flex items-center justify-center border border-blue-500/30">
-                                    <i data-lucide="shield-check" class="w-8 h-8 text-blue-400"></i>
+                    <div class="lg:w-2/5 w-full">
+                        <a href="https://wa.me/5531998913498" target="_blank" class="block group">
+                            <div class="bg-white/5 border border-white/10 p-10 rounded-[3rem] text-center hover:bg-white/10 transition-all hover:scale-105">
+                                <div class="w-16 h-16 bg-emerald-500 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                                    <i data-lucide="message-circle" class="w-8 h-8"></i>
                                 </div>
-                                <h2 class="text-3xl font-black text-white italic tracking-tight">Privacidade Desktop</h2>
+                                <h4 class="text-2xl font-black text-white mb-4 uppercase tracking-normal">Dificuldades Técnicas?</h4>
+                                <p class="text-slate-400 font-medium mb-8">Fale agora com nosso suporte via WhatsApp para uma migração assistida.</p>
+                                <span class="text-emerald-400 font-black text-xs uppercase tracking-widest group-hover:underline">Chamar no WhatsApp &rarr;</span>
                             </div>
-                            <p class="text-slate-400 text-lg leading-relaxed mb-8">
-                                O Nota Fácil é um software <strong>Desktop Local</strong>. Todo o processamento e armazenamento das suas notas e certificados digitais acontece estritamente no seu computador.
-                            </p>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-10 italic">
-                                Devido a esse modo de funcionamento, o Windows pode exibir um aviso de segurança em atualizações recém-lançadas. Mas pode ficar tranquilo: nós sempre submetemos as novas versões para análise e liberação oficial da Microsoft.
-                            </p>
-                            <div class="pt-8 border-t border-white/5 flex items-center gap-6 opacity-40">
-                                <i data-lucide="lock" class="w-10 h-10 text-slate-500"></i>
-                                <p class="text-[11px] text-slate-500 font-black leading-tight uppercase tracking-widest">
-                                    Conformidade LGPD e Sigilo Fiscal
-                                </p>
-                            </div>
-                        </div>
-                        <div class="md:w-1/2">
-                            <div class="bg-white/5 border border-white/10 p-6 rounded-[2.5rem]">
-                                <h4 class="text-xs font-black uppercase tracking-widest text-blue-400 mb-6 flex justify-between items-center">
-                                    Submissão Microsoft 
-                                    <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 text-[10px] rounded-full border border-yellow-500/30">EM ANÁLISE</span>
-                                </h4>
-                                <div class="relative group cursor-zoom-in overflow-hidden rounded-2xl" onclick="window.open(this.querySelector('img').src)">
-                                    <img src="/assets/ms-submission.png" alt="Solicitação Microsoft" class="w-full shadow-2xl brightness-90 group-hover:brightness-100 group-hover:scale-105 transition-all duration-500" />
-                                    <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <i data-lucide="maximize" class="w-10 h-10 text-white"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -180,48 +172,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <!-- DOBRA FINAL -->
     <section class="py-20 border-t border-slate-100 bg-white">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-black text-slate-900 mb-6">Tudo pronto para as novas funcionalidades?</h2>
-            <p class="text-lg text-slate-600 font-medium mb-10 max-w-2xl mx-auto">Se precisar de qualquer ajuda durante a reinstalação, nosso time técnico está à disposição.</p>
-            <a href="https://wa.me/5531998913498" target="_blank" class="inline-block bg-blue-600 text-white px-10 py-5 rounded-2xl font-black shadow-xl shadow-blue-200 transition transform hover:-translate-y-1 active:scale-95 text-xl tracking-tight">FALAR COM SUPORTE TÉCNICO</a>
+            <h2 class="text-3xl font-black text-slate-900 mb-6 uppercase">Tudo pronto para transformar sua rotina?</h2>
+            <p class="text-lg text-slate-600 font-medium mb-10 max-w-2xl mx-auto tracking-normal">Se precisar de qualquer ajuda durante a configuração inicial, nosso time técnico está à disposição.</p>
+            <a href="https://wa.me/5531998913498" target="_blank" class="inline-block bg-blue-600 text-white px-10 py-5 rounded-2xl font-black shadow-xl shadow-blue-200 transition transform hover:-translate-y-1 active:scale-95 text-xl tracking-normal uppercase">FALAR COM SUPORTE TÉCNICO</a>
         </div>
     </section>
 
     <script is:inline>
         document.addEventListener('DOMContentLoaded', function () {
-            // Em atualização, não passamos sessao dinamicamente da mesma forma,
-            // podemos assumir um fallback ou ler de uma querystring ?url= se for injetado via email
-            
-            const urlParams = new URLSearchParams(window.location.search);
-            const passedUrl = urlParams.get('url_download');
-            
-            const fallbackUrl = 'https://notafacildownloader.contabilcert.com.br/instalar-nota-facil';
-            let downloadUrl = passedUrl || fallbackUrl;
-            
-            const finalLink = downloadUrl.startsWith('http') ? downloadUrl : 'https://' + downloadUrl;
-            
-            const btnManual = document.getElementById('btn-manual-download');
-            const manualBox = document.getElementById('manual-download-box');
-            if(btnManual) btnManual.href = finalLink;
-
-            let timeLeft = 3;
-            const timer = setInterval(() => {
-                timeLeft--;
-                const countDisplay = document.getElementById('countdown');
-                const progressBar = document.getElementById('progress-bar');
-                
-                if (countDisplay) countDisplay.innerText = timeLeft + 's';
-                if (progressBar) {
-                    const progress = ((3 - timeLeft) / 3) * 100;
-                    progressBar.style.width = `${progress}%`;
-                }
-
-                if (timeLeft <= 0) {
-                    clearInterval(timer);
-                    window.location.href = finalLink;
-                    manualBox.classList.remove('hidden');
-                    document.getElementById('download-progress-container').classList.add('opacity-50');
-                }
-            }, 1000);
+            if (window.lucide) window.lucide.createIcons();
         });
     </script>
 </BaseLayout>

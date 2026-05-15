@@ -13,7 +13,7 @@ const latestPosts = (await getCollection('blog'))
 
 
     <!-- DOBRA 1: HERO SECTION -->
-    <section id="hero" class="hero-gradient pt-24 pb-16 lg:pt-48 relative overflow-hidden">
+    <section id="hero" class="hero-gradient pt-24 pb-32 lg:pt-48 relative overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none overflow-hidden">
             <div class="absolute -top-32 -right-32 w-[500px] h-[500px] bg-blue-600 rounded-full blur-[150px] will-change-transform"></div>
             <div class="absolute -bottom-32 -left-32 w-[400px] h-[400px] bg-purple-600 rounded-full blur-[150px] will-change-transform">
@@ -136,36 +136,83 @@ const latestPosts = (await getCollection('blog'))
                 
                 <div class="absolute inset-0 pointer-events-none ring-1 ring-inset ring-white/10 rounded-xl sm:rounded-3xl"></div>
             </div>
-            <!-- Mini-objeções técnicas (FAQ no topo) -->
+            <!-- Mini-objeções técnicas (Segurança & LGPD) -->
             <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-5xl mx-auto" data-aos="fade-up">
                 <div class="bg-white/10 backdrop-blur-sm border border-white/20 p-5 rounded-2xl flex items-center gap-4 group hover:bg-white/20 transition-all">
                     <div class="w-10 h-10 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center shrink-0">
                         <i data-lucide="shield-check" class="w-5 h-5"></i>
                     </div>
                     <div>
-                        <p class="text-white font-bold text-xs">Certificado A1 seguro?</p>
-                        <p class="text-slate-400 text-[10px]">100% local, nunca vai para a nuvem.</p>
+                        <p class="text-white font-bold text-xs">Dados 100% Locais</p>
+                        <p class="text-slate-400 text-[10px]">Certificados e XMLs nunca saem do seu computador.</p>
                     </div>
                 </div>
                 <div class="bg-white/10 backdrop-blur-sm border border-white/20 p-5 rounded-2xl flex items-center gap-4 group hover:bg-white/20 transition-all">
                     <div class="w-10 h-10 bg-blue-500/20 text-blue-400 rounded-full flex items-center justify-center shrink-0">
-                        <i data-lucide="zap" class="w-5 h-5"></i>
+                        <i data-lucide="lock" class="w-5 h-5"></i>
                     </div>
                     <div>
-                        <p class="text-white font-bold text-xs">Resolve Captcha?</p>
-                        <p class="text-slate-400 text-[10px]">Sim, resolve 100% automaticamente.</p>
+                        <p class="text-white font-bold text-xs">Conformidade LGPD</p>
+                        <p class="text-slate-400 text-[10px]">Segurança total conforme nossa <a href="/politica-de-privacidade" class="underline decoration-blue-500/30 hover:text-blue-300">Política de Privacidade</a>.</p>
                     </div>
                 </div>
                 <div class="bg-white/10 backdrop-blur-sm border border-white/20 p-5 rounded-2xl flex items-center gap-4 group hover:bg-white/20 transition-all">
                     <div class="w-10 h-10 bg-purple-500/20 text-purple-400 rounded-full flex items-center justify-center shrink-0">
-                        <i data-lucide="settings" class="w-5 h-5"></i>
+                        <i data-lucide="activity" class="w-5 h-5"></i>
                     </div>
                     <div>
-                        <p class="text-white font-bold text-xs">Integra ERP?</p>
-                        <p class="text-slate-400 text-[10px]">Caminhos personalizáveis por CNPJ.</p>
+                        <p class="text-white font-bold text-xs">Telemetria Ética</p>
+                        <p class="text-slate-400 text-[10px]">Apenas performance e créditos. Zero acesso ao sigilo fiscal.</p>
                     </div>
                 </div>
             </div>            
+        </div>
+    </section>
+
+    <!-- SEÇÃO NOVIDADES V3.3.0 -->
+    <section id="novidades" class="py-24 bg-white relative z-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+                    
+                    <!-- Card Independência Fiscal -->
+                    <a href="/independencia-fiscal-2026" class="group block relative overflow-hidden bg-slate-900 rounded-[2.5rem] p-8 sm:p-10 shadow-2xl transition-all hover:-translate-y-2 hover:shadow-orange-500/10">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-[80px] -mr-32 -mt-32 transition-transform group-hover:scale-150"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="px-3 py-1 bg-orange-500 text-white text-[10px] font-black rounded-full uppercase tracking-widest">Destaque v3.3.0</span>
+                                <span class="text-orange-400 font-black text-xs uppercase tracking-widest flex items-center gap-1">
+                                    <i data-lucide="shield-check" class="w-4 h-4"></i> Blindagem 2026
+                                </span>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-black text-white mb-4 leading-tight">Independência Fiscal: Geração de PDF Local</h3>
+                            <p class="text-slate-400 font-medium mb-8">O governo vai desligar a API de PDFs em Julho. Saiba como o Nota Fácil garante seus documentos mesmo offline.</p>
+                            <span class="inline-flex items-center gap-2 text-orange-400 font-black text-sm group-hover:gap-4 transition-all">
+                                VER TECNOLOGIA <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- Card Microsoft Store -->
+                    <a href="/microsoft-store" class="group block relative overflow-hidden bg-white border border-slate-200 rounded-[2.5rem] p-8 sm:p-10 shadow-xl transition-all hover:-translate-y-2 hover:shadow-blue-500/10 hover:border-blue-200">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-[80px] -mr-32 -mt-32 transition-transform group-hover:scale-150"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="px-3 py-1 bg-blue-600 text-white text-[10px] font-black rounded-full uppercase tracking-widest">Oficial Windows</span>
+                                <span class="text-blue-600 font-black text-xs uppercase tracking-widest flex items-center gap-1">
+                                    <i data-lucide="verified" class="w-4 h-4"></i> App Verificado
+                                </span>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-black text-slate-900 mb-4 leading-tight">Agora na Microsoft Store</h3>
+                            <p class="text-slate-500 font-medium mb-8">Instalação 100% segura, silenciosa e com atualizações automáticas direto pelo Windows.</p>
+                            <span class="inline-flex items-center gap-2 text-blue-600 font-black text-sm group-hover:gap-4 transition-all">
+                                ACESSAR A LOJA <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
         </div>
     </section>
 
@@ -499,6 +546,7 @@ const latestPosts = (await getCollection('blog'))
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+                
                 <!-- FAQ Item 1: Limite de CNPJs -->
                 <div class="faq-item group" data-aos="fade-up">
                     <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
@@ -512,22 +560,7 @@ const latestPosts = (await getCollection('blog'))
                             <p class="text-slate-600 leading-relaxed font-medium">De forma alguma. <strong class="text-slate-800">Não há limitações de CNPJs em nenhum de nossos planos.</strong> A única métrica controlada pelo seu plano é o volume mensal absoluto de notas (XMLs) processadas globalmente no escritório.</p>
                         </div>
                     </button>
-                </div>
-
-                <!-- FAQ Item 2: Segurança do A1 -->
-                <div class="faq-item group" data-aos="fade-up" data-aos-delay="50">
-                    <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
-                        <div class="flex items-start justify-between gap-4 w-full">
-                            <h3 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Meus certificados digitais A1 vão para alguma nuvem?</h3>
-                            <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
-                            </div>
-                        </div>
-                        <div class="faq-answer">
-                            <p class="text-slate-600 leading-relaxed font-medium">Não. A segurança fiscal é inegociável. Ao contrário de plataformas web puras, o Nota Fácil é um software desktop. A conexão é feita do <strong class="text-slate-800">seu computador direto para o portal do governo</strong>. Seus certificados não saem da raiz da sua máquina.</p>
-                        </div>
-                    </button>
-                </div>
+                </div>                     
 
                 <!-- FAQ Item 3: ERPs e Personalizacao de Caminhos -->
                 <div class="faq-item group" data-aos="fade-up" data-aos-delay="100">
@@ -574,17 +607,32 @@ const latestPosts = (await getCollection('blog'))
                     </button>
                 </div>
 
-                <!-- FAQ Item 6: TI e Infraestrutura -->
-                <div class="faq-item group" data-aos="fade-up" data-aos-delay="250">
+         <!-- FAQ Item 2: Segurança do A1 -->
+                <div class="faq-item group" data-aos="fade-up" data-aos-delay="50">
                     <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
                         <div class="flex items-start justify-between gap-4 w-full">
-                            <h3 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Preciso de um TI para configurar proxy ou servidores complexos?</h3>
+                            <h3 class="text-lg lg:text-xl font-black text-slate-800 flex-1">Meus certificados digitais A1 vão para alguma nuvem?</h3>
                             <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                             </div>
                         </div>
                         <div class="faq-answer">
-                            <p class="text-slate-600 leading-relaxed font-medium">Não! O Nota Fácil segue o design "plug-and-play". Baixou, instalou (Next, Next, Finish), está pronto para rodar. Só é necessário um sistema operacional Windows atualizado (10, 11 ou Server) com conexão padrão à internet.</p>
+                            <p class="text-slate-600 leading-relaxed font-medium">Não. A segurança fiscal é inegociável. Ao contrário de plataformas web puras, o Nota Fácil é um software desktop. A conexão é feita do <strong class="text-slate-800">seu computador direto para o portal do governo</strong>. Seus certificados não saem da raiz da sua máquina.</p>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- FAQ Item: LGPD e Telemetria -->
+                <div class="faq-item group" data-aos="fade-up">
+                    <button onclick="toggleFaq(this)" class="faq-card h-full w-full text-left p-6 lg:p-8 rounded-[2rem] border border-slate-200 bg-white hover:border-blue-200 transition-all focus:outline-none flex flex-col">
+                        <div class="flex items-start justify-between gap-4 w-full">
+                            <h3 class="text-lg lg:text-xl font-black text-slate-800 flex-1">O sistema coleta meus dados fiscais? (LGPD e Telemetria)</h3>
+                            <div class="faq-icon shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-slate-600 leading-relaxed font-medium">Respeitamos o sigilo fiscal e a LGPD. Nossa telemetria captura exclusivamente <strong class="text-slate-800">dados de performance do sistema e consumo de créditos</strong>. Jamais temos acesso ao conteúdo das suas notas, certificados ou dados dos seus clientes. Todo o processamento fiscal é <strong class="text-slate-800">100% local</strong>, conforme detalhado em nossa <a href="/politica-de-privacidade" class="text-blue-600 underline">Política de Privacidade</a>.</p>
                         </div>
                     </button>
                 </div>

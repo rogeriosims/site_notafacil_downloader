@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* Tipografia de sistema para máxima nitidez */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #334155;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f5;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Card clean, borda sutil */
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 48px;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Logo minimalista */
+        .logo {
+            font-weight: 800;
+            font-size: 14px;
+            color: #0f172a;
+            margin-bottom: 40px;
+            text-align: center;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .h1 {
+            color: #0f172a;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #475569;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Box de destaque elegante */
+        .highlight-box {
+            border-left: 3px solid #2563eb;
+            padding: 16px 20px;
+            margin-bottom: 40px;
+            background-color: #eff6ff;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: #1e3a8a;
+            font-size: 15px;
+        }
+
+        /* Lista de features limpa */
+        .features {
+            margin-bottom: 40px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .features li {
+            margin-bottom: 24px;
+            font-size: 14px;
+            color: #475569;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .features li strong {
+            color: #0f172a;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 15px;
+        }
+
+        .feature-bullet {
+            font-size: 18px;
+            margin-right: 16px;
+            line-height: 1;
+        }
+
+        /* Divisória sutil */
+        hr {
+            border: none;
+            border-top: 1px solid #f1f5f9;
+            margin: 40px 0;
+        }
+
+        /* Botão escuro, estilo SaaS */
+        .button {
+            display: block;
+            background-color: #0f172a;
+            color: #ffffff !important;
+            padding: 18px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            margin: 30px 0;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .button:hover {
+            background-color: #1e293b;
+        }
+
+        .security-note {
+            font-size: 14px;
+            color: #0f172a;
+            margin-top: 0;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: #64748b;
+            text-decoration: none;
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">Nota Fácil</div>
+        <div class="card">
+            <div class="header">
+                <h1 class="h1">Uma nova era para o seu escritório: Certificação Microsoft e Independência Total.</h1>
+                <p class="subtitle">Temos um motivo gigante para comemorar com você, {{ $('LoopCadastrados1').item.json.nome.split(' ')[0] }}. O Nota Fácil acaba de ser aprovado como <strong>App Oficial na Microsoft Store</strong>.</p>
+            </div>
+
+            <div class="highlight-box" style="border-left-color: #10b981; background-color: #f0fdf4;">
+                <p style="color: #064e3b;"><strong>O futuro chegou antes:</strong> Enquanto o mercado teme o desligamento da API do governo em Julho, nós já resolvemos o problema. A nova <strong>Geração Local de PDF</strong> tornou o sistema até <strong>50x mais rápido</strong> e 100% independente.</p>
+            </div>
+
+            <h2 style="font-size: 14px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px;">Por que a v3.3.0 muda o seu jogo:</h2>
+
+            <ul class="features">
+                <li>
+                    <span class="feature-bullet">🏆</span>
+                    <div>
+                        <strong>Selo de Confiança Microsoft</strong>
+                        Agora somos um software verificado e distribuído oficialmente pela loja do Windows. Isso significa segurança máxima, instalação silenciosa e o fim dos avisos de "editor desconhecido".
+                    </div>
+                </li>
+                <li>
+                    <span class="feature-bullet">⚡</span>
+                    <div>
+                        <strong>Velocidade Incomparável (50x+)</strong>
+                        Ao eliminar a necessidade de esperar o servidor do governo gerar o PDF, o download se tornou instantâneo. O que levava minutos para processar, agora acontece em segundos.
+                    </div>
+                </li>
+                <li>
+                    <span class="feature-bullet">🛡️</span>
+                    <div>
+                        <strong>Blindagem Contra o Apagão de Julho</strong>
+                        Saia na frente. Enquanto seus concorrentes estarão lidando com erros de "PDF Indisponível", você já estará operando com a tecnologia de Geração Local do XML para o DANFSE.
+                    </div>
+                </li>
+                <li>
+                    <span class="feature-bullet">🚀</span>
+                    <div>
+                        <strong>Atualizações Automáticas</strong>
+                        Esqueça downloads manuais. A versão v3.3.0 se mantém sempre atualizada através da engine da Microsoft, garantindo que você nunca perca uma nova funcionalidade ou correção fiscal.
+                    </div>
+                </li>
+            </ul>
+
+            <hr>
+
+            <p class="security-note" style="color: #0f172a; font-size: 16px;">
+                Não use um "robô qualquer". Use a solução oficial aprovada pela Microsoft.
+            </p>
+
+            <a href="https://notafacildownloader.contabilcert.com.br/?utm_source=plunk&utm_medium=email&utm_campaign=release_330"
+                class="button" style="background-color: #2563eb;">GARANTIR MINHA INDEPENDÊNCIA FISCAL AGORA</a>
+
+            <p style="font-size: 14px; color: #475569; text-align: center; margin-top: 30px;">
+                Um grande abraço,<br>
+                <strong>A Equipe do Nota Fácil.</strong>
+            </p>
+        </div>
+        <div class="footer">
+            &copy; 2026 Nota Fácil &mdash; Infraestrutura de Automação Contábil<br><br>
+            <a href="https://notafacildownloader.contabilcert.com.br/">Acessar Painel de Controle</a>
+        </div>
+    </div>
+</body>
+
+</html>
