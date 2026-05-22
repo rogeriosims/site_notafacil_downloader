@@ -901,10 +901,41 @@ const latestPosts = (await getCollection('blog'))
                 });
 
                 if (response.status === 201 || response.ok) {
-                    const responseData = await response.json();
+                    const responseDataText = await response.text();
+                    let responseData;
+                    try {
+                        responseData = JSON.parse(responseDataText);
+                    } catch(e) {
+                        responseData = {};
+                    }
+
+                    // O webhook pode retornar um array de objetos
+                    let responseObj = responseData;
+                    if (Array.isArray(responseData) && responseData.length > 0) {
+                        responseObj = responseData[0];
+                    }
+
+                    // Verificar se o backend retornou um status de erro lógico (ex: CNPJ duplicado)
+                    if (responseObj && responseObj.status === 'error') {
+                        Swal.fire({
+                            title: 'Cadastro já realizado',
+                            text: responseObj.message || 'Este CNPJ ou e-mail já possuem uma licença ativa.',
+                            icon: 'info',
+                            confirmButtonText: 'Baixar Sistema Novamente',
+                            showCancelButton: true,
+                            cancelButtonText: 'Corrigir Dados',
+                            confirmButtonColor: '#3b82f6',
+                            cancelButtonColor: '#94a3b8'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = '/obrigado/';
+                            }
+                        });
+                        return;
+                    }
 
                     // Salvar os dados (nome, cnpj, razao, plano, url_download, etc) para usar na página de Boas-Vindas
-                    sessionStorage.setItem('notafacil_user_data', JSON.stringify(responseData));
+                    sessionStorage.setItem('notafacil_user_data', JSON.stringify(responseObj));
 
                     form.reset();
                     window.location.href = '/obrigado/';
