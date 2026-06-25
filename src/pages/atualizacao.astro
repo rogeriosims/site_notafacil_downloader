@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Atualização Oficial v3.3.0 | Nota Fácil Downloader" description="O robô está sendo preparado para você." bodyClass="bg-slate-50 text-slate-900 overflow-x-hidden selection:bg-blue-600 selection:text-white" robots="noindex, nofollow">
+<BaseLayout title="Atualização Oficial v3.3.1 | Nota Fácil Downloader" description="Atualize para a versão 3.3.1. Motor Ghost, sincronização por NSU e muito mais." bodyClass="bg-slate-50 text-slate-900 overflow-x-hidden selection:bg-blue-600 selection:text-white" robots="noindex, nofollow">
 
     <!-- Fundo Suave -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -12,169 +12,100 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <!-- Conteúdo Principal -->
     <section class="relative z-10 pt-32 pb-32 min-h-screen flex flex-col justify-center">
-        <div class="container mx-auto px-6 max-w-6xl">
+        <div class="container mx-auto px-6 max-w-4xl">
             
-            <!-- Hero de Atualização -->
-            <div class="text-center mb-24" data-aos="fade-down">
-                <h1 class="text-5xl sm:text-7xl font-black text-slate-900 tracking-normal mb-8 uppercase leading-tight">
-                    O Nota Fácil agora é um <br class="hidden sm:block"/><span class="text-blue-600">App Oficial Microsoft.</span>
+            <!-- Hero de Dor e Alívio -->
+            <div class="text-left mb-16" data-aos="fade-down">
+                <span class="inline-block bg-red-100 text-red-700 font-black px-6 py-2 rounded-full text-xs uppercase tracking-widest mb-6 border border-red-200 shadow-sm">
+                    Alerta Crítico: O Governo Mudou as Regras
+                </span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight mb-8 leading-tight">
+                    O Portal Nacional travou. <br/>Baixar notas manualmente <span class="text-red-600">agora é impossível.</span>
                 </h1>
-                <p class="text-xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
-                    Você acaba de ganhar acesso à versão mais rápida e segura da nossa história. Escolha como deseja atualizar o seu escritório.
-                </p>
+                <div class="space-y-6 text-lg sm:text-xl text-slate-600 font-medium leading-relaxed border-l-4 border-slate-300 pl-6">
+                    <p>
+                        Se você notou lentidão absurda e instabilidade nos últimos dias, saiba que não é apenas "o servidor ruim" do governo. A Receita Federal implementou um bloqueio de segurança agressivo: o <b>hCaptcha</b>.
+                    </p>
+                    <p>
+                        Eles agora exigem que você resolva um "quebra-cabeça" visual para baixar <b>CADA ÚNICO ARQUIVO</b>. O que já era doloroso virou uma tortura. Seu escritório não pode parar por causa de regras abusivas do governo.
+                    </p>
+                </div>
             </div>
 
-            <!-- Escolha de Caminho -->
-            <div class="grid lg:grid-cols-5 gap-8 items-stretch mb-32">
-                <!-- Card Microsoft Store (Destaque) -->
-                <div class="lg:col-span-3 bg-slate-900 border border-slate-800 p-10 sm:p-16 rounded-[3.5rem] shadow-2xl relative overflow-hidden group" data-aos="fade-right">
-                    <div class="absolute top-0 right-0 w-80 h-80 bg-blue-600/20 rounded-full blur-[100px] -mr-40 -mt-40 transition-transform group-hover:scale-110"></div>
-                    
-                    <div class="relative z-10">
-                        <div class="inline-flex items-center gap-3 px-5 py-2 bg-blue-500/20 text-blue-400 rounded-full text-xs font-black uppercase tracking-widest mb-10 border border-blue-500/30">
-                            <i data-lucide="award" class="w-4 h-4 text-blue-400"></i> Certificação Oficial Microsoft
-                        </div>
-                        <h2 class="text-4xl sm:text-5xl font-black text-white mb-8 uppercase tracking-normal">Performance <br/>50x Superior</h2>
-                        <p class="text-slate-400 text-lg mb-12 leading-relaxed max-w-md">
-                            A nova engine de <strong>Geração Local de PDF</strong> elimina a espera pelos servidores do governo. Atualize pela Store para ter segurança verificada e updates silenciosos.
-                        </p>
-                        
-                        <a href="ms-windows-store://pdp/?productid=9N4GBNDFL550" class="inline-flex items-center gap-4 bg-white text-slate-900 px-12 py-6 rounded-2xl font-black transition-all shadow-xl hover:scale-105 active:scale-95 text-xl group">
-                            <i data-lucide="shopping-bag" class="w-7 h-7 text-blue-600"></i>
-                            OBTER PELA LOJA WINDOWS
-                        </a>
+            <!-- Box de Alívio: v3.3.1 -->
+            <div class="bg-gradient-to-br from-emerald-50 to-emerald-100 border-2 border-emerald-400 p-10 sm:p-12 rounded-[3rem] mb-24 shadow-2xl relative overflow-hidden" data-aos="zoom-in">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-400/20 rounded-full blur-[80px] -mr-20 -mt-20"></div>
+                <div class="relative z-10">
+                    <div class="inline-flex items-center gap-2 bg-emerald-200 text-emerald-800 font-black px-4 py-1.5 rounded-full text-xs uppercase tracking-widest mb-6">
+                        <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+                        Atualização Emergencial Disponível
                     </div>
-                </div>
-
-                <!-- Card Download EXE -->
-                <div class="lg:col-span-2 bg-white border border-slate-200 p-10 sm:p-12 rounded-[3.5rem] shadow-sm flex flex-col justify-between" data-aos="fade-left">
-                    <div>
-                        <div class="w-16 h-16 bg-slate-50 text-slate-400 rounded-2xl flex items-center justify-center mb-10 border border-slate-100">
-                            <i data-lucide="download-cloud" class="w-8 h-8"></i>
-                        </div>
-                        <h3 class="text-2xl font-black text-slate-900 mb-6 uppercase tracking-normal">Instalador EXE</h3>
-                        <p class="text-slate-500 text-base leading-relaxed mb-10">
-                            Se o seu ambiente de TI restringe a Microsoft Store, use o executável clássico para manter seu sistema em dia.
-                        </p>
-                    </div>
-
-                    <div class="space-y-4">
-                        <a href="https://notafacildownloader.contabilcert.com.br/instalar-nota-facil" class="w-full bg-slate-900 text-white py-5 rounded-2xl font-black text-center block transition-all hover:bg-slate-800 shadow-lg">
-                            BAIXAR ARQUIVO .EXE
+                    <h2 class="text-3xl sm:text-4xl font-black text-emerald-950 mb-6 tracking-tight">✅ Nós quebramos a barreira: Instale a v3.3.1</h2>
+                    <p class="text-lg text-emerald-800 leading-relaxed mb-10 font-medium">
+                        Enquanto os sistemas concorrentes estão parados, a nossa engenharia virou noites para entregar a solução definitiva. O novo <b>Motor Ghost resolve os CAPTCHAs de forma 100% invisível</b> e a baixa via Certificado A1 continua operando com força total. Recupere o controle do seu fechamento hoje.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="ms-windows-store://pdp/?productid=9N4GBNDFL550" class="flex-1 inline-flex justify-center items-center gap-3 bg-emerald-700 text-white py-5 px-8 rounded-2xl font-black transition-all hover:bg-emerald-800 shadow-[0_10px_30px_rgba(4,120,87,0.3)] hover:shadow-[0_15px_40px_rgba(4,120,87,0.4)] hover:-translate-y-1 active:scale-95 text-lg uppercase tracking-wide group">
+                            <i data-lucide="shield-check" class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
+                            ATUALIZAR AGORA (VERSÃO SEGURA)
                         </a>
-                        <!-- Ajuda EXE -->
-                        <div class="bg-blue-50/50 p-4 rounded-2xl border border-blue-100">
-                            <p class="text-[10px] text-blue-800 font-bold leading-tight flex gap-2">
-                                <i data-lucide="info" class="w-4 h-4 shrink-0"></i>
-                                Caso o navegador ou o Windows exibam avisos de segurança, clique em "Manter" e "Executar assim mesmo".
-                            </p>
-                        </div>
+                        <a href="https://notafacildownloader.contabilcert.com.br/instalar-nota-facil" class="flex-1 inline-flex justify-center items-center gap-3 bg-white text-emerald-800 border-2 border-emerald-200 py-5 px-8 rounded-2xl font-black transition-all hover:bg-emerald-50 active:scale-95 text-lg uppercase tracking-wide">
+                            <i data-lucide="download" class="w-6 h-6"></i>
+                            BAIXAR INSTALADOR .EXE
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Novidades da Versão v3.3.0 -->
+            <!-- Novidades da Versão v3.3.1 -->
             <div class="mb-32">
-                <h2 class="text-3xl font-black text-slate-900 text-center mb-16 uppercase tracking-normal" data-aos="fade-up">O que há de novo na v3.3.0</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="p-8 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition-all">
-                        <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4"><i data-lucide="zap" class="w-5 h-5"></i></div>
-                        <h4 class="font-black text-slate-900 mb-2 text-sm uppercase">Performance 50x</h4>
-                        <p class="text-xs text-slate-500 leading-relaxed">PDFs gerados localmente em milissegundos, sem depender do governo.</p>
-                    </div>
-                    <div class="p-8 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition-all">
-                        <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-4"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
-                        <h4 class="font-black text-slate-900 mb-2 text-sm uppercase">Blindagem 2026</h4>
-                        <p class="text-xs text-slate-500 leading-relaxed">Proteção total contra o desligamento da geração de PDFs do portal nacional.</p>
-                    </div>
-                    <div class="p-8 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition-all">
-                        <div class="w-10 h-10 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-4"><i data-lucide="layers" class="w-5 h-5"></i></div>
-                        <h4 class="font-black text-slate-900 mb-2 text-sm uppercase">Tripla Camada</h4>
-                        <p class="text-xs text-slate-500 leading-relaxed">Novo motor de captura de XMLs mais resiliente e inteligente.</p>
-                    </div>
-                    <div class="p-8 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition-all">
-                        <div class="w-10 h-10 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center mb-4"><i data-lucide="sparkles" class="w-5 h-5"></i></div>
-                        <h4 class="font-black text-slate-900 mb-2 text-sm uppercase">Auto-Faxina</h4>
-                        <p class="text-xs text-slate-500 leading-relaxed">Limpeza automática de arquivos temporários para otimizar o disco.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Guia de Migração -->
-            <div class="space-y-10 mb-32">
-                <h2 class="text-3xl font-black text-slate-900 text-center mb-16 uppercase tracking-normal" data-aos="fade-up">Passo a passo para a nova versão</h2>
+                <h2 class="text-3xl font-black text-slate-900 text-center mb-16 uppercase tracking-normal" data-aos="fade-up">O que há de novo na v3.3.1</h2>
                 
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Passo 1 -->
-                    <div class="bg-white p-10 rounded-[3rem] border border-slate-200 relative group transition-all hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
-                        <span class="absolute -top-6 -left-6 w-16 h-16 bg-slate-900 text-white rounded-2xl flex items-center justify-center text-2xl font-black italic shadow-2xl">01</span>
-                        <h4 class="text-xl font-black text-slate-900 mb-4 mt-4 uppercase">Desinstale a Antiga</h4>
-                        <p class="text-slate-500 leading-relaxed">Remova a versão anterior pelo Painel de Controle para evitar conflitos. Seus dados e configurações estão seguros.</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Destaque: CAPTCHA (Âncora Visual) -->
+                    <div class="p-10 bg-blue-600 rounded-3xl shadow-xl shadow-blue-200 text-white transform hover:scale-[1.02] transition-all">
+                        <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6"><i data-lucide="shield-alert" class="w-7 h-7"></i></div>
+                        <h4 class="font-black mb-3 text-xl uppercase">Bypass de CAPTCHA</h4>
+                        <p class="text-base text-blue-100 leading-relaxed opacity-90">Superação nativa de hCaptcha. O robô resolve desafios visuais por você.</p>
                     </div>
-                    <!-- Passo 2 -->
-                    <div class="bg-white p-10 rounded-[3rem] border border-slate-200 relative group transition-all hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
-                        <span class="absolute -top-6 -left-6 w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl font-black italic shadow-2xl">02</span>
-                        <h4 class="text-xl font-black text-slate-900 mb-4 mt-4 uppercase">Instale a v3.3.0</h4>
-                        <p class="text-slate-500 leading-relaxed">Obtenha pela Loja Oficial (Recomendado) ou execute o instalador manual para registrar o novo motor.</p>
+
+                    <!-- Motor Ghost -->
+                    <div class="p-10 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-lg transition-all">
+                        <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-6"><i data-lucide="ghost" class="w-7 h-7"></i></div>
+                        <h4 class="font-black text-slate-900 mb-3 text-xl uppercase">Motor Ghost</h4>
+                        <p class="text-base text-slate-500 leading-relaxed">Navegação invisível. Automação totalmente blindada contra bloqueios.</p>
                     </div>
-                    <!-- Passo 3 -->
-                    <div class="bg-white p-10 rounded-[3rem] border border-slate-200 relative group transition-all hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
-                        <span class="absolute -top-6 -left-6 w-16 h-16 bg-emerald-500 text-white rounded-2xl flex items-center justify-center text-2xl font-black italic shadow-2xl">03</span>
-                        <h4 class="text-xl font-black text-slate-900 mb-4 mt-4 uppercase">Voe com o Robô</h4>
-                        <p class="text-slate-500 leading-relaxed">Informe seu e-mail de licença e sinta a diferença instantânea de velocidade no seu escritório.</p>
+
+                    <!-- Sincronização NSU -->
+                    <div class="p-10 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-lg transition-all">
+                        <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-6"><i data-lucide="folder-check" class="w-7 h-7"></i></div>
+                        <h4 class="font-black text-slate-900 mb-3 text-xl uppercase">Sincronização NSU</h4>
+                        <p class="text-base text-slate-500 leading-relaxed">Rastreamento sequencial. Garantia de 100% de captura das notas emitidas.</p>
+                    </div>
+
+                    <!-- Alerta Certificado -->
+                    <div class="p-10 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-lg transition-all">
+                        <div class="w-14 h-14 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center mb-6"><i data-lucide="bell-ring" class="w-7 h-7"></i></div>
+                        <h4 class="font-black text-slate-900 mb-3 text-xl uppercase">Alerta Certificado</h4>
+                        <p class="text-base text-slate-500 leading-relaxed">Monitoramento proativo que te avisa antes da expiração. Evite paradas.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Painel de Segurança (Unificado) -->
-            <div class="bg-slate-900 rounded-[4rem] p-12 sm:p-20 text-white shadow-2xl relative overflow-hidden" data-aos="zoom-in">
-                <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] -mr-96 -mt-96"></div>
-                
-                <div class="flex flex-col lg:flex-row gap-20 items-center relative z-10">
-                    <div class="lg:w-3/5">
-                        <div class="flex items-center gap-6 mb-12">
-                            <div class="w-20 h-20 bg-emerald-500/20 rounded-3xl flex items-center justify-center border border-emerald-500/30 shadow-lg">
-                                <i data-lucide="shield-check" class="w-10 h-10 text-emerald-400"></i>
-                            </div>
-                            <h2 class="text-4xl sm:text-5xl font-black text-white tracking-normal uppercase leading-tight">Software Verificado <br/>pela Microsoft Store</h2>
-                        </div>
-                        <p class="text-slate-400 text-xl leading-relaxed mb-10">
-                            A aprovação oficial na loja do Windows confirma o Nota Fácil como um software seguro, auditado e livre de malwares, garantindo a conformidade total com a LGPD e o Sigilo Fiscal.
-                        </p>
-                        <div class="flex flex-wrap gap-8 opacity-60">
-                            <div class="flex items-center gap-3">
-                                <i data-lucide="lock" class="w-5 h-5 text-slate-500"></i>
-                                <span class="text-xs font-black uppercase tracking-[0.2em]">Sigilo Fiscal 100%</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <i data-lucide="cpu" class="w-5 h-5 text-slate-500"></i>
-                                <span class="text-xs font-black uppercase tracking-[0.2em]">Processamento Local</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="lg:w-2/5 w-full">
-                        <a href="https://wa.me/5531998913498" target="_blank" class="block group">
-                            <div class="bg-white/5 border border-white/10 p-10 rounded-[3rem] text-center hover:bg-white/10 transition-all hover:scale-105">
-                                <div class="w-16 h-16 bg-emerald-500 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                                    <i data-lucide="message-circle" class="w-8 h-8"></i>
-                                </div>
-                                <h4 class="text-2xl font-black text-white mb-4 uppercase tracking-normal">Dificuldades Técnicas?</h4>
-                                <p class="text-slate-400 font-medium mb-8">Fale agora com nosso suporte via WhatsApp para uma migração assistida.</p>
-                                <span class="text-emerald-400 font-black text-xs uppercase tracking-widest group-hover:underline">Chamar no WhatsApp &rarr;</span>
-                            </div>
-                        </a>
-                    </div>
+            <!-- Parceria Certificados -->
+            <div class="bg-slate-900 rounded-[3rem] p-10 text-center text-white border border-slate-800 shadow-2xl">
+                <div class="w-16 h-16 bg-red-500/20 text-red-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i data-lucide="alert-triangle" class="w-8 h-8"></i>
                 </div>
+                <h3 class="text-2xl font-black mb-4">A rota de Login e Senha está sob ataque do Governo.</h3>
+                <p class="text-lg text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+                    Se o seu cliente não tem Certificado Digital, a sua automação corre perigo. O Certificado A1 é a única rota 100% blindada contra as novas exigências de hCaptcha. Elimine o trabalho braçal e não deixe sua operação parar. Com a Contábil Cert, você garante estabilidade total e ainda rentabiliza sua carteira de clientes de forma automática.
+                </p>
+                <a href="https://contabilcert.com.br" target="_blank" class="inline-flex items-center gap-3 bg-white text-slate-900 px-8 py-4 rounded-2xl font-black hover:bg-slate-200 transition-all hover:scale-105 active:scale-95">
+                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                    Conheça a Contábil Cert
+                </a>
             </div>
-        </div>
-    </section>
-
-    <!-- DOBRA FINAL -->
-    <section class="py-20 border-t border-slate-100 bg-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-black text-slate-900 mb-6 uppercase">Tudo pronto para transformar sua rotina?</h2>
-            <p class="text-lg text-slate-600 font-medium mb-10 max-w-2xl mx-auto tracking-normal">Se precisar de qualquer ajuda durante a configuração inicial, nosso time técnico está à disposição.</p>
-            <a href="https://wa.me/5531998913498" target="_blank" class="inline-block bg-blue-600 text-white px-10 py-5 rounded-2xl font-black shadow-xl shadow-blue-200 transition transform hover:-translate-y-1 active:scale-95 text-xl tracking-normal uppercase">FALAR COM SUPORTE TÉCNICO</a>
         </div>
     </section>
 
