@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #334155;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 26px;
+            color: #1e293b;
+            margin-bottom: 30px;
+            text-align: center;
+            font-style: italic;
+            letter-spacing: -1px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .h1 {
+            color: #0f172a;
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        /* Caixa de Aviso (Amarelo/Laranja) */
+        .warning-box {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            padding: 18px 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .warning-box p {
+            margin: 0;
+            color: #b45309;
+            font-size: 15px;
+        }
+
+        /* Caixa de Solução (Verde) */
+        .solution-box {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 18px 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .solution-box p {
+            margin: 0;
+            color: #166534;
+            font-size: 15px;
+        }
+
+        .button {
+            display: block;
+            background-color: #2563eb;
+            color: #ffffff !important;
+            padding: 18px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            margin: 30px 0;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">NOTA FÁCIL</div>
+        <div class="card">
+            <div class="header">
+                <h1 class="h1">⚠️ Aviso Importante:</h1>
+                <p style="font-size: 16px; color: #475569; margin: 0;">Atualização urgente sobre o funcionamento do robô.</p>
+            </div>
+
+            <p style="font-size: 16px;">Olá, <b>{{ $json.nome.split(' ')[0].charAt(0).toUpperCase() + $json.nome.split(' ')[0].slice(1).toLowerCase() }}</b>!</p>
+            <p style="font-size: 16px;">Você deve ter notado uma certa instabilidade e lentidão recente no Portal Nacional da Nota Fiscal. Descobrimos que não era apenas lentidão no servidor: a Receita Federal implementou um <b>novo tipo de bloqueio de segurança (hCaptcha)</b>, passando a exigir a resolução de um desafio visual para o download de <b>cada arquivo individualmente</b>.</p>
+
+            <p style="font-size: 16px;">Sabemos o quanto já era doloroso e demorado baixar notas manualmente uma a uma no portal. Com essa nova exigência, a tarefa manual se tornou infinitamente pior e impraticável para a rotina contábil.</p>
+
+            <div class="warning-box">
+                <p><b>Impacto no Robô:</b><br>
+                Devido a essa mudança repentina, a nossa <b>rotina de baixa com login e senha está passando por instabilidades</b>. Nossa equipe de engenharia já está trabalhando em uma atualização para contornar essa nova barreira.</p>
+            </div>
+
+            <div class="solution-box" style="background-color: #dcfce7; border-color: #4ade80; border-width: 2px;">
+                <p style="font-size: 16px; color: #14532d;">✅ <b>BAIXA POR CERTIFICADO ESTÁ 100% FUNCIONAL!</b><br><br>
+                Apesar do bloqueio na rota sem certificado, a nossa rotina de <b>baixa utilizando o Certificado Digital (A1) continua operando normalmente e com força total</b>. Recomendamos fortemente que você passe a utilizar este método imediatamente para garantir que a operação do seu escritório não pare.</p>
+            </div>
+
+            <div style="background-color: #f1f5f9; border: 1px dashed #94a3b8; padding: 20px; border-radius: 12px; margin-bottom: 30px; text-align: center;">
+                <p style="font-size: 15px; color: #0f172a; margin-top: 0;"><b>Seus clientes ainda não possuem Certificado Digital?</b></p>
+                <p style="font-size: 14px; color: #475569; margin-bottom: 15px;">Não deixe sua automação parar. A <b>Contábil Cert</b> é a nossa parceira oficial e fornece emissão de certificados de forma rápida, segura e com condições especiais.</p>
+                <a href="https://contabilcert.com.br" style="display: inline-block; background-color: #0f172a; color: #ffffff !important; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px;">Conheça a Contábil Cert 🔐</a>
+            </div>          
+
+            <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 30px 0;">
+
+            <p style="font-weight: 700; color: #0f172a; margin-bottom: 20px;">Precisa de ajuda urgente?</p>
+            <p style="font-size: 16px;">Sabemos o quanto a nossa automação é crítica para a sua rotina. Caso você precise de auxílio para configurar a baixa por certificado digital ou tenha alguma dificuldade, nossa equipe está de prontidão para ajudar.</p>
+
+            <a href="https://wa.me/5531998913498" class="button">Acionar Suporte via WhatsApp</a>
+            
+        </div>
+        <div class="footer">
+            © 2026 Nota Fácil - Automação Inteligente para Contadores.<br>
+            <a href="https://notafacildownloader.contabilcert.com.br/" style="color: #94a3b8; text-decoration: underline;">Central de Ajuda e Suporte</a>
+        </div>
+    </div>
+</body>
+
+</html>
