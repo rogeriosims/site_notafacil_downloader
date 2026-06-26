@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 
 interface Props {
   title?: string;
@@ -80,15 +81,20 @@ const finalSchema = customSchema || defaultSchema;
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-    <!-- Google Tag Manager -->
+    <!-- Google Consent Mode v2 - Padrão negado até consentimento explícito (LGPD) -->
+    <!-- O GTM é carregado condicionalmente pelo CookieConsent.astro após aceite -->
     <script is:inline>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-KHF7CGHF');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
     </script>
-    <!-- End Google Tag Manager -->
+    <!-- /Google Consent Mode v2 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://unpkg.com https://cdn.jsdelivr.net https://www.youtube-nocookie.com https://static.doubleclick.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://google.com https://google.com.br https://www.googleadservices.com https://googleads.g.doubleclick.net https://img.youtube.com https://i.ytimg.com; frame-src 'self' https://www.youtube-nocookie.com https://www.googletagmanager.com https://td.doubleclick.net; connect-src 'self' https://www.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com https://n8n.rockethub.com.br https://cloudflareinsights.com;">
@@ -98,6 +104,11 @@ const finalSchema = customSchema || defaultSchema;
     <meta name="author" content="Nota Fácil (nota-facil.github.io)">
     <meta name="robots" content={robots}>
     <link rel="canonical" href={canonical} />
+    
+    <!-- LLM / AI Crawler Discovery (llmstxt.org standard) -->
+    <link rel="ai-context" href={new URL('/llms.txt', Astro.site || 'https://notafacildownloader.contabilcert.com.br').href} />
+    <link rel="alternate" type="text/plain" title="LLM Context" href={new URL('/llms.txt', Astro.site || 'https://notafacildownloader.contabilcert.com.br').href} />
+    <meta name="ai-content-url" content={new URL('/llms-full.txt', Astro.site || 'https://notafacildownloader.contabilcert.com.br').href} />
     
     <!-- Open Graph / Meta -->
     <meta property="og:title" content={title}>
@@ -144,10 +155,7 @@ const finalSchema = customSchema || defaultSchema;
     </script>
 </head>
 <body class={bodyClass}>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KHF7CGHF"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    <!-- GTM noscript removido: sem JS, sem coleta de dados (LGPD) -->
     <Header />
     
     <main>
@@ -155,6 +163,7 @@ const finalSchema = customSchema || defaultSchema;
     </main>
 
     <Footer />
+    <CookieConsent />
     
     <script is:inline>
       document.addEventListener('DOMContentLoaded', () => {

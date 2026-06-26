@@ -5,7 +5,7 @@ pubDate: "2026-06-26"
 draft: false
 tags: ["NFS-e Nacional", "captcha portal nacional", "custo produtividade contábil", "fechamento fiscal 2026", "automação NFS-e"]
 author: "Rogério - Equipe NotaFácil"
-image: "/blog/imagens/capa_quanto_custa_captcha_nfse.png"
+image: "../../assets/blog/imagens/capa_quanto_custa_captcha_nfse.png"
 readingTime: "6 min"
 ---
 

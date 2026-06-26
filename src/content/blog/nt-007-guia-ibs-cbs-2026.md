@@ -5,7 +5,7 @@ pubDate: "2026-04-20"
 draft: false
 tags: ["Nota Técnica 007", "IBS", "CBS", "NFS-e Nacional"]
 author: "Rogério - Equipe NotaFácil"
-image: "/blog/imagens/capa_nt_007_guia_ibs_cbs_2026.png"
+image: "../../assets/blog/imagens/capa_nt_007_guia_ibs_cbs_2026.png"
 readingTime: "8 min"
 ---
 

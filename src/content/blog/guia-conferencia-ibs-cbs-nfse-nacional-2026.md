@@ -5,7 +5,7 @@ pubDate: "2026-03-17"
 draft: false
 tags: ["Reforma Tributária", "IBS", "CBS", "NFS-e Nacional", "Compliance"]
 author: "Equipe NotaFácil"
-image: "/blog/imagens/capa_guia_ibs_cbs_2026.png"
+image: "../../assets/blog/imagens/capa_guia_ibs_cbs_2026.png"
 readingTime: "8 min"
 ---
 

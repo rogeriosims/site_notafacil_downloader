@@ -5,7 +5,7 @@ pubDate: "2026-06-26"
 draft: false
 tags: ["NFS-e Nacional", "captcha portal nacional", "Portal Nacional NFS-e", "download NFS-e", "automação contábil"]
 author: "Rogério - Equipe NotaFácil"
-image: "/blog/imagens/capa_captcha_dois_por_nota.png"
+image: "../../assets/blog/imagens/capa_captcha_dois_por_nota.png"
 readingTime: "6 min"
 ---
 

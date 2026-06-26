@@ -5,7 +5,7 @@ pubDate: "2026-03-09"
 draft: false
 tags: ["segurança", "LGPD", "contabilidade", "tecnologia"]
 author: "Rogério - Equipe NotaFácil"
-image: "/blog/imagens/capa_risco_certificado_nuvem.png"
+image: "../../assets/blog/imagens/capa_risco_certificado_nuvem.png"
 readingTime: "6 min"
 ---
 

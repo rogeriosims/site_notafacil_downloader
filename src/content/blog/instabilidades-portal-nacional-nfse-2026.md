@@ -5,7 +5,7 @@ pubDate: "2026-03-03"
 draft: false
 tags: ["NFS-e Nacional", "contabilidade", "Portal Nacional", "automação fiscal"]
 author: "Equipe NotaFácil"
-image: "/blog/imagens/capa_instabilidades_portal_nacional_nfse_2026.png"
+image: "../../assets/blog/imagens/capa_instabilidades_portal_nacional_nfse_2026.png"
 readingTime: "8 min"
 ---
 

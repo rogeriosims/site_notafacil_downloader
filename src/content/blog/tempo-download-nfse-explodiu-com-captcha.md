@@ -5,7 +5,7 @@ pubDate: "2026-06-26"
 draft: false
 tags: ["NFS-e Nacional", "tempo de download NFS-e", "captcha portal nacional", "produtividade contábil", "fechamento fiscal 2026"]
 author: "Rogério - Equipe NotaFácil"
-image: "/blog/imagens/capa_tempo_perdido_captcha.png"
+image: "../../assets/blog/imagens/capa_tempo_perdido_captcha.png"
 readingTime: "7 min"
 ---
 

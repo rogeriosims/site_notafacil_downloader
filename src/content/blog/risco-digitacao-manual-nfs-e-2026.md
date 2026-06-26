@@ -5,7 +5,7 @@ pubDate: "2026-04-16"
 draft: false
 tags: ["Reforma Tributária", "NFS-e Nacional", "contabilidade", "automação"]
 author: "Equipe NotaFácil"
-image: "/blog/imagens/capa_risco_digitacao_manual_2026.png"
+image: "../../assets/blog/imagens/capa_risco_digitacao_manual_2026.png"
 readingTime: "7 min"
 ---
 

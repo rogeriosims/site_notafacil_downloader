@@ -5,7 +5,7 @@ pubDate: "2026-06-10"
 draft: false
 tags: ["NFS-e Nacional", "contabilidade", "Reforma Tributária", "Portal Nacional", "automação"]
 author: "Rogério - Equipe NotaFácil"
-image: "/blog/imagens/capa_como_superar_captcha_portal_nacional.png"
+image: "../../assets/blog/imagens/capa_como_superar_captcha_portal_nacional.png"
 readingTime: "7 min"
 ---
 

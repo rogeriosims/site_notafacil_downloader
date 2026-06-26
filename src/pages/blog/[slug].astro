@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -14,7 +15,10 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 
 const postUrl = new URL(`/blog/${post.id}`, Astro.site || 'https://nota-facil.github.io').href;
-const imageUrl = post.data.image ? new URL(post.data.image, Astro.site || 'https://nota-facil.github.io').href : new URL('/assets/print.png', Astro.site || 'https://nota-facil.github.io').href;
+// post.data.image is now ImageMetadata (from Astro image() schema helper)
+const imageUrl = post.data.image 
+  ? new URL(post.data.image.src, Astro.site || 'https://nota-facil.github.io').href 
+  : new URL('/assets/print.png', Astro.site || 'https://nota-facil.github.io').href;
 
 const schema = JSON.stringify({
   "@context": "https://schema.org",
@@ -62,9 +66,13 @@ const schema = JSON.stringify({
     </div>
     
     {post.data.image && (
-      <img 
+      <Image 
         src={post.data.image} 
         alt={post.data.title} 
+        width={800} 
+        height={450} 
+        loading="eager"
+        fetchpriority="high"
         class="w-full h-auto object-cover rounded-3xl shadow-lg mb-12 shadow-slate-200/50"
       />
     )}

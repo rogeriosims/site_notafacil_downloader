@@ -5,7 +5,7 @@ pubDate: "2026-03-03"
 draft: false
 tags: ["NFS-e Nacional", "contabilidade", "Reforma Tributária", "Portal Nacional", "IBS/CBS"]
 author: "Rogério - Equipe NotaFácil"
-image: "/blog/imagens/capa_nfse_nacional_ibs_cbs_2026.png"
+image: "../../assets/blog/imagens/capa_nfse_nacional_ibs_cbs_2026.png"
 readingTime: "6 min"
 ---
 

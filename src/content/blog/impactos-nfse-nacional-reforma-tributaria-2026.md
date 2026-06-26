@@ -6,7 +6,7 @@ lastUpdated: "2026-03-17"
 draft: false
 tags: ["NFS-e Nacional", "contabilidade", "Reforma Tributária", "Portal Nacional"]
 author: "Equipe NotaFácil"
-image: "/blog/imagens/capa_impactos_nfse_nacional_reforma_tributaria_2026.png"
+image: "../../assets/blog/imagens/capa_impactos_nfse_nacional_reforma_tributaria_2026.png"
 readingTime: "10 min"
 ---
 

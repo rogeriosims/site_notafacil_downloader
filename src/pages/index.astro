@@ -128,8 +128,171 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                         <h4 class="text-2xl font-black text-white mb-4">Motor Ghost Ativado</h4>
                         <p class="text-slate-400 mb-8">Navegação que simula o usuário real e resolve o bloqueio invisivelmente.</p>
                         <a href="/atualizacao/" class="block w-full bg-red-600 text-white py-4 rounded-xl font-black transition-all hover:bg-red-500 uppercase tracking-widest text-sm">
-                            Veja a v3.3.1 em Ação
+                            Veja a v3.3.4 em Ação
                         </a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bloco 3.5: Calculadora de Economia e ROI (Comparativo com Assistente) -->
+    <section class="py-24 bg-slate-50 border-y border-slate-200 relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl lg:text-5xl font-black text-slate-900 leading-tight mb-4">
+                    Quanto custa o trabalho manual <span class="text-blue-600">vs. o Nota Fácil?</span>
+                </h2>
+                <p class="text-lg text-slate-600 font-medium max-w-2xl mx-auto">
+                    Arraste o simulador abaixo para comparar o custo em horas de um auxiliar fiscal resolvendo captchas manualmente comparado ao investimento no robô.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-12 max-w-6xl mx-auto items-stretch">
+                <!-- Coluna Esquerda: Controles -->
+                <div class="lg:col-span-7 bg-white p-8 sm:p-12 rounded-[2.5rem] border border-slate-200 shadow-sm flex flex-col justify-between" data-aos="fade-right">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-slate-500 font-bold uppercase tracking-wider text-xs">Volume Mensal</span>
+                            <div class="flex items-baseline">
+                                <span class="text-blue-600 font-black text-3xl" id="calc-notas-val">1.500</span>
+                                <span class="text-slate-400 font-bold text-sm ml-1">NFS-e / mês</span>
+                            </div>
+                        </div>
+
+                        <!-- Slider -->
+                        <div class="relative mb-8">
+                            <input 
+                                type="range" 
+                                id="calc-slider" 
+                                min="100" 
+                                max="5000" 
+                                step="100" 
+                                value="1500" 
+                                class="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600 focus:outline-none"
+                            />
+                            <div class="flex justify-between text-xs font-bold text-slate-400 mt-3 px-1">
+                                <span>100</span>
+                                <span>1.000</span>
+                                <span>2.000</span>
+                                <span>3.000</span>
+                                <span>4.000</span>
+                                <span>5.000</span>
+                            </div>
+                        </div>
+
+                        <!-- Atalhos Rápidos -->
+                        <div class="mb-8">
+                            <span class="block text-slate-500 font-bold text-xs uppercase tracking-wider mb-3">Atalhos por Porte:</span>
+                            <div class="flex flex-wrap gap-3">
+                                <button 
+                                    type="button"
+                                    onclick="setSliderValue(400)" 
+                                    class="bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-700 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-slate-200 hover:border-blue-200"
+                                >
+                                    Pequeno (400 notas)
+                                </button>
+                                <button 
+                                    type="button"
+                                    onclick="setSliderValue(1500)" 
+                                    class="bg-blue-50 text-blue-600 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-blue-200"
+                                    id="btn-preset-med"
+                                >
+                                    Médio (1.500 notas)
+                                </button>
+                                <button 
+                                    type="button"
+                                    onclick="setSliderValue(3600)" 
+                                    class="bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-700 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-slate-200 hover:border-blue-200"
+                                >
+                                    Grande (3.600 notas)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Premissas da Simulação -->
+                    <div class="border-t border-slate-100 pt-6">
+                        <h4 class="text-xs font-black text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                            <i data-lucide="info" class="w-3.5 h-3.5"></i> Premissas do cálculo:
+                        </h4>
+                        <p class="text-xs text-slate-500 leading-relaxed font-medium">
+                            Calculado com base em um custo médio de folha de R$ 16,00/hora por assistente fiscal (~R$ 2.800/mês incluindo encargos) e estimativa conservadora de 3 minutos por NFS-e para download manual, resolução de captchas com movimento e organização de pastas.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Coluna Direita: Resultados -->
+                <div class="lg:col-span-5 flex flex-col gap-6" data-aos="fade-left">
+                    <!-- Card 1: Processo Manual -->
+                    <div class="bg-white p-6 rounded-[2rem] border border-slate-200 shadow-sm flex items-start gap-4">
+                        <div class="w-12 h-12 bg-red-50 text-red-500 rounded-xl flex items-center justify-center shrink-0">
+                            <i data-lucide="user-x" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 font-bold uppercase tracking-wider text-[11px]">Processo Manual (Assistente)</span>
+                            <div class="mt-1 flex items-baseline gap-1">
+                                <span class="text-2xl font-black text-slate-900" id="calc-manual-cost">R$ 1.200,00</span>
+                                <span class="text-slate-400 font-semibold text-xs">/mês</span>
+                            </div>
+                            <span class="text-xs text-red-600 font-semibold mt-1 block flex items-center gap-1">
+                                <i data-lucide="clock" class="w-3.5 h-3.5"></i> Desperdiça <strong id="calc-manual-hours">75</strong> horas no portal
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Nota Fácil -->
+                    <div class="bg-white p-6 rounded-[2rem] border border-slate-200 shadow-sm flex items-start gap-4">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center shrink-0">
+                            <i data-lucide="cpu" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 font-bold uppercase tracking-wider text-[11px]">Com Nota Fácil Downloader</span>
+                            <div class="mt-1 flex items-baseline gap-1">
+                                <span class="text-2xl font-black text-slate-900" id="calc-plan-cost">R$ 89,90</span>
+                                <span class="text-slate-400 font-semibold text-xs">/mês</span>
+                            </div>
+                            <span class="text-xs text-emerald-600 font-semibold mt-1 block flex items-center gap-1">
+                                <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Plano: <strong id="calc-plan-name">Crescimento</strong> (CNPJs ilimitados)
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Economia Destacada (ROI) -->
+                    <div class="bg-gradient-to-br from-indigo-900 to-slate-900 p-8 rounded-[2.5rem] border border-indigo-950 text-white shadow-xl flex-grow flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-2xl"></div>
+                        <div class="relative z-10">
+                            <span class="text-indigo-300 font-bold uppercase tracking-wider text-[11px] bg-indigo-500/20 px-2.5 py-1 rounded-full">Economia Garantida</span>
+                            <div class="mt-4">
+                                <span class="text-slate-400 text-xs font-medium block">Sua economia líquida:</span>
+                                <div class="flex items-baseline gap-1 mt-1">
+                                    <span class="text-3xl sm:text-4xl font-black text-white" id="calc-savings-val">R$ 1.110,10</span>
+                                    <span class="text-indigo-300 text-xs">/mês</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 flex gap-4 text-xs font-semibold text-indigo-200">
+                                <div>
+                                    <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wide">Anual</span>
+                                    <span class="text-white font-bold" id="calc-savings-annual">R$ 13.321,20</span>
+                                </div>
+                                <div class="border-l border-white/10 pl-4">
+                                    <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wide">Retorno (ROI)</span>
+                                    <span class="text-emerald-400 font-black text-sm" id="calc-roi-val">+1.235%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 relative z-10">
+                            <a href="ms-windows-store://pdp/?productid=9N4GBNDFL550" 
+                               target="_blank"
+                               onclick="openStoreModal()"
+                               class="w-full bg-blue-600 hover:bg-blue-500 text-white text-center py-4 rounded-xl font-bold transition-all text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20"
+                            >
+                                <i data-lucide="download" class="w-4 h-4"></i> Eliminar Custos Ocultos
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -149,7 +312,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                         <i data-lucide="building-2" class="w-8 h-8"></i>
                     </div>
                     <h3 class="text-3xl font-black text-white mb-6">CNPJs Ilimitados de Verdade</h3>
-                    <p class="text-slate-300 text-lg leading-relaxed font-medium">Gerencie 5, 50 ou 500 empresas no mesmo painel. Nós não penalizamos o crescimento do seu escritório cobrando "por nota" ou "por CNPJ". Adicione novos clientes à vontade.</p>
+                    <p class="text-slate-300 text-lg leading-relaxed font-medium">Gerencie 5, 50 ou 500 empresas no mesmo painel. Nós não penalizamos o crescimento do seu escritório cobrando "por CNPJ". Adicione novos clientes à vontade.</p>
                 </div>
 
                 <div class="bg-white/5 backdrop-blur-lg border border-white/10 p-12 rounded-[3rem]" data-aos="fade-left">
@@ -281,6 +444,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             }
         };
 
+        // Lógica da Calculadora de ROI
+        window.setSliderValue = function(val) {
+            const slider = document.getElementById('calc-slider');
+            if (slider) {
+                slider.value = val.toString();
+                // Dispara o evento de input manual para atualizar os valores
+                slider.dispatchEvent(new Event('input'));
+            }
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
             // Escassez Dinâmica
             const countEl = document.getElementById('vagas-count');
@@ -300,6 +473,121 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             // Se for maior ou igual a 28, ou menor ou igual a 5
             if (fundadoresSection && (day >= 28 || day <= 5)) {
                 fundadoresSection.classList.remove('hidden');
+            }
+
+            // Lógica de atualização dinâmica da Calculadora
+            const slider = document.getElementById('calc-slider');
+            const notasVal = document.getElementById('calc-notas-val');
+            const manualCost = document.getElementById('calc-manual-cost');
+            const manualHours = document.getElementById('calc-manual-hours');
+            const planCost = document.getElementById('calc-plan-cost');
+            const planName = document.getElementById('calc-plan-name');
+            const savingsVal = document.getElementById('calc-savings-val');
+            const savingsAnnual = document.getElementById('calc-savings-annual');
+            const roiVal = document.getElementById('calc-roi-val');
+
+            function updateCalculator(value) {
+                if (notasVal) notasVal.innerText = value.toLocaleString('pt-BR');
+
+                // 1. Processo Manual: 3 min por nota
+                const horas = value / 20;
+                if (manualHours) manualHours.innerText = horas.toLocaleString('pt-BR', { maximumFractionDigits: 1 });
+                
+                const custoManualNum = horas * 16;
+                if (manualCost) {
+                    manualCost.innerText = custoManualNum.toLocaleString('pt-BR', { 
+                        style: 'currency', 
+                        currency: 'BRL',
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2 
+                    });
+                }
+
+                // 2. Nota Fácil (Planos SSOT)
+                let plano = "Free";
+                let custoPlano = 0;
+                if (value <= 100) {
+                    plano = "Free";
+                    custoPlano = 0;
+                } else if (value <= 500) {
+                    plano = "Starter";
+                    custoPlano = 39.90;
+                } else if (value <= 1500) {
+                    plano = "Crescimento";
+                    custoPlano = 89.90;
+                } else {
+                    plano = "Scale";
+                    custoPlano = 199.90;
+                }
+
+                if (planCost) {
+                    planCost.innerText = custoPlano === 0 ? "Grátis" : custoPlano.toLocaleString('pt-BR', { 
+                        style: 'currency', 
+                        currency: 'BRL',
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2 
+                    });
+                }
+                if (planName) planName.innerText = plano;
+
+                // 3. Economia e ROI
+                const economiaMensal = custoManualNum - custoPlano;
+                const economiaAnual = economiaMensal * 12;
+                
+                if (savingsVal) {
+                    savingsVal.innerText = economiaMensal.toLocaleString('pt-BR', { 
+                        style: 'currency', 
+                        currency: 'BRL',
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2 
+                    });
+                }
+                if (savingsAnnual) {
+                    savingsAnnual.innerText = economiaAnual.toLocaleString('pt-BR', { 
+                        style: 'currency', 
+                        currency: 'BRL',
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2 
+                    });
+                }
+
+                if (roiVal) {
+                    if (custoPlano === 0) {
+                        roiVal.innerText = "Grátis (100% ROI)";
+                    } else {
+                        const roi = (economiaMensal / custoPlano) * 100;
+                        roiVal.innerText = `+${Math.round(roi).toLocaleString('pt-BR')}%`;
+                    }
+                }
+
+                // Atualizar classes dos presets
+                const presetPequeno = document.querySelector('button[onclick="setSliderValue(400)"]');
+                const presetMedio = document.getElementById('btn-preset-med');
+                const presetGrande = document.querySelector('button[onclick="setSliderValue(3600)"]');
+
+                if (presetPequeno) {
+                    presetPequeno.className = value === 400 
+                        ? "bg-blue-50 text-blue-600 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-blue-200 shadow-sm"
+                        : "bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-700 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-slate-200 hover:border-blue-200";
+                }
+                if (presetMedio) {
+                    presetMedio.className = value === 1500 
+                        ? "bg-blue-50 text-blue-600 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-blue-200 shadow-sm"
+                        : "bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-700 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-slate-200 hover:border-blue-200";
+                }
+                if (presetGrande) {
+                    presetGrande.className = value === 3600 
+                        ? "bg-blue-50 text-blue-600 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-blue-200 shadow-sm"
+                        : "bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-700 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-slate-200 hover:border-blue-200";
+                }
+            }
+
+            if (slider) {
+                slider.addEventListener('input', (e) => {
+                    updateCalculator(parseInt(e.target.value));
+                });
+                // Inicializar com 1.500 notas (Plano Crescimento recomendado)
+                updateCalculator(1500);
             }
         });
     </script>

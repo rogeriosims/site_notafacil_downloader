@@ -5,7 +5,7 @@ pubDate: "2026-03-03"
 draft: false
 tags: ["NFS-e Nacional", "contabilidade", "malha fina", "automação fiscal"]
 author: "Equipe NotaFácil"
-image: "/blog/imagens/capa_malha_fina_nfse.png"
+image: "../../assets/blog/imagens/capa_malha_fina_nfse.png"
 readingTime: "7 min"
 ---
 

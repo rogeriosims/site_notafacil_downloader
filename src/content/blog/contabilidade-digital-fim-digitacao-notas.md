@@ -5,7 +5,7 @@ pubDate: "2026-03-17"
 draft: false
 tags: ["Gestão Contábil", "Automação", "NFS-e Nacional", "Produtividade"]
 author: "Equipe NotaFácil"
-image: "/blog/imagens/capa_reforma_tributaria_2026.png"
+image: "../../assets/blog/imagens/capa_reforma_tributaria_2026.png"
 readingTime: "7 min"
 ---
 
