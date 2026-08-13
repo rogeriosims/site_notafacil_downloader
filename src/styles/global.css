@@ -39,6 +39,13 @@ body {
   border-color: #e2e8f0;
 }
 
+/* Cards que contêm formulário não devem se deslocar sob o cursor: o cartão
+   saltaria justamente enquanto o usuário mira o campo. Mantém o realce de
+   sombra, remove só o movimento. */
+.card-premium.card-static:hover {
+  transform: none;
+}
+
 .faq-card {
   transition: all 0.3s ease;
 }

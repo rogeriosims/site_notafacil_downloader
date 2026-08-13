@@ -1,76 +1,292 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Posts de apoio ao argumento de captcha/resiliência (prova editorial)
+const slugsCaptcha = [
+    'dois-captchas-por-nota-portal-nacional-nfse',
+    'quanto-custa-captcha-portal-nfse-escritorio',
+    'como-superar-captcha-portal-nacional',
+];
+const todosPosts = await getCollection('blog');
+const postsCaptcha = slugsCaptcha
+    .map(slug => todosPosts.find(p => p.id === slug))
+    .filter(Boolean);
+
+// Prova operacional — base real de notas processadas pelo robô.
+// Premissa declarada ao usuário: 2 captchas por nota, 30s de resolução manual cada.
+const notasProcessadas = 122011;
+const captchasResolvidos = notasProcessadas * 2;
+const horasDevolvidas = Math.round((captchasResolvidos * 30) / 3600);
+const jornadasDevolvidas = Math.round(horasDevolvidas / 8);
+
+const fmt = (n: number) => n.toLocaleString('pt-BR');
 ---
 
-<BaseLayout title="Nota Fácil | Automação de NFS-e Nacional" description="Baixe Notas Fiscais de Serviço (NFSe) em lote de forma automática, direto na sua máquina, sem digitação manual." bodyClass="bg-slate-50 text-slate-900 overflow-x-hidden">
+<BaseLayout title="Nota Fácil | Automação de NFS-e Nacional" description="O robô desktop que resolve os captchas do Portal Nacional por você e baixa XML e PDF da NFS-e em lote, direto na sua máquina." bodyClass="bg-slate-50 text-slate-900 overflow-x-hidden">
 
-    <!-- Modal de Transição (Aha! Moment) -->
-    <div id="store-modal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center opacity-0 transition-opacity duration-300">
-        <div class="bg-white p-10 rounded-[2.5rem] shadow-2xl max-w-lg w-full text-center transform scale-95 transition-transform duration-300 relative border border-slate-200" id="store-modal-content">
-            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600 transition-colors">
-                <i data-lucide="x" class="w-6 h-6"></i>
-            </button>
-            <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-inner">
-                <i data-lucide="shield-check" class="w-10 h-10"></i>
-            </div>
-            <h3 class="text-3xl font-black text-slate-900 mb-4 tracking-tight">Instalação segura em andamento</h3>
-            <p class="text-lg text-slate-600 font-medium mb-8 leading-relaxed">Clique em <strong class="text-slate-900 bg-slate-100 px-2 py-1 rounded">Abrir</strong> na janela pop-up do seu Windows para iniciar a instalação certificada.</p>
-            <div class="w-12 h-12 border-4 border-blue-100 border-t-blue-600 rounded-full animate-spin mx-auto"></div>
-        </div>
-    </div>
-
-    <!-- Bloco 1: O PORQUÊ (Hero Section) -->
-    <section id="hero" class="hero-gradient pt-32 pb-32 lg:pt-48 relative overflow-hidden bg-slate-900">
+    <!-- Bloco 1: HERO — Copy de resiliência + Formulário de ativação -->
+    <section id="ativar" class="hero-gradient pt-32 pb-24 lg:pt-40 relative overflow-hidden bg-slate-900 scroll-mt-20">
         <div class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none overflow-hidden">
             <div class="absolute -top-32 -right-32 w-[600px] h-[600px] bg-blue-600 rounded-full blur-[150px] will-change-transform"></div>
             <div class="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-indigo-600 rounded-full blur-[150px] will-change-transform"></div>
         </div>
 
-        <div class="container mx-auto px-6 relative z-10 text-center">
-            <div class="max-w-4xl mx-auto" data-aos="fade-up">
-                   <!-- Badge Novidade -->
-                <a href="/atualizacao/" class="inline-flex items-center gap-2 bg-red-500/10 text-red-400 border border-red-500/30 font-black px-4 py-1.5 rounded-full text-xs uppercase tracking-widest mb-8 hover:bg-red-500/20 transition-colors">
-                    <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-                    Novidade: Motor v3.3.4 supera o hCaptcha + Dashboard Fiscal no Excel!
-                </a>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
 
-                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-tight mb-8 tracking-tight">
-                    Enquanto o Portal Nacional bloqueia a sua equipe, <br class="hidden lg:block"/><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">o Nota Fácil automatiza o seu fechamento.</span>
-                </h1>
-                
-                <p class="text-xl lg:text-2xl text-slate-300 leading-relaxed mb-12 max-w-3xl mx-auto font-medium">
-                    Esqueça a digitação manual, a lentidão do governo e os novos bloqueios visuais. O primeiro robô desktop homologado pela Microsoft baixa XMLs e PDFs em lote, organiza nas suas pastas e gera planilhas prontas para o seu ERP.
-                </p>
+                <!-- Coluna Esquerda: Argumento Central (Captcha / Resiliência) -->
+                <div class="lg:col-span-7" data-aos="fade-right">
+                    <span class="inline-flex items-center gap-2 bg-blue-500/10 text-blue-400 border border-blue-500/30 font-black px-4 py-1.5 rounded-full text-xs uppercase tracking-widest mb-8">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                        Software desktop para escritórios contábeis
+                    </span>
 
-                <div class="flex flex-col items-center gap-6">
-                    <a href="ms-windows-store://pdp/?productid=9N4GBNDFL550" 
-                       target="_blank"
-                       onclick="openStoreModal(); window.dataLayer = window.dataLayer || []; window.dataLayer.push({'event': 'download_store'});"
-                       class="group relative inline-flex items-center justify-center gap-4 bg-white text-slate-900 px-10 py-6 sm:px-12 sm:py-7 rounded-2xl font-black transition-all shadow-[0_20px_50px_rgba(37,99,235,0.2)] hover:scale-105 active:scale-95 text-xl sm:text-2xl uppercase tracking-wider overflow-hidden">
-                         <div class="absolute inset-0 bg-gradient-to-r from-blue-100 to-indigo-100 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                         <i data-lucide="shopping-bag" class="w-8 h-8 text-blue-600 relative z-10"></i>
-                         <span class="relative z-10">Baixar Versão com Motor Ghost</span>
-                    </a>
-                    <p class="text-slate-400 font-medium flex items-center gap-2 text-sm sm:text-base">
-                        <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400"></i>
-                        App homologado pela Microsoft. Instalação limpa em 1 clique.
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-8 tracking-tight">
+                        O Portal Nacional pede <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">dois captchas por nota.</span><br class="hidden lg:block"/> O robô resolve os dois. Você não clica em nenhum.
+                    </h1>
+
+                    <p class="text-lg lg:text-xl text-slate-300 leading-relaxed mb-10 max-w-2xl font-medium">
+                        Conecte por <strong class="text-white">Certificado Digital A1</strong> ou por login e senha: o robô roda na sua máquina, atravessa os desafios visuais do portal sem intervenção humana e baixa XML e PDF de toda a carteira em lote — organizando as pastas do seu ERP e gerando a planilha de conferência no fim.
                     </p>
+
+                    <!-- Pilares rápidos de resiliência -->
+                    <ul class="space-y-4 mb-4">
+                        <li class="flex items-start gap-4 text-slate-200">
+                            <i data-lucide="file-badge" class="w-6 h-6 text-emerald-400 shrink-0 mt-0.5"></i>
+                            <span class="font-medium"><strong class="text-white font-black">Certificado A1 ou login e senha.</strong> O robô lê os certificados já instalados no Windows sem você digitar nada.</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-slate-200">
+                            <i data-lucide="scan-eye" class="w-6 h-6 text-emerald-400 shrink-0 mt-0.5"></i>
+                            <span class="font-medium"><strong class="text-white font-black">Resolução automática do desafio visual.</strong> hCaptcha, reCAPTCHA e Serpro são processados localmente enquanto o lote roda em segundo plano.</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-slate-200">
+                            <i data-lucide="refresh-cw" class="w-6 h-6 text-emerald-400 shrink-0 mt-0.5"></i>
+                            <span class="font-medium"><strong class="text-white font-black">Retomada quando o portal oscila.</strong> Queda de conexão ou instabilidade do governo não zera o trabalho: o robô repega de onde parou.</span>
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="mt-16 pt-8 border-t border-white/10">
-                    <a href="https://notafacildownloader.contabilcert.com.br/instalar-nota-facil" 
-                       target="_blank"
-                       onclick="window.dataLayer = window.dataLayer || []; window.dataLayer.push({'event': 'download_exe'});"
-                       class="text-slate-400 hover:text-white transition-colors underline decoration-slate-600 underline-offset-4 text-sm font-medium">
-                        Usa sistema legado? Baixe o instalador clássico .exe
-                    </a>
+                <!-- Coluna Direita: Formulário de Ativação -->
+                <div class="lg:col-span-5 w-full max-w-md mx-auto lg:mx-0" data-aos="fade-left" data-aos-delay="200">
+                    <div class="card-premium card-static p-8 sm:p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden bg-white">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
+
+                        <h2 class="text-2xl font-black text-slate-800 mb-2 leading-tight">Ative sua Licença Gratuita</h2>
+                        <p class="text-slate-500 text-sm mb-8 font-medium">
+                            Libere o acesso ao instalador do robô.
+                            <span class="text-red-500 font-bold block mt-1 text-[10px] uppercase tracking-wider">(Todos os campos obrigatórios)</span>
+                        </p>
+
+                        <form id="hero-form" class="space-y-4 relative z-10" novalidate>
+                            <input type="text" id="nome_completo" name="nome_completo" autocomplete="name" placeholder="Nome Completo" required
+                                class="w-full px-5 py-3.5 sm:py-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition font-medium text-slate-700 placeholder:text-slate-400">
+                            <input type="email" id="email_profissional" name="email_profissional" autocomplete="email" placeholder="E-mail Profissional" required
+                                class="w-full px-5 py-3.5 sm:py-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition font-medium text-slate-700 placeholder:text-slate-400">
+                            <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                                <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" placeholder="WhatsApp" required minlength="15"
+                                    class="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition font-medium text-slate-700 placeholder:text-slate-400 text-sm sm:text-base">
+                                <input type="text" id="cnpj" name="cnpj" placeholder="CNPJ do Escritório" required minlength="18"
+                                    class="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition font-medium text-slate-700 placeholder:text-slate-400 text-sm sm:text-base">
+                            </div>
+
+                            <button type="submit" id="btn-submit" aria-label="Ativar licença gratuita do robô Nota Fácil para Windows"
+                                class="w-full mt-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black py-5 rounded-xl shadow-lg shadow-blue-500/30 transition-all transform hover:-translate-y-1 active:scale-95 text-lg uppercase tracking-wider relative overflow-hidden group">
+                                <span id="btn-text" class="relative z-10 flex items-center justify-center gap-2">
+                                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                    ATIVAR E BAIXAR O ROBÔ
+                                </span>
+                            </button>
+                        </form>
+
+                        <div class="mt-6 pt-6 border-t border-slate-100 relative z-10">
+                            <p class="text-[11px] sm:text-xs text-slate-600 font-bold flex gap-3 leading-relaxed">
+                                <i data-lucide="gift" class="w-5 h-5 text-emerald-500 shrink-0"></i>
+                                <span>Não é um teste de 7 dias. O plano de 100 notas/mês é grátis para sempre, com CNPJs ilimitados e sem cartão de crédito.</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Bloco 2: A Tríade de Valor (O Core Business) -->
+    <!-- Bloco 2: PROVA OPERACIONAL (números reais da base) -->
+    <section class="py-20 bg-white border-b border-slate-100 relative z-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-blue-600 font-black uppercase tracking-widest text-xs">Números da operação</span>
+                <h2 class="text-3xl lg:text-4xl font-black text-slate-900 leading-tight mt-4 max-w-3xl mx-auto">
+                    Captchas que o robô já resolveu <span class="text-blue-600">para que ninguém precisasse clicar</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-200 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <span class="block text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">{fmt(notasProcessadas)}</span>
+                    <span class="block text-xs font-bold text-slate-500 uppercase tracking-wider mt-2">Notas capturadas</span>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-200 text-center" data-aos="fade-up" data-aos-delay="150">
+                    <span class="block text-3xl sm:text-4xl font-black text-blue-600 tracking-tight">{fmt(captchasResolvidos)}</span>
+                    <span class="block text-xs font-bold text-slate-500 uppercase tracking-wider mt-2">Captchas resolvidos</span>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-200 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <span class="block text-3xl sm:text-4xl font-black text-emerald-600 tracking-tight">{fmt(horasDevolvidas)}h</span>
+                    <span class="block text-xs font-bold text-slate-500 uppercase tracking-wider mt-2">Devolvidas às equipes</span>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-200 text-center" data-aos="fade-up" data-aos-delay="250">
+                    <span class="block text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">{fmt(jornadasDevolvidas)}</span>
+                    <span class="block text-xs font-bold text-slate-500 uppercase tracking-wider mt-2">Jornadas de 8h</span>
+                </div>
+            </div>
+
+            <p class="text-center text-xs text-slate-400 font-medium mt-8 max-w-2xl mx-auto leading-relaxed">
+                Base real de notas processadas pelo Nota Fácil. O Portal Nacional exige <strong class="text-slate-500">2 captchas por nota</strong>; considerando 30 segundos de resolução manual em cada um, o trabalho braçal equivalente passa de 1 minuto por documento.
+            </p>
+        </div>
+    </section>
+
+    <!-- Bloco 3: O ELEFANTE NA SALA — Por que sistemas web travam e o desktop não -->
+    <section class="py-24 bg-slate-900 relative overflow-hidden border-y border-slate-800">
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px]"></div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px]"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-5xl mx-auto text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl lg:text-5xl font-black text-white leading-tight mb-6">
+                    A verificação do governo parou o seu sistema em nuvem?
+                </h2>
+                <p class="text-lg text-slate-400 font-medium leading-relaxed max-w-3xl mx-auto">
+                    Plataformas web precisam resolver o desafio de um servidor remoto, longe da sessão do usuário — e é aí que elas travam. O Nota Fácil é um software nativo: ele processa a verificação na sua própria máquina, dentro da mesma sessão que já está autenticada no portal.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white/5 backdrop-blur-lg border border-white/10 p-10 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center mb-8">
+                        <i data-lucide="scan-eye" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-white mb-4">Motor anti-captcha dedicado</h3>
+                    <p class="text-slate-300 leading-relaxed font-medium">Reconhecimento visual próprio decifra as barreiras do governo em silêncio. Você não precisa clicar em nada enquanto o lote de empresas roda em segundo plano.</p>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur-lg border border-white/10 p-10 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center mb-8">
+                        <i data-lucide="refresh-cw" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-white mb-4">Resiliência à instabilidade</h3>
+                    <p class="text-slate-300 leading-relaxed font-medium">Quando o Portal Nacional oscila no pico do fechamento, o robô aguarda, tenta de novo e retoma a fila. Certificado A1 vencido não derruba a rotina: ele registra o alerta e segue com o resto da carteira.</p>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur-lg border border-white/10 p-10 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-purple-500/20 text-purple-400 rounded-2xl flex items-center justify-center mb-8">
+                        <i data-lucide="server-off" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-white mb-4">Nada sai da sua máquina</h3>
+                    <p class="text-slate-300 leading-relaxed font-medium">O Certificado A1 e as credenciais gov.br nunca vão para a nuvem. A conexão é do seu computador direto para o portal do governo, em conformidade com a LGPD e o sigilo fiscal.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-16" data-aos="fade-up">
+                <a href="#ativar" class="inline-flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-500 text-white px-10 py-5 rounded-2xl font-black transition-all shadow-xl shadow-blue-500/20 active:scale-95 text-lg uppercase tracking-wider">
+                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                    Ativar minha licença grátis
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bloco 4: Autenticação — Certificado Digital A1 ou Login e Senha -->
     <section class="py-24 bg-white relative z-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-blue-600 font-black uppercase tracking-widest text-xs">Como o robô entra no portal</span>
+                <h2 class="text-4xl lg:text-5xl font-black text-slate-900 leading-tight mt-4 max-w-4xl mx-auto">
+                    Coleta por <span class="text-blue-600">Certificado Digital</span> ou por login e senha
+                </h2>
+                <p class="text-lg text-slate-600 font-medium max-w-2xl mx-auto mt-6 leading-relaxed">
+                    Cada cliente da sua carteira tem uma realidade. O Nota Fácil atende as duas formas de acesso ao Portal Nacional — na mesma rotina, no mesmo lote.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto items-stretch">
+                <!-- Certificado Digital A1 (destaque) -->
+                <div class="bg-slate-900 p-10 sm:p-12 rounded-[2.5rem] border border-slate-800 shadow-xl relative overflow-hidden flex flex-col" data-aos="fade-right">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/20 rounded-full blur-[80px] -mr-32 -mt-32"></div>
+                    <div class="relative z-10 flex flex-col h-full">
+                        <div class="w-16 h-16 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center mb-8 border border-blue-500/30">
+                            <i data-lucide="file-badge" class="w-8 h-8"></i>
+                        </div>
+                        <span class="inline-flex self-start items-center gap-2 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-black px-3 py-1 rounded-full text-[10px] uppercase tracking-widest mb-6">
+                            Zero digitação
+                        </span>
+                        <h3 class="text-3xl font-black text-white mb-6">Certificado Digital A1</h3>
+                        <p class="text-slate-300 leading-relaxed font-medium mb-8">
+                            O robô lê automaticamente os certificados A1 já instalados no repositório do Windows. Você apenas seleciona qual empresa quer cadastrar pelo certificado — sem redigitar senha a cada cliente e sem subir nada para lugar nenhum.
+                        </p>
+                        <ul class="space-y-4 mt-auto">
+                            <li class="flex gap-3 text-slate-200 font-medium">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
+                                <span><strong class="text-white">Coleta pela API oficial: sem captcha no caminho</strong></span>
+                            </li>
+                            <li class="flex gap-3 text-slate-200 font-medium">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
+                                <span>Seleção da empresa direto no repositório do Windows</span>
+                            </li>
+                            <li class="flex gap-3 text-slate-200 font-medium">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
+                                <span>Carteira inteira em lote, sem limite de CNPJs</span>
+                            </li>
+                            <li class="flex gap-3 text-slate-200 font-medium">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
+                                <span>Certificado vencido não derruba a rotina: o robô sinaliza e segue com o resto</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Login e Senha -->
+                <div class="bg-slate-50 p-10 sm:p-12 rounded-[2.5rem] border border-slate-200 shadow-sm flex flex-col" data-aos="fade-left">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-8">
+                        <i data-lucide="key-round" class="w-8 h-8"></i>
+                    </div>
+                    <span class="inline-flex self-start items-center gap-2 bg-blue-100 text-blue-700 border border-blue-200 font-black px-3 py-1 rounded-full text-[10px] uppercase tracking-widest mb-6">
+                        Para MEIs e empresas menores
+                    </span>
+                    <h3 class="text-3xl font-black text-slate-900 mb-6">Login e Senha</h3>
+                    <p class="text-slate-600 leading-relaxed font-medium mb-8">
+                        Nem todo cliente da carteira tem certificado digital. Nesses casos o robô navega no portal com as credenciais de acesso — e é aqui que ele resolve os captchas por você, executando a mesma rotina de captura em lote.
+                    </p>
+                    <ul class="space-y-4 mt-auto">
+                        <li class="flex gap-3 text-slate-700 font-medium">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i>
+                            <span><strong class="text-slate-900">Captchas do portal resolvidos pelo robô</strong></span>
+                        </li>
+                        <li class="flex gap-3 text-slate-700 font-medium">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i>
+                            <span>Atende quem não possui certificado A1</span>
+                        </li>
+                        <li class="flex gap-3 text-slate-700 font-medium">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i>
+                            <span>Mesma captura de XML e PDF em lote</span>
+                        </li>
+                        <li class="flex gap-3 text-slate-700 font-medium">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i>
+                            <span>Credenciais guardadas apenas no seu computador</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="text-center text-sm text-slate-500 font-medium mt-10 max-w-3xl mx-auto leading-relaxed">
+                <i data-lucide="layers" class="w-4 h-4 inline-block -mt-1 text-blue-600"></i>
+                Os dois métodos convivem na mesma carteira: cadastre cada empresa com o acesso que ela tem e rode tudo de uma vez.
+            </p>
+        </div>
+    </section>
+
+    <!-- Bloco 5: A Tríade de Valor (O Core Business) -->
+    <section class="py-24 bg-slate-50 border-t border-slate-200 relative z-20">
         <div class="container mx-auto px-6">
             <div class="text-center mb-20" data-aos="fade-up">
                 <h2 class="text-4xl lg:text-5xl font-black text-slate-900 leading-tight">
@@ -80,16 +296,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
             <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <!-- Captura Blindada -->
-                <div class="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-200 hover:border-blue-300 transition-all shadow-sm hover:shadow-xl group" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white p-10 rounded-[2.5rem] border border-slate-200 hover:border-blue-300 transition-all shadow-sm hover:shadow-xl group" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
                         <i data-lucide="shield-alert" class="w-8 h-8"></i>
                     </div>
                     <h3 class="text-2xl font-black text-slate-900 mb-4">Captura Blindada</h3>
-                    <p class="text-slate-600 leading-relaxed font-medium">O novo Motor Ghost supera bloqueios (hCaptcha) invisivelmente, enquanto a Sincronização NSU garante 100% de captura sem pular nenhuma nota da sequência.</p>
+                    <p class="text-slate-600 leading-relaxed font-medium">O motor supera os bloqueios visuais invisivelmente, enquanto a Sincronização NSU garante 100% de captura sem pular nenhuma nota da sequência.</p>
                 </div>
 
                 <!-- Processamento Local (LGPD) -->
-                <div class="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-200 hover:border-emerald-300 transition-all shadow-sm hover:shadow-xl group" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white p-10 rounded-[2.5rem] border border-slate-200 hover:border-emerald-300 transition-all shadow-sm hover:shadow-xl group" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
                         <i data-lucide="server-off" class="w-8 h-8"></i>
                     </div>
@@ -98,7 +314,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </div>
 
                 <!-- Dashboard & Inteligência -->
-                <div class="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-200 hover:border-purple-300 transition-all shadow-sm hover:shadow-xl group" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-white p-10 rounded-[2.5rem] border border-slate-200 hover:border-purple-300 transition-all shadow-sm hover:shadow-xl group" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
                         <i data-lucide="line-chart" class="w-8 h-8"></i>
                     </div>
@@ -109,35 +325,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
     </section>
 
-    <!-- Bloco 3: O Elefante na Sala (Faixa de Choque hCaptcha) -->
-    <section class="py-24 bg-red-600 relative overflow-hidden border-y-8 border-red-800">
-        <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
-        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-red-500 rounded-full blur-[100px]"></div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12" data-aos="zoom-in">
-                <div class="md:w-1/2">
-                    <h2 class="text-3xl lg:text-5xl font-black text-white leading-tight mb-6">A nova regra do Governo parou o seu sistema web?</h2>
-                    <p class="text-lg text-red-100 font-medium leading-relaxed border-l-4 border-red-400 pl-4">
-                        A Receita Federal ativou o <strong>hCaptcha</strong> no Portal Nacional. Plataformas baseadas em nuvem sofrem e travam para contornar. Sendo um software nativo (desktop), o Nota Fácil processa o desafio diretamente na sua máquina, garantindo que o seu fluxo de trabalho não seja interrompido por telas de verificação.
-                    </p>
-                </div>
-                <div class="md:w-1/2 w-full">
-                    <div class="bg-slate-900 p-8 rounded-[2.5rem] shadow-2xl border border-slate-800 text-center">
-                        <i data-lucide="bot" class="w-16 h-16 text-emerald-400 mx-auto mb-6"></i>
-                        <h4 class="text-2xl font-black text-white mb-4">Motor Ghost Ativado</h4>
-                        <p class="text-slate-400 mb-8">Navegação que simula o usuário real e resolve o bloqueio invisivelmente.</p>
-                        <a href="/atualizacao/" class="block w-full bg-red-600 text-white py-4 rounded-xl font-black transition-all hover:bg-red-500 uppercase tracking-widest text-sm">
-                            Veja a v3.3.4 em Ação
-                        </a>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bloco 3.5: Calculadora de Economia e ROI (Comparativo com Assistente) -->
+    <!-- Bloco 6: Calculadora de Economia e ROI (Comparativo com Assistente) -->
     <section class="py-24 bg-slate-50 border-y border-slate-200 relative overflow-hidden">
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-16" data-aos="fade-up">
@@ -163,13 +351,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
                         <!-- Slider -->
                         <div class="relative mb-8">
-                            <input 
-                                type="range" 
-                                id="calc-slider" 
-                                min="100" 
-                                max="5000" 
-                                step="100" 
-                                value="1500" 
+                            <input
+                                type="range"
+                                id="calc-slider"
+                                min="100"
+                                max="5000"
+                                step="100"
+                                value="1500"
+                                aria-label="Volume mensal de notas fiscais"
                                 class="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600 focus:outline-none"
                             />
                             <div class="flex justify-between text-xs font-bold text-slate-400 mt-3 px-1">
@@ -186,24 +375,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                         <div class="mb-8">
                             <span class="block text-slate-500 font-bold text-xs uppercase tracking-wider mb-3">Atalhos por Porte:</span>
                             <div class="flex flex-wrap gap-3">
-                                <button 
+                                <button
                                     type="button"
-                                    onclick="setSliderValue(400)" 
+                                    onclick="setSliderValue(400)"
                                     class="bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-700 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-slate-200 hover:border-blue-200"
                                 >
                                     Pequeno (400 notas)
                                 </button>
-                                <button 
+                                <button
                                     type="button"
-                                    onclick="setSliderValue(1500)" 
+                                    onclick="setSliderValue(1500)"
                                     class="bg-blue-50 text-blue-600 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-blue-200"
                                     id="btn-preset-med"
                                 >
                                     Médio (1.500 notas)
                                 </button>
-                                <button 
+                                <button
                                     type="button"
-                                    onclick="setSliderValue(3600)" 
+                                    onclick="setSliderValue(3600)"
                                     class="bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-700 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-slate-200 hover:border-blue-200"
                                 >
                                     Grande (3.600 notas)
@@ -218,7 +407,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                             <i data-lucide="info" class="w-3.5 h-3.5"></i> Premissas do cálculo:
                         </h4>
                         <p class="text-xs text-slate-500 leading-relaxed font-medium">
-                            Calculado com base em um custo médio de folha de R$ 16,00/hora por assistente fiscal (~R$ 2.800/mês incluindo encargos) e estimativa conservadora de 3 minutos por NFS-e para download manual, resolução de captchas com movimento e organização de pastas.
+                            Calculado com base em um custo médio de folha de R$ 16,00/hora por assistente fiscal (~R$ 2.800/mês incluindo encargos) e estimativa conservadora de 3 minutos por NFS-e para download manual, resolução dos dois captchas exigidos por nota e organização de pastas.
                         </p>
                     </div>
                 </div>
@@ -263,7 +452,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <div class="bg-gradient-to-br from-indigo-900 to-slate-900 p-8 rounded-[2.5rem] border border-indigo-950 text-white shadow-xl flex-grow flex flex-col justify-between relative overflow-hidden">
                         <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-2xl"></div>
                         <div class="relative z-10">
-                            <span class="text-indigo-300 font-bold uppercase tracking-wider text-[11px] bg-indigo-500/20 px-2.5 py-1 rounded-full">Economia Garantida</span>
+                            <span class="text-indigo-300 font-bold uppercase tracking-wider text-[11px] bg-indigo-500/20 px-2.5 py-1 rounded-full">Economia Estimada</span>
                             <div class="mt-4">
                                 <span class="text-slate-400 text-xs font-medium block">Sua economia líquida:</span>
                                 <div class="flex items-baseline gap-1 mt-1">
@@ -271,7 +460,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                                     <span class="text-indigo-300 text-xs">/mês</span>
                                 </div>
                             </div>
-                            
+
                             <div class="mt-4 flex gap-4 text-xs font-semibold text-indigo-200">
                                 <div>
                                     <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wide">Anual</span>
@@ -285,12 +474,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                         </div>
 
                         <div class="mt-8 relative z-10">
-                            <a href="ms-windows-store://pdp/?productid=9N4GBNDFL550" 
-                               target="_blank"
-                               onclick="openStoreModal()"
+                            <a href="#ativar"
                                class="w-full bg-blue-600 hover:bg-blue-500 text-white text-center py-4 rounded-xl font-bold transition-all text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20"
                             >
-                                <i data-lucide="download" class="w-4 h-4"></i> Eliminar Custos Ocultos
+                                <i data-lucide="shield-check" class="w-4 h-4"></i> Eliminar Custos Ocultos
                             </a>
                         </div>
                     </div>
@@ -299,7 +486,120 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
     </section>
 
-    <!-- Bloco 4: Escala e Performance -->
+    <!-- Bloco 7: Planos e Preços -->
+    <section id="planos" class="py-24 bg-slate-950 relative overflow-hidden scroll-mt-20">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-20 pointer-events-none">
+            <div class="absolute -top-32 -left-32 w-[500px] h-[500px] bg-blue-600 rounded-full blur-[140px]"></div>
+            <div class="absolute -bottom-32 -right-32 w-[400px] h-[400px] bg-indigo-600 rounded-full blur-[140px]"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <span class="text-blue-400 font-black uppercase tracking-[0.3em] text-xs">Acelere seu escritório</span>
+                <h2 class="text-4xl lg:text-5xl font-black text-white mt-4 leading-tight">
+                    Escolha o plano ideal para sua demanda
+                </h2>
+                <p class="text-lg text-slate-400 font-medium max-w-2xl mx-auto mt-6 leading-relaxed">
+                    Todos os planos incluem <strong class="text-white">empresas (CNPJs) ilimitadas</strong>. O que muda é apenas o volume de notas processadas por mês.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-stretch">
+                <!-- Free -->
+                <div class="bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-lg flex flex-col text-center" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-lg font-black text-slate-800 mb-4 uppercase tracking-wide">Free</h3>
+                    <div class="flex flex-col items-center mb-8">
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-4xl font-black text-slate-900">R$ 0</span>
+                            <span class="text-slate-500 font-bold text-sm">/sempre</span>
+                        </div>
+                        <span class="text-emerald-600 font-black text-[11px] uppercase mt-2 tracking-wider">Grátis para sempre</span>
+                    </div>
+                    <ul class="space-y-3 mb-10 text-left w-full">
+                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> 100 notas/mês</li>
+                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Empresas ilimitadas</li>
+                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Certificado A1 e login/senha</li>
+                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Sem cartão de crédito</li>
+                    </ul>
+                    <a href="#ativar" class="w-full mt-auto py-4 rounded-2xl border-2 border-emerald-500 text-emerald-600 font-black hover:bg-emerald-500 hover:text-white transition-all active:scale-95 text-sm uppercase tracking-wide">
+                        Começar grátis
+                    </a>
+                </div>
+
+                <!-- Starter -->
+                <div class="bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-lg flex flex-col text-center" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-lg font-black text-slate-800 mb-4 uppercase tracking-wide">Starter</h3>
+                    <div class="flex flex-col items-center mb-8">
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-4xl font-black text-slate-900">R$ 39,90</span>
+                            <span class="text-slate-500 font-bold text-sm">/mês</span>
+                        </div>
+                        <span class="text-blue-600 font-black text-[11px] uppercase mt-2 tracking-wider">aprox. R$ 0,08/nota</span>
+                    </div>
+                    <ul class="space-y-3 mb-10 text-left w-full">
+                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> 500 notas/mês</li>
+                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Empresas ilimitadas</li>
+                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Certificado A1 e login/senha</li>
+                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Atualizações incluídas</li>
+                    </ul>
+                    <a href="#ativar" class="w-full mt-auto py-4 rounded-2xl border-2 border-slate-900 text-slate-900 font-black hover:bg-slate-900 hover:text-white transition-all active:scale-95 text-sm uppercase tracking-wide">
+                        Quero este
+                    </a>
+                </div>
+
+                <!-- Crescimento (Destaque) -->
+                <div class="bg-blue-600 p-8 rounded-[2.5rem] border-2 border-blue-400 shadow-2xl shadow-blue-500/20 flex flex-col text-center relative lg:scale-105" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-blue-700 text-[10px] font-black px-5 py-2 rounded-full uppercase tracking-[0.2em] shadow-xl whitespace-nowrap">
+                        Mais recomendado
+                    </div>
+                    <h3 class="text-lg font-black text-white mb-4 uppercase tracking-wide mt-2">Crescimento</h3>
+                    <div class="flex flex-col items-center mb-8">
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-4xl font-black text-white">R$ 89,90</span>
+                            <span class="text-blue-200 font-bold text-sm">/mês</span>
+                        </div>
+                        <span class="text-blue-100 font-black text-[11px] uppercase mt-2 tracking-wider">aprox. R$ 0,06/nota</span>
+                    </div>
+                    <ul class="space-y-3 mb-10 text-left w-full">
+                        <li class="flex gap-3 text-white font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-200 shrink-0 mt-0.5"></i> 1.500 notas/mês</li>
+                        <li class="flex gap-3 text-white font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-200 shrink-0 mt-0.5"></i> Empresas ilimitadas</li>
+                        <li class="flex gap-3 text-white font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-200 shrink-0 mt-0.5"></i> Certificado A1 e login/senha</li>
+                        <li class="flex gap-3 text-white font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-200 shrink-0 mt-0.5"></i> Ideal para escritórios médios</li>
+                    </ul>
+                    <a href="#ativar" class="w-full mt-auto py-4 rounded-2xl bg-white text-blue-700 font-black hover:bg-blue-50 transition-all shadow-lg active:scale-95 text-sm uppercase tracking-wide">
+                        Obter acesso
+                    </a>
+                </div>
+
+                <!-- Scale -->
+                <div class="bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-lg flex flex-col text-center" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="text-lg font-black text-slate-800 mb-4 uppercase tracking-wide">Scale</h3>
+                    <div class="flex flex-col items-center mb-8">
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-4xl font-black text-slate-900">R$ 199,90</span>
+                            <span class="text-slate-500 font-bold text-sm">/mês</span>
+                        </div>
+                        <span class="text-blue-600 font-black text-[11px] uppercase mt-2 tracking-wider">apenas R$ 0,04/nota</span>
+                    </div>
+                    <ul class="space-y-3 mb-10 text-left w-full">
+                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> 5.000 notas/mês</li>
+                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Empresas ilimitadas</li>
+                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Certificado A1 e login/senha</li>
+                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Alto volume de fechamento</li>
+                    </ul>
+                    <a href="#ativar" class="w-full mt-auto py-4 rounded-2xl border-2 border-slate-900 text-slate-900 font-black hover:bg-slate-900 hover:text-white transition-all active:scale-95 text-sm uppercase tracking-wide">
+                        Obter acesso
+                    </a>
+                </div>
+            </div>
+
+            <p class="text-center text-sm text-slate-400 font-medium mt-12 max-w-2xl mx-auto leading-relaxed">
+                Comece pelo plano Free e faça upgrade só quando o volume pedir. Cobrança mensal, sem fidelidade.
+            </p>
+        </div>
+    </section>
+
+    <!-- Bloco 8: Escala e Performance -->
     <section class="py-24 bg-slate-900 relative overflow-hidden">
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-20" data-aos="fade-up">
@@ -326,7 +626,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
     </section>
 
-    <!-- Bloco 5: Segurança Microsoft -->
+    <!-- Bloco 9: Segurança Microsoft -->
     <section class="py-24 bg-white border-t border-slate-100">
         <div class="container mx-auto px-6">
             <div class="flex flex-col lg:flex-row items-center gap-16 max-w-6xl mx-auto">
@@ -354,128 +654,101 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <i data-lucide="lock" class="w-12 h-12 text-slate-400 mx-auto mb-6"></i>
                     <h3 class="text-2xl font-black text-slate-900 mb-4">Segurança Fiscal Comprovada</h3>
                     <p class="text-slate-500 mb-8">Software construído para garantir o sigilo contábil exigido por lei.</p>
-                    <a href="ms-windows-store://pdp/?productid=9N4GBNDFL550" onclick="openStoreModal()" class="inline-flex items-center justify-center gap-3 bg-blue-600 text-white px-8 py-4 rounded-2xl font-black hover:bg-blue-700 transition w-full shadow-lg hover:shadow-blue-500/30">
-                        <i data-lucide="download" class="w-5 h-5"></i>
-                        BAIXAR NA LOJA WINDOWS
+                    <a href="#ativar" class="inline-flex items-center justify-center gap-3 bg-blue-600 text-white px-8 py-4 rounded-2xl font-black hover:bg-blue-700 transition w-full shadow-lg hover:shadow-blue-500/30">
+                        <i data-lucide="shield-check" class="w-5 h-5"></i>
+                        ATIVAR LICENÇA GRATUITA
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Bloco 6: OFERTA AGRESSIVA (Programa de Consultores) - Dinâmico por Data -->
-    <section id="fundadores-section" class="py-24 bg-blue-50 border-t border-blue-100 relative hidden">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto bg-white rounded-[3.5rem] shadow-2xl border border-blue-100 overflow-hidden relative" data-aos="zoom-in">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[80px] -mr-20 -mt-20"></div>
-                
-                <div class="p-12 sm:p-16 text-center">
-                    <div class="inline-flex items-center gap-2 bg-red-100 text-red-700 font-black px-4 py-2 rounded-full text-xs uppercase tracking-widest mb-8 border border-red-200">
-                        <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
-                        Campanha Especial de Fechamento
-                    </div>
-                    
-                    <h2 class="text-4xl font-black text-slate-900 mb-6">Procuramos 50 escritórios para o nosso Conselho de Fundadores</h2>
-                    
-                    <p class="text-lg text-slate-600 font-medium mb-8 leading-relaxed max-w-2xl mx-auto">
-                        Sabendo que este é o período mais crítico para a sua operação, decidimos inverter a lógica do mercado: <strong>Nós não queremos te vender nada hoje.</strong> Queremos liberar a nossa melhor tecnologia em troca da sua experiência.
-                    </p>
+    <!-- Bloco 10: Prova Editorial (Blog sobre captcha) -->
+    {postsCaptcha.length > 0 && (
+        <section class="py-24 bg-slate-50 border-t border-slate-200">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <span class="text-blue-600 font-black uppercase tracking-widest text-xs">Entenda o problema a fundo</span>
+                    <h2 class="text-3xl lg:text-4xl font-black text-slate-900 leading-tight mt-4">
+                        O que mudou no Portal Nacional
+                    </h2>
+                </div>
 
-                    <div class="bg-slate-50 rounded-3xl p-8 mb-10 text-left border border-slate-200">
-                        <h4 class="font-black text-slate-900 mb-6 text-xl uppercase tracking-tight">Como funciona:</h4>
-                        <ul class="space-y-4">
-                            <li class="flex gap-4">
-                                <i data-lucide="unlock" class="w-6 h-6 text-blue-600 shrink-0"></i>
-                                <div><strong class="text-slate-900">Acesso Total:</strong> Libere o Plano Ilimitado por 30 dias grátis.</div>
-                            </li>
-                            <li class="flex gap-4">
-                                <i data-lucide="activity" class="w-6 h-6 text-blue-600 shrink-0"></i>
-                                <div><strong class="text-slate-900">Uso Intenso:</strong> Rode o software no limite da sua carteira neste fechamento.</div>
-                            </li>
-                            <li class="flex gap-4">
-                                <i data-lucide="message-square" class="w-6 h-6 text-blue-600 shrink-0"></i>
-                                <div><strong class="text-slate-900">Moeda de Troca:</strong> Uma breve conversa de 15 min com o desenvolvedor para feedback.</div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Contador Dinâmico -->
-                    <div class="mb-10 p-6 bg-red-50 rounded-2xl border border-red-100 inline-block">
-                        <p class="text-red-700 font-black text-lg">
-                            ⏳ Restam apenas <span id="vagas-count" class="text-3xl mx-2 bg-white px-3 py-1 rounded shadow-sm border border-red-200 transition-all duration-300 inline-block">14</span> vagas disponíveis.
-                        </p>
-                    </div>
-
-                    <a href="https://wa.me/5531998913498?text=Ol%C3%A1%2C%20quero%20me%20candidatar%20ao%20Programa%20de%20Consultores%20do%20Nota%20F%C3%A1cil" 
-                       target="_blank"
-                       onclick="window.dataLayer = window.dataLayer || []; window.dataLayer.push({'event': 'lead_consultor'});"
-                       class="inline-flex items-center justify-center gap-3 w-full sm:w-auto bg-slate-900 text-white px-10 py-6 rounded-2xl font-black transition-all hover:bg-slate-800 shadow-xl active:scale-95 text-lg uppercase tracking-wider relative z-10">
-                        🤝 Quero me candidatar (30 Dias)
-                    </a>
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    {postsCaptcha.map((post: any, i: number) => (
+                        <a href={`/blog/${post.id}/`} class="group bg-white p-8 rounded-[2rem] border border-slate-200 hover:border-blue-200 shadow-sm hover:shadow-lg transition-all flex flex-col gap-4" data-aos="fade-up" data-aos-delay={100 + i * 100}>
+                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">{post.data.pubDate.toLocaleDateString('pt-BR')}</span>
+                            <h3 class="text-lg font-black text-slate-800 leading-tight group-hover:text-blue-600 transition-colors">{post.data.title}</h3>
+                            <p class="text-sm text-slate-500 line-clamp-3 leading-relaxed">{post.data.description}</p>
+                            <span class="text-blue-600 font-bold text-xs mt-auto pt-2 group-hover:translate-x-1 transition-transform inline-block">Ler artigo &rarr;</span>
+                        </a>
+                    ))}
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    )}
 
     <!-- Scripts de Interação (Client-side) -->
-    <script>
-        // Declarar no escopo global
-        window.openStoreModal = function() {
-            const modal = document.getElementById('store-modal');
-            const content = document.getElementById('store-modal-content');
-            if(modal && content) {
-                modal.classList.remove('hidden');
-                setTimeout(() => {
-                    modal.classList.remove('opacity-0');
-                    content.classList.remove('scale-95');
-                }, 10);
-            }
-        };
+    <script is:inline>
+        function isValidCNPJ(cnpj) {
+            cnpj = cnpj.replace(/[^\d]+/g, '');
+            if (cnpj == '' || cnpj.length != 14) return false;
+            if (/^(\d)\1+$/.test(cnpj)) return false; // Elimina sequências repetidas (00..., 11..., etc)
 
-        window.closeModal = function() {
-            const modal = document.getElementById('store-modal');
-            const content = document.getElementById('store-modal-content');
-            if(modal && content) {
-                modal.classList.add('opacity-0');
-                content.classList.add('scale-95');
-                setTimeout(() => {
-                    modal.classList.add('hidden');
-                }, 300);
+            let tamanho = cnpj.length - 2
+            let numeros = cnpj.substring(0, tamanho);
+            let digitos = cnpj.substring(tamanho);
+            let soma = 0;
+            let pos = tamanho - 7;
+            for (let i = tamanho; i >= 1; i--) {
+                soma += numeros.charAt(tamanho - i) * pos--;
+                if (pos < 2) pos = 9;
             }
-        };
+            let resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+            if (resultado != digitos.charAt(0)) return false;
 
-        // Lógica da Calculadora de ROI
+            tamanho = tamanho + 1;
+            numeros = cnpj.substring(0, tamanho);
+            soma = 0;
+            pos = tamanho - 7;
+            for (let i = tamanho; i >= 1; i--) {
+                soma += numeros.charAt(tamanho - i) * pos--;
+                if (pos < 2) pos = 9;
+            }
+            resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+            if (resultado != digitos.charAt(1)) return false;
+
+            return true;
+        }
+
+        function isValidPhone(phone) {
+            phone = phone.replace(/[^\d]+/g, '');
+            if (phone.length < 10 || phone.length > 11) return false;
+            if (/^(\d)\1+$/.test(phone)) return false; // Elimina sequências repetidas
+            if (phone.charAt(0) === '0') return false; // DDD não começa com 0
+            if (phone.substring(0, 2) === '00') return false;
+            return true;
+        }
+
+        // Calculadora de ROI — exposta para os botões de atalho
         window.setSliderValue = function(val) {
             const slider = document.getElementById('calc-slider');
             if (slider) {
                 slider.value = val.toString();
-                // Dispara o evento de input manual para atualizar os valores
                 slider.dispatchEvent(new Event('input'));
             }
         };
 
-        document.addEventListener('DOMContentLoaded', () => {
-            // Escassez Dinâmica
-            const countEl = document.getElementById('vagas-count');
-            if(countEl) {
-                setTimeout(() => {
-                    countEl.innerText = '12';
-                    countEl.classList.add('text-red-600', 'scale-125');
-                    setTimeout(() => countEl.classList.remove('scale-125'), 300);
-                }, 4000);
+        document.addEventListener('DOMContentLoaded', function () {
+            // Máscaras de entrada
+            if (typeof IMask !== 'undefined') {
+                const elWhats = document.getElementById('whatsapp');
+                const elCnpj = document.getElementById('cnpj');
+                if (elWhats) IMask(elWhats, { mask: '(00) 00000-0000' });
+                if (elCnpj) IMask(elCnpj, { mask: '00.000.000/0000-00' });
             }
 
-            // Lógica de Exibição por Data (Mostra apenas do dia 28 ao dia 5)
-            const today = new Date();
-            const day = today.getDate();
-            const fundadoresSection = document.getElementById('fundadores-section');
-            
-            // Se for maior ou igual a 28, ou menor ou igual a 5
-            if (fundadoresSection && (day >= 28 || day <= 5)) {
-                fundadoresSection.classList.remove('hidden');
-            }
-
-            // Lógica de atualização dinâmica da Calculadora
+            // ----- Calculadora de ROI -----
             const slider = document.getElementById('calc-slider');
             const notasVal = document.getElementById('calc-notas-val');
             const manualCost = document.getElementById('calc-manual-cost');
@@ -492,14 +765,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 // 1. Processo Manual: 3 min por nota
                 const horas = value / 20;
                 if (manualHours) manualHours.innerText = horas.toLocaleString('pt-BR', { maximumFractionDigits: 1 });
-                
+
                 const custoManualNum = horas * 16;
                 if (manualCost) {
-                    manualCost.innerText = custoManualNum.toLocaleString('pt-BR', { 
-                        style: 'currency', 
+                    manualCost.innerText = custoManualNum.toLocaleString('pt-BR', {
+                        style: 'currency',
                         currency: 'BRL',
                         minimumFractionDigits: 2,
-                        maximumFractionDigits: 2 
+                        maximumFractionDigits: 2
                     });
                 }
 
@@ -521,11 +794,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 }
 
                 if (planCost) {
-                    planCost.innerText = custoPlano === 0 ? "Grátis" : custoPlano.toLocaleString('pt-BR', { 
-                        style: 'currency', 
+                    planCost.innerText = custoPlano === 0 ? "Grátis" : custoPlano.toLocaleString('pt-BR', {
+                        style: 'currency',
                         currency: 'BRL',
                         minimumFractionDigits: 2,
-                        maximumFractionDigits: 2 
+                        maximumFractionDigits: 2
                     });
                 }
                 if (planName) planName.innerText = plano;
@@ -533,21 +806,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 // 3. Economia e ROI
                 const economiaMensal = custoManualNum - custoPlano;
                 const economiaAnual = economiaMensal * 12;
-                
+
                 if (savingsVal) {
-                    savingsVal.innerText = economiaMensal.toLocaleString('pt-BR', { 
-                        style: 'currency', 
+                    savingsVal.innerText = economiaMensal.toLocaleString('pt-BR', {
+                        style: 'currency',
                         currency: 'BRL',
                         minimumFractionDigits: 2,
-                        maximumFractionDigits: 2 
+                        maximumFractionDigits: 2
                     });
                 }
                 if (savingsAnnual) {
-                    savingsAnnual.innerText = economiaAnual.toLocaleString('pt-BR', { 
-                        style: 'currency', 
+                    savingsAnnual.innerText = economiaAnual.toLocaleString('pt-BR', {
+                        style: 'currency',
                         currency: 'BRL',
                         minimumFractionDigits: 2,
-                        maximumFractionDigits: 2 
+                        maximumFractionDigits: 2
                     });
                 }
 
@@ -565,21 +838,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 const presetMedio = document.getElementById('btn-preset-med');
                 const presetGrande = document.querySelector('button[onclick="setSliderValue(3600)"]');
 
-                if (presetPequeno) {
-                    presetPequeno.className = value === 400 
-                        ? "bg-blue-50 text-blue-600 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-blue-200 shadow-sm"
-                        : "bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-700 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-slate-200 hover:border-blue-200";
-                }
-                if (presetMedio) {
-                    presetMedio.className = value === 1500 
-                        ? "bg-blue-50 text-blue-600 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-blue-200 shadow-sm"
-                        : "bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-700 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-slate-200 hover:border-blue-200";
-                }
-                if (presetGrande) {
-                    presetGrande.className = value === 3600 
-                        ? "bg-blue-50 text-blue-600 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-blue-200 shadow-sm"
-                        : "bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-700 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-slate-200 hover:border-blue-200";
-                }
+                const classAtivo = "bg-blue-50 text-blue-600 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-blue-200 shadow-sm";
+                const classInativo = "bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-700 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-slate-200 hover:border-blue-200";
+
+                if (presetPequeno) presetPequeno.className = value === 400 ? classAtivo : classInativo;
+                if (presetMedio) presetMedio.className = value === 1500 ? classAtivo : classInativo;
+                if (presetGrande) presetGrande.className = value === 3600 ? classAtivo : classInativo;
             }
 
             if (slider) {
@@ -589,6 +853,158 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 // Inicializar com 1.500 notas (Plano Crescimento recomendado)
                 updateCalculator(1500);
             }
+
+            // ----- Formulário de Ativação (captura de lead + GCLID) -----
+            const heroForm = document.getElementById('hero-form');
+            if (!heroForm) return;
+
+            heroForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const form = e.target;
+                const btn = document.getElementById('btn-submit');
+                const btnText = document.getElementById('btn-text');
+                const originalText = btnText.innerHTML;
+
+                const nome = document.getElementById('nome_completo').value.trim();
+                const email = document.getElementById('email_profissional').value.trim();
+                const whatsapp = document.getElementById('whatsapp').value;
+                const cnpj = document.getElementById('cnpj').value;
+
+                if (!nome || !email || !whatsapp || !cnpj) {
+                    Swal.fire({
+                        title: 'Dados Incompletos',
+                        text: 'Por favor, preencha todos os campos do formulário.',
+                        icon: 'warning',
+                        confirmButtonText: 'Entendido',
+                        confirmButtonColor: '#3b82f6'
+                    });
+                    return;
+                }
+
+                if (!isValidPhone(whatsapp)) {
+                    Swal.fire({
+                        title: 'Telefone Inválido',
+                        text: 'Por favor, insira um número de WhatsApp real.',
+                        icon: 'warning',
+                        confirmButtonText: 'Corrigir',
+                        confirmButtonColor: '#3b82f6'
+                    });
+                    return;
+                }
+
+                if (!isValidCNPJ(cnpj)) {
+                    Swal.fire({
+                        title: 'CNPJ Inválido',
+                        text: 'O CNPJ informado não é válido. Verifique os dados.',
+                        icon: 'warning',
+                        confirmButtonText: 'Corrigir',
+                        confirmButtonColor: '#3b82f6'
+                    });
+                    return;
+                }
+
+                // Recuperar GCLID da URL ou do sessionStorage (gravado pelo BaseLayout)
+                const gclid = sessionStorage.getItem('gclid') || (new URLSearchParams(window.location.search)).get('gclid');
+
+                const payload = {
+                    action: 'register',
+                    nome: nome,
+                    email: email,
+                    whatsapp: whatsapp,
+                    cnpj: cnpj,
+                    gclid: gclid
+                };
+
+                try {
+                    btn.disabled = true;
+                    btn.classList.add('opacity-70', 'cursor-not-allowed');
+                    btn.classList.remove('hover:-translate-y-1', 'active:scale-95');
+                    btnText.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> PREPARANDO ACESSO...';
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+
+                    const response = await fetch('https://n8n.rockethub.com.br/webhook/17e601cd-2655-410f-b8af-4ffffd07bec0', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.status === 201 || response.ok) {
+                        const responseDataText = await response.text();
+                        let responseData;
+                        try {
+                            responseData = JSON.parse(responseDataText);
+                        } catch (err) {
+                            responseData = {};
+                        }
+
+                        // O webhook pode retornar um array de objetos
+                        let responseObj = responseData;
+                        if (Array.isArray(responseData) && responseData.length > 0) {
+                            responseObj = responseData[0];
+                        }
+
+                        // Backend sinalizou erro lógico (ex: CNPJ/e-mail já cadastrado).
+                        // Não é uma falha: o escritório já é cliente e quer baixar de novo.
+                        if (responseObj && responseObj.status === 'error') {
+                            Swal.fire({
+                                title: 'Você já tem cadastro',
+                                text: responseObj.message || 'Este CNPJ ou e-mail já possuem uma licença ativa.',
+                                icon: 'info',
+                                confirmButtonText: 'Baixar o robô novamente',
+                                showCancelButton: true,
+                                cancelButtonText: 'Voltar ao formulário',
+                                confirmButtonColor: '#3b82f6',
+                                cancelButtonColor: '#94a3b8'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    // Marca o retorno para /obrigado/ ajustar a mensagem
+                                    sessionStorage.setItem('notafacil_user_data', JSON.stringify({
+                                        nome: nome,
+                                        email: email,
+                                        returning: true
+                                    }));
+                                    // Evento separado: retorno não é lead novo e não deve
+                                    // contar como conversão no Ads.
+                                    window.dataLayer = window.dataLayer || [];
+                                    window.dataLayer.push({ 'event': 'download_recorrente' });
+                                    window.location.href = '/obrigado/';
+                                }
+                            });
+                            return;
+                        }
+
+                        // Conversão: lead qualificado gerado
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({ 'event': 'lead_cadastro', 'has_gclid': !!gclid });
+
+                        // Dados usados na página de boas-vindas (/obrigado/)
+                        sessionStorage.setItem('notafacil_user_data', JSON.stringify(responseObj));
+
+                        form.reset();
+                        window.location.href = '/obrigado/';
+
+                    } else {
+                        throw new Error('Erro na requisição');
+                    }
+
+                } catch (error) {
+                    console.error('Erro:', error);
+                    Swal.fire({
+                        title: 'Ops!',
+                        text: 'Ocorreu um erro ao processar seu cadastro. Tente novamente.',
+                        icon: 'error',
+                        confirmButtonText: 'Fechar',
+                        confirmButtonColor: '#ef4444'
+                    });
+                } finally {
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-70', 'cursor-not-allowed');
+                    btn.classList.add('hover:-translate-y-1', 'active:scale-95');
+                    btnText.innerHTML = originalText;
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                }
+            });
         });
     </script>
 

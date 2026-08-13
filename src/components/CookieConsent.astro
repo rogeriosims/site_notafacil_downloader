@@ -14,6 +14,8 @@
   aria-modal="true"
   aria-labelledby="cookie-banner-title"
   aria-describedby="cookie-banner-desc"
+  aria-hidden="true"
+  inert
   class="fixed bottom-6 left-6 right-6 md:left-auto md:right-6 md:max-w-md z-50 bg-slate-900/97 backdrop-blur-md border border-slate-700 p-6 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.4)] transform translate-y-10 opacity-0 pointer-events-none transition-all duration-500 flex flex-col gap-4"
 >
     <div class="flex items-start gap-4">
@@ -98,8 +100,7 @@
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
             'gtm.start': new Date().getTime(),
-            event: 'gtm.js',
-            'gtm.consent': 'analytics_granted'
+            event: 'gtm.js'
         });
 
         var s = document.createElement('script');
@@ -123,8 +124,16 @@
     }
 
     function hideBanner(banner) {
+        // O clique deixa o foco no botão. Aplicar aria-hidden a um ancestral do
+        // elemento focado é violação de acessibilidade (o navegador bloqueia e
+        // avisa no console), então devolvemos o foco ao body antes de ocultar.
+        if (banner.contains(document.activeElement)) {
+            document.activeElement.blur();
+        }
         banner.classList.add('translate-y-10', 'opacity-0', 'pointer-events-none');
         banner.setAttribute('aria-hidden', 'true');
+        // inert remove o banner da navegação por teclado e da árvore de acessibilidade
+        banner.setAttribute('inert', '');
     }
 
     function init() {
@@ -137,9 +146,11 @@
         var consent = getConsent();
 
         if (consent !== null) {
-            // Consentimento já registrado — aplica silenciosamente
-            if (consent.analytics) loadGTM();
+            // Consentimento já registrado — aplica silenciosamente.
+            // A ordem importa: o consent update precisa entrar no dataLayer ANTES
+            // do container subir, senão as tags avaliam o estado antigo (negado).
             notifyConsentMode(consent.analytics);
+            if (consent.analytics) loadGTM();
             hideBanner(banner);
             return;
         }
@@ -148,12 +159,13 @@
         setTimeout(function () {
             banner.classList.remove('translate-y-10', 'opacity-0', 'pointer-events-none');
             banner.removeAttribute('aria-hidden');
+            banner.removeAttribute('inert');
         }, 1000);
 
         acceptBtn.addEventListener('click', function () {
             saveConsent(true);
-            loadGTM();
             notifyConsentMode(true);
+            loadGTM();
             hideBanner(banner);
         });
 
