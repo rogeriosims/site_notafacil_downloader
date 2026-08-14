@@ -94,7 +94,9 @@
     }
 
     function loadGTM() {
-        // Só carrega GTM depois de consentimento analítico explícito
+        // Consent Mode avançado: o container sobe sempre, mas o estado padrão
+        // definido no BaseLayout nega todo armazenamento. Sem aceite ele envia
+        // apenas pings sem cookie — nenhum cookie é gravado.
         if (document.querySelector('script[data-gtm-loaded]')) return;
 
         window.dataLayer = window.dataLayer || [];
@@ -150,12 +152,17 @@
             // A ordem importa: o consent update precisa entrar no dataLayer ANTES
             // do container subir, senão as tags avaliam o estado antigo (negado).
             notifyConsentMode(consent.analytics);
-            if (consent.analytics) loadGTM();
+            loadGTM();
             hideBanner(banner);
             return;
         }
 
-        // Nenhuma resposta ainda — mostra o banner
+        // Sem resposta ainda: sobe o container em estado negado (Consent Mode
+        // avançado). Nenhum cookie é gravado — só pings anônimos, que alimentam
+        // a modelagem de conversões do Google para quem não aceitar.
+        loadGTM();
+
+        // Mostra o banner
         setTimeout(function () {
             banner.classList.remove('translate-y-10', 'opacity-0', 'pointer-events-none');
             banner.removeAttribute('aria-hidden');
@@ -165,7 +172,6 @@
         acceptBtn.addEventListener('click', function () {
             saveConsent(true);
             notifyConsentMode(true);
-            loadGTM();
             hideBanner(banner);
         });
 

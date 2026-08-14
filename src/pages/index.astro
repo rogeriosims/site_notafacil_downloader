@@ -974,15 +974,36 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                             return;
                         }
 
-                        // Conversão: lead qualificado gerado
-                        window.dataLayer = window.dataLayer || [];
-                        window.dataLayer.push({ 'event': 'lead_cadastro', 'has_gclid': !!gclid });
-
                         // Dados usados na página de boas-vindas (/obrigado/)
                         sessionStorage.setItem('notafacil_user_data', JSON.stringify(responseObj));
-
                         form.reset();
-                        window.location.href = '/obrigado/';
+
+                        // Conversão: lead qualificado gerado.
+                        //
+                        // A navegação para /obrigado/ precisa esperar as tags do GTM
+                        // (GA4 + conversão do Ads) concluírem. Saindo da página no mesmo
+                        // instante do push, o navegador cancela as requisições em voo e a
+                        // conversão do Ads se perde — o GA4 costuma sobreviver via
+                        // sendBeacon, a tag do Ads não.
+                        let jaNavegou = false;
+                        const irParaObrigado = () => {
+                            if (jaNavegou) return;
+                            jaNavegou = true;
+                            window.location.href = '/obrigado/';
+                        };
+
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({
+                            'event': 'lead_cadastro',
+                            'has_gclid': !!gclid,
+                            'eventCallback': irParaObrigado,
+                            'eventTimeout': 2000
+                        });
+
+                        // Rede de segurança obrigatória: se o GTM não carregar (bloqueador
+                        // de anúncios, falha de rede), o eventCallback nunca dispara e o
+                        // usuário ficaria preso na página com o formulário já enviado.
+                        setTimeout(irParaObrigado, 2100);
 
                     } else {
                         throw new Error('Erro na requisição');

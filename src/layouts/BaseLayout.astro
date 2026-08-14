@@ -81,8 +81,16 @@ const finalSchema = customSchema || defaultSchema;
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-    <!-- Google Consent Mode v2 - Padrão negado até consentimento explícito (LGPD) -->
-    <!-- O GTM é carregado condicionalmente pelo CookieConsent.astro após aceite -->
+    <!-- Google Consent Mode v2 AVANCADO - Padrao negado ate consentimento (LGPD) -->
+    <!--
+      Este bloco precisa ser o PRIMEIRO script da pagina: o estado padrao tem que
+      entrar no dataLayer antes de qualquer tag do Google subir.
+
+      Modo avancado: o CookieConsent.astro carrega o container sempre, ja em estado
+      negado. Nenhum cookie e gravado antes do aceite - apenas pings sem cookie, que
+      permitem ao Google modelar as conversoes de quem recusa. No modo basico
+      (container so apos aceite) esse sinal era jogado fora.
+    -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -93,6 +101,11 @@ const finalSchema = customSchema || defaultSchema;
         'ad_personalization': 'denied',
         'wait_for_update': 500
       });
+      // Sem ad_storage nao ha cookie _gcl_aw. Estes dois compensam:
+      // - ads_data_redaction: remove identificadores de clique das requisicoes
+      // - url_passthrough: faz o gclid viajar na URL na navegacao interna
+      gtag('set', 'ads_data_redaction', true);
+      gtag('set', 'url_passthrough', true);
     </script>
     <!-- /Google Consent Mode v2 -->
     <meta charset="UTF-8">
