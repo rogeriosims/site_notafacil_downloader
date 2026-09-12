@@ -81,15 +81,14 @@ const finalSchema = customSchema || defaultSchema;
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-    <!-- Google Consent Mode v2 AVANCADO - Padrao negado ate consentimento (LGPD) -->
+    <!-- Google Consent Mode v2 - Padrao negado ate consentimento explicito (LGPD) -->
     <!--
       Este bloco precisa ser o PRIMEIRO script da pagina: o estado padrao tem que
       entrar no dataLayer antes de qualquer tag do Google subir.
 
-      Modo avancado: o CookieConsent.astro carrega o container sempre, ja em estado
-      negado. Nenhum cookie e gravado antes do aceite - apenas pings sem cookie, que
-      permitem ao Google modelar as conversoes de quem recusa. No modo basico
-      (container so apos aceite) esse sinal era jogado fora.
+      Modo BASICO: o CookieConsent.astro so carrega o container apos o aceite.
+      A tentativa de migrar para o modo avancado foi revertida em 14/08 - ver
+      marketing/ajustes/18-postmortem-consent-avancado.md
     -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
@@ -101,16 +100,18 @@ const finalSchema = customSchema || defaultSchema;
         'ad_personalization': 'denied',
         'wait_for_update': 500
       });
-      // Sem ad_storage nao ha cookie _gcl_aw. Estes dois compensam:
-      // - ads_data_redaction: remove identificadores de clique das requisicoes
-      // - url_passthrough: faz o gclid viajar na URL na navegacao interna
+      // ATENCAO: em implementacao via GTM estes dois comandos NAO sao honrados.
+      // Comprovado em 14/08: a requisicao saiu com ep.ads_data_redaction=0 mesmo
+      // com o set abaixo. O controle real e na configuracao das tags do container
+      // (Vinculador de Conversoes -> "Ativar transmissao de URL"). Mantidos por
+      // serem inocuos e valerem caso o site passe a usar gtag.js direto.
       gtag('set', 'ads_data_redaction', true);
       gtag('set', 'url_passthrough', true);
     </script>
     <!-- /Google Consent Mode v2 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://unpkg.com https://cdn.jsdelivr.net https://www.youtube-nocookie.com https://static.doubleclick.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://google.com https://google.com.br https://www.google.com https://www.google.com.br https://www.googleadservices.com https://googleads.g.doubleclick.net https://ad.doubleclick.net https://stats.g.doubleclick.net https://img.youtube.com https://i.ytimg.com; frame-src 'self' https://www.youtube-nocookie.com https://www.googletagmanager.com https://td.doubleclick.net; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com https://*.analytics.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://ad.doubleclick.net https://stats.g.doubleclick.net https://www.google.com https://www.google.com.br https://n8n.rockethub.com.br https://cloudflareinsights.com https://unpkg.com https://cdn.jsdelivr.net;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://unpkg.com https://cdn.jsdelivr.net https://www.youtube-nocookie.com https://static.doubleclick.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://google.com https://google.com.br https://www.google.com https://www.google.com.br https://www.googleadservices.com https://googleads.g.doubleclick.net https://ad.doubleclick.net https://stats.g.doubleclick.net https://img.youtube.com https://i.ytimg.com https://pagead2.googlesyndication.com; frame-src 'self' https://www.youtube-nocookie.com https://www.googletagmanager.com https://td.doubleclick.net; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com https://*.analytics.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://ad.doubleclick.net https://stats.g.doubleclick.net https://www.google.com https://www.google.com.br https://n8n.rockethub.com.br https://cloudflareinsights.com https://unpkg.com https://cdn.jsdelivr.net https://pagead2.googlesyndication.com;">
     <title>{title}</title>
     <meta name="description" content={description}>
     <meta name="keywords" content="Download NFS-e Nacional, robô baixar xml nfse portal nacional, automação contábil, baixar pdf nfse em lote, sistema para contador nfse, captura xml nfse">

@@ -37,7 +37,7 @@ pubDate: "2026-03-XX"   ← use data real de hoje ou próxima segunda
 draft: false
 tags: ["NFS-e Nacional", "contabilidade", "Reforma Tributária", "Portal Nacional"]
 author: "Rogério - Equipe NotaFácil"
-image: "/blog/imagens/capa-nome-post.png"   ← use o slug exato com prefixo capa_
+image: "../../assets/blog/imagens/capa_nome_post.png"   ← caminho RELATIVO ao .md (ver regra abaixo)
 readingTime: "10 min"
 ---
 
@@ -69,10 +69,13 @@ Baixe agora o NotaFácil franquia 100% grátis para sempre→ [https://notafacil
 **Instruções para a Geração da Imagem de Capa:**
 
 1. Use a sua ferramenta `generate_image` para criar a imagem de capa.
-2. **Nomeação**: Você DEVE usar o nome do arquivo começando com `capa_` seguido do slug do artigo (ex: `capa_nt_007_guia_2026`). No frontmatter do MD, a propriedade `image:` deve apontar exatamente para o caminho web final: `/blog/imagens/capa_slug.png`.
+2. **Nomeação e caminho (ATENÇÃO — muda o resultado do build)**: o nome do arquivo começa com `capa_` seguido do slug do artigo (ex: `capa_nt_007_guia_2026.png`).
+   - A imagem vive em **`src/assets/blog/imagens/`**, e NÃO em `public/`. É o pipeline do `astro:assets` que a otimiza.
+   - No frontmatter, `image:` recebe um caminho **relativo ao próprio arquivo .md**: `../../assets/blog/imagens/capa_slug.png`. O schema em `src/content.config.ts` usa o helper `image()`, que rejeita URL absoluta de `/public`.
+   - Apontar para um arquivo inexistente **quebra o build**. Se a capa ainda não foi gerada, **omita o campo `image`** — ele é opcional e o blog renderiza sem capa.
 3. **Qualidade do Prompt (Inglês)**: O `Prompt` deve ser rico e focar em estética Premium/Dark: "A high-end, professional blog cover image for a Brazilian accounting site. Topic: [Tema do post em inglês]. Style: Sleek corporate dark mode, vibrant emerald green and indigo highlights, 3D abstract financial elements, glassmorphism, 4k, high resolution. **CRITICAL: Any visible text must be in Portuguese (Brazil).** Subtle text 'NFS-e 2026' in the corner. 16:9 aspect ratio."
-4. **Persistência Física do Arquivo**: A ferramenta de geração salvará a imagem em uma pasta temporária. Você DEVE obrigatoriamente usar o comando `powershell` para copiar esse arquivo para a pasta definitiva do projeto:
-   `Copy-Item "CAMINHO_ABS_DA_FERRAMENTA" -Destination "c:\Users\Rogerio\Documents\Projetos\site_notafacil_downloader\public\blog\imagens\capa_slug.png"`
-5. **Verificação (CRÍTICA)**: Após a cópia, você DEVE rodar o comando `dir public/blog/imagens/capa_slug.png` para confirmar que o arquivo está lá antes de finalizar a tarefa. Se o arquivo não existir, repita o processo.
+4. **Persistência Física do Arquivo**: A ferramenta de geração salvará a imagem em uma pasta temporária. Você DEVE obrigatoriamente copiar esse arquivo para a pasta definitiva do projeto — **`src/assets/blog/imagens/`**:
+   `Copy-Item "CAMINHO_ABS_DA_FERRAMENTA" -Destination "c:\Users\Rogerio\Documents\Projetos\site_notafacil_downloader\src\assets\blog\imagens\capa_slug.png"`
+5. **Verificação (CRÍTICA)**: Após a cópia, rode `dir src\assets\blog\imagens\capa_slug.png` para confirmar que o arquivo está lá. Em seguida rode `npm run build` — é ele que valida de fato se o frontmatter e o caminho da imagem estão corretos. Se o build falhar, corrija antes de finalizar a tarefa.
 
 Agora execute a tarefa, entregue o arquivo .md completo, gere a imagem na ferramenta designada e copie a imagem pra dentro do repositório.

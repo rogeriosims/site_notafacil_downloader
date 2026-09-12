@@ -152,15 +152,19 @@
             // A ordem importa: o consent update precisa entrar no dataLayer ANTES
             // do container subir, senão as tags avaliam o estado antigo (negado).
             notifyConsentMode(consent.analytics);
-            loadGTM();
+            if (consent.analytics) loadGTM();
             hideBanner(banner);
             return;
         }
 
-        // Sem resposta ainda: sobe o container em estado negado (Consent Mode
-        // avançado). Nenhum cookie é gravado — só pings anônimos, que alimentam
-        // a modelagem de conversões do Google para quem não aceitar.
-        loadGTM();
+        // REVERTIDO em 14/08 — ver marketing/ajustes/18-postmortem-consent-avancado.md
+        //
+        // A tentativa de Consent Mode avançado (carregar o container sempre, em
+        // estado negado) gravou o cookie _gcl_au SEM consentimento, e os pings
+        // sem cookie foram bloqueados pelo proprio CSP do site. Resultado: todo
+        // o risco de LGPD e nenhum dos ganhos. Voltamos ao modo basico ate que
+        // o CSP libere pagead2.googlesyndication.com e o ads_data_redaction
+        // seja configurado na tag do GTM, nao via gtag('set').
 
         // Mostra o banner
         setTimeout(function () {
@@ -172,6 +176,7 @@
         acceptBtn.addEventListener('click', function () {
             saveConsent(true);
             notifyConsentMode(true);
+            loadGTM();
             hideBanner(banner);
         });
 
