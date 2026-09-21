@@ -53,7 +53,7 @@ A transição para a Reforma não precisa ser um pesadelo. Ao adotar um **robô 
 - **Funciona com qualquer ERP?**  
   Sim, pois ele entrega o arquivo XML puro e organizado em pastas, exatamente como sistemas como Domínio, Alterdata e Questor exigem.
 - **É realmente seguro para o Certificado A1?**  
-  Sim. Conforme nosso [Guia de Riscos da Nuvem](/blog/risco-certificado-digital-nuvem-2026), o Nota Fácil mantém tudo local. Nada é enviado para nossos servidores.
+  Sim. Conforme nosso [Guia de Riscos da Nuvem](/blog/risco-certificado-digital-nuvem-2026/), o Nota Fácil mantém tudo local. Nada é enviado para nossos servidores.
 
 ---
 
