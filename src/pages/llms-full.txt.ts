@@ -37,7 +37,7 @@ export const GET: APIRoute = async (context) => {
     const pubDateStr = p.data.pubDate ? p.data.pubDate.toLocaleDateString('pt-BR') : '';
 
     return `## ${p.data.title}
-**URL:** ${baseUrl}/blog/${p.id}
+**URL:** ${baseUrl}/blog/${p.id}/
 **Data:** ${pubDateStr}
 **Autor:** ${p.data.author || 'Nota Fácil'}
 **Resumo:** ${p.data.description || ''}
