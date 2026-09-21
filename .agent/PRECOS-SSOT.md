@@ -22,7 +22,8 @@ Todo agente (Redator, Marketing, Vendas) deve consultar este arquivo antes de me
 
 *   **Free Tier:** Sempre mencionar como "100 notas/mês **grátis para sempre**" — não como "trial" ou "período de teste".
 *   **CNPJs:** Todos os planos, incluindo o gratuito, permitem **empresas (CNPJs) ilimitados**. O limite é apenas no volume de notas processadas.
-*   **Cobrança:** Os planos são cobrados **mensalmente**. Não existe plano anual atualmente.
+*   **Cobrança:** Os planos são cobrados **mensalmente**, de forma **recorrente** e **sem fidelidade**. Não existe plano anual atualmente.
+*   **Upgrade:** é feito **dentro do aplicativo**, não no site. A cobrança é processada pelo Asaas. O site leva sempre ao cadastro gratuito, e a assinatura acontece depois, no app.
 *   **Plano recomendado:** O plano **Crescimento (R$ 89,90)** é o recomendado para escritórios contábeis de médio porte.
 
 ---
@@ -30,7 +31,7 @@ Todo agente (Redator, Marketing, Vendas) deve consultar este arquivo antes de me
 ## Frases de Referência para Copy
 
 *   "Comece gratuitamente com 100 notas/mês. Sem cartão de crédito."
-*   "A partir de R$ 39,90/mês para 500 notas — menos que uma hora de auxiliar fiscal."
+*   "A partir de R$ 39,90/mês para 500 notas — cerca de 2,5 horas de auxiliar fiscal, para um trabalho manual de aproximadamente 16 horas."
 *   "Para escritórios médios: R$ 89,90/mês para 1.500 notas e CNPJs ilimitados."
 *   "Escale com segurança: R$ 199,90/mês para 5.000 notas sem limite de clientes."
 
@@ -38,16 +39,16 @@ Todo agente (Redator, Marketing, Vendas) deve consultar este arquivo antes de me
 
 ## ROI de Referência (Para Posts e Ads)
 
-Com base em um auxiliar fiscal custando R$ 16/hora e o hCaptcha adicionando 1 minuto por nota:
+Com base em um auxiliar fiscal custando R$ 16/hora e **2 minutos de trabalho manual por nota** (captchas do Portal Nacional, download, organização e renomeação dos arquivos nas pastas). Esta é a premissa única usada na calculadora e no bloco de números da home:
 
 | Plano | Volume | Horas economizadas/mês | Economia de custo | Custo do plano | ROI |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| Starter | 500 notas | 8,3h | R$ 133 | R$ 39,90 | +233% |
-| Crescimento | 1.500 notas | 25h | R$ 400 | R$ 89,90 | +345% |
-| Scale | 5.000 notas | 83,3h | R$ 1.333 | R$ 199,90 | +567% |
+| Starter | 500 notas | 16,7h | R$ 267 | R$ 39,90 | +568% |
+| Crescimento | 1.500 notas | 50h | R$ 800 | R$ 89,90 | +790% |
+| Scale | 5.000 notas | 166,7h | R$ 2.667 | R$ 199,90 | +1.234% |
 
-*Cálculo baseado apenas no tempo de captcha eliminado (1 min/nota extra com hCaptcha). Não inclui economia de retrabalho e erros.*
+*ROI = (economia de custo − custo do plano) ÷ custo do plano. É uma estimativa e deve ser apresentada como tal. Não inclui economia de retrabalho e erros. Se houver medição própria do tempo manual, atualize a premissa aqui, na calculadora (`index.astro`) e no `llms.txt.ts` ao mesmo tempo.*
 
 ---
-**Última atualização:** Junho de 2026
+**Última atualização:** Setembro de 2026
 **Responsável:** Equipe NotaFácil
