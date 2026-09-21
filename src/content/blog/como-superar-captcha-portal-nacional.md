@@ -1,6 +1,6 @@
 ---
-title: "Portal Nacional da NFS-e: Captchas e Instabilidades travam sua contabilidade?"
-description: "Capture notas automaticamente no Portal Nacional da NFS-e sem sofrer com captchas, lentidão e instabilidades. Saiba como otimizar seu fechamento mensal."
+title: "Captcha no Portal Nacional da NFS-e: como baixar notas sem travar"
+description: "Captcha a cada nota no Portal Nacional da NFS-e? Veja por que ele trava o fechamento e como baixar XML em lote sem resolver captcha manualmente."
 pubDate: "2026-06-10"
 draft: false
 tags: ["NFS-e Nacional", "contabilidade", "Reforma Tributária", "Portal Nacional", "automação"]

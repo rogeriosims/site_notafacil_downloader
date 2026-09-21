@@ -1,6 +1,6 @@
 ---
-title: "Instabilidades no Portal Nacional da NFS-e? Como Blindar o Fechamento"
-description: "O Portal Nacional vive enfrentando lentidão. Entenda como as instabilidades atrasam seu fechamento fiscal e veja como driblar o problema com automação em 2026."
+title: "Portal NFS-e Nacional fora do ar ou lento? Como não travar o fechamento"
+description: "Portal Nacional da NFS-e lento ou fora do ar no início do mês? Veja por que acontece e como manter o fechamento fiscal em dia sem depender do site."
 pubDate: "2026-03-03"
 draft: false
 tags: ["NFS-e Nacional", "contabilidade", "Portal Nacional", "automação fiscal"]
