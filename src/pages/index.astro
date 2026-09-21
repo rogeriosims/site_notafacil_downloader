@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import posterAnuncio from '../assets/video/anuncio-poster.jpg';
 
 // Posts de apoio ao argumento de captcha/resiliência (prova editorial)
 const slugsCaptcha = [
@@ -14,16 +16,18 @@ const postsCaptcha = slugsCaptcha
     .filter(Boolean);
 
 // Prova operacional — base real de notas processadas pelo robô.
-// Premissa declarada ao usuário: 2 captchas por nota, 30s de resolução manual cada.
-const notasProcessadas = 122011;
-const captchasResolvidos = notasProcessadas * 2;
-const horasDevolvidas = Math.round((captchasResolvidos * 30) / 3600);
+// Horas e jornadas são ESTIMATIVAS com a premissa única do site (calculadora e
+// .agent/PRECOS-SSOT.md): 2 minutos de trabalho manual por nota (captchas do portal,
+// download, organização e renomeação dos arquivos nas pastas).
+const notasProcessadas = 175823; // atualizado em 18/09/2026
+const MINUTOS_MANUAIS_POR_NOTA = 2;
+const horasDevolvidas = Math.round((notasProcessadas * MINUTOS_MANUAIS_POR_NOTA) / 60);
 const jornadasDevolvidas = Math.round(horasDevolvidas / 8);
 
 const fmt = (n: number) => n.toLocaleString('pt-BR');
 ---
 
-<BaseLayout title="Nota Fácil | Automação de NFS-e Nacional" description="O robô desktop que resolve os captchas do Portal Nacional por você e baixa XML e PDF da NFS-e em lote, direto na sua máquina." bodyClass="bg-slate-50 text-slate-900 overflow-x-hidden">
+<BaseLayout title="Nota Fácil Downloader: Baixar NFS-e em Lote (XML e PDF)" description="Robô desktop que baixa XML e PDF da NFS-e Nacional em lote, com certificado A1, A3 ou login e senha. Roda no seu PC: o certificado não vai para a nuvem." bodyClass="bg-slate-50 text-slate-900 overflow-x-hidden">
 
     <!-- Bloco 1: HERO — Copy de resiliência + Formulário de ativação -->
     <section id="ativar" class="hero-gradient pt-32 pb-24 lg:pt-40 relative overflow-hidden bg-slate-900 scroll-mt-20">
@@ -43,26 +47,26 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                     </span>
 
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-8 tracking-tight">
-                        O Portal Nacional pede <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">dois captchas por nota.</span><br class="hidden lg:block"/> O robô resolve os dois. Você não clica em nenhum.
+                        Baixe as NFS-e da <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">carteira inteira</span><br class="hidden lg:block"/> enquanto você faz outra coisa.
                     </h1>
 
                     <p class="text-lg lg:text-xl text-slate-300 leading-relaxed mb-10 max-w-2xl font-medium">
-                        Conecte por <strong class="text-white">Certificado Digital A1</strong> ou por login e senha: o robô roda na sua máquina, atravessa os desafios visuais do portal sem intervenção humana e baixa XML e PDF de toda a carteira em lote — organizando as pastas do seu ERP e gerando a planilha de conferência no fim.
+                        O robô entra no Portal Nacional por <strong class="text-white">certificado A1, A3 ou login e senha</strong>, baixa XML e PDF em lote e deixa tudo organizado nas pastas do seu ERP, com a planilha de conferência no fim. Ele roda no seu computador: o certificado dos seus clientes nunca sai dele.
                     </p>
 
                     <!-- Pilares rápidos de resiliência -->
                     <ul class="space-y-4 mb-4">
                         <li class="flex items-start gap-4 text-slate-200">
                             <i data-lucide="file-badge" class="w-6 h-6 text-emerald-400 shrink-0 mt-0.5"></i>
-                            <span class="font-medium"><strong class="text-white font-black">Certificado A1 ou login e senha.</strong> O robô lê os certificados já instalados no Windows sem você digitar nada.</span>
+                            <span class="font-medium"><strong class="text-white font-black">Certificado A1, A3 ou login e senha.</strong> O robô usa os certificados instalados no Windows (A1 em arquivo ou A3 em token USB) e atende também quem só tem login.</span>
                         </li>
                         <li class="flex items-start gap-4 text-slate-200">
                             <i data-lucide="scan-eye" class="w-6 h-6 text-emerald-400 shrink-0 mt-0.5"></i>
-                            <span class="font-medium"><strong class="text-white font-black">Resolução automática do desafio visual.</strong> hCaptcha, reCAPTCHA e Serpro são processados localmente enquanto o lote roda em segundo plano.</span>
+                            <span class="font-medium"><strong class="text-white font-black">Captcha não trava o lote.</strong> Com certificado, a coleta usa a API oficial e nem passa por ele. No login e senha, o robô resolve os desafios localmente, em segundo plano.</span>
                         </li>
                         <li class="flex items-start gap-4 text-slate-200">
                             <i data-lucide="refresh-cw" class="w-6 h-6 text-emerald-400 shrink-0 mt-0.5"></i>
-                            <span class="font-medium"><strong class="text-white font-black">Retomada quando o portal oscila.</strong> Queda de conexão ou instabilidade do governo não zera o trabalho: o robô repega de onde parou.</span>
+                            <span class="font-medium"><strong class="text-white font-black">Refaz o que falhou.</strong> Se o portal cair ou a busca for interrompida, o robô agenda nova tentativa e refaz o período exato pedido, com a fila visível no painel Retentativas.</span>
                         </li>
                     </ul>
                 </div>
@@ -72,7 +76,7 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                     <div class="card-premium card-static p-8 sm:p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden bg-white">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
 
-                        <h2 class="text-2xl font-black text-slate-800 mb-2 leading-tight">Ative sua Licença Gratuita</h2>
+                        <h2 class="text-2xl font-black text-slate-800 mb-2 leading-tight">Baixe o robô no seu escritório</h2>
                         <p class="text-slate-500 text-sm mb-8 font-medium">
                             Libere o acesso ao instalador do robô.
                             <span class="text-red-500 font-bold block mt-1 text-[10px] uppercase tracking-wider">(Todos os campos obrigatórios)</span>
@@ -90,11 +94,11 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                                     class="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition font-medium text-slate-700 placeholder:text-slate-400 text-sm sm:text-base">
                             </div>
 
-                            <button type="submit" id="btn-submit" aria-label="Ativar licença gratuita do robô Nota Fácil para Windows"
+                            <button type="submit" id="btn-submit" aria-label="Baixar o robô Nota Fácil para Windows"
                                 class="w-full mt-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black py-5 rounded-xl shadow-lg shadow-blue-500/30 transition-all transform hover:-translate-y-1 active:scale-95 text-lg uppercase tracking-wider relative overflow-hidden group">
                                 <span id="btn-text" class="relative z-10 flex items-center justify-center gap-2">
                                     <i data-lucide="shield-check" class="w-5 h-5"></i>
-                                    ATIVAR E BAIXAR O ROBÔ
+                                    BAIXAR O ROBÔ
                                 </span>
                             </button>
                         </form>
@@ -102,7 +106,7 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                         <div class="mt-6 pt-6 border-t border-slate-100 relative z-10">
                             <p class="text-[11px] sm:text-xs text-slate-600 font-bold flex gap-3 leading-relaxed">
                                 <i data-lucide="gift" class="w-5 h-5 text-emerald-500 shrink-0"></i>
-                                <span>Não é um teste de 7 dias. O plano de 100 notas/mês é grátis para sempre, com CNPJs ilimitados e sem cartão de crédito.</span>
+                                <span>Não é um teste de 7 dias. O plano de 100 notas/mês é grátis para sempre, com CNPJs ilimitados e sem cartão de crédito. Instala pela Microsoft Store ou por instalador .exe. Upgrade dentro do app, sem fidelidade.</span>
                             </p>
                         </div>
                     </div>
@@ -111,37 +115,89 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
         </div>
     </section>
 
+    <!-- Bloco 1B: VÍDEO — anúncio de 25s. O iframe só é criado após o clique (poster local, sem requisição ao YouTube antes) -->
+    <section class="py-20 bg-slate-50 border-b border-slate-100 relative z-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-10" data-aos="fade-up">
+                <span class="text-blue-600 font-black uppercase tracking-widest text-xs">Em 25 segundos</span>
+                <h2 class="text-3xl lg:text-4xl font-black text-slate-900 leading-tight mt-4 max-w-3xl mx-auto">
+                    Sua rotina fiscal <span class="text-blue-600">no piloto automático</span>
+                </h2>
+            </div>
+
+            <div id="video-anuncio" class="relative aspect-video max-w-3xl mx-auto rounded-[2rem] overflow-hidden shadow-2xl bg-slate-900" data-aos="fade-up">
+                <button type="button" data-video-id="uSVEjHhruYo" aria-label="Assistir ao anúncio do Nota Fácil (25 segundos)" class="group absolute inset-0 w-full h-full cursor-pointer focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-400">
+                    <Image src={posterAnuncio} alt="Apresentadora do Nota Fácil Downloader em um escritório, com o texto Notas no automático" width={960} height={540} loading="lazy" class="w-full h-full object-cover" />
+                    <span class="absolute inset-0 bg-slate-900/20 group-hover:bg-slate-900/10 transition-colors"></span>
+                    <span class="absolute inset-0 flex items-center justify-center">
+                        <span class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-blue-600 group-hover:bg-blue-500 text-white flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110">
+                            <i data-lucide="play" class="w-9 h-9 ml-1"></i>
+                        </span>
+                    </span>
+                </button>
+            </div>
+
+            <p class="text-center text-sm text-slate-500 font-medium mt-6 max-w-2xl mx-auto leading-relaxed">
+                Com certificado A1 ou A3, a coleta usa a API oficial e nem passa por captcha. No login e senha, o robô resolve os desafios por você.
+            </p>
+            <div class="text-center mt-8">
+                <a href="#ativar" class="inline-flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-500 text-white px-10 py-5 rounded-2xl font-black transition-all shadow-xl shadow-blue-500/20 active:scale-95 text-lg uppercase tracking-wider">
+                    <i data-lucide="download" class="w-5 h-5"></i>
+                    Baixar o robô
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script is:inline>
+        // Facade do vídeo: só cria o iframe (youtube-nocookie) após o clique e registra o evento video_play.
+        document.addEventListener('DOMContentLoaded', function () {
+            var box = document.getElementById('video-anuncio');
+            var btn = box && box.querySelector('button[data-video-id]');
+            if (!btn) return;
+            btn.addEventListener('click', function () {
+                var id = btn.getAttribute('data-video-id');
+                var frame = document.createElement('iframe');
+                frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&hl=pt-BR&cc_load_policy=1';
+                frame.title = 'Anúncio Nota Fácil: automatize o download de NFS-e';
+                frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+                frame.allowFullscreen = true;
+                frame.referrerPolicy = 'strict-origin-when-cross-origin';
+                frame.className = 'absolute inset-0 w-full h-full';
+                box.replaceChildren(frame);
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({ 'event': 'video_play', 'video_id': id, 'video_title': 'Anuncio Ana Luisa 25s', 'video_location': 'home_apos_hero' });
+            });
+        });
+    </script>
+
     <!-- Bloco 2: PROVA OPERACIONAL (números reais da base) -->
     <section class="py-20 bg-white border-b border-slate-100 relative z-20">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">
                 <span class="text-blue-600 font-black uppercase tracking-widest text-xs">Números da operação</span>
                 <h2 class="text-3xl lg:text-4xl font-black text-slate-900 leading-tight mt-4 max-w-3xl mx-auto">
-                    Captchas que o robô já resolveu <span class="text-blue-600">para que ninguém precisasse clicar</span>
+                    Trabalho manual que o robô já <span class="text-blue-600">tirou das equipes</span>
                 </h2>
             </div>
 
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
                 <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-200 text-center" data-aos="fade-up" data-aos-delay="100">
                     <span class="block text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">{fmt(notasProcessadas)}</span>
                     <span class="block text-xs font-bold text-slate-500 uppercase tracking-wider mt-2">Notas capturadas</span>
                 </div>
-                <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-200 text-center" data-aos="fade-up" data-aos-delay="150">
-                    <span class="block text-3xl sm:text-4xl font-black text-blue-600 tracking-tight">{fmt(captchasResolvidos)}</span>
-                    <span class="block text-xs font-bold text-slate-500 uppercase tracking-wider mt-2">Captchas resolvidos</span>
-                </div>
                 <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-200 text-center" data-aos="fade-up" data-aos-delay="200">
                     <span class="block text-3xl sm:text-4xl font-black text-emerald-600 tracking-tight">{fmt(horasDevolvidas)}h</span>
-                    <span class="block text-xs font-bold text-slate-500 uppercase tracking-wider mt-2">Devolvidas às equipes</span>
+                    <span class="block text-xs font-bold text-slate-500 uppercase tracking-wider mt-2">Horas de trabalho manual*</span>
                 </div>
                 <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-200 text-center" data-aos="fade-up" data-aos-delay="250">
                     <span class="block text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">{fmt(jornadasDevolvidas)}</span>
-                    <span class="block text-xs font-bold text-slate-500 uppercase tracking-wider mt-2">Jornadas de 8h</span>
+                    <span class="block text-xs font-bold text-slate-500 uppercase tracking-wider mt-2">Jornadas de 8h*</span>
                 </div>
             </div>
 
             <p class="text-center text-xs text-slate-400 font-medium mt-8 max-w-2xl mx-auto leading-relaxed">
-                Base real de notas processadas pelo Nota Fácil. O Portal Nacional exige <strong class="text-slate-500">2 captchas por nota</strong>; considerando 30 segundos de resolução manual em cada um, o trabalho braçal equivalente passa de 1 minuto por documento.
+                Notas capturadas: base real do Nota Fácil. *Horas e jornadas são estimativas, calculadas com <strong class="text-slate-500">2 minutos de trabalho manual por nota</strong> (captchas do Portal Nacional, download, organização e renomeação dos arquivos nas pastas).
             </p>
         </div>
     </section>
@@ -175,7 +231,7 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                         <i data-lucide="refresh-cw" class="w-8 h-8"></i>
                     </div>
                     <h3 class="text-2xl font-black text-white mb-4">Resiliência à instabilidade</h3>
-                    <p class="text-slate-300 leading-relaxed font-medium">Quando o Portal Nacional oscila no pico do fechamento, o robô aguarda, tenta de novo e retoma a fila. Certificado A1 vencido não derruba a rotina: ele registra o alerta e segue com o resto da carteira.</p>
+                    <p class="text-slate-300 leading-relaxed font-medium">Quando o Portal Nacional oscila no pico do fechamento, o robô percebe a indisponibilidade em 1 segundo, agenda nova tentativa e refaz o período exato pedido, com a fila no painel Retentativas. Certificado vencido não derruba a rotina: ele registra o alerta e segue com o resto da carteira.</p>
                 </div>
 
                 <div class="bg-white/5 backdrop-blur-lg border border-white/10 p-10 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="300">
@@ -183,14 +239,14 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                         <i data-lucide="server-off" class="w-8 h-8"></i>
                     </div>
                     <h3 class="text-2xl font-black text-white mb-4">Nada sai da sua máquina</h3>
-                    <p class="text-slate-300 leading-relaxed font-medium">O Certificado A1 e as credenciais gov.br nunca vão para a nuvem. A conexão é do seu computador direto para o portal do governo, em conformidade com a LGPD e o sigilo fiscal.</p>
+                    <p class="text-slate-300 leading-relaxed font-medium">O certificado (A1 ou A3) e as credenciais gov.br nunca vão para a nuvem. A conexão é do seu computador direto para o portal do governo, em conformidade com a LGPD e o sigilo fiscal.</p>
                 </div>
             </div>
 
             <div class="text-center mt-16" data-aos="fade-up">
                 <a href="#ativar" class="inline-flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-500 text-white px-10 py-5 rounded-2xl font-black transition-all shadow-xl shadow-blue-500/20 active:scale-95 text-lg uppercase tracking-wider">
                     <i data-lucide="shield-check" class="w-5 h-5"></i>
-                    Ativar minha licença grátis
+                    Baixar o robô
                 </a>
             </div>
         </div>
@@ -218,11 +274,11 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                             <i data-lucide="file-badge" class="w-8 h-8"></i>
                         </div>
                         <span class="inline-flex self-start items-center gap-2 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-black px-3 py-1 rounded-full text-[10px] uppercase tracking-widest mb-6">
-                            Zero digitação
+                            A1 e A3
                         </span>
-                        <h3 class="text-3xl font-black text-white mb-6">Certificado Digital A1</h3>
+                        <h3 class="text-3xl font-black text-white mb-6">Certificado Digital A1 e A3</h3>
                         <p class="text-slate-300 leading-relaxed font-medium mb-8">
-                            O robô lê automaticamente os certificados A1 já instalados no repositório do Windows. Você apenas seleciona qual empresa quer cadastrar pelo certificado — sem redigitar senha a cada cliente e sem subir nada para lugar nenhum.
+                            O robô lê os certificados já instalados no repositório do Windows: A1 em arquivo e A3 em token USB ou cartão. Você seleciona qual empresa quer cadastrar pelo certificado, sem subir nada para lugar nenhum. Com token A3, instale antes o gerenciador do fabricante.
                         </p>
                         <ul class="space-y-4 mt-auto">
                             <li class="flex gap-3 text-slate-200 font-medium">
@@ -231,7 +287,7 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                             </li>
                             <li class="flex gap-3 text-slate-200 font-medium">
                                 <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
-                                <span>Seleção da empresa direto no repositório do Windows</span>
+                                <span>Seleção da empresa direto no repositório do Windows, com A1 ou A3</span>
                             </li>
                             <li class="flex gap-3 text-slate-200 font-medium">
                                 <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
@@ -264,7 +320,7 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                         </li>
                         <li class="flex gap-3 text-slate-700 font-medium">
                             <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i>
-                            <span>Atende quem não possui certificado A1</span>
+                            <span>Atende quem não possui certificado digital</span>
                         </li>
                         <li class="flex gap-3 text-slate-700 font-medium">
                             <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i>
@@ -301,7 +357,7 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                         <i data-lucide="shield-alert" class="w-8 h-8"></i>
                     </div>
                     <h3 class="text-2xl font-black text-slate-900 mb-4">Captura Blindada</h3>
-                    <p class="text-slate-600 leading-relaxed font-medium">O motor supera os bloqueios visuais invisivelmente, enquanto a Sincronização NSU garante 100% de captura sem pular nenhuma nota da sequência.</p>
+                    <p class="text-slate-600 leading-relaxed font-medium">O motor supera os bloqueios visuais em segundo plano, a sincronização por NSU acompanha a sequência oficial de notas de cada empresa e a deduplicação evita arquivos repetidos.</p>
                 </div>
 
                 <!-- Processamento Local (LGPD) -->
@@ -310,7 +366,7 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                         <i data-lucide="server-off" class="w-8 h-8"></i>
                     </div>
                     <h3 class="text-2xl font-black text-slate-900 mb-4">Processamento Local</h3>
-                    <p class="text-slate-600 leading-relaxed font-medium">Você não faz upload do maior patrimônio do cliente. O robô roda 100% no seu PC. O Certificado A1 nunca vai para nuvem, garantindo segurança total e adequação à LGPD.</p>
+                    <p class="text-slate-600 leading-relaxed font-medium">Você não faz upload do maior patrimônio do cliente. O robô roda 100% no seu PC. O certificado (A1 ou A3) nunca vai para nuvem, reforçando a segurança e a adequação à LGPD.</p>
                 </div>
 
                 <!-- Dashboard & Inteligência -->
@@ -319,8 +375,95 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                         <i data-lucide="line-chart" class="w-8 h-8"></i>
                     </div>
                     <h3 class="text-2xl font-black text-slate-900 mb-4">Dashboard & Inteligência</h3>
-                    <p class="text-slate-600 leading-relaxed font-medium">Muito além de XMLs brutos. O robô compila suas notas em uma Planilha Mestra contendo um Dashboard completo com gráficos de faturamento, tomadas, retenções federais e auditoria cromática de status.</p>
+                    <p class="text-slate-600 leading-relaxed font-medium">Muito além de XMLs brutos. O robô compila suas notas em uma Planilha Mestra com Dashboard completo: gráficos de faturamento, tomadas, retenções federais e auditoria cromática de status. Canceladas e substituídas ganham marca d'água no PDF e, se você quiser, pastas só delas.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bloco 5B: PAINEL FISCAL — esteira de fechamento e planilha de apuração -->
+    <!-- Quando houver print real do /painel-fiscal, colocar acima do card "Os 4 estados" (via astro:assets). Não usar mock inventado. -->
+    <section id="painel-fiscal" class="py-24 bg-white relative z-20 scroll-mt-20">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
+
+                <div class="lg:col-span-6" data-aos="fade-right">
+                    <span class="text-blue-600 font-black uppercase tracking-widest text-xs">Painel Fiscal</span>
+                    <h2 class="text-4xl lg:text-5xl font-black text-slate-900 leading-tight mt-4 mb-6">
+                        Da carteira ao <span class="text-blue-600">fechamento em uma tela</span>
+                    </h2>
+                    <p class="text-lg text-slate-600 font-medium leading-relaxed mb-8">
+                        O robô baixa e organiza. O Painel Fiscal mostra, na competência que você escolher, em que pé está cada empresa e para onde olhar primeiro.
+                    </p>
+
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex gap-3 text-slate-700 font-medium">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i>
+                            <span><strong class="text-slate-900">Quatro estados por empresa:</strong> Pronta, Atenção, Bloqueada ou Sem movimento.</span>
+                        </li>
+                        <li class="flex gap-3 text-slate-700 font-medium">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i>
+                            <span><strong class="text-slate-900">Saltos de numeração e cancelamentos extemporâneos</strong> apontados para você conferir.</span>
+                        </li>
+                        <li class="flex gap-3 text-slate-700 font-medium">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i>
+                            <span><strong class="text-slate-900">Conciliação de 3 vias:</strong> notas encontradas no portal, no disco e com erro.</span>
+                        </li>
+                        <li class="flex gap-3 text-slate-700 font-medium">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i>
+                            <span><strong class="text-slate-900">"Aguardando" até o seu prazo de fechamento,</strong> sem falso alarme de "Sem movimento".</span>
+                        </li>
+                    </ul>
+
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                        <a href="#ativar" class="inline-flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-2xl font-black transition-all shadow-xl shadow-blue-500/20 active:scale-95 text-base uppercase tracking-wider">
+                            <i data-lucide="download" class="w-5 h-5"></i>
+                            Baixar o robô
+                        </a>
+                        <a href="/blog/painel-fiscal-planilha-fechamento-nfse/" class="text-blue-600 font-bold underline underline-offset-4 hover:text-blue-500">Ler o guia completo do Painel Fiscal</a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6" data-aos="fade-left">
+                    <div class="bg-slate-50 border border-slate-200 rounded-[2.5rem] p-8 sm:p-10 shadow-sm">
+                        <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">Os 4 estados da esteira</h3>
+                        <ul class="space-y-5">
+                            <li class="flex gap-4">
+                                <span class="w-3.5 h-3.5 rounded-full bg-emerald-500 shrink-0 mt-1.5" aria-hidden="true"></span>
+                                <span class="text-slate-600 font-medium leading-relaxed"><strong class="text-slate-900">Pronta.</strong> Sincronização concluída no período, sem saltos de numeração e sem falhas.</span>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="w-3.5 h-3.5 rounded-full bg-amber-400 shrink-0 mt-1.5" aria-hidden="true"></span>
+                                <span class="text-slate-600 font-medium leading-relaxed"><strong class="text-slate-900">Atenção.</strong> Divergência de retenção, cancelamento extemporâneo, salto de numeração ou tentativa pendente na fila.</span>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="w-3.5 h-3.5 rounded-full bg-red-500 shrink-0 mt-1.5" aria-hidden="true"></span>
+                                <span class="text-slate-600 font-medium leading-relaxed"><strong class="text-slate-900">Bloqueada.</strong> Senha inválida, certificado vencido ou ausente, licença bloqueada.</span>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="w-3.5 h-3.5 rounded-full bg-slate-400 shrink-0 mt-1.5" aria-hidden="true"></span>
+                                <span class="text-slate-600 font-medium leading-relaxed"><strong class="text-slate-900">Sem movimento.</strong> Nenhuma nota emitida ou tomada no período.</span>
+                            </li>
+                        </ul>
+
+                        <div class="border-t border-slate-200 mt-8 pt-8">
+                            <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">Planilha de fechamento, até 7 abas</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-white border border-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-lg">Resumo Fiscal</span>
+                                <span class="bg-white border border-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-lg">Notas Fiscais</span>
+                                <span class="bg-white border border-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-lg">Emitidas</span>
+                                <span class="bg-white border border-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-lg">Tomadas</span>
+                                <span class="bg-white border border-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-lg">Cancelamentos</span>
+                                <span class="bg-white border border-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-lg">Substituições</span>
+                                <span class="bg-white border border-slate-200 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-lg">Eventos</span>
+                            </div>
+                            <p class="text-sm text-slate-500 font-medium leading-relaxed mt-5">
+                                Exporte uma empresa ou a carteira inteira: o Painel Geral traz uma linha por cliente, com faturamento, serviços tomados, retenções e canceladas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -407,7 +550,7 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                             <i data-lucide="info" class="w-3.5 h-3.5"></i> Premissas do cálculo:
                         </h4>
                         <p class="text-xs text-slate-500 leading-relaxed font-medium">
-                            Calculado com base em um custo médio de folha de R$ 16,00/hora por assistente fiscal (~R$ 2.800/mês incluindo encargos) e estimativa conservadora de 3 minutos por NFS-e para download manual, resolução dos dois captchas exigidos por nota e organização de pastas.
+                            Calculado com base em um custo médio de folha de R$ 16,00/hora por assistente fiscal (~R$ 2.800/mês incluindo encargos) e estimativa de 2 minutos por NFS-e no fluxo manual: captchas do portal, download, organização e renomeação dos arquivos nas pastas.
                         </p>
                     </div>
                 </div>
@@ -422,11 +565,11 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                         <div>
                             <span class="text-slate-500 font-bold uppercase tracking-wider text-[11px]">Processo Manual (Assistente)</span>
                             <div class="mt-1 flex items-baseline gap-1">
-                                <span class="text-2xl font-black text-slate-900" id="calc-manual-cost">R$ 1.200,00</span>
+                                <span class="text-2xl font-black text-slate-900" id="calc-manual-cost">R$ 800,00</span>
                                 <span class="text-slate-400 font-semibold text-xs">/mês</span>
                             </div>
                             <span class="text-xs text-red-600 font-semibold mt-1 block flex items-center gap-1">
-                                <i data-lucide="clock" class="w-3.5 h-3.5"></i> Desperdiça <strong id="calc-manual-hours">75</strong> horas no portal
+                                <i data-lucide="clock" class="w-3.5 h-3.5"></i> Desperdiça <strong id="calc-manual-hours">50</strong> horas no portal
                             </span>
                         </div>
                     </div>
@@ -456,7 +599,7 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                             <div class="mt-4">
                                 <span class="text-slate-400 text-xs font-medium block">Sua economia líquida:</span>
                                 <div class="flex items-baseline gap-1 mt-1">
-                                    <span class="text-3xl sm:text-4xl font-black text-white" id="calc-savings-val">R$ 1.110,10</span>
+                                    <span class="text-3xl sm:text-4xl font-black text-white" id="calc-savings-val">R$ 710,10</span>
                                     <span class="text-indigo-300 text-xs">/mês</span>
                                 </div>
                             </div>
@@ -464,11 +607,11 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                             <div class="mt-4 flex gap-4 text-xs font-semibold text-indigo-200">
                                 <div>
                                     <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wide">Anual</span>
-                                    <span class="text-white font-bold" id="calc-savings-annual">R$ 13.321,20</span>
+                                    <span class="text-white font-bold" id="calc-savings-annual">R$ 8.521,20</span>
                                 </div>
                                 <div class="border-l border-white/10 pl-4">
                                     <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wide">Retorno (ROI)</span>
-                                    <span class="text-emerald-400 font-black text-sm" id="calc-roi-val">+1.235%</span>
+                                    <span class="text-emerald-400 font-black text-sm" id="calc-roi-val">+790%</span>
                                 </div>
                             </div>
                         </div>
@@ -518,7 +661,7 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                     <ul class="space-y-3 mb-10 text-left w-full">
                         <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> 100 notas/mês</li>
                         <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Empresas ilimitadas</li>
-                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Certificado A1 e login/senha</li>
+                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Certificado A1, A3 e login/senha</li>
                         <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Sem cartão de crédito</li>
                     </ul>
                     <a href="#ativar" class="w-full mt-auto py-4 rounded-2xl border-2 border-emerald-500 text-emerald-600 font-black hover:bg-emerald-500 hover:text-white transition-all active:scale-95 text-sm uppercase tracking-wide">
@@ -539,11 +682,11 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                     <ul class="space-y-3 mb-10 text-left w-full">
                         <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> 500 notas/mês</li>
                         <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Empresas ilimitadas</li>
-                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Certificado A1 e login/senha</li>
+                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Certificado A1, A3 e login/senha</li>
                         <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Atualizações incluídas</li>
                     </ul>
                     <a href="#ativar" class="w-full mt-auto py-4 rounded-2xl border-2 border-slate-900 text-slate-900 font-black hover:bg-slate-900 hover:text-white transition-all active:scale-95 text-sm uppercase tracking-wide">
-                        Quero este
+                        Instalar e assinar no app
                     </a>
                 </div>
 
@@ -563,11 +706,11 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                     <ul class="space-y-3 mb-10 text-left w-full">
                         <li class="flex gap-3 text-white font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-200 shrink-0 mt-0.5"></i> 1.500 notas/mês</li>
                         <li class="flex gap-3 text-white font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-200 shrink-0 mt-0.5"></i> Empresas ilimitadas</li>
-                        <li class="flex gap-3 text-white font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-200 shrink-0 mt-0.5"></i> Certificado A1 e login/senha</li>
+                        <li class="flex gap-3 text-white font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-200 shrink-0 mt-0.5"></i> Certificado A1, A3 e login/senha</li>
                         <li class="flex gap-3 text-white font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-200 shrink-0 mt-0.5"></i> Ideal para escritórios médios</li>
                     </ul>
                     <a href="#ativar" class="w-full mt-auto py-4 rounded-2xl bg-white text-blue-700 font-black hover:bg-blue-50 transition-all shadow-lg active:scale-95 text-sm uppercase tracking-wide">
-                        Obter acesso
+                        Instalar e assinar no app
                     </a>
                 </div>
 
@@ -584,17 +727,17 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                     <ul class="space-y-3 mb-10 text-left w-full">
                         <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> 5.000 notas/mês</li>
                         <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Empresas ilimitadas</li>
-                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Certificado A1 e login/senha</li>
+                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Certificado A1, A3 e login/senha</li>
                         <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Alto volume de fechamento</li>
                     </ul>
                     <a href="#ativar" class="w-full mt-auto py-4 rounded-2xl border-2 border-slate-900 text-slate-900 font-black hover:bg-slate-900 hover:text-white transition-all active:scale-95 text-sm uppercase tracking-wide">
-                        Obter acesso
+                        Instalar e assinar no app
                     </a>
                 </div>
             </div>
 
             <p class="text-center text-sm text-slate-400 font-medium mt-12 max-w-2xl mx-auto leading-relaxed">
-                Comece pelo plano Free e faça upgrade só quando o volume pedir. Cobrança mensal, sem fidelidade.
+                Comece pelo plano Free e faça o upgrade dentro do próprio aplicativo, só quando o volume pedir. Cobrança mensal recorrente, sem fidelidade.
             </p>
         </div>
     </section>
@@ -612,7 +755,7 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                         <i data-lucide="building-2" class="w-8 h-8"></i>
                     </div>
                     <h3 class="text-3xl font-black text-white mb-6">CNPJs Ilimitados de Verdade</h3>
-                    <p class="text-slate-300 text-lg leading-relaxed font-medium">Gerencie 5, 50 ou 500 empresas no mesmo painel. Nós não penalizamos o crescimento do seu escritório cobrando "por CNPJ". Adicione novos clientes à vontade.</p>
+                    <p class="text-slate-300 text-lg leading-relaxed font-medium">Gerencie 5, 50 ou 500 empresas no mesmo painel. Nós não penalizamos o crescimento do seu escritório cobrando "por CNPJ". Adicione novos clientes à vontade e cadastre a carteira inteira de uma vez por planilha Excel, com validação de CNPJ.</p>
                 </div>
 
                 <div class="bg-white/5 backdrop-blur-lg border border-white/10 p-12 rounded-[3rem]" data-aos="fade-left">
@@ -634,9 +777,9 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                     <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl flex items-center justify-center mb-8 shadow-inner border border-blue-100">
                         <i data-lucide="award" class="w-10 h-10"></i>
                     </div>
-                    <h2 class="text-4xl lg:text-5xl font-black text-slate-900 leading-tight mb-6">Auditado e Distribuído pela Microsoft Store</h2>
+                    <h2 class="text-4xl lg:text-5xl font-black text-slate-900 leading-tight mb-6">Distribuído pela Microsoft Store</h2>
                     <p class="text-lg text-slate-600 leading-relaxed font-medium mb-8">
-                        Você não precisa lidar com instaladores suspeitos ou telas vermelhas do Windows Defender. O Nota Fácil passou por rigorosa auditoria de segurança da Microsoft e está disponível na loja oficial do Windows 10 e 11.
+                        Você não precisa lidar com instaladores suspeitos ou telas vermelhas do Windows Defender. O Nota Fácil está disponível na loja oficial do Windows 10 e 11, depois de passar pela certificação da Microsoft Store.
                     </p>
                     <ul class="space-y-4">
                         <li class="flex items-center gap-3 text-slate-700 font-bold">
@@ -652,11 +795,11 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                 </div>
                 <div class="lg:w-1/2 w-full bg-slate-50 p-10 sm:p-16 rounded-[3.5rem] border border-slate-200 text-center shadow-lg" data-aos="fade-left">
                     <i data-lucide="lock" class="w-12 h-12 text-slate-400 mx-auto mb-6"></i>
-                    <h3 class="text-2xl font-black text-slate-900 mb-4">Segurança Fiscal Comprovada</h3>
-                    <p class="text-slate-500 mb-8">Software construído para garantir o sigilo contábil exigido por lei.</p>
+                    <h3 class="text-2xl font-black text-slate-900 mb-4">Sigilo contábil em primeiro lugar</h3>
+                    <p class="text-slate-500 mb-8">Software construído para proteger o sigilo contábil: certificado e credenciais ficam no seu computador.</p>
                     <a href="#ativar" class="inline-flex items-center justify-center gap-3 bg-blue-600 text-white px-8 py-4 rounded-2xl font-black hover:bg-blue-700 transition w-full shadow-lg hover:shadow-blue-500/30">
                         <i data-lucide="shield-check" class="w-5 h-5"></i>
-                        ATIVAR LICENÇA GRATUITA
+                        BAIXAR O ROBÔ
                     </a>
                 </div>
             </div>
@@ -762,8 +905,8 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
             function updateCalculator(value) {
                 if (notasVal) notasVal.innerText = value.toLocaleString('pt-BR');
 
-                // 1. Processo Manual: 3 min por nota
-                const horas = value / 20;
+                // 1. Processo Manual: 2 min por nota (mesma premissa do bloco de números e do SSOT)
+                const horas = value / 30;
                 if (manualHours) manualHours.innerText = horas.toLocaleString('pt-BR', { maximumFractionDigits: 1 });
 
                 const custoManualNum = horas * 16;
@@ -826,7 +969,7 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
 
                 if (roiVal) {
                     if (custoPlano === 0) {
-                        roiVal.innerText = "Grátis (100% ROI)";
+                        roiVal.innerText = "Sem custo";
                     } else {
                         const roi = (economiaMensal / custoPlano) * 100;
                         roiVal.innerText = `+${Math.round(roi).toLocaleString('pt-BR')}%`;
