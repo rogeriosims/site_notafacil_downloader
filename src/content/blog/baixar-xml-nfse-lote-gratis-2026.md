@@ -2,6 +2,7 @@
 title: "Como Baixar XML de NFS-e em Lote Grátis em 2026"
 description: "Baixar XML de NFS-e uma a uma no Portal Nacional consome dias do fechamento. Veja como capturar a carteira inteira em lote, de graça, sem planilha de controle e sem digitação."
 pubDate: "2026-08-11"
+image: "../../assets/blog/imagens/capa_baixar_xml_lote.png"
 draft: false
 tags: ["NFS-e Nacional", "baixar XML em lote", "Portal Nacional", "automação contábil", "download NFS-e"]
 author: "Rogério - Equipe NotaFácil"

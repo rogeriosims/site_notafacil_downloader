@@ -2,6 +2,7 @@
 title: "Painel Fiscal: como fechar a carteira de NFS-e em uma tela"
 description: "O Painel Fiscal classifica cada empresa em Pronta, Atenção, Bloqueada ou Sem movimento e exporta uma planilha de até 7 abas para conferir o fechamento."
 pubDate: "2026-09-18"
+image: "../../assets/blog/imagens/capa_painel_fiscal.png"
 draft: false
 tags: ["Painel Fiscal", "planilha de fechamento", "NFS-e Nacional", "contabilidade", "notas extemporâneas", "Nota Fácil Downloader"]
 author: "Rogério - Equipe NotaFácil"

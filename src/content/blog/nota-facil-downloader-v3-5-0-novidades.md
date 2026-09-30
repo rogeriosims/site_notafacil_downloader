@@ -2,6 +2,7 @@
 title: "Nota Fácil v3.5.0: o que muda no download de NFS-e"
 description: "A v3.5.0 refaz o período exato pedido quando uma busca falha, detecta o Portal Nacional fora do ar em 1 segundo e protege o banco contra queda de energia."
 pubDate: "2026-09-18"
+image: "../../assets/blog/imagens/capa_v350_novidades.png"
 draft: false
 tags: ["Nota Fácil Downloader", "NFS-e Nacional", "novidades", "automação contábil", "Portal Nacional", "certificado A3", "notas canceladas", "painel fiscal", "notas extemporâneas"]
 author: "Rogério - Equipe NotaFácil"
