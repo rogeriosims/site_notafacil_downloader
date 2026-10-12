@@ -1072,62 +1072,81 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                         body: JSON.stringify(payload)
                     });
 
-                    if (response.status === 201 || response.ok) {
-                        const responseDataText = await response.text();
-                        let responseData;
-                        try {
-                            responseData = JSON.parse(responseDataText);
-                        } catch (err) {
-                            responseData = {};
-                        }
+                    // Lê o payload independentemente do código HTTP retornado (200, 201, 409, 400, etc.)
+                    const responseDataText = await response.text();
+                    let responseData = {};
+                    try {
+                        responseData = JSON.parse(responseDataText);
+                    } catch (err) {
+                        responseData = {};
+                    }
 
-                        // O webhook pode retornar um array de objetos
-                        let responseObj = responseData;
-                        if (Array.isArray(responseData) && responseData.length > 0) {
-                            responseObj = responseData[0];
-                        }
+                    // O webhook pode retornar um array de objetos ou um objeto direto
+                    let responseObj = responseData;
+                    if (Array.isArray(responseData) && responseData.length > 0) {
+                        responseObj = responseData[0];
+                    }
 
-                        // Backend sinalizou erro lógico (ex: CNPJ/e-mail já cadastrado).
-                        // Não é uma falha: o escritório já é cliente e quer baixar de novo.
-                        if (responseObj && responseObj.status === 'error') {
-                            Swal.fire({
-                                title: 'Você já tem cadastro',
-                                text: responseObj.message || 'Este CNPJ ou e-mail já possuem uma licença ativa.',
-                                icon: 'info',
-                                confirmButtonText: 'Baixar o robô novamente',
-                                showCancelButton: true,
-                                cancelButtonText: 'Voltar ao formulário',
-                                confirmButtonColor: '#3b82f6',
-                                cancelButtonColor: '#94a3b8'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    // Marca o retorno para /obrigado/ ajustar a mensagem
-                                    sessionStorage.setItem('notafacil_user_data', JSON.stringify({
-                                        nome: nome,
-                                        email: email,
-                                        returning: true
-                                    }));
-                                    // Evento separado: retorno não é lead novo e não deve
-                                    // contar como conversão no Ads.
-                                    window.dataLayer = window.dataLayer || [];
-                                    window.dataLayer.push({ 'event': 'download_recorrente' });
-                                    window.location.href = '/obrigado/';
-                                }
-                            });
-                            return;
-                        }
+                    const isDuplicatedOrActive =
+                        response.status === 409 ||
+                        (responseObj && (
+                            responseObj.status === 'error' ||
+                            responseObj.authorized === 'false' ||
+                            responseObj.authorized === false ||
+                            (typeof responseObj.message === 'string' && (
+                                responseObj.message.includes('já possuem cadastro') ||
+                                responseObj.message.includes('cadastro ativo') ||
+                                responseObj.message.includes('já cadastrado') ||
+                                responseObj.message.includes('já possui')
+                            ))
+                        ));
 
-                        // Dados usados na página de boas-vindas (/obrigado/)
-                        sessionStorage.setItem('notafacil_user_data', JSON.stringify(responseObj));
+                    // CASO 1: Usuário / CNPJ já cadastrado
+                    // Não é uma falha: o escritório já é cliente e quer baixar novamente ou instalar em outra máquina.
+                    if (isDuplicatedOrActive) {
+                        const mensagem = (responseObj && responseObj.message)
+                            ? responseObj.message
+                            : 'Identificamos que seu escritório já possui uma licença ativa. Seu e-mail cadastrado é a chave de ativação.';
+
+                        Swal.fire({
+                            title: 'Você já possui cadastro!',
+                            text: mensagem,
+                            icon: 'info',
+                            showCancelButton: true,
+                            confirmButtonText: 'Baixar o Robô Novamente',
+                            cancelButtonText: 'Falar no WhatsApp',
+                            confirmButtonColor: '#2563eb',
+                            cancelButtonColor: '#10b981'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                // Marca o retorno para /obrigado/ personalizar a saudação
+                                sessionStorage.setItem('notafacil_user_data', JSON.stringify({
+                                    nome: nome,
+                                    email: email,
+                                    cnpj: cnpj,
+                                    returning: true
+                                }));
+                                // Evento de download recorrente (não infla conversão de lead novo no Ads)
+                                window.dataLayer = window.dataLayer || [];
+                                window.dataLayer.push({ 'event': 'download_recorrente' });
+                                window.location.href = '/obrigado/';
+                            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                                const msgWa = encodeURIComponent(`Olá! Já possuo cadastro com o e-mail ${email} e CNPJ ${cnpj}, mas preciso de ajuda com minha licença do Nota Fácil.`);
+                                window.open(`https://wa.me/5531936184267?text=${msgWa}`, '_blank');
+                            }
+                        });
+                        return;
+                    }
+
+                    // CASO 2: Sucesso total (Novo lead / 200 / 201)
+                    if (response.ok || response.status === 201) {
+                        sessionStorage.setItem('notafacil_user_data', JSON.stringify(responseObj || {
+                            nome: nome,
+                            email: email,
+                            cnpj: cnpj
+                        }));
                         form.reset();
 
-                        // Conversão: lead qualificado gerado.
-                        //
-                        // A navegação para /obrigado/ precisa esperar as tags do GTM
-                        // (GA4 + conversão do Ads) concluírem. Saindo da página no mesmo
-                        // instante do push, o navegador cancela as requisições em voo e a
-                        // conversão do Ads se perde — o GA4 costuma sobreviver via
-                        // sendBeacon, a tag do Ads não.
                         let jaNavegou = false;
                         const irParaObrigado = () => {
                             if (jaNavegou) return;
@@ -1143,23 +1162,42 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                             'eventTimeout': 2000
                         });
 
-                        // Rede de segurança obrigatória: se o GTM não carregar (bloqueador
-                        // de anúncios, falha de rede), o eventCallback nunca dispara e o
-                        // usuário ficaria preso na página com o formulário já enviado.
+                        // Rede de segurança se o GTM não responder a tempo
                         setTimeout(irParaObrigado, 2100);
-
-                    } else {
-                        throw new Error('Erro na requisição');
+                        return;
                     }
 
+                    // CASO 3: Erro de validação específico retornado pelo n8n (HTTP 400, 422, etc.)
+                    if (responseObj && responseObj.message) {
+                        Swal.fire({
+                            title: 'Atenção aos Dados',
+                            text: responseObj.message,
+                            icon: 'warning',
+                            confirmButtonText: 'Revisar Informações',
+                            confirmButtonColor: '#3b82f6'
+                        });
+                        return;
+                    }
+
+                    // CASO 4: Falha genérica na resposta
+                    throw new Error('Não foi possível processar a requisição.');
+
                 } catch (error) {
-                    console.error('Erro:', error);
+                    console.error('Erro no envio do formulário:', error);
                     Swal.fire({
-                        title: 'Ops!',
-                        text: 'Ocorreu um erro ao processar seu cadastro. Tente novamente.',
-                        icon: 'error',
-                        confirmButtonText: 'Fechar',
-                        confirmButtonColor: '#ef4444'
+                        title: 'Instabilidade Temporária',
+                        text: 'Tivemos uma instabilidade ao conectar ao servidor. Você pode tentar novamente ou falar diretamente com nosso suporte pelo WhatsApp.',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Tentar Novamente',
+                        cancelButtonText: 'Chamar no WhatsApp',
+                        confirmButtonColor: '#3b82f6',
+                        cancelButtonColor: '#10b981'
+                    }).then((result) => {
+                        if (result.dismiss === Swal.DismissReason.cancel) {
+                            const msgWa = encodeURIComponent(`Olá! Tive uma instabilidade ao me cadastrar no site (E-mail: ${email}, CNPJ: ${cnpj}) e gostaria de ajuda para liberar meu acesso ao Nota Fácil.`);
+                            window.open(`https://wa.me/5531936184267?text=${msgWa}`, '_blank');
+                        }
                     });
                 } finally {
                     btn.disabled = false;
