@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout 
   title="Atualização Oficial v3.5.2 | Nota Fácil Downloader" 
-  description="Atualize para a versão 3.5.2: fechamento sem travamento em quedas do Portal Nacional, novo motor de CAPTCHA, toda a carteira numa planilha só e suporte a certificados A1 e A3." 
+  description="Atualize para a versão 3.5.2 (Geração 3.5): retentativas no período exato, auto-pausa em quedas do portal, certificado A3 em token USB, banco com auto-cura e toda a carteira em uma planilha só." 
   bodyClass="bg-slate-50 text-slate-900 overflow-x-hidden selection:bg-blue-600 selection:text-white" 
   robots="noindex, nofollow"
 >
@@ -26,14 +26,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     Versão Oficial Liberada: v3.5.2
                 </span>
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight mb-8 leading-tight">
-                    O fechamento não para quando <span class="text-blue-600">o Portal Nacional cai.</span>
+                    O maior salto de estabilidade <span class="text-blue-600">e automação do robô.</span>
                 </h1>
                 <div class="space-y-6 text-lg sm:text-xl text-slate-600 font-medium leading-relaxed border-l-4 border-slate-300 pl-6">
                     <p>
-                        A versão 3.5.2 reúne as proteções mais importantes para o dia a dia do escritório contábil: auto-pausa inteligente se o governo oscilar, novo motor de CAPTCHA e toda a sua carteira em um único relatório de conferência.
+                        A <b>versão 3.5.2</b> consolida todas as inovações estruturais da <b>geração 3.5</b>: suporte a certificados físicos A3 (Token USB), banco de dados com auto-recuperação, novo motor de CAPTCHA e proteção contra quedas do Portal Nacional da NFS-e.
                     </p>
                     <p>
-                        Se a sua equipe está em qualquer versão anterior (da 3.3.9 até a 3.5.1), esta atualização consolida todas as melhorias e correções em um só instalador.
+                        Se o seu escritório estava na versão 3.3.9 ou anterior, esta atualização reúne em um único instalador dezenas de melhorias para transformar o seu fechamento fiscal.
                     </p>
                 </div>
             </div>
@@ -44,14 +44,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <div class="relative z-10">
                     <div class="inline-flex items-center gap-2 bg-emerald-200 text-emerald-800 font-black px-4 py-1.5 rounded-full text-xs uppercase tracking-widest mb-6">
                         <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-                        Recomendado para todos os usuários
+                        Recomendado para todos os escritórios
                     </div>
                     <h2 class="text-3xl sm:text-4xl font-black text-emerald-950 mb-6 tracking-tight">Instale a Versão 3.5.2</h2>
                     <p class="text-lg text-emerald-800 leading-relaxed mb-4 font-medium">
-                        <b>Pela Microsoft Store</b>, a atualização é aplicada de forma transparente em segundo plano. <b>Pelo instalador .exe</b>, baixe a versão 3.5.2 e instale por cima: suas empresas, certificados e notas já baixadas são 100% preservados.
+                        <b>Pela Microsoft Store</b>, a atualização é aplicada automaticamente em segundo plano. <b>Pelo instalador .exe</b>, baixe a v3.5.2 e execute por cima: suas empresas, certificados e notas já baixadas são 100% mantidos.
                     </p>
                     <p class="text-base text-emerald-800 leading-relaxed mb-10 font-medium">
-                        O sistema protege automaticamente seu banco de dados ao iniciar, garantindo total integridade do histórico fiscal.
+                        O robô testa o banco de dados ao iniciar e, se necessário, recupera a base sozinho. Você não perde o histórico de notas e relatórios da carteira.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="ms-windows-store://pdp/?productid=9N4GBNDFL550" class="flex-1 inline-flex justify-center items-center gap-3 bg-emerald-700 text-white py-5 px-8 rounded-2xl font-black transition-all hover:bg-emerald-800 shadow-[0_10px_30px_rgba(4,120,87,0.3)] hover:shadow-[0_15px_40px_rgba(4,120,87,0.4)] hover:-translate-y-1 active:scale-95 text-lg uppercase tracking-wide group">
@@ -66,62 +66,100 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </div>
             </div>
 
-            <!-- O que há de novo na v3.5.2 -->
+            <!-- O que há de novo na Geração 3.5 (3.5.0 a 3.5.2) -->
             <div class="mb-24">
-                <h2 class="text-3xl font-black text-slate-900 text-center mb-16 uppercase tracking-normal" data-aos="fade-up">O que muda para o seu escritório</h2>
+                <h2 class="text-3xl font-black text-slate-900 text-center mb-16 uppercase tracking-normal" data-aos="fade-up">
+                    O que há de novo na Geração 3.5
+                </h2>
 
                 <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Destaque: Quedas do Portal -->
+                    <!-- Quedas do Portal -->
                     <div class="p-10 bg-blue-600 rounded-3xl shadow-xl shadow-blue-200 text-white transform hover:scale-[1.02] transition-all">
                         <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6"><i data-lucide="server-off" class="w-7 h-7"></i></div>
                         <h4 class="font-black mb-3 text-xl uppercase">Portal fora do ar não derruba o lote</h4>
-                        <p class="text-base text-blue-100 leading-relaxed opacity-90">O robô percebe a queda do governo em segundos, pausa as buscas sem gastar as tentativas do dia e retoma o lote sozinho quando o portal normalizar. Quem baixa por certificado digital segue normalmente.</p>
+                        <p class="text-base text-blue-100 leading-relaxed opacity-90">O robô percebe a queda do governo em segundos, pausa as buscas sem gastar as tentativas do dia e retoma o lote sozinho quando o portal voltar. Quem baixa por certificado digital segue normalmente.</p>
+                    </div>
+
+                    <!-- Retentativas Exatas -->
+                    <div class="p-10 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-lg transition-all">
+                        <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6"><i data-lucide="refresh-cw" class="w-7 h-7"></i></div>
+                        <h4 class="font-black text-slate-900 mb-3 text-xl uppercase">Retentativas no período exato</h4>
+                        <p class="text-base text-slate-500 leading-relaxed">Se uma busca de meses anteriores falhar por instabilidade de internet, o robô refaz com precisão o período solicitado. A tela centralizada de Retentativas mostra a fila e permite forçar ou cancelar.</p>
                     </div>
 
                     <!-- Novo motor CAPTCHA -->
                     <div class="p-10 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-lg transition-all">
                         <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-6"><i data-lucide="bot" class="w-7 h-7"></i></div>
                         <h4 class="font-black text-slate-900 mb-3 text-xl uppercase">Novo motor de CAPTCHA mais estável</h4>
-                        <p class="text-base text-slate-500 leading-relaxed">Supera as mudanças recentes do Portal Nacional. O processamento agora é mais ágil, leve e não prende mais a máquina com telas travadas.</p>
+                        <p class="text-base text-slate-500 leading-relaxed">Supera as mudanças recentes do Portal Nacional. O processamento agora é externo ao navegador, deixando o instalador mais leve e evitando máquinas presas em telas de espera.</p>
                     </div>
 
-                    <!-- Painel Geral da Carteira -->
+                    <!-- Token A3 e A1 -->
+                    <div class="p-10 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-lg transition-all">
+                        <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-6"><i data-lucide="usb" class="w-7 h-7"></i></div>
+                        <h4 class="font-black text-slate-900 mb-3 text-xl uppercase">Certificado A3 (token USB) e A1</h4>
+                        <p class="text-base text-slate-500 leading-relaxed">Suporte oficial a tokens USB e cartões A3 (SafeSign, GD Starsign, Certisign, Soluti, etc.) diretamente na API Nacional mTLS, além dos certificados A1 (.pfx). A1 e A3 rodam no mesmo lote.</p>
+                    </div>
+
+                    <!-- Toda a Carteira no Excel -->
                     <div class="p-10 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-lg transition-all">
                         <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-6"><i data-lucide="file-spreadsheet" class="w-7 h-7"></i></div>
                         <h4 class="font-black text-slate-900 mb-3 text-xl uppercase">Toda a carteira numa planilha só</h4>
-                        <p class="text-base text-slate-500 leading-relaxed">O Painel Geral agora gera todas as notas emitidas, tomadas e canceladas de todos os seus clientes em um único Excel, com geração até 3x mais rápida.</p>
+                        <p class="text-base text-slate-500 leading-relaxed">O Painel Geral agora gera todas as notas emitidas, tomadas, canceladas e substituições de toda a carteira em um único Excel com a coluna "Empresa Usuária", gerado até 3x mais rápido e com aviso no sino.</p>
+                    </div>
+
+                    <!-- Banco que se recupera -->
+                    <div class="p-10 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-lg transition-all">
+                        <div class="w-14 h-14 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center mb-6"><i data-lucide="database" class="w-7 h-7"></i></div>
+                        <h4 class="font-black text-slate-900 mb-3 text-xl uppercase">Banco com auto-recuperação</h4>
+                        <p class="text-base text-slate-500 leading-relaxed">Verificação automática de integridade ao abrir e auto-reparo após quedas de energia no escritório. Bancos de dados de versões anteriores são migrados com total segurança.</p>
                     </div>
 
                     <!-- Painel Fiscal sem alarme falso -->
                     <div class="p-10 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-lg transition-all">
                         <div class="w-14 h-14 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mb-6"><i data-lucide="layout-dashboard" class="w-7 h-7"></i></div>
                         <h4 class="font-black text-slate-900 mb-3 text-xl uppercase">Painel Fiscal sem falso alarme</h4>
-                        <p class="text-base text-slate-500 leading-relaxed">Uma empresa já conferida não fica mais marcada em vermelho por oscilação momentânea do portal. O status vermelho volta a indicar apenas o que realmente exige ação.</p>
+                        <p class="text-base text-slate-500 leading-relaxed">Classifica cada empresa em Pronta, Atenção, Bloqueada ou Sem movimento. Mês já conferido não fica mais vermelho por oscilação momentânea do portal ou cancelamento de busca.</p>
                     </div>
 
-                    <!-- Certificado A3 e A1 -->
+                    <!-- Pastas por status -->
                     <div class="p-10 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-lg transition-all">
-                        <div class="w-14 h-14 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-6"><i data-lucide="usb" class="w-7 h-7"></i></div>
-                        <h4 class="font-black text-slate-900 mb-3 text-xl uppercase">Suporte a Tokens Físicos A3 e A1</h4>
-                        <p class="text-base text-slate-500 leading-relaxed">Use tanto certificados em arquivo A1 (.pfx) quanto seus cartões e tokens USB A3 diretamente na velocidade máxima da API oficial do governo.</p>
+                        <div class="w-14 h-14 bg-rose-50 text-rose-600 rounded-xl flex items-center justify-center mb-6"><i data-lucide="folders" class="w-7 h-7"></i></div>
+                        <h4 class="font-black text-slate-900 mb-3 text-xl uppercase">Canceladas em pastas próprias</h4>
+                        <p class="text-base text-slate-500 leading-relaxed">Opção que você ativa quando quiser: notas canceladas e substituídas vão para subpastas exclusivas, mantendo a pasta principal apenas com notas válidas. A marca d'água no PDF continua garantida.</p>
                     </div>
 
-                    <!-- Banco protegido -->
+                    <!-- Motor N:N e Resgate de Notas Compartilhadas -->
                     <div class="p-10 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-lg transition-all">
-                        <div class="w-14 h-14 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center mb-6"><i data-lucide="database" class="w-7 h-7"></i></div>
-                        <h4 class="font-black text-slate-900 mb-3 text-xl uppercase">Base de dados com auto-recuperação</h4>
-                        <p class="text-base text-slate-500 leading-relaxed">Proteção reforçada contra quedas de energia no escritório ou desligamentos repentinos. O sistema confere a integridade ao abrir e preserva todo o histórico.</p>
+                        <div class="w-14 h-14 bg-cyan-50 text-cyan-600 rounded-xl flex items-center justify-center mb-6"><i data-lucide="share-2" class="w-7 h-7"></i></div>
+                        <h4 class="font-black text-slate-900 mb-3 text-xl uppercase">Notas compartilhadas entre clientes</h4>
+                        <p class="text-base text-slate-500 leading-relaxed">Quando prestador e tomador são seus clientes, o robô organiza PDFs e XMLs nas duas pastas simultaneamente e garante o resgate da nota cancelada com a marca d'água correta em ambos os lados.</p>
+                    </div>
+
+                    <!-- Chromium Portátil Dedicado -->
+                    <div class="p-10 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-lg transition-all">
+                        <div class="w-14 h-14 bg-slate-50 text-slate-700 rounded-xl flex items-center justify-center mb-6"><i data-lucide="globe" class="w-7 h-7"></i></div>
+                        <h4 class="font-black text-slate-900 mb-3 text-xl uppercase">Navegador portátil padronizado</h4>
+                        <p class="text-base text-slate-500 leading-relaxed">Elimina dependências do Edge nativo e seus travamentos no Windows. Navegação isolada, leve, rápida e com suporte a pastas profundas de rede (acima de 260 caracteres).</p>
                     </div>
                 </div>
+
+                <p class="text-center text-slate-500 font-medium mt-10">
+                    Quer ver detalhes do fechamento da carteira? 
+                    <a href="/blog/painel-fiscal-planilha-fechamento-nfse/" class="text-blue-600 font-bold underline">Confira o guia do Painel Fiscal no nosso blog</a>.
+                </p>
             </div>
 
-            <!-- Como atualizar de forma segura -->
+            <!-- O que você precisa saber ao atualizar -->
             <div class="bg-white border border-slate-200 rounded-[2.5rem] p-10 mb-16 shadow-sm">
                 <h3 class="text-2xl font-black text-slate-900 mb-6">O que você precisa saber ao atualizar</h3>
                 <ul class="space-y-4 text-slate-600 font-medium leading-relaxed">
-                    <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0 mt-1"></i><span><b class="text-slate-900">Seus dados estão protegidos:</b> Todas as suas empresas cadastradas, senhas, certificados e notas baixadas são preservados automaticamente.</span></li>
-                    <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0 mt-1"></i><span><b class="text-slate-900">Não precisa desinstalar nada:</b> Basta rodar o novo instalador por cima da versão existente.</span></li>
-                    <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0 mt-1"></i><span><b class="text-slate-900">Usa Token USB A3?</b> Certifique-se de manter o aplicativo do fabricante do seu token (SafeSign, Certisign, Soluti, etc.) instalado no computador.</span></li>
+                    <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0 mt-1"></i><span><b class="text-slate-900">Seus dados e histórico permanecem intactos:</b> Todas as empresas, senhas, certificados e notas baixadas continuam disponíveis.</span></li>
+                    <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0 mt-1"></i><span><b class="text-slate-900">Não precisa desinstalar a versão anterior:</b> Basta rodar o novo instalador v3.5.2 por cima.</span></li>
+                    <li class="flex gap-3"><i data-lucide="clock" class="w-5 h-5 text-blue-600 shrink-0 mt-1"></i><span><b class="text-slate-900">"Iniciar com o Windows" mais robusto:</b> O robô agora religa por uma tarefa agendada do Windows a cada 15 minutos, inclusive em contas de usuário restritas.</span></li>
+                    <li class="flex gap-3"><i data-lucide="calendar" class="w-5 h-5 text-blue-600 shrink-0 mt-1"></i><span><b class="text-slate-900">Janela padrão de busca:</b> Configurada do primeiro dia do mês anterior até a data da execução.</span></li>
+                    <li class="flex gap-3"><i data-lucide="usb" class="w-5 h-5 text-blue-600 shrink-0 mt-1"></i><span><b class="text-slate-900">Usa Token USB A3?</b> Mantenha instalado o gerenciador do fabricante do token (SafeSign, Certisign, Soluti, etc.) no computador.</span></li>
+                    <li class="flex gap-3"><i data-lucide="folders" class="w-5 h-5 text-blue-600 shrink-0 mt-1"></i><span><b class="text-slate-900">Canceladas em pastas próprias:</b> É opcional e vem desligada para manter a organização atual das suas pastas sem surpresas.</span></li>
                 </ul>
             </div>
 
@@ -132,7 +170,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </div>
                 <h3 class="text-2xl font-black mb-4">Certificado digital: a rota mais rápida e estável.</h3>
                 <p class="text-lg text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-                    Com certificado A1 ou A3, a coleta de NFS-e ocorre diretamente via API oficial, sem intermediários e sem desafios de captcha. Com a Contábil Cert, você emite certificados para seus clientes com agilidade e ainda rentabiliza seu escritório.
+                    Com certificado A1 ou A3, a coleta de NFS-e ocorre diretamente via API oficial, sem intermediários e sem desafios de captcha. Com a Contábil Cert, você emite certificados para seus clientes com agilidade e ainda rentabiliza seu escritório contábil.
                 </p>
                 <a href="https://contabilcert.com.br" target="_blank" rel="noopener" class="inline-flex items-center gap-3 bg-white text-slate-900 px-8 py-4 rounded-2xl font-black hover:bg-slate-200 transition-all hover:scale-105 active:scale-95">
                     <i data-lucide="shield-check" class="w-5 h-5"></i>
