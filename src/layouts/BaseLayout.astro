@@ -81,34 +81,51 @@ const finalSchema = customSchema || defaultSchema;
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-    <!-- Google Consent Mode v2 - Padrao negado ate consentimento explicito (LGPD) -->
-    <!--
-      Este bloco precisa ser o PRIMEIRO script da pagina: o estado padrao tem que
-      entrar no dataLayer antes de qualquer tag do Google subir.
-
-      Modo BASICO: o CookieConsent.astro so carrega o container apos o aceite.
-      A tentativa de migrar para o modo avancado foi revertida em 14/08 - ver
-      marketing/ajustes/18-postmortem-consent-avancado.md
-    -->
+    <!-- Google Consent Mode v2 & Google Tag Manager (Ativo por padrão para atribuição imediata de Ads) -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
+        'analytics_storage': 'granted',
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted'
       });
-      // ATENCAO: em implementacao via GTM estes dois comandos NAO sao honrados.
-      // Comprovado em 14/08: a requisicao saiu com ep.ads_data_redaction=0 mesmo
-      // com o set abaixo. O controle real e na configuracao das tags do container
-      // (Vinculador de Conversoes -> "Ativar transmissao de URL"). Mantidos por
-      // serem inocuos e valerem caso o site passe a usar gtag.js direto.
-      gtag('set', 'ads_data_redaction', true);
       gtag('set', 'url_passthrough', true);
+      gtag('set', 'ads_data_redaction', false);
     </script>
-    <!-- /Google Consent Mode v2 -->
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-KHF7CGHF');
+    </script>
+    <!-- Captura imediata e persistente de identificadores de anúncios (GCLID, GBRAID, WBRAID) -->
+    <script is:inline>
+      (function() {
+        try {
+          var params = new URLSearchParams(window.location.search);
+          var gclid = params.get('gclid');
+          var gbraid = params.get('gbraid');
+          var wbraid = params.get('wbraid');
+
+          if (gclid) {
+            localStorage.setItem('nfd_gclid', gclid);
+            sessionStorage.setItem('gclid', gclid);
+          }
+          if (gbraid) {
+            localStorage.setItem('nfd_gbraid', gbraid);
+            sessionStorage.setItem('gbraid', gbraid);
+          }
+          if (wbraid) {
+            localStorage.setItem('nfd_wbraid', wbraid);
+            sessionStorage.setItem('wbraid', wbraid);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <!-- /Google Consent Mode v2 & GTM -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://unpkg.com https://cdn.jsdelivr.net https://www.youtube-nocookie.com https://static.doubleclick.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://google.com https://google.com.br https://www.google.com https://www.google.com.br https://www.googleadservices.com https://googleads.g.doubleclick.net https://ad.doubleclick.net https://stats.g.doubleclick.net https://img.youtube.com https://i.ytimg.com https://pagead2.googlesyndication.com; frame-src 'self' https://www.youtube-nocookie.com https://www.googletagmanager.com https://td.doubleclick.net; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com https://*.analytics.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://ad.doubleclick.net https://stats.g.doubleclick.net https://www.google.com https://www.google.com.br https://n8n.rockethub.com.br https://cloudflareinsights.com https://unpkg.com https://cdn.jsdelivr.net https://pagead2.googlesyndication.com;">

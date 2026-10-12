@@ -1047,8 +1047,50 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                     return;
                 }
 
-                // Recuperar GCLID da URL ou do sessionStorage (gravado pelo BaseLayout)
-                const gclid = sessionStorage.getItem('gclid') || (new URLSearchParams(window.location.search)).get('gclid');
+                // Recuperação resiliente de GCLID (URL, localStorage, sessionStorage, cookie _gcl_aw, ou fallback iOS wbraid/gbraid)
+                function getCookieValue(name) {
+                    try {
+                        const match = document.cookie.match(new RegExp('(^|;\\s*)' + name + '=([^;]*)'));
+                        return match ? decodeURIComponent(match[2]) : null;
+                    } catch (e) {
+                        return null;
+                    }
+                }
+
+                function getGoogleClickId() {
+                    try {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        // 1. URL direta
+                        if (urlParams.get('gclid')) return urlParams.get('gclid');
+
+                        // 2. localStorage persistente
+                        if (localStorage.getItem('nfd_gclid')) return localStorage.getItem('nfd_gclid');
+
+                        // 3. sessionStorage
+                        if (sessionStorage.getItem('gclid')) return sessionStorage.getItem('gclid');
+
+                        // 4. Cookie primário do Vinculador de Conversões do Google (_gcl_aw)
+                        const gclAw = getCookieValue('_gcl_aw');
+                        if (gclAw) {
+                            const parts = gclAw.split('.');
+                            if (parts.length >= 3) return parts.slice(2).join('.');
+                            return gclAw;
+                        }
+
+                        // 5. Fallback para iOS / Safari (wbraid ou gbraid)
+                        const wbraid = urlParams.get('wbraid') || localStorage.getItem('nfd_wbraid') || sessionStorage.getItem('wbraid');
+                        if (wbraid) return wbraid;
+
+                        const gbraid = urlParams.get('gbraid') || localStorage.getItem('nfd_gbraid') || sessionStorage.getItem('gbraid');
+                        if (gbraid) return gbraid;
+                    } catch (e) {}
+                    return null;
+                }
+
+                const gclid = getGoogleClickId();
+                const urlParams = new URLSearchParams(window.location.search);
+                const wbraid = urlParams.get('wbraid') || localStorage.getItem('nfd_wbraid') || sessionStorage.getItem('wbraid');
+                const gbraid = urlParams.get('gbraid') || localStorage.getItem('nfd_gbraid') || sessionStorage.getItem('gbraid');
 
                 const payload = {
                     action: 'register',
@@ -1056,7 +1098,9 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                     email: email,
                     whatsapp: whatsapp,
                     cnpj: cnpj,
-                    gclid: gclid
+                    gclid: gclid,
+                    wbraid: wbraid,
+                    gbraid: gbraid
                 };
 
                 try {
@@ -1158,6 +1202,9 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                         window.dataLayer.push({
                             'event': 'lead_cadastro',
                             'has_gclid': !!gclid,
+                            'gclid': gclid,
+                            'wbraid': wbraid,
+                            'gbraid': gbraid,
                             'eventCallback': irParaObrigado,
                             'eventTimeout': 2000
                         });
