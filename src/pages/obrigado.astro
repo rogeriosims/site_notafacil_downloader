@@ -27,70 +27,78 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <!-- Conteúdo Principal -->
     <section class="relative z-10 pt-32 pb-32 min-h-screen flex flex-col justify-center">
-        <div class="container mx-auto px-6 max-w-6xl">
+        <div class="container mx-auto px-6 max-w-5xl">
             
             <!-- Hero de Sucesso -->
-            <div class="text-center mb-24" data-aos="fade-down">
+            <div class="text-center mb-16" data-aos="fade-down">
                 <p id="saudacao-usuario" class="hidden text-blue-600 font-black uppercase tracking-widest text-sm mb-6"></p>
                 <h1 id="titulo-download" class="text-5xl sm:text-7xl font-black text-slate-900 tracking-normal mb-8 uppercase">
                     Seu Robô está <br class="hidden sm:block"/><span class="text-blue-600">a caminho!</span>
                 </h1>
                 <p id="subtitulo-download" class="text-xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
-                    O download foi liberado para o seu escritório. Escolha abaixo a versão que deseja instalar para começar agora mesmo.
+                    O acesso foi liberado para o seu escritório. Conclua a instalação oficial abaixo para começar a automatizar suas notas fiscais agora mesmo.
                 </p>
             </div>
 
-            <!-- Escolha de Caminho -->
-            <div class="grid lg:grid-cols-5 gap-8 items-stretch mb-32">
-                <!-- Card Microsoft Store (Destaque) -->
-                <div class="lg:col-span-3 bg-slate-900 border border-slate-800 p-10 sm:p-16 rounded-[3.5rem] shadow-2xl relative overflow-hidden group" data-aos="fade-right">
-                    <div class="absolute top-0 right-0 w-80 h-80 bg-blue-600/20 rounded-full blur-[100px] -mr-40 -mt-40 transition-transform group-hover:scale-110"></div>
+            <!-- Card Principal Microsoft Store (Destaque Absoluto) -->
+            <div class="max-w-3xl mx-auto w-full mb-8" data-aos="zoom-in">
+                <div class="bg-slate-900 border border-slate-800 p-10 sm:p-16 rounded-[3.5rem] shadow-2xl relative overflow-hidden group text-center">
+                    <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px] -mr-48 -mt-48 transition-transform group-hover:scale-110"></div>
                     
                     <div class="relative z-10">
-                        <div class="inline-flex items-center gap-3 px-5 py-2 bg-blue-500/20 text-blue-400 rounded-full text-xs font-black uppercase tracking-widest mb-10 border border-blue-500/30">
-                            <i data-lucide="award" class="w-4 h-4 text-blue-400"></i> Oficial Microsoft
+                        <div class="inline-flex items-center gap-3 px-5 py-2 bg-blue-500/20 text-blue-400 rounded-full text-xs font-black uppercase tracking-widest mb-8 border border-blue-500/30">
+                            <i data-lucide="award" class="w-4 h-4 text-blue-400"></i> Oficial Microsoft &bull; Atualizações Automáticas &bull; Recomendado
                         </div>
-                        <h2 class="text-4xl sm:text-5xl font-black text-white mb-8 uppercase tracking-normal">Versão Loja <br/>Recomendada</h2>
-                        <p class="text-slate-400 text-lg mb-12 leading-relaxed max-w-md">
-                            Instalação 100% segura com <strong>atualizações automáticas</strong> e o novo motor de Geração Local de PDF (50x mais rápido).
+                        
+                        <h2 class="text-4xl sm:text-5xl font-black text-white mb-6 uppercase tracking-normal">
+                            Instalar via Microsoft Store
+                        </h2>
+                        
+                        <p class="text-slate-300 text-lg mb-10 leading-relaxed max-w-xl mx-auto font-medium">
+                            A versão recomendada para seu escritório: instala com segurança em 1 clique e <strong class="text-white">se mantém sempre atualizada em segundo plano</strong> a cada mudança ou oscilação do Portal Nacional.
                         </p>
+                        
+                        <!-- Bullets de Confiança -->
+                        <div class="grid sm:grid-cols-3 gap-4 mb-10 text-left max-w-2xl mx-auto">
+                            <div class="flex items-center gap-2.5 text-xs text-slate-300 font-bold bg-slate-800/60 p-3 rounded-xl border border-slate-700/50">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                <span>Atualização contínua</span>
+                            </div>
+                            <div class="flex items-center gap-2.5 text-xs text-slate-300 font-bold bg-slate-800/60 p-3 rounded-xl border border-slate-700/50">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                <span>Sem alertas do Windows</span>
+                            </div>
+                            <div class="flex items-center gap-2.5 text-xs text-slate-300 font-bold bg-slate-800/60 p-3 rounded-xl border border-slate-700/50">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                <span>Geração de PDF 50x mais rápida</span>
+                            </div>
+                        </div>
                         
                         <a href="ms-windows-store://pdp/?productid=9N4GBNDFL550"
                            onclick="openStoreModal(); window.dataLayer = window.dataLayer || []; window.dataLayer.push({'event': 'download_store'});"
-                           class="inline-flex items-center gap-4 bg-white text-slate-900 px-12 py-6 rounded-2xl font-black transition-all shadow-xl hover:scale-105 active:scale-95 text-xl group">
+                           class="inline-flex items-center justify-center gap-4 bg-white hover:bg-slate-100 text-slate-900 px-12 py-6 rounded-2xl font-black transition-all shadow-xl hover:scale-105 active:scale-95 text-xl group w-full sm:w-auto">
                             <i data-lucide="shopping-bag" class="w-7 h-7 text-blue-600"></i>
-                            OBTER NA LOJA OFICIAL
+                            OBTER NA LOJA OFICIAL (RECOMENDADO)
                         </a>
                     </div>
                 </div>
+            </div>
 
-                <!-- Card Download EXE -->
-                <div class="lg:col-span-2 bg-white border border-slate-200 p-10 sm:p-12 rounded-[3.5rem] shadow-sm flex flex-col justify-between" data-aos="fade-left">
-                    <div>
-                        <div class="w-16 h-16 bg-slate-50 text-slate-400 rounded-2xl flex items-center justify-center mb-10 border border-slate-100">
-                            <i data-lucide="download-cloud" class="w-8 h-8"></i>
-                        </div>
-                        <h3 class="text-2xl font-black text-slate-900 mb-6 uppercase tracking-normal">Instalador EXE</h3>
-                        <p class="text-slate-500 text-base leading-relaxed mb-10">
-                            A versão clássica para quem prefere gerenciar a instalação manualmente.
-                        </p>
-                    </div>
-
-                    <div class="space-y-4">
-                        <a href="https://notafacildownloader.contabilcert.com.br/instalar-nota-facil"
-                           onclick="window.dataLayer = window.dataLayer || []; window.dataLayer.push({'event': 'download_exe'});"
-                           class="w-full bg-slate-900 text-white py-5 rounded-2xl font-black text-center block transition-all hover:bg-slate-800 shadow-lg">
-                            BAIXAR ARQUIVO .EXE
-                        </a>
-                        <!-- Ajuda EXE -->
-                        <div class="bg-blue-50/50 p-4 rounded-2xl border border-blue-100">
-                            <p class="text-[10px] text-blue-800 font-bold leading-tight flex gap-2">
-                                <i data-lucide="info" class="w-4 h-4 shrink-0"></i>
-                                Caso o navegador ou o Windows exibam avisos de segurança, clique em "Manter" e "Executar assim mesmo".
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <!-- Opção Secundária Discreta: Instalador EXE (Não recomendado) -->
+            <div class="text-center max-w-xl mx-auto mb-28" data-aos="fade-up">
+                <p class="text-xs text-slate-400 font-medium leading-relaxed">
+                    Sua rede corporativa ou máquina possui bloqueio da Microsoft Store?
+                    <br class="hidden sm:inline"/>
+                    <a href="https://notafacildownloader.contabilcert.com.br/instalar-nota-facil"
+                       onclick="window.dataLayer = window.dataLayer || []; window.dataLayer.push({'event': 'download_exe'});"
+                       class="text-slate-500 hover:text-slate-700 underline font-semibold transition-colors mt-1 inline-block">
+                        Baixar instalador manual (.exe)
+                    </a>
+                </p>
+                <p class="text-[11px] text-amber-700/90 font-bold mt-1.5 flex items-center justify-center gap-1.5">
+                    <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-amber-600 shrink-0"></i>
+                    Não recomendado: não possui atualização automática e requer reinstalação manual a cada mudança do governo.
+                </p>
             </div>
 
             <!-- Guia de Instalação -->
@@ -101,17 +109,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <div class="bg-white p-10 rounded-[3rem] border border-slate-200 relative group transition-all hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
                         <span class="absolute -top-6 -left-6 w-16 h-16 bg-slate-900 text-white rounded-2xl flex items-center justify-center text-2xl font-black italic shadow-2xl">01</span>
                         <h4 class="text-xl font-black text-slate-900 mb-4 mt-4 uppercase">Instale o Robô</h4>
-                        <p class="text-slate-500 leading-relaxed">Clique no botão da Loja Windows (Recomendado) ou execute o instalador EXE baixado.</p>
+                        <p class="text-slate-500 leading-relaxed">Clique em "Obter na Loja Oficial" para instalar com segurança certificada e receber atualizações automáticas.</p>
                     </div>
                     <div class="bg-white p-10 rounded-[3rem] border border-slate-200 relative group transition-all hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
                         <span class="absolute -top-6 -left-6 w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl font-black italic shadow-2xl">02</span>
                         <h4 class="text-xl font-black text-slate-900 mb-4 mt-4 uppercase">Ative seu Acesso</h4>
-                        <p class="text-slate-500 leading-relaxed">Abra o sistema e informe o seu e-mail de licença para liberar as rotinas de download.</p>
+                        <p class="text-slate-500 leading-relaxed">Abra o sistema e informe o seu e-mail cadastrado para liberar as rotinas de download e a cota mensal.</p>
                     </div>
                     <div class="bg-white p-10 rounded-[3rem] border border-slate-200 relative group transition-all hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
                         <span class="absolute -top-6 -left-6 w-16 h-16 bg-emerald-500 text-white rounded-2xl flex items-center justify-center text-2xl font-black italic shadow-2xl">03</span>
                         <h4 class="text-xl font-black text-slate-900 mb-4 mt-4 uppercase">Bons Downloads!</h4>
-                        <p class="text-slate-500 leading-relaxed">Configure seus certificados e deixe o Nota Fácil trabalhar por você no piloto automático.</p>
+                        <p class="text-slate-500 leading-relaxed">Configure seus certificados e deixe o Nota Fácil trabalhar pelo seu escritório no piloto automático.</p>
                     </div>
                 </div>
             </div>
@@ -138,89 +146,79 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                             </div>
                             <div class="flex items-center gap-3">
                                 <i data-lucide="cpu" class="w-5 h-5 text-slate-500"></i>
-                                <span class="text-xs font-black uppercase tracking-[0.2em]">Processamento Local</span>
+                                <span class="text-xs font-black uppercase tracking-[0.2em]">Execução Local de Borda</span>
                             </div>
                         </div>
                     </div>
-                    <div class="lg:w-2/5 w-full">
-                        <a href="https://wa.me/5531936184267" target="_blank" class="block group">
-                            <div class="bg-white/5 border border-white/10 p-10 rounded-[3rem] text-center hover:bg-white/10 transition-all hover:scale-105">
-                                <div class="w-16 h-16 bg-emerald-500 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                                    <i data-lucide="message-circle" class="w-8 h-8"></i>
-                                </div>
-                                <h4 class="text-2xl font-black text-white mb-4 uppercase tracking-normal">Dificuldades Técnicas?</h4>
-                                <p class="text-slate-400 font-medium mb-8">Fale agora com nosso suporte via WhatsApp para uma instalação assistida.</p>
-                                <span class="text-emerald-400 font-black text-xs uppercase tracking-widest group-hover:underline">Chamar no WhatsApp &rarr;</span>
+                    
+                    <div class="lg:w-2/5 flex justify-center">
+                        <div class="w-72 h-72 sm:w-80 sm:h-80 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-[3rem] p-1 shadow-2xl relative flex items-center justify-center group">
+                            <div class="absolute inset-0 bg-blue-500/20 rounded-[3rem] blur-2xl group-hover:blur-3xl transition-all"></div>
+                            <div class="w-full h-full bg-slate-900 rounded-[2.8rem] flex flex-col items-center justify-center p-8 text-center relative z-10">
+                                <i data-lucide="badge-check" class="w-20 h-20 text-blue-500 mb-6"></i>
+                                <div class="text-xl font-black text-white uppercase tracking-tight">Certificação Oficial</div>
+                                <div class="text-xs font-bold text-slate-500 mt-2">Windows 10 / Windows 11</div>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <!-- DOBRA FINAL -->
-    <section class="py-20 border-t border-slate-100 bg-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-black text-slate-900 mb-6 uppercase">Tudo pronto para transformar sua rotina?</h2>
-            <p class="text-lg text-slate-600 font-medium mb-10 max-w-2xl mx-auto tracking-normal">Se precisar de qualquer ajuda durante a configuração inicial, nosso time técnico está à disposição.</p>
-            <a href="https://wa.me/5531936184267" target="_blank" class="inline-block bg-blue-600 text-white px-10 py-5 rounded-2xl font-black shadow-xl shadow-blue-200 transition transform hover:-translate-y-1 active:scale-95 text-xl tracking-normal uppercase">FALAR COM SUPORTE TÉCNICO</a>
-        </div>
-    </section>
-
+    <!-- Script de Captura de Dados do Lead & Modal Store -->
     <script is:inline>
-        window.openStoreModal = function () {
+        function openStoreModal() {
             const modal = document.getElementById('store-modal');
             const content = document.getElementById('store-modal-content');
-            if (modal && content) {
-                modal.classList.remove('hidden');
-                setTimeout(() => {
-                    modal.classList.remove('opacity-0');
-                    content.classList.remove('scale-95');
-                }, 10);
-            }
-        };
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
 
-        window.closeModal = function () {
+            // Timeout de fechamento automático sutil
+            setTimeout(() => {
+                closeModal();
+            }, 8000);
+        }
+
+        function closeModal() {
             const modal = document.getElementById('store-modal');
             const content = document.getElementById('store-modal-content');
-            if (modal && content) {
-                modal.classList.add('opacity-0');
-                content.classList.add('scale-95');
-                setTimeout(() => modal.classList.add('hidden'), 300);
-            }
-        };
+            modal.classList.add('opacity-0');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
 
-        document.addEventListener('DOMContentLoaded', function () {
-            if (window.lucide) window.lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', () => {
+            const userDataRaw = sessionStorage.getItem('notafacil_user_data');
+            if (userDataRaw) {
+                try {
+                    const userData = JSON.parse(userDataRaw);
+                    const saudacao = document.getElementById('saudacao-usuario');
+                    const titulo = document.getElementById('titulo-download');
+                    const subtitulo = document.getElementById('subtitulo-download');
+                    
+                    const nome = userData.nome ? userData.nome.split(' ')[0] : (userData.data && userData.data.nome ? userData.data.nome.split(' ')[0] : '');
 
-            // Personalização a partir dos dados gravados pelo formulário da home.
-            // Quem já tinha cadastro (returning) recebe uma mensagem de reinstalação,
-            // não de boas-vindas — o texto padrão só vale para cadastro novo.
-            try {
-                const dados = JSON.parse(sessionStorage.getItem('notafacil_user_data') || '{}');
-                const nome = (dados.nome || '').trim().split(' ')[0];
-                const saudacao = document.getElementById('saudacao-usuario');
-                const titulo = document.getElementById('titulo-download');
-                const subtitulo = document.getElementById('subtitulo-download');
-
-                if (dados.returning) {
-                    if (saudacao) {
-                        saudacao.innerText = nome ? `Bem-vindo de volta, ${nome}!` : 'Bem-vindo de volta!';
+                    if (nome) {
+                        saudacao.innerText = `BEM-VINDO, ${nome.toUpperCase()}!`;
                         saudacao.classList.remove('hidden');
                     }
-                    if (titulo) {
-                        titulo.innerHTML = 'Sua licença <br class="hidden sm:block"/><span class="text-blue-600">continua ativa</span>';
+
+                    if (userData.returning) {
+                        titulo.innerHTML = 'Bem-vindo de volta! <br class="hidden sm:block"/><span class="text-blue-600">Baixe o robô novamente.</span>';
+                        subtitulo.innerText = 'Seu escritório já tem cadastro conosco. Instale pela Microsoft Store abaixo para continuar com suas rotinas de download.';
                     }
-                    if (subtitulo) {
-                        subtitulo.innerText = 'Seu escritório já tem cadastro conosco. Baixe o robô novamente abaixo — é só instalar e ativar com o mesmo e-mail de sempre.';
-                    }
-                } else if (nome && saudacao) {
-                    saudacao.innerText = `Cadastro confirmado, ${nome}!`;
-                    saudacao.classList.remove('hidden');
+                } catch(e) {
+                    console.error("Erro ao ler dados da sessão", e);
                 }
-            } catch (err) {
-                // Sem dados de sessão: a página segue com o texto padrão.
             }
         });
     </script>
