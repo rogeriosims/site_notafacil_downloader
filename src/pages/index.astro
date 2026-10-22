@@ -1110,11 +1110,23 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                     btnText.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> PREPARANDO ACESSO...';
                     if (typeof lucide !== 'undefined') lucide.createIcons();
 
-                    const response = await fetch('https://n8n.rockethub.com.br/webhook/17e601cd-2655-410f-b8af-4ffffd07bec0', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
+                    let response;
+                    try {
+                        // 1. Tenta via proxy local Cloudflare (Same-Origin: sem preflight CORS, imune a bloqueios de firewall/adblocker)
+                        response = await fetch('/api/cadastro', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                    } catch (proxyErr) {
+                        console.warn('Proxy local indisponível, tentando webhook direto:', proxyErr);
+                        // 2. Fallback direto caso o proxy local falhe
+                        response = await fetch('https://n8n.rockethub.com.br/webhook/17e601cd-2655-410f-b8af-4ffffd07bec0', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                    }
 
                     // Lê o payload independentemente do código HTTP retornado (200, 201, 409, 400, etc.)
                     const responseDataText = await response.text();
