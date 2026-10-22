@@ -53,15 +53,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <p class="text-base text-emerald-800 leading-relaxed mb-10 font-medium">
                         O robô testa o banco de dados ao iniciar e, se necessário, recupera a base sozinho. Você não perde o histórico de notas e relatórios da carteira.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="ms-windows-store://pdp/?productid=9N4GBNDFL550" class="flex-1 inline-flex justify-center items-center gap-3 bg-emerald-700 text-white py-5 px-8 rounded-2xl font-black transition-all hover:bg-emerald-800 shadow-[0_10px_30px_rgba(4,120,87,0.3)] hover:shadow-[0_15px_40px_rgba(4,120,87,0.4)] hover:-translate-y-1 active:scale-95 text-lg uppercase tracking-wide group">
+                    <div class="space-y-4">
+                        <a href="ms-windows-store://pdp/?productid=9N4GBNDFL550" class="w-full inline-flex justify-center items-center gap-3 bg-emerald-700 text-white py-5 px-8 rounded-2xl font-black transition-all hover:bg-emerald-800 shadow-[0_10px_30px_rgba(4,120,87,0.3)] hover:shadow-[0_15px_40px_rgba(4,120,87,0.4)] hover:-translate-y-1 active:scale-95 text-lg uppercase tracking-wide group">
                             <i data-lucide="shield-check" class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
-                            ATUALIZAR PELA MICROSOFT STORE
+                            ATUALIZAR PELA MICROSOFT STORE (RECOMENDADO)
                         </a>
-                        <a href="https://notafacildownloader.contabilcert.com.br/instalar-nota-facil" class="flex-1 inline-flex justify-center items-center gap-3 bg-white text-emerald-800 border-2 border-emerald-200 py-5 px-8 rounded-2xl font-black transition-all hover:bg-emerald-50 active:scale-95 text-lg uppercase tracking-wide">
-                            <i data-lucide="download" class="w-6 h-6"></i>
-                            BAIXAR INSTALADOR .EXE
-                        </a>
+                        <div class="text-center pt-2">
+                            <p class="text-xs text-emerald-950/70 font-medium">
+                                Máquina corporativa com bloqueio da Loja? 
+                                <a href="https://notafacildownloader.contabilcert.com.br/instalar-nota-facil" class="text-emerald-900 underline font-bold hover:text-emerald-950">
+                                    Baixar instalador manual .exe
+                                </a> 
+                                <span class="text-[11px] text-amber-800/90 block mt-0.5">⚠️ Não recomendado: não possui atualização automática e requer reinstalação manual a cada alteração do governo.</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
