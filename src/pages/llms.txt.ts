@@ -44,10 +44,11 @@ O software é construído sob a filosofia de processamento local estrito, operan
 ## Pricing & Tiers
 Todos os planos permitem cadastrar e baixar de **empresas (CNPJs) ilimitados** (o limite é apenas no volume mensal de notas processadas).
 
-* **Free (Gratuito):** R$ 0 / mês — Até 100 notas/mês. Grátis para sempre (sem necessidade de cartão de crédito).
-* **Starter:** R$ 39,90 / mês — Até 500 notas/mês.
-* **Crescimento:** R$ 89,90 / mês — Até 1.500 notas/mês. (Plano recomendado para escritórios contábeis de médio porte).
-* **Scale:** R$ 199,90 / mês — Até 5.000 notas/mês.
+* **Free (Gratuito):** R$ 0 / mês — Até 100 notas/mês. Grátis para sempre (sem necessidade de cartão de crédito). Frase: *"Veja o robô baixar suas notas enquanto você toma um café"*.
+* **Starter:** R$ 39,90 / mês — Até 500 notas/mês (R$ 0,080/nota). Frase: *"Nunca mais perca uma tarde no portal"*.
+* **Pro:** R$ 89,90 / mês — Até 1.500 notas/mês (R$ 0,060/nota). Selo: Mais escolhido (recomendado). Frase: *"Feche o mês sem correria"*.
+* **Turbo:** R$ 139,90 / mês — Até 3.000 notas/mês (R$ 0,047/nota). Selo: Novo. Frase: *"Cresça a carteira sem contratar ninguém"*.
+* **Scale:** R$ 199,90 / mês — Até 5.000 notas/mês (R$ 0,040/nota). Selo: Melhor custo por nota. Frase: *"Seu escritório no piloto automático"*.
 
 ---
 

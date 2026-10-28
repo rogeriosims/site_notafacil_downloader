@@ -1,54 +1,63 @@
 # 💰 TABELA DE PREÇOS — Nota Fácil Downloader (SSOT)
 
 Este arquivo é a **Fonte Única da Verdade** para os preços do Nota Fácil Downloader.
-Todo agente (Redator, Marketing, Vendas) deve consultar este arquivo antes de mencionar qualquer valor.
+Todo agente (Redator, Marketing, Vendas, Frontend) deve consultar este arquivo antes de mencionar qualquer valor.
 
 **NUNCA invente, estime ou aproxime preços. Use EXATAMENTE os valores abaixo.**
 
 ---
 
-## Planos Atuais (2026)
+## Planos Atuais (Atualizado em 28/10/2026)
 
-| Plano | Preço | Volume de Notas | Empresas (CNPJs) |
-| :--- | :--- | :--- | :--- |
-| **Free (Gratuito)** | R$ 0 / mês | 100 notas/mês | Ilimitadas |
-| **Starter** | R$ 39,90 / mês | 500 notas/mês | Ilimitadas |
-| **Crescimento** | R$ 89,90 / mês | 1.500 notas/mês | Ilimitadas |
-| **Scale** | R$ 199,90 / mês | 5.000 notas/mês | Ilimitadas |
-
----
-
-## Regras de Divulgação
-
-*   **Free Tier:** Sempre mencionar como "100 notas/mês **grátis para sempre**" — não como "trial" ou "período de teste".
-*   **CNPJs:** Todos os planos, incluindo o gratuito, permitem **empresas (CNPJs) ilimitados**. O limite é apenas no volume de notas processadas.
-*   **Cobrança:** Os planos são cobrados **mensalmente**, de forma **recorrente** e **sem fidelidade**. Não existe plano anual atualmente.
-*   **Upgrade:** é feito **dentro do aplicativo**, não no site. A cobrança é processada pelo Asaas. O site leva sempre ao cadastro gratuito, e a assinatura acontece depois, no app.
-*   **Plano recomendado:** O plano **Crescimento (R$ 89,90)** é o recomendado para escritórios contábeis de médio porte.
-
----
-
-## Frases de Referência para Copy
-
-*   "Comece gratuitamente com 100 notas/mês. Sem cartão de crédito."
-*   "A partir de R$ 39,90/mês para 500 notas — cerca de 2,5 horas de auxiliar fiscal, para um trabalho manual de aproximadamente 16 horas."
-*   "Para escritórios médios: R$ 89,90/mês para 1.500 notas e CNPJs ilimitados."
-*   "Escale com segurança: R$ 199,90/mês para 5.000 notas sem limite de clientes."
-
----
-
-## ROI de Referência (Para Posts e Ads)
-
-Com base em um auxiliar fiscal custando R$ 16/hora e **2 minutos de trabalho manual por nota** (captchas do Portal Nacional, download, organização e renomeação dos arquivos nas pastas). Esta é a premissa única usada na calculadora e no bloco de números da home:
-
-| Plano | Volume | Horas economizadas/mês | Economia de custo | Custo do plano | ROI |
+| Plano | Preço Mensal | Volume de Notas | Custo por Nota | Empresas (CNPJs) | Selo / Destaque |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| Starter | 500 notas | 16,7h | R$ 267 | R$ 39,90 | +568% |
-| Crescimento | 1.500 notas | 50h | R$ 800 | R$ 89,90 | +790% |
-| Scale | 5.000 notas | 166,7h | R$ 2.667 | R$ 199,90 | +1.234% |
+| **Free (Gratuito)** | R$ 0 / mês | 100 notas/mês | Grátis | Ilimitadas | – |
+| **Starter** | R$ 39,90 / mês | 500 notas/mês | R$ 0,080 | Ilimitadas | – |
+| **Pro** | R$ 89,90 / mês | 1.500 notas/mês | R$ 0,060 | Ilimitadas | **Mais escolhido** *(destaque no site)* |
+| **Turbo** | R$ 139,90 / mês | 3.000 notas/mês | R$ 0,047 | Ilimitadas | **Novo** |
+| **Scale** | R$ 199,90 / mês | 5.000 notas/mês | R$ 0,040 | Ilimitadas | **Melhor custo por nota** |
 
-*ROI = (economia de custo − custo do plano) ÷ custo do plano. É uma estimativa e deve ser apresentada como tal. Não inclui economia de retrabalho e erros. Se houver medição própria do tempo manual, atualize a premissa aqui, na calculadora (`index.astro`) e no `llms.txt.ts` ao mesmo tempo.*
+*Nota: Os nomes devem ser escritos exatamente assim: Free, Starter, Pro, Turbo e Scale.*
 
 ---
-**Última atualização:** Setembro de 2026
-**Responsável:** Equipe NotaFácil
+
+## Frases Oficiais dos Cards (Jornada do Escritório)
+
+As frases seguem a jornada do escritório: provar o robô, largar o portal, fechar o mês em paz, crescer e escalar. Preço e franquia ficam no card; a frase vende o resultado.
+
+*   **Free:** *"Veja o robô baixar suas notas enquanto você toma um café"*
+*   **Starter:** *"Nunca mais perca uma tarde no portal"*
+*   **Pro:** *"Feche o mês sem correria"*
+*   **Turbo:** *"Cresça a carteira sem contratar ninguém"*
+*   **Scale:** *"Seu escritório no piloto automático"*
+
+---
+
+## Como Funciona a Assinatura
+
+*   **Modelo:** O plano é **pré-pago e mensal**: o cliente paga o mês e recebe a franquia de notas para baixar no ciclo.
+*   **Pagamento:** Pix, boleto ou cartão de crédito, pela fatura do Asaas. A assinatura renova todo mês de forma recorrente e sem fidelidade.
+*   **Limite:** Ao usar a franquia mensal, o robô pausa as capturas até o ciclo renovar ou até o cliente subir de plano. **Não existe pacote avulso de notas.**
+*   **Upgrade:** Feito diretamente dentro do app, no menu *Assinaturas*. O cliente paga apenas a diferença entre os planos (pró-rata) e recebe a nova franquia imediatamente; a partir da próxima fatura, paga o preço do plano novo.
+*   **Downgrade:** Também pelo menu *Assinaturas*, sem cobrança imediata; passa a valer a partir da próxima fatura.
+*   **Inadimplência / Sem pagamento:** Se a fatura não for quitada, a conta retorna automaticamente para o plano Free (100 notas por mês) e continua funcionando sem bloqueio total do aplicativo.
+*   **Recomendação:** O app desktop destaca o plano ideal conforme o consumo histórico do cliente. No site, o destaque principal é o plano **Pro (R$ 89,90)** com o selo *"Mais escolhido"*.
+
+---
+
+## ROI de Referência (Para Posts, Ads e Calculadora)
+
+Com base em um assistente fiscal custando R$ 16/hora e **2 minutos de trabalho manual por nota** (captchas do Portal Nacional, download, organização e renomeação dos arquivos nas pastas):
+
+| Plano | Volume | Horas economizadas/mês | Custo manual estimado | Custo do plano | Economia líquida | ROI estimado |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Starter** | 500 notas | 16,7h | R$ 267 | R$ 39,90 | R$ 227,10 | +568% |
+| **Pro** | 1.500 notas | 50h | R$ 800 | R$ 89,90 | R$ 710,10 | +790% |
+| **Turbo** | 3.000 notas | 100h | R$ 1.600 | R$ 139,90 | R$ 1.460,10 | +1.044% |
+| **Scale** | 5.000 notas | 166,7h | R$ 2.667 | R$ 199,90 | R$ 2.467,10 | +1.234% |
+
+*ROI = (economia de custo − custo do plano) ÷ custo do plano. Não inclui economia de retrabalho, multas e horas extras.*
+
+---
+**Última atualização:** 28 de Outubro de 2026  
+**Responsável:** Rogério Moura / Equipe NotaFácil
