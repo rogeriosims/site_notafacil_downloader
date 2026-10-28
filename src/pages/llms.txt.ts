@@ -49,6 +49,7 @@ Todos os planos permitem cadastrar e baixar de **empresas (CNPJs) ilimitados** (
 * **Pro:** R$ 89,90 / mês — Até 1.500 notas/mês (R$ 0,060/nota). Selo: Mais escolhido (recomendado). Frase: *"Feche o mês sem correria"*.
 * **Turbo:** R$ 139,90 / mês — Até 3.000 notas/mês (R$ 0,047/nota). Selo: Novo. Frase: *"Cresça a carteira sem contratar ninguém"*.
 * **Scale:** R$ 199,90 / mês — Até 5.000 notas/mês (R$ 0,040/nota). Selo: Melhor custo por nota. Frase: *"Seu escritório no piloto automático"*.
+* **Enterprise:** Sob medida — Acima de 5.000 notas/mês. Frase: *"Demanda personalizada para o tamanho da sua operação"*. Contratação com suporte dedicado.
 
 ---
 

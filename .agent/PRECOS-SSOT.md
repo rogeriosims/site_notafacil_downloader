@@ -16,20 +16,22 @@ Todo agente (Redator, Marketing, Vendas, Frontend) deve consultar este arquivo a
 | **Pro** | R$ 89,90 / mês | 1.500 notas/mês | R$ 0,060 | Ilimitadas | **Mais escolhido** *(destaque no site)* |
 | **Turbo** | R$ 139,90 / mês | 3.000 notas/mês | R$ 0,047 | Ilimitadas | **Novo** |
 | **Scale** | R$ 199,90 / mês | 5.000 notas/mês | R$ 0,040 | Ilimitadas | **Melhor custo por nota** |
+| **Enterprise** | Sob medida | +5.000 notas/mês | Personalizado | Ilimitadas | **Sob Medida** *(suporte dedicado)* |
 
-*Nota: Os nomes devem ser escritos exatamente assim: Free, Starter, Pro, Turbo e Scale.*
+*Nota: Os nomes devem ser escritos exatamente assim: Free, Starter, Pro, Turbo, Scale e Enterprise.*
 
 ---
 
 ## Frases Oficiais dos Cards (Jornada do Escritório)
 
-As frases seguem a jornada do escritório: provar o robô, largar o portal, fechar o mês em paz, crescer e escalar. Preço e franquia ficam no card; a frase vende o resultado.
+As frases seguem a jornada do escritório: provar o robô, largar o portal, fechar o mês em paz, crescer, escalar e atender operações de grande porte.
 
 *   **Free:** *"Veja o robô baixar suas notas enquanto você toma um café"*
 *   **Starter:** *"Nunca mais perca uma tarde no portal"*
 *   **Pro:** *"Feche o mês sem correria"*
 *   **Turbo:** *"Cresça a carteira sem contratar ninguém"*
 *   **Scale:** *"Seu escritório no piloto automático"*
+*   **Enterprise:** *"Demanda personalizada para o tamanho da sua operação"*
 
 ---
 
