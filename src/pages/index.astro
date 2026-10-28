@@ -517,28 +517,37 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                         <!-- Atalhos Rápidos -->
                         <div class="mb-8">
                             <span class="block text-slate-500 font-bold text-xs uppercase tracking-wider mb-3">Atalhos por Porte:</span>
-                            <div class="flex flex-wrap gap-3">
+                            <div class="flex flex-wrap gap-2.5">
                                 <button
                                     type="button"
                                     onclick="setSliderValue(400)"
-                                    class="bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-700 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-slate-200 hover:border-blue-200"
+                                    class="bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-700 px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all border border-slate-200 hover:border-blue-200"
                                 >
-                                    Pequeno (400 notas)
+                                    Pequeno (400)
                                 </button>
                                 <button
                                     type="button"
                                     onclick="setSliderValue(1500)"
-                                    class="bg-blue-50 text-blue-600 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-blue-200"
+                                    class="bg-blue-50 text-blue-600 px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all border border-blue-200"
                                     id="btn-preset-med"
                                 >
-                                    Médio (1.500 notas)
+                                    Médio (1.500)
                                 </button>
                                 <button
                                     type="button"
-                                    onclick="setSliderValue(3600)"
-                                    class="bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-700 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-slate-200 hover:border-blue-200"
+                                    onclick="setSliderValue(3000)"
+                                    class="bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-700 px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all border border-slate-200 hover:border-blue-200"
+                                    id="btn-preset-turbo"
                                 >
-                                    Grande (3.600 notas)
+                                    Turbo (3.000)
+                                </button>
+                                <button
+                                    type="button"
+                                    onclick="setSliderValue(4500)"
+                                    class="bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-700 px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all border border-slate-200 hover:border-blue-200"
+                                    id="btn-preset-scale"
+                                >
+                                    Scale (4.500)
                                 </button>
                             </div>
                         </div>
@@ -586,7 +595,7 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                                 <span class="text-slate-400 font-semibold text-xs">/mês</span>
                             </div>
                             <span class="text-xs text-emerald-600 font-semibold mt-1 block flex items-center gap-1">
-                                <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Plano: <strong id="calc-plan-name">Crescimento</strong> (CNPJs ilimitados)
+                                <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Plano: <strong id="calc-plan-name">Pro</strong> (CNPJs ilimitados)
                             </span>
                         </div>
                     </div>
@@ -647,91 +656,212 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                 </p>
             </div>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-stretch">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto items-stretch">
                 <!-- Free -->
-                <div class="bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-lg flex flex-col text-center" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-lg font-black text-slate-800 mb-4 uppercase tracking-wide">Free</h3>
-                    <div class="flex flex-col items-center mb-8">
+                <div class="bg-white p-7 rounded-[2.5rem] border border-slate-200 shadow-lg flex flex-col text-center" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-lg font-black text-slate-800 mb-3 uppercase tracking-wide">Free</h3>
+                    <div class="flex flex-col items-center mb-4">
                         <div class="flex items-baseline gap-1">
                             <span class="text-4xl font-black text-slate-900">R$ 0</span>
                             <span class="text-slate-500 font-bold text-sm">/sempre</span>
                         </div>
                         <span class="text-emerald-600 font-black text-[11px] uppercase mt-2 tracking-wider">Grátis para sempre</span>
                     </div>
-                    <ul class="space-y-3 mb-10 text-left w-full">
-                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> 100 notas/mês</li>
-                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Empresas ilimitadas</li>
-                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Certificado A1, A3 e login/senha</li>
-                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Sem cartão de crédito</li>
+                    <p class="text-xs text-slate-500 font-medium italic mb-6 min-h-[38px] flex items-center justify-center leading-snug">
+                        “Veja o robô baixar suas notas enquanto você toma um café”
+                    </p>
+                    <ul class="space-y-3 mb-8 text-left w-full">
+                        <li class="flex gap-2.5 text-slate-600 font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> 100 notas/mês</li>
+                        <li class="flex gap-2.5 text-slate-600 font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Empresas ilimitadas</li>
+                        <li class="flex gap-2.5 text-slate-600 font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Certificado A1, A3 e login/senha</li>
+                        <li class="flex gap-2.5 text-slate-600 font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> Sem cartão de crédito</li>
                     </ul>
-                    <a href="#ativar" class="w-full mt-auto py-4 rounded-2xl border-2 border-emerald-500 text-emerald-600 font-black hover:bg-emerald-500 hover:text-white transition-all active:scale-95 text-sm uppercase tracking-wide">
+                    <a href="#ativar" class="w-full mt-auto py-3.5 rounded-2xl border-2 border-emerald-500 text-emerald-600 font-black hover:bg-emerald-500 hover:text-white transition-all active:scale-95 text-xs uppercase tracking-wide">
                         Começar grátis
                     </a>
                 </div>
 
                 <!-- Starter -->
-                <div class="bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-lg flex flex-col text-center" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="text-lg font-black text-slate-800 mb-4 uppercase tracking-wide">Starter</h3>
-                    <div class="flex flex-col items-center mb-8">
+                <div class="bg-white p-7 rounded-[2.5rem] border border-slate-200 shadow-lg flex flex-col text-center" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-lg font-black text-slate-800 mb-3 uppercase tracking-wide">Starter</h3>
+                    <div class="flex flex-col items-center mb-4">
                         <div class="flex items-baseline gap-1">
                             <span class="text-4xl font-black text-slate-900">R$ 39,90</span>
                             <span class="text-slate-500 font-bold text-sm">/mês</span>
                         </div>
-                        <span class="text-blue-600 font-black text-[11px] uppercase mt-2 tracking-wider">aprox. R$ 0,08/nota</span>
+                        <span class="text-blue-600 font-black text-[11px] uppercase mt-2 tracking-wider">R$ 0,080/nota</span>
                     </div>
-                    <ul class="space-y-3 mb-10 text-left w-full">
-                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> 500 notas/mês</li>
-                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Empresas ilimitadas</li>
-                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Certificado A1, A3 e login/senha</li>
-                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Atualizações incluídas</li>
+                    <p class="text-xs text-slate-500 font-medium italic mb-6 min-h-[38px] flex items-center justify-center leading-snug">
+                        “Nunca mais perca uma tarde no portal”
+                    </p>
+                    <ul class="space-y-3 mb-8 text-left w-full">
+                        <li class="flex gap-2.5 text-slate-600 font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> 500 notas/mês</li>
+                        <li class="flex gap-2.5 text-slate-600 font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Empresas ilimitadas</li>
+                        <li class="flex gap-2.5 text-slate-600 font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Certificado A1, A3 e login/senha</li>
+                        <li class="flex gap-2.5 text-slate-600 font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Atualizações incluídas</li>
                     </ul>
-                    <a href="#ativar" class="w-full mt-auto py-4 rounded-2xl border-2 border-slate-900 text-slate-900 font-black hover:bg-slate-900 hover:text-white transition-all active:scale-95 text-sm uppercase tracking-wide">
+                    <a href="#ativar" class="w-full mt-auto py-3.5 rounded-2xl border-2 border-slate-900 text-slate-900 font-black hover:bg-slate-900 hover:text-white transition-all active:scale-95 text-xs uppercase tracking-wide">
                         Instalar e assinar no app
                     </a>
                 </div>
 
-                <!-- Crescimento (Destaque) -->
-                <div class="bg-blue-600 p-8 rounded-[2.5rem] border-2 border-blue-400 shadow-2xl shadow-blue-500/20 flex flex-col text-center relative lg:scale-105" data-aos="fade-up" data-aos-delay="300">
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-blue-700 text-[10px] font-black px-5 py-2 rounded-full uppercase tracking-[0.2em] shadow-xl whitespace-nowrap">
-                        Mais recomendado
+                <!-- Pro (Destaque Principal) -->
+                <div class="bg-blue-600 p-7 rounded-[2.5rem] border-2 border-blue-400 shadow-2xl shadow-blue-500/25 flex flex-col text-center relative xl:scale-105 z-10" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-blue-700 text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-[0.2em] shadow-xl whitespace-nowrap">
+                        Mais escolhido
                     </div>
-                    <h3 class="text-lg font-black text-white mb-4 uppercase tracking-wide mt-2">Crescimento</h3>
-                    <div class="flex flex-col items-center mb-8">
+                    <h3 class="text-lg font-black text-white mb-3 uppercase tracking-wide mt-2">Pro</h3>
+                    <div class="flex flex-col items-center mb-4">
                         <div class="flex items-baseline gap-1">
                             <span class="text-4xl font-black text-white">R$ 89,90</span>
                             <span class="text-blue-200 font-bold text-sm">/mês</span>
                         </div>
-                        <span class="text-blue-100 font-black text-[11px] uppercase mt-2 tracking-wider">aprox. R$ 0,06/nota</span>
+                        <span class="text-blue-100 font-black text-[11px] uppercase mt-2 tracking-wider">R$ 0,060/nota</span>
                     </div>
-                    <ul class="space-y-3 mb-10 text-left w-full">
-                        <li class="flex gap-3 text-white font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-200 shrink-0 mt-0.5"></i> 1.500 notas/mês</li>
-                        <li class="flex gap-3 text-white font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-200 shrink-0 mt-0.5"></i> Empresas ilimitadas</li>
-                        <li class="flex gap-3 text-white font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-200 shrink-0 mt-0.5"></i> Certificado A1, A3 e login/senha</li>
-                        <li class="flex gap-3 text-white font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-200 shrink-0 mt-0.5"></i> Ideal para escritórios médios</li>
+                    <p class="text-xs text-blue-100 font-medium italic mb-6 min-h-[38px] flex items-center justify-center leading-snug">
+                        “Feche o mês sem correria”
+                    </p>
+                    <ul class="space-y-3 mb-8 text-left w-full">
+                        <li class="flex gap-2.5 text-white font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-blue-200 shrink-0 mt-0.5"></i> 1.500 notas/mês</li>
+                        <li class="flex gap-2.5 text-white font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-blue-200 shrink-0 mt-0.5"></i> Empresas ilimitadas</li>
+                        <li class="flex gap-2.5 text-white font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-blue-200 shrink-0 mt-0.5"></i> Certificado A1, A3 e login/senha</li>
+                        <li class="flex gap-2.5 text-white font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-blue-200 shrink-0 mt-0.5"></i> Ideal para escritórios médios</li>
                     </ul>
-                    <a href="#ativar" class="w-full mt-auto py-4 rounded-2xl bg-white text-blue-700 font-black hover:bg-blue-50 transition-all shadow-lg active:scale-95 text-sm uppercase tracking-wide">
+                    <a href="#ativar" class="w-full mt-auto py-3.5 rounded-2xl bg-white text-blue-700 font-black hover:bg-blue-50 transition-all shadow-lg active:scale-95 text-xs uppercase tracking-wide">
+                        Instalar e assinar no app
+                    </a>
+                </div>
+
+                <!-- Turbo (Novo) -->
+                <div class="bg-white p-7 rounded-[2.5rem] border border-slate-200 shadow-lg flex flex-col text-center relative" data-aos="fade-up" data-aos-delay="400">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-emerald-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-[0.2em] shadow-md whitespace-nowrap">
+                        Novo
+                    </div>
+                    <h3 class="text-lg font-black text-slate-800 mb-3 uppercase tracking-wide mt-2">Turbo</h3>
+                    <div class="flex flex-col items-center mb-4">
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-4xl font-black text-slate-900">R$ 139,90</span>
+                            <span class="text-slate-500 font-bold text-sm">/mês</span>
+                        </div>
+                        <span class="text-blue-600 font-black text-[11px] uppercase mt-2 tracking-wider">R$ 0,047/nota</span>
+                    </div>
+                    <p class="text-xs text-slate-500 font-medium italic mb-6 min-h-[38px] flex items-center justify-center leading-snug">
+                        “Cresça a carteira sem contratar ninguém”
+                    </p>
+                    <ul class="space-y-3 mb-8 text-left w-full">
+                        <li class="flex gap-2.5 text-slate-600 font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> 3.000 notas/mês</li>
+                        <li class="flex gap-2.5 text-slate-600 font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Empresas ilimitadas</li>
+                        <li class="flex gap-2.5 text-slate-600 font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Certificado A1, A3 e login/senha</li>
+                        <li class="flex gap-2.5 text-slate-600 font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Alta demanda operacional</li>
+                    </ul>
+                    <a href="#ativar" class="w-full mt-auto py-3.5 rounded-2xl border-2 border-slate-900 text-slate-900 font-black hover:bg-slate-900 hover:text-white transition-all active:scale-95 text-xs uppercase tracking-wide">
                         Instalar e assinar no app
                     </a>
                 </div>
 
                 <!-- Scale -->
-                <div class="bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-lg flex flex-col text-center" data-aos="fade-up" data-aos-delay="400">
-                    <h3 class="text-lg font-black text-slate-800 mb-4 uppercase tracking-wide">Scale</h3>
-                    <div class="flex flex-col items-center mb-8">
+                <div class="bg-white p-7 rounded-[2.5rem] border border-slate-200 shadow-lg flex flex-col text-center relative" data-aos="fade-up" data-aos-delay="500">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] font-black px-3.5 py-1.5 rounded-full uppercase tracking-[0.15em] shadow-md whitespace-nowrap">
+                        Melhor custo por nota
+                    </div>
+                    <h3 class="text-lg font-black text-slate-800 mb-3 uppercase tracking-wide mt-2">Scale</h3>
+                    <div class="flex flex-col items-center mb-4">
                         <div class="flex items-baseline gap-1">
                             <span class="text-4xl font-black text-slate-900">R$ 199,90</span>
                             <span class="text-slate-500 font-bold text-sm">/mês</span>
                         </div>
-                        <span class="text-blue-600 font-black text-[11px] uppercase mt-2 tracking-wider">apenas R$ 0,04/nota</span>
+                        <span class="text-blue-600 font-black text-[11px] uppercase mt-2 tracking-wider">apenas R$ 0,040/nota</span>
                     </div>
-                    <ul class="space-y-3 mb-10 text-left w-full">
-                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> 5.000 notas/mês</li>
-                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Empresas ilimitadas</li>
-                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Certificado A1, A3 e login/senha</li>
-                        <li class="flex gap-3 text-slate-600 font-semibold text-sm"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Alto volume de fechamento</li>
+                    <p class="text-xs text-slate-500 font-medium italic mb-6 min-h-[38px] flex items-center justify-center leading-snug">
+                        “Seu escritório no piloto automático”
+                    </p>
+                    <ul class="space-y-3 mb-8 text-left w-full">
+                        <li class="flex gap-2.5 text-slate-600 font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> 5.000 notas/mês</li>
+                        <li class="flex gap-2.5 text-slate-600 font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Empresas ilimitadas</li>
+                        <li class="flex gap-2.5 text-slate-600 font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Certificado A1, A3 e login/senha</li>
+                        <li class="flex gap-2.5 text-slate-600 font-semibold text-xs"><i data-lucide="check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"></i> Máxima escala e fechamento</li>
                     </ul>
-                    <a href="#ativar" class="w-full mt-auto py-4 rounded-2xl border-2 border-slate-900 text-slate-900 font-black hover:bg-slate-900 hover:text-white transition-all active:scale-95 text-sm uppercase tracking-wide">
+                    <a href="#ativar" class="w-full mt-auto py-3.5 rounded-2xl border-2 border-slate-900 text-slate-900 font-black hover:bg-slate-900 hover:text-white transition-all active:scale-95 text-xs uppercase tracking-wide">
                         Instalar e assinar no app
+                    </a>
+                </div>
+            </div>
+
+            <!-- Como funciona a assinatura -->
+            <div class="mt-20 max-w-5xl mx-auto bg-slate-900/90 border border-slate-800 rounded-[2.5rem] p-8 sm:p-12 shadow-2xl backdrop-blur-sm" data-aos="fade-up">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+                        <i data-lucide="help-circle" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-black text-white uppercase tracking-normal">Como funciona a assinatura</h3>
+                        <p class="text-xs text-slate-400 font-medium mt-0.5">O plano é pré-pago e mensal: você paga o mês e recebe a franquia de notas para baixar no ciclo.</p>
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 text-left">
+                    <div class="bg-slate-950/70 p-5 rounded-2xl border border-slate-800/80">
+                        <h4 class="text-sm font-bold text-white flex items-center gap-2 mb-2">
+                            <i data-lucide="calendar" class="w-4 h-4 text-blue-400"></i> Ciclo Mensal
+                        </h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            A assinatura renova todo mês. Você tem a franquia completa disponível a cada ciclo para baixar suas NFS-e com tranquilidade.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-950/70 p-5 rounded-2xl border border-slate-800/80">
+                        <h4 class="text-sm font-bold text-white flex items-center gap-2 mb-2">
+                            <i data-lucide="credit-card" class="w-4 h-4 text-emerald-400"></i> Pagamento no Asaas
+                        </h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Pague via Pix, boleto bancário ou cartão de crédito pela fatura segura do Asaas, com emissão e confirmação automática.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-950/70 p-5 rounded-2xl border border-slate-800/80">
+                        <h4 class="text-sm font-bold text-white flex items-center gap-2 mb-2">
+                            <i data-lucide="pause-circle" class="w-4 h-4 text-amber-400"></i> Limite da Franquia
+                        </h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Ao usar a franquia, o robô pausa até o ciclo renovar ou até você subir de plano. Não existe venda de pacote avulso de notas.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-950/70 p-5 rounded-2xl border border-slate-800/80">
+                        <h4 class="text-sm font-bold text-white flex items-center gap-2 mb-2">
+                            <i data-lucide="arrow-up-circle" class="w-4 h-4 text-indigo-400"></i> Upgrade Imediato
+                        </h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Feito pelo app no menu <em>Assinaturas</em>. Você paga só a diferença entre os planos e recebe a franquia nova na hora.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-950/70 p-5 rounded-2xl border border-slate-800/80">
+                        <h4 class="text-sm font-bold text-white flex items-center gap-2 mb-2">
+                            <i data-lucide="arrow-down-circle" class="w-4 h-4 text-slate-400"></i> Downgrade Livre
+                        </h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Também pelo menu <em>Assinaturas</em>, sem taxa nem burocracia. O novo valor e franquia passam a valer a partir da próxima fatura.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-950/70 p-5 rounded-2xl border border-slate-800/80">
+                        <h4 class="text-sm font-bold text-white flex items-center gap-2 mb-2">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i> Sem Pagamento = Free
+                        </h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Se a fatura não for paga, sua conta volta para o plano Free (100 notas por mês) e continua funcionando sem travar seus arquivos.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 font-medium">
+                    <span class="flex items-center gap-2">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-blue-400"></i>
+                        No app, o robô recomenda o plano exato para o volume do seu escritório.
+                    </span>
+                    <a href="#ativar" class="text-blue-400 hover:text-blue-300 font-bold underline transition-colors">
+                        Comece grátis no plano Free &rarr;
                     </a>
                 </div>
             </div>
@@ -929,8 +1059,11 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                     plano = "Starter";
                     custoPlano = 39.90;
                 } else if (value <= 1500) {
-                    plano = "Crescimento";
+                    plano = "Pro";
                     custoPlano = 89.90;
+                } else if (value <= 3000) {
+                    plano = "Turbo";
+                    custoPlano = 139.90;
                 } else {
                     plano = "Scale";
                     custoPlano = 199.90;
@@ -979,21 +1112,23 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
                 // Atualizar classes dos presets
                 const presetPequeno = document.querySelector('button[onclick="setSliderValue(400)"]');
                 const presetMedio = document.getElementById('btn-preset-med');
-                const presetGrande = document.querySelector('button[onclick="setSliderValue(3600)"]');
+                const presetTurbo = document.getElementById('btn-preset-turbo');
+                const presetScale = document.getElementById('btn-preset-scale');
 
-                const classAtivo = "bg-blue-50 text-blue-600 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-blue-200 shadow-sm";
-                const classInativo = "bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-700 px-4 py-2.5 rounded-xl font-bold text-sm transition-all border border-slate-200 hover:border-blue-200";
+                const classAtivo = "bg-blue-50 text-blue-600 px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all border border-blue-200 shadow-sm";
+                const classInativo = "bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-700 px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all border border-slate-200 hover:border-blue-200";
 
                 if (presetPequeno) presetPequeno.className = value === 400 ? classAtivo : classInativo;
                 if (presetMedio) presetMedio.className = value === 1500 ? classAtivo : classInativo;
-                if (presetGrande) presetGrande.className = value === 3600 ? classAtivo : classInativo;
+                if (presetTurbo) presetTurbo.className = value === 3000 ? classAtivo : classInativo;
+                if (presetScale) presetScale.className = value === 4500 ? classAtivo : classInativo;
             }
 
             if (slider) {
                 slider.addEventListener('input', (e) => {
                     updateCalculator(parseInt(e.target.value));
                 });
-                // Inicializar com 1.500 notas (Plano Crescimento recomendado)
+                // Inicializar com 1.500 notas (Plano Pro recomendado)
                 updateCalculator(1500);
             }
 
