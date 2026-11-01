@@ -1,0 +1,18 @@
+[
+  {
+    "title": "🚨 v3.5.4: ATUALIZAÇÃO IMPORTANTE",
+    "message": "O governo mudou a consulta de notas. Se as empresas por certificado mostram \"Dados inválidos\", seu cadastro está certo: atualize para voltar a baixar.",
+    "icon": "system_update",
+    "color": "rose",
+    "btn_label": "ATUALIZAR",
+    "url": "https://notafacildownloader.contabilcert.com.br/atualizacao/"
+  },
+  {
+    "title": "📊 Toda a Carteira numa Planilha Só",
+    "message": "Novo Painel Geral: filtre e cruze todas as notas emitidas, tomadas e canceladas de todos os seus clientes em um único Excel.",
+    "icon": "analytics",
+    "color": "emerald",
+    "btn_label": "VER NOVIDADES",
+    "url": "https://notafacildownloader.contabilcert.com.br/blog/painel-fiscal-planilha-fechamento-nfse/"
+  }
+]

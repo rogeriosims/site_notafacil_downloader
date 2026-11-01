@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotaFácil Downloader - Atualização v3.5.4</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f6f9fc;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #333333;
+        }
+        .wrapper {
+            width: 100%;
+            table-layout: fixed;
+            background-color: #f6f9fc;
+            padding: 40px 0;
+        }
+        .main-card {
+            width: 100%;
+            max-width: 600px;
+            background-color: #ffffff;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+        .header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 40px 30px;
+            text-align: center;
+            border-bottom: 4px solid #06b6d4;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            color: #06b6d4;
+        }
+        .content {
+            padding: 40px 30px;
+            line-height: 1.6;
+            font-size: 16px;
+            color: #334155;
+        }
+        h1 {
+            font-size: 22px;
+            color: #0f172a;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .greeting {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 20px;
+        }
+        .feature-box {
+            background-color: #f8fafc;
+            border-left: 4px solid #06b6d4;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 25px 0;
+        }
+        .feature-box h3 {
+            margin-top: 0;
+            color: #0f172a;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .success-box {
+            background-color: #ecfdf5;
+            border-left: 4px solid #10b981;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 25px 0;
+            color: #065f46;
+        }
+        .success-box h3 {
+            margin-top: 0;
+            color: #065f46;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .cta-container {
+            text-align: center;
+            margin: 40px 0 20px 0;
+        }
+        .btn-cta {
+            background-color: #06b6d4;
+            color: #ffffff !important;
+            text-decoration: none;
+            padding: 14px 30px;
+            font-weight: 700;
+            font-size: 16px;
+            border-radius: 6px;
+            display: inline-block;
+            transition: background-color 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(6, 182, 212, 0.2);
+        }
+        .footer {
+            background-color: #f1f5f9;
+            padding: 30px;
+            text-align: center;
+            font-size: 13px;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+        }
+        .footer a {
+            color: #06b6d4;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="main-card">
+            <div class="header">
+                <div class="logo">Nota<span>Fácil</span> Downloader</div>
+            </div>
+            <div class="content">
+                <div class="greeting">Olá, {{ $json.nome ? $json.nome.split(' ')[0] : 'Parceiro(a)' }}!</div>
+                
+                <h1>NFS-e v3.5.4 Liberada! 🚨</h1>
+                <p>Entre 30 e 31/10 o sistema nacional da NFS-e mudou a forma de consultar as notas. Desde então, as versões anteriores recebem uma recusa nas empresas por certificado, e o app mostra "Dados inválidos. Verifique o cadastro da empresa."</p>
+                <p><strong>O seu cadastro não tem nada de errado.</strong> A <strong>versão 3.5.4 do Nota Fácil Downloader</strong> já está disponível com a correção:</p>
+                <div class="success-box">
+                    <h3>🔐 Download por Certificado de Volta</h3>
+                    <p>O app consulta no formato novo, para CNPJ e CPF. Cada empresa retoma do ponto em que parou na próxima execução, sem você mexer em nenhum cadastro.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>🗣️ Recusas Explicadas</h3>
+                    <p>Quando o governo recusa uma consulta, o app mostra o código e o motivo informados por ele, em vez de um aviso genérico.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>🪪 Certificado com a Causa Identificada</h3>
+                    <p>O antigo "Não foi possível criar um canal seguro" agora indica a causa encontrada: certificado vencido, ainda não válido, revogado, sem chave privada, com cadeia inválida ou com chave inacessível. Nas causas definitivas, o robô para de repetir a tentativa.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>📄 Menos Notas Presas no Portal</h3>
+                    <p>Corrigimos o caso em que um botão invisível do portal impedia o download de uma nota da lista.</p>
+                </div>
+                <div class="cta-container">
+                    <a href="https://notafacildownloader.contabilcert.com.br/atualizacao/" class="btn-cta">ATUALIZAR PARA v3.5.4</a>
+                </div>
+                <p>Suas empresas, notas e configurações são preservadas na atualização. Depois de instalar, rode uma empresa por certificado e confira o resultado antes de liberar o lote.</p>
+                <p>Boas automações,<br><strong>Equipe Nota Fácil Downloader</strong></p>
+                
+            </div>
+            <div class="footer">
+                <p>Este e-mail foi enviado automaticamente pelo sistema NotaFácil Downloader.</p>
+                <p>&copy; 2026 NotaFácil. Todos os direitos reservados. | <a href="https://notafacildownloader.contabilcert.com.br/">Website</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
