@@ -49,6 +49,11 @@ export default {
       }
     }
 
+    // O instalador só é servido no endereço exato; barra no fim ou parâmetros não chegam a ele
+    if (url.pathname === '/instalar-nota-facil/' || (url.pathname === '/instalar-nota-facil' && url.search)) {
+      return Response.redirect(`${url.origin}/instalar-nota-facil`, 302);
+    }
+
     // Servir arquivos estáticos do Astro
     return env.ASSETS.fetch(request);
   }
