@@ -26,6 +26,7 @@ def main(lido, novo, versao, assunto, email_html):
     marcadores = [m for m in re.findall(r"\{\{.*?\}\}", html) if "$json.nome" not in m]
     assert not marcadores, f"marcador pendente: {marcadores}"
     assert "{https" not in html, "link quebrado"
+    assert "notafacil.com.br" not in html, "link antigo: use https://notafacildownloader.contabilcert.com.br/"
 
     def define(no, valores):
         campos = {a["name"]: a for a in nos[no]["parameters"]["assignments"]["assignments"]}
