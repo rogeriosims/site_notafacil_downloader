@@ -16,6 +16,17 @@
 
 **Atenção ao `current_version`:** o nó tem `is_mandatory = true` e `update_url` apontando para o `.exe`. Pelos nomes dos campos, subir a versão deve exigir a atualização de toda a base e levar também quem usa a Store para o `.exe`. Confirmar esse comportamento no código do app antes da primeira execução deste processo.
 
+## Como executar
+
+Copie `scripts/release/release.py` e um `release.json` (modelo em `release.example.json`) para o projeto do robô:
+
+```bash
+python release.py preparar release.json   # acione /release-preparar: nada é publicado
+python release.py publicar release.json   # depois da aprovação da Store: acione /release-publicar
+```
+
+Atualização obrigatória exige `--confirmar-obrigatoria`. O disparo do e-mail continua manual. O andamento fica em `marketing/releases.md`.
+
 ## 2. Ordem do deploy
 
 Cada fase só começa quando a anterior foi conferida.

@@ -1,0 +1,9 @@
+{
+  "versao": "3.5.5",
+  "versao_anterior": "3.5.4",
+  "assunto": "v3.5.5: assunto do e-mail, sempre com a versao",
+  "obrigatoria": false,
+  "copy": "documentos/releases/v3.5.5-marketing-copy.md",
+  "email": "marketing/emails/v3.5.5.html",
+  "card": "documentos/releases/v3.5.5-card.json"
+}

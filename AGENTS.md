@@ -8,3 +8,4 @@
 ## 2. Escopo Estrito de Projeto
 - Nunca busque, leia ou altere arquivos de outros projetos do usuário (como `nota_facil_admin`, `0 - Nota Facil Downloader`, etc.) a menos que o usuário cite expressamente o caminho daquele projeto específico.
 - Mantenha-se estritamente dentro do workspace do site.
+- Exceção: nas etapas de release, os arquivos citados no manifesto passado pelo `release.py` podem ser lidos. Nada além deles.
